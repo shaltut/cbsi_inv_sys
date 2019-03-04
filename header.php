@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Inventory Management System</title>
+		<title>CBSI - Home</title>
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<script src="js/jquery.dataTables.min.js"></script>

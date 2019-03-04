@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>CBSI INV - Home</title>
+		<title>Inventory Management System</title>
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<script src="js/jquery.dataTables.min.js"></script>
@@ -15,7 +15,7 @@
 	<body>
 		<br />
 		<div class="container">
-			
+
 			<nav class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<div class="navbar-header">
@@ -26,14 +26,38 @@
 					if($_SESSION['type'] == 'master')
 					{
 					?>
-						<li><a href="user.php">User</a></li>
-						<li><a href="category.php">Category</a></li>
-						<li><a href="brand.php">Brand</a></li>
-						<li><a href="product.php">Product</a></li>
+
+						<!-- 
+							These links should only be seen by master users. 
+						-->
+						<li><a href="user.php">Employees</a></li>
+						<li><a href="product.php">Equipment</a></li>
 					<?php
 					}
 					?>
-						<li><a href="order.php">Order</a></li>
+						<!-- 
+							NEEDS WORK:
+
+							This link will bring users to a page with 2 options:
+							- Check-in
+							- Check-out
+
+							Both options will take them to their camera, along with a POST (depending on which button they selected) header which will tell the app how the scanning of the barcode will affect the database.
+
+							for example, if the user selects "Check-out" option:
+								- $_POST("check-out") will be sent to the next page
+								- *User scans the barcode*
+								- the system will know that the Equipment_ID being read in is being CHECKED OUT by the current user.
+						-->
+						<li><a href="scan.php">SCAN</a></li>
+						<!-- 
+							NEEDS WORK:
+							
+							This link will bring users to a page with all equipment listings, along with their availabilities.
+
+							There will be a search bar at the top, allowing them to search for and find equipment that they need.
+						-->
+						<li><a href="scan.php">Search</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
@@ -47,3 +71,4 @@
 
 				</div>
 			</nav>
+			

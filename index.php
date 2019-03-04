@@ -8,6 +8,7 @@ if(!isset($_SESSION["type"]))
 	header("location:login.php");
 }
 //Names:
+//Philip Nestor
 include('header.php');
 ?>
 

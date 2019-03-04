@@ -12,8 +12,6 @@ if(!isset($_SESSION["type"]))
 
 //Diana
 //Garrett Kollar
-//Philip Nestor
-//Philip Nestor
 //Connor Bailey
 
 include('header.php');

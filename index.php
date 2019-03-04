@@ -7,7 +7,8 @@ if(!isset($_SESSION["type"]))
 {
 	header("location:login.php");
 }
-//Names:
+//Names: 
+//Diana
 include('header.php');
 ?>
 

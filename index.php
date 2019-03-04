@@ -8,11 +8,15 @@ if(!isset($_SESSION["type"]))
 	header("location:login.php");
 }
 
+<<<<<<< HEAD
+//Phillip Nestor & Connor Bailey & Diana Borda & Mariam Ansari
+=======
 //Names: 
 
 //Diana
 //Garrett Kollar
 //Connor Bailey
+>>>>>>> bfa5be8c4fd81ab937e4dd2f4c2a29691a21dbdb
 
 include('header.php');
 ?>

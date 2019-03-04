@@ -7,8 +7,9 @@ if(!isset($_SESSION["type"]))
 {
 	header("location:login.php");
 }
-//HEYYYYYY
-//mariam
+
+//Phillip Nestor & Connor Bailey & Diana Borda & Mariam Ansari
+
 include('header.php');
 ?>
 

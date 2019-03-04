@@ -7,8 +7,14 @@ if(!isset($_SESSION["type"]))
 {
 	header("location:login.php");
 }
+<<<<<<< HEAD
 //Names: 
 //Diana
+=======
+//Names:
+//Philip Nestor & Connor Bailey
+
+>>>>>>> 59b4be7f875cd94903c6c0b9bf1dfba4147fcdc2
 include('header.php');
 ?>
 

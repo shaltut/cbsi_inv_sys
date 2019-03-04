@@ -8,6 +8,7 @@ if(!isset($_SESSION["type"]))
 	header("location:login.php");
 }
 //Names:
+//Garrett Kollar
 include('header.php');
 ?>
 

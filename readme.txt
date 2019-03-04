@@ -25,4 +25,9 @@ ALRIGHT - here's how to do the git stuff:
 
 "I want to add a brand new file"
 
-	>
+	> cd C:/xampp/htdocs/cbsi_inv_sys
+	> git add newfilename.php
+	> git commit -m "changelog message here"
+	> git push
+
+

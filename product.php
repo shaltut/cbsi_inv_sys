@@ -16,8 +16,8 @@ if($_SESSION['type'] != 'master')
 
 include('header.php');
 
-
 ?>
+        <!-- Alerts the user to changes they have made, or errors -->
         <span id='alert_action'></span>
 		<div class="row">
 			<div class="col-lg-12">
@@ -44,6 +44,9 @@ include('header.php');
                                     <th>Quantity</th>
                                     <th>Enter By</th>
                                     <th>Status</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr></thead>
                             </table>
                         </div></div>

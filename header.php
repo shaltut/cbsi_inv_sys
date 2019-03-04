@@ -48,7 +48,7 @@
 								- *User scans the barcode*
 								- the system will know that the Equipment_ID being read in is being CHECKED OUT by the current user.
 						-->
-						<li><a href="scan.php">SCAN</a></li>
+						<li><a href="scan_op.php">SCAN</a></li>
 						<!-- 
 							NEEDS WORK:
 							

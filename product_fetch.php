@@ -68,6 +68,7 @@ foreach($result as $row)
 	$data[] = $sub_array;
 }
 
+//	This function returns the total number of all rows returned by $query
 function get_total_all_records($connect)
 {
 	$statement = $connect->prepare('SELECT * FROM product');

@@ -39,7 +39,7 @@ ALRIGHT - here's how to do the git stuff:
 TODO:
 
 Garrett:
-- Style login.php, index.php, profile.php
+- Style login.php, header.php, index.php, profile.php
 
 Diana: 
 - Change database names (‘use_id’ to ‘employee_id’ etc.)

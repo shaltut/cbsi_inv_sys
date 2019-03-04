@@ -31,3 +31,8 @@ ALRIGHT - here's how to do the git stuff:
 	> git push
 
 
+"I want to remove my local changes and pull the version on github"
+
+	> cd C:/xampp/htdocs/cbsi_inv_sys
+	> git fetch --all
+	> git reset --hard origin/master

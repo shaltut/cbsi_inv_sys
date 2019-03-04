@@ -7,11 +7,9 @@ if(!isset($_SESSION["type"]))
 {
 	header("location:login.php");
 }
-
+//HEYYYYYY
 include('header.php');
 ?>
-
-
 
 	<br />
 	<div class="row">
@@ -68,7 +66,6 @@ include('header.php');
 				</div>
 			</div>
 		</div>
-
 
 			<!-- 
 				These probs arent needed, but figured id keep them here just in case.

@@ -14,10 +14,13 @@ include('header.php');
 	<br />
 	<div class="row">
 	<?php
-	if($_SESSION['type'] == 'master')
+	if($_SESSION['type'] == 'master')	
 	{
 	?>
-	<div class="col-md-3">
+		<!-- 
+			This function should show the TOTAL number of employees with accounts (excluding master admin users)
+		-->
+	<div class="col-md-4">
 		<div class="panel panel-default">
 			<div class="panel-heading"><strong>Total Employees</strong></div>
 			<div class="panel-body" align="center">
@@ -25,42 +28,48 @@ include('header.php');
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3">
+
+		<!-- 
+			This function should show the TOTAL number of pieces of equipment checked out by ALL employees (only seen by admin).
+
+			That is to say, when an employee checks out a piece of equipment, this number should increment, and when the check it back in, it should decrement.
+		-->
+	<div class="col-md-4">
 		<div class="panel panel-default">
-			<div class="panel-heading"><strong>Total Category</strong></div>
-			<div class="panel-body" align="center">
-				<h1><?php echo count_total_category($connect); ?></h1>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3">
-		<div class="panel panel-default">
-			<div class="panel-heading"><strong>Total Brand</strong></div>
-			<div class="panel-body" align="center">
-				<h1><?php echo count_total_brand($connect); ?></h1>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3">
-		<div class="panel panel-default">
-			<div class="panel-heading"><strong>Total Item in Stock</strong></div>
+			<div class="panel-heading"><strong>Total Equipment Checked In</strong></div>
 			<div class="panel-body" align="center">
 				<h1><?php echo count_total_product($connect); ?></h1>
 			</div>
 		</div>
 	</div>
+
 	<?php
 	}
 	?>
+
+			<!-- 
+				This function should show the number of pieces of equipment checked out by the employee who owns the account. 
+
+				That is to say, when the employee currently logged in checks out a piece of equipment, this number should increment, and when they check it back in, it should decrement.
+			-->
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><strong>Total Order Value</strong></div>
+				<div class="panel-heading"><strong>Equipment Checked Out By You</strong></div>
 				<div class="panel-body" align="center">
 					<h1>$<?php echo count_total_order_value($connect); ?></h1>
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+
+
+			<!-- 
+				These probs arent needed, but figured id keep them here just in case.
+
+				The first function 'count_total_cash_order_value($connect' returns the total value of all cash orders 
+
+				The second function 'count_total_credit_order_value($connect)' returns the total value of all cash orders.
+			-->
+		<!-- <div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Total Cash Order Value</strong></div>
 				<div class="panel-body" align="center">
@@ -75,12 +84,20 @@ include('header.php');
 					<h1>$<?php echo count_total_credit_order_value($connect); ?></h1>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<hr />
 		<?php
 		if($_SESSION['type'] == 'master')
 		{
 		?>
+
+			<!-- 
+				This function should show a table that lists the following:
+				- Employee#
+				- Employee name (first and last)
+				- SiteID
+				- Equipment_id
+			-->
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Total Order Value User wise</strong></div>

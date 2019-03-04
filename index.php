@@ -8,8 +8,12 @@ if(!isset($_SESSION["type"]))
 	header("location:login.php");
 }
 //Names:
+
 //Garrett Kollar
 //Philip Nestor
+//Philip Nestor
+//Connor Bailey
+
 include('header.php');
 ?>
 

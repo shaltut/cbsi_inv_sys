@@ -9,6 +9,7 @@ if(!isset($_SESSION["type"]))
 }
 //Names:
 //Garrett Kollar
+//Philip Nestor
 include('header.php');
 ?>
 

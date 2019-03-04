@@ -44,9 +44,6 @@ include('header.php');
                                     <th>Quantity</th>
                                     <th>Enter By</th>
                                     <th>Status</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
                                 </tr></thead>
                             </table>
                         </div></div>

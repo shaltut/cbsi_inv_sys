@@ -2,10 +2,17 @@
 
 //user_action.php
 
+/*
+		Users are sent here after clicking a button or doing some action (like
+	adding a user) on user.php. Below is the php, javascript, and SQL commands 
+ 	called whenever someone performs one of those actions.
+*/
+
 include('database_connection.php');
 
 if(isset($_POST['btn_action']))
 {
+	//	**********	Add button pressed	********** 
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
@@ -22,6 +29,8 @@ if(isset($_POST['btn_action']))
 				':user_status'		=>	'active'
 			)
 		);
+
+		//Verifying that the database was updated successfully
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
@@ -39,6 +48,8 @@ if(isset($_POST['btn_action']))
 				':user_id'	=>	$_POST["user_id"]
 			)
 		);
+
+		//Verifying that the database was updated successfully
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
@@ -47,6 +58,8 @@ if(isset($_POST['btn_action']))
 		}
 		echo json_encode($output);
 	}
+
+	//	**********	Update button pressed (for any user ac)	********** 
 	if($_POST['btn_action'] == 'Edit')
 	{
 		if($_POST['user_password'] != '')
@@ -70,14 +83,19 @@ if(isset($_POST['btn_action']))
 		}
 		$statement = $connect->prepare($query);
 		$statement->execute();
+
+		//Verifying that the database was updated successfully
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
 			echo 'User Details Edited';
 		}
 	}
+
+	//	**********	Delete button pressed (for any user ac) ********** 
 	if($_POST['btn_action'] == 'delete')
 	{
+
 		$status = 'Active';
 		if($_POST['status'] == 'Active')
 		{
@@ -95,6 +113,8 @@ if(isset($_POST['btn_action']))
 				':user_id'		=>	$_POST["user_id"]
 			)
 		);	
+
+		//Verifying that the database was updated successfully
 		$result = $statement->fetchAll();	
 		if(isset($result))
 		{

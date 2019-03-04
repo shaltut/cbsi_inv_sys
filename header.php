@@ -26,7 +26,6 @@
 					if($_SESSION['type'] == 'master')
 					{
 					?>
-
 						<!-- 
 							These links should only be seen by master users. 
 						-->
@@ -60,6 +59,12 @@
 						<li><a href="search.php">Search</a></li>
 					</ul>
 
+
+					<!-- 
+						This is the far right of the nav bar that displays the users Username. It includes a dropdown with 2 options:
+							- profile -> profile.php
+							- logout -> logout.phpß
+					-->
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count"></span> <?php echo ucfirst($_SESSION["user_name"]); ?></a>

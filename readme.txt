@@ -1,6 +1,26 @@
-﻿ALRIGHT - here's how to do the git stuff:
+﻿TODO:
+
+Garrett:
+- Style login.php, header.php, index.php, profile.php
+
+Diana: 
+- Change database names (‘use_id’ to ‘employee_id’ etc.)
+
+Tristan:
+- See if you can delete any traces of the ‘brand.php’ page and links to it from the site
+
+Mariam:
+- See if you can delete any traces of the ‘orders.php’ page and links to it from the site
+
+Phillip:
+- Examine the form fields for any weak points (SQL injection) and patch if possible on the user.php ‘add’ button and ‘update’ button forms.
+
 
 ------------------------------------------------------------------------------------------------------------------------
+
+
+ALRIGHT - here's how to do the git stuff:
+
 
 "I want to update my local files with what's on github"
 
@@ -39,23 +59,3 @@
 
 
 ------------------------------------------------------------------------------------------------------------------------
-
-
-TODO:
-
-Garrett:
-- Style login.php, header.php, index.php, profile.php
-
-Diana: 
-- Change database names (‘use_id’ to ‘employee_id’ etc.)
-
-Tristan:
-- See if you can delete any traces of the ‘brand.php’ page and links to it from the site
-
-Mariam:
-- See if you can delete any traces of the ‘orders.php’ page and links to it from the site
-
-Phillip:
-- Examine the form fields for any weak points (SQL injection) and patch if possible on the user.php ‘add’ button and ‘update’ button forms.
-
-

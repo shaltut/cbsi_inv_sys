@@ -8,7 +8,7 @@ if(!isset($_SESSION["type"]))
 	header("location:login.php");
 }
 //Names:
-//Connor Bailey
+//Philip Nestor & Connor Bailey
 include('header.php');
 ?>
 

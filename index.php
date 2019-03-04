@@ -8,6 +8,7 @@ if(!isset($_SESSION["type"]))
 	header("location:login.php");
 }
 //Names:
+//Connor Bailey
 include('header.php');
 ?>
 

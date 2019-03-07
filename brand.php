@@ -1,4 +1,4 @@
-<?php
+php
 //brand.php
 include('database_connection.php');
 

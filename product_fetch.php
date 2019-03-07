@@ -2,6 +2,7 @@
 
 //product_fetch.php
 
+//deleting brand references on this page cause issues with display for equipment/product list
 include('database_connection.php');
 include('function.php');
 

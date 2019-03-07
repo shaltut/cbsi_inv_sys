@@ -9,22 +9,18 @@ include('function.php');
 
 if(isset($_POST['btn_action']))
 {
-	if($_POST['btn_action'] == 'load_brand')
-	{
-		echo fill_brand_list($connect, $_POST['category_id']);
-	}
+	
 
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO product (category_id, brand_id, product_name, product_description, product_quantity, product_unit, product_base_price, product_tax, product_enter_by, product_status, product_date) 
-		VALUES (:category_id, :brand_id, :product_name, :product_description, :product_quantity, :product_unit, :product_base_price, :product_tax, :product_enter_by, :product_status, :product_date)
+		INSERT INTO product (category_id, product_name, product_description, product_quantity, product_unit, product_base_price, product_tax, product_enter_by, product_status, product_date) 
+		VALUES (:category_id, :product_name, :product_description, :product_quantity, :product_unit, :product_base_price, :product_tax, :product_enter_by, :product_status, :product_date)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
 				':category_id'			=>	$_POST['category_id'],
-				':brand_id'				=>	$_POST['brand_id'],
 				':product_name'			=>	$_POST['product_name'],
 				':product_description'	=>	$_POST['product_description'],
 				':product_quantity'		=>	$_POST['product_quantity'],
@@ -46,8 +42,7 @@ if(isset($_POST['btn_action']))
 	{
 		$query = "
 		SELECT * FROM product 
-		INNER JOIN category ON category.category_id = product.category_id 
-		INNER JOIN brand ON brand.brand_id = product.brand_id 
+		INNER JOIN category ON category.category_id = product.category_id
 		INNER JOIN user_details ON user_details.user_id = product.product_enter_by 
 		WHERE product.product_id = '".$_POST["product_id"]."'
 		";
@@ -81,10 +76,6 @@ if(isset($_POST['btn_action']))
 			<tr>
 				<td>Category</td>
 				<td>'.$row["category_name"].'</td>
-			</tr>
-			<tr>
-				<td>Brand</td>
-				<td>'.$row["brand_name"].'</td>
 			</tr>
 			<tr>
 				<td>Available Quantity</td>
@@ -129,8 +120,6 @@ if(isset($_POST['btn_action']))
 		foreach($result as $row)
 		{
 			$output['category_id'] = $row['category_id'];
-			$output['brand_id'] = $row['brand_id'];
-			$output["brand_select_box"] = fill_brand_list($connect, $row["category_id"]);
 			$output['product_name'] = $row['product_name'];
 			$output['product_description'] = $row['product_description'];
 			$output['product_quantity'] = $row['product_quantity'];
@@ -147,7 +136,6 @@ if(isset($_POST['btn_action']))
 		$query = "
 		UPDATE product 
 		set category_id = :category_id, 
-		brand_id = :brand_id,
 		product_name = :product_name,
 		product_description = :product_description, 
 		product_quantity = :product_quantity, 
@@ -160,7 +148,6 @@ if(isset($_POST['btn_action']))
 		$statement->execute(
 			array(
 				':category_id'			=>	$_POST['category_id'],
-				':brand_id'				=>	$_POST['brand_id'],
 				':product_name'			=>	$_POST['product_name'],
 				':product_description'	=>	$_POST['product_description'],
 				':product_quantity'		=>	$_POST['product_quantity'],

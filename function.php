@@ -19,23 +19,6 @@ function fill_category_list($connect)
 	return $output;
 }
 
-function fill_brand_list($connect, $category_id)
-{
-	$query = "SELECT * FROM brand 
-	WHERE brand_status = 'active' 
-	AND category_id = '".$category_id."'
-	ORDER BY brand_name ASC";
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
-	$output = '<option value="">Select Brand</option>';
-	foreach($result as $row)
-	{
-		$output .= '<option value="'.$row["brand_id"].'">'.$row["brand_name"].'</option>';
-	}
-	return $output;
-}
-
 function get_user_name($connect, $user_id)
 {
 	$query = "
@@ -136,15 +119,6 @@ function count_total_category($connect)
 	return $statement->rowCount();
 }
 
-function count_total_brand($connect)
-{
-	$query = "
-	SELECT * FROM brand WHERE brand_status='active'
-	";
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	return $statement->rowCount();
-}
 
 function count_total_product($connect)
 {

@@ -123,7 +123,7 @@ function available_product_quantity($connect, $product_id)
 }
 
 /*
-	Returns the total number of (ACTIVE) users from the user_details table of the database.
+	Returns the total number of (ACTIVE) users (Both MASTER and NON-MASTER) from the user_details table of the database.
 
 	This count includes MASTER users (Admins)
 */
@@ -137,28 +137,38 @@ function count_total_user_active($connect)
 }
 
 /*
-	Returns the total number of (INACTIVE) users from the user_details table of the database.
+	Returns the total number of NON-MASTER users (active and inactive)
 
 	This count includes MASTER users (Admins)
 */
-function count_total_user_inactive($connect)
+function count_user_total($connect)
 {
 	$query = "
-	SELECT * FROM user_details WHERE user_status='inactive'";
+	SELECT * FROM user_details WHERE user_type = 'user'";
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	return $statement->rowCount();
 }
 
 /*
-	Returns the total number of (ACTIVE OR INACTIVE) users from the user_details table of the database.
-
-	This count includes MASTER users (Admins)
+	Returns the number of ACTIVE NON-MASTER users
 */
-function count_total_user($connect)
+function count_user_active($connect)
 {
 	$query = "
-	SELECT * FROM user_details";
+	SELECT * FROM user_details WHERE user_type = 'user' AND user_status = 'active'";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
+
+/*
+	Returns the number of ACTIVE MASTER users
+*/
+function count_master_active($connect)
+{
+	$query = "
+	SELECT * FROM user_details WHERE user_type = 'master' AND user_status = 'active'";
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	return $statement->rowCount();

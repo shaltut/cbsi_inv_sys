@@ -26,7 +26,7 @@ include('header.php');
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Total Employees</strong></div>
 				<div class="panel-body" align="center">
-					<h1><?php echo count_total_user($connect); ?></h1>
+					<h1><?php echo count_user_total($connect); ?></h1>
 				</div>
 			</div>
 		</div>

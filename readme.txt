@@ -36,7 +36,7 @@ ALRIGHT - here's how to do the git stuff:
 
 	*If it returns a conflict error, pull and fix conflicts, then restart this process
 
-"I want to update all the files"
+"I want to update all the files" (AKA push my changes to the master copy on github.)
 
 	> cd C:/xampp/htdocs/cbsi_inv_sys
 	> git add -A

@@ -100,7 +100,12 @@ function available_product_quantity($connect, $product_id)
 	return $available_quantity;
 }
 
-function count_total_user($connect)
+/*
+	Returns the total number of (ACTIVE) users from the user_details table of the database.
+
+	This count includes MASTER users (Admins)
+*/
+function count_total_user_active($connect)
 {
 	$query = "
 	SELECT * FROM user_details WHERE user_status='active'";
@@ -109,17 +114,50 @@ function count_total_user($connect)
 	return $statement->rowCount();
 }
 
-function count_total_category($connect)
+/*
+	Returns the total number of (INACTIVE) users from the user_details table of the database.
+
+	This count includes MASTER users (Admins)
+*/
+function count_total_user_inactive($connect)
 {
 	$query = "
-	SELECT * FROM category WHERE category_status='active'
-	";
+	SELECT * FROM user_details WHERE user_status='inactive'";
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	return $statement->rowCount();
 }
 
+/*
+	Returns the total number of (ACTIVE OR INACTIVE) users from the user_details table of the database.
 
+	This count includes MASTER users (Admins)
+*/
+function count_total_user($connect)
+{
+	$query = "
+	SELECT * FROM user_details";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
+
+/*
+	Returns the total number of (ACTIVE) categories from the category table of the database.
+*/
+// function count_total_category($connect)
+// {
+// 	$query = "
+// 	SELECT * FROM category WHERE category_status='active'
+// 	";
+// 	$statement = $connect->prepare($query);
+// 	$statement->execute();
+// 	return $statement->rowCount();
+// }
+
+/*
+	Returns the total number of (ACTIVE) products from the category table of the database.
+*/
 function count_total_product($connect)
 {
 	$query = "
@@ -187,6 +225,13 @@ function count_total_credit_order_value($connect)
 	}
 }
 
+/*
+Creates the table on Index.php that displays the "Total Order Value User Wise"
+
+Calls the count_total_credit_order_value() function 
+Calls the count_total_cash_order_value() function
+
+*/
 function get_user_wise_total_order($connect)
 {
 	$query = '

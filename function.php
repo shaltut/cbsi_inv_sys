@@ -1,6 +1,13 @@
 <?php
 //function.php
 
+
+/* 
+	********** NEEDS WORK **********
+	-Figure out what this function does and where it is used.
+
+	-When you comment it out, and test the system, the equipment page (product.php) gets screwy... Might be a good place to start.
+*/
 function fill_category_list($connect)
 {
 	$query = "
@@ -19,23 +26,9 @@ function fill_category_list($connect)
 	return $output;
 }
 
-function fill_brand_list($connect, $category_id)
-{
-	$query = "SELECT * FROM brand 
-	WHERE brand_status = 'active' 
-	AND category_id = '".$category_id."'
-	ORDER BY brand_name ASC";
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
-	$output = '<option value="">Select Brand</option>';
-	foreach($result as $row)
-	{
-		$output .= '<option value="'.$row["brand_id"].'">'.$row["brand_name"].'</option>';
-	}
-	return $output;
-}
-
+/* 
+	This function returns a user_name from the user_details table given any valid user_id from the user_details table.
+*/
 function get_user_name($connect, $user_id)
 {
 	$query = "
@@ -50,6 +43,10 @@ function get_user_name($connect, $user_id)
 	}
 }
 
+/* 
+	********** NEEDS WORK **********
+	- Figure out what this function does, and where it is used in the system.
+*/
 function fill_product_list($connect)
 {
 	$query = "
@@ -68,24 +65,32 @@ function fill_product_list($connect)
 	return $output;
 }
 
-function fetch_product_details($product_id, $connect)
-{
-	$query = "
-	SELECT * FROM product 
-	WHERE product_id = '".$product_id."'";
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
-	foreach($result as $row)
-	{
-		$output['product_name'] = $row["product_name"];
-		$output['quantity'] = $row["product_quantity"];
-		$output['price'] = $row['product_base_price'];
-		$output['tax'] = $row['product_tax'];
-	}
-	return $output;
-}
+/* 
+	This function returns the product_name, quantity, price, and tax from the product table.
+*/
+// function fetch_product_details($product_id, $connect)
+// {
+// 	$query = "
+// 	SELECT * FROM product 
+// 	WHERE product_id = '".$product_id."'";
+// 	$statement = $connect->prepare($query);
+// 	$statement->execute();
+// 	$result = $statement->fetchAll();
+// 	foreach($result as $row)
+// 	{
+// 		$output['product_name'] = $row["product_name"];
+// 		$output['quantity'] = $row["product_quantity"];
+// 		$output['price'] = $row['product_base_price'];
+// 		$output['tax'] = $row['product_tax'];
+// 	}
+// 	return $output;
+// }
 
+/* 
+	This function is currently being used to display the "22" number on index.php
+
+	It returns the number of items in inventory (adds up the "quantity" value for each product available)
+*/
 function available_product_quantity($connect, $product_id)
 {
 	$product_data = fetch_product_details($product_id, $connect);
@@ -117,7 +122,12 @@ function available_product_quantity($connect, $product_id)
 	return $available_quantity;
 }
 
-function count_total_user($connect)
+/*
+	Returns the total number of (ACTIVE) users (Both MASTER and NON-MASTER) from the user_details table of the database.
+
+	This count includes MASTER users (Admins)
+*/
+function count_total_user_active($connect)
 {
 	$query = "
 	SELECT * FROM user_details WHERE user_status='active'";
@@ -126,26 +136,60 @@ function count_total_user($connect)
 	return $statement->rowCount();
 }
 
-function count_total_category($connect)
+/*
+	Returns the total number of NON-MASTER users (active and inactive)
+
+	This count includes MASTER users (Admins)
+*/
+function count_user_total($connect)
 {
 	$query = "
-	SELECT * FROM category WHERE category_status='active'
-	";
+	SELECT * FROM user_details WHERE user_type = 'user'";
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	return $statement->rowCount();
 }
 
-function count_total_brand($connect)
+/*
+	Returns the number of ACTIVE NON-MASTER users
+*/
+function count_user_active($connect)
 {
 	$query = "
-	SELECT * FROM brand WHERE brand_status='active'
-	";
+	SELECT * FROM user_details WHERE user_type = 'user' AND user_status = 'active'";
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	return $statement->rowCount();
 }
 
+/*
+	Returns the number of ACTIVE MASTER users
+*/
+function count_master_active($connect)
+{
+	$query = "
+	SELECT * FROM user_details WHERE user_type = 'master' AND user_status = 'active'";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
+
+/*
+	Returns the total number of (ACTIVE) categories from the category table of the database.
+*/
+// function count_total_category($connect)
+// {
+// 	$query = "
+// 	SELECT * FROM category WHERE category_status='active'
+// 	";
+// 	$statement = $connect->prepare($query);
+// 	$statement->execute();
+// 	return $statement->rowCount();
+// }
+
+/*
+	Returns the total number of (ACTIVE) products from the category table of the database.
+*/
 function count_total_product($connect)
 {
 	$query = "
@@ -156,6 +200,11 @@ function count_total_product($connect)
 	return $statement->rowCount();
 }
 
+/* 
+	This function is currently being used to display the "$32,107.35" number on index.php
+
+	It returns the sum total of all money spent on inventory_order's that have an active status
+*/
 function count_total_order_value($connect)
 {
 	$query = "
@@ -175,6 +224,11 @@ function count_total_order_value($connect)
 	}
 }
 
+/* 
+	This function is currently being used to assist get_user_wise_total_order()
+
+	It returns the number of inventory_order's that were paid for using 'cash'
+*/
 function count_total_cash_order_value($connect)
 {
 	$query = "
@@ -195,6 +249,11 @@ function count_total_cash_order_value($connect)
 	}
 }
 
+/* 
+	This function is currently being used to assist get_user_wise_total_order()
+
+	It returns the number of inventory_order's that were paid for using 'credit'
+*/
 function count_total_credit_order_value($connect)
 {
 	$query = "
@@ -213,6 +272,38 @@ function count_total_credit_order_value($connect)
 	}
 }
 
+/*
+Creates the table on Index.php that displays the "Total Order Value User Wise"
+
+Calls the count_total_credit_order_value() function 
+Calls the count_total_cash_order_value() function
+
+
+********** CHANGES NEEDED **********
+- needs to print out all pieces of equipment that are currently checked out by each user.
+	--Something like:
+		SELECT e.empl_id, e.empl_firstname||' '||e.empl_lastname as "empl_name", eq.equip_id, eq.equip_type, c.check_out_date_time
+		FROM employees e INNER JOIN check_employee_equipment eq using (empl_id)
+		JOIN equipment USING (equip_id)
+		WHERE equip_status = 'checked out'
+
+	-- Changes to be made to the database for this to be possible:
+
+		- A "check_employee_equipment" table must be added to the DB:
+			This table will be a bridge between the employees table and the 
+			equipment table, and will hold information about check-outs, 
+			including -> (check_id (PK), empl_id (FK), equip_id (FK), check_date_time)
+
+		- The user_details table has to be changed to "employees"
+			- Everywhere it says "user_%" in this table should be changed to "empl_%"
+
+		- The product table has to be changed to "equipment"
+			- Everywhere it says "product_%" in this table should be changed to "equip_%"
+
+		- user_name (or "empl_name" after changed) in the user_details table (or "equipment" after changed) has to be split into "empl_firstname" and "empl_lastname"
+		- The new equipment table must be modified to include an equip_type column
+******************************************
+*/
 function get_user_wise_total_order($connect)
 {
 	$query = '

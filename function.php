@@ -129,14 +129,14 @@ function available_product_quantity($connect, $product_id)
 
 	This count includes MASTER users (Admins)
 */
-// function count_total_user_active($connect)
-// {
-// 	$query = "
-// 	SELECT * FROM user_details WHERE user_status='active'";
-// 	$statement = $connect->prepare($query);
-// 	$statement->execute();
-// 	return $statement->rowCount();
-// }
+function count_total_user_active($connect)
+{
+	$query = "
+	SELECT * FROM user_details WHERE user_status='active'";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
 
 /*
 	Returns the total number of NON-MASTER users (active and inactive)
@@ -167,14 +167,14 @@ function count_user_total($connect)
 /*
 	Returns the number of ACTIVE MASTER users
 */
-// function count_master_active($connect)
-// {
-// 	$query = "
-// 	SELECT * FROM user_details WHERE user_type = 'master' AND user_status = 'active'";
-// 	$statement = $connect->prepare($query);
-// 	$statement->execute();
-// 	return $statement->rowCount();
-// }
+function count_master_active($connect)
+{
+	$query = "
+	SELECT * FROM user_details WHERE user_type = 'master' AND user_status = 'active'";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
 
 /*
 	Returns the total number of (ACTIVE) categories from the category table of the database.

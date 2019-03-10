@@ -17,6 +17,46 @@ if($_SESSION['type'] != 'master')
 include('header.php');
 
 ?>
+
+
+<div class="row">
+            <!-- 
+                    Shows total number of pieces of equipment
+                -->
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Total Equipment</strong></div>
+                    <div class="panel-body" align="center">
+                        <h1><?php echo count_user_total($connect); ?></h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 
+                    Shows the total number of pieces of equipment checked out at the moment
+                -->
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Total Checked-out</strong></div>
+                    <div class="panel-body" align="center">
+                        <h1><?php echo count_master_active($connect); ?></h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 
+                    Shows ????? something useful here
+                -->
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Total ??????</strong></div>
+                    <div class="panel-body" align="center">
+                        <h1><?php echo count_total_user_active($connect); ?></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Alerts the user to changes they have made, or errors -->
         <span id='alert_action'></span>
 		<div class="row">
@@ -25,7 +65,7 @@ include('header.php');
                     <div class="panel-heading">
                     	<div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                            	<h3 class="panel-title">Product List</h3>
+                            	<h3 class="panel-title">Equipment List</h3>
                             </div>
                         
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>

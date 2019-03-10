@@ -90,6 +90,7 @@ include('header.php');
 				</div>
 			</div>
 		</div> -->
+		
 		<hr />
 		<?php
 		if($_SESSION['type'] == 'master')

@@ -2,6 +2,7 @@
 //user.php
 
 include('database_connection.php');
+include('function.php');
 
 if(!isset($_SESSION["type"]))
 {
@@ -18,6 +19,48 @@ include('header.php');
 
 ?>
 		<span id="alert_action"></span>
+
+		<div class="row">
+			<!-- 
+					Shows total number of Employees (Non-Master)
+				-->
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading"><strong>Employees</strong></div>
+					<div class="panel-body" align="center">
+						<h1><?php echo count_user_total($connect); ?></h1>
+					</div>
+				</div>
+			</div>
+
+			<!-- 
+					Shows the total number of Admins (Master)
+				-->
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading"><strong>Admins</strong></div>
+					<div class="panel-body" align="center">
+						<h1><?php echo count_master_active($connect); ?></h1>
+					</div>
+				</div>
+			</div>
+
+			<!-- 
+					Shows total number of users (Master & Non-Master)
+				-->
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading"><strong>Total Users</strong></div>
+					<div class="panel-body" align="center">
+						<h1><?php echo count_total_user_active($connect); ?></h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 
+			Displays the "User List" table 
+		-->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
@@ -52,6 +95,10 @@ include('header.php');
                	</div>
            	</div>
         </div>
+
+        <!-- 
+			Displays the modal that appears after the "add" button is pressed
+        -->
         <div id="userModal" class="modal fade">
         	<div class="modal-dialog">
         		<form method="post" id="user_form">
@@ -84,7 +131,7 @@ include('header.php');
         		</form>
 
         	</div>
-        </div>
+    	</div>
 <script>
 $(document).ready(function(){
 

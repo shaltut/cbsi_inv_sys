@@ -58,19 +58,19 @@ include('header.php');
         			<div class="modal-content">
         			<div class="modal-header">
         				<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title"><i class="fa fa-plus"></i> Add User</h4>
+						<h4 class="modal-title"><i class="fa fa-plus"></i> Add Employee</h4>
         			</div>
         			<div class="modal-body">
         				<div class="form-group">
-							<label>Enter User Name</label>
+							<label>Enter Employee Name</label>
 							<input type="text" name="user_name" id="user_name" class="form-control" required />
 						</div>
 						<div class="form-group">
-							<label>Enter User Email</label>
+							<label>Enter Employee Email</label>
 							<input type="email" name="user_email" id="user_email" class="form-control" required />
 						</div>
 						<div class="form-group">
-							<label>Enter User Password</label>
+							<label>Enter Employee Password</label>
 							<input type="password" name="user_password" id="user_password" class="form-control" required />
 						</div>
         			</div>

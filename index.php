@@ -78,7 +78,7 @@ include('header.php');
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Total Cash Order Value</strong></div>
 				<div class="panel-body" align="center">
-					<h1>$<?php echo count_total_cash_order_value($connect); ?></h1>
+					<h1>$<?php //echo count_total_cash_order_value($connect); ?></h1>
 				</div>
 			</div>
 		</div>
@@ -86,7 +86,7 @@ include('header.php');
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Total Credit Order Value</strong></div>
 				<div class="panel-body" align="center">
-					<h1>$<?php echo count_total_credit_order_value($connect); ?></h1>
+					<h1>$<?php //echo count_total_credit_order_value($connect); ?></h1>
 				</div>
 			</div>
 		</div> -->

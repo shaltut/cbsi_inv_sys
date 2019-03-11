@@ -17,7 +17,8 @@ if($_SESSION['type'] != 'master')
 include('header.php');
 
 ?>
-
+<!-- Alerts the user to changes they have made, or errors -->
+        <span id='alert_action'></span>
 
 <div class="row">
             <!-- 
@@ -57,15 +58,13 @@ include('header.php');
             </div>
         </div>
 
-        <!-- Alerts the user to changes they have made, or errors -->
-        <span id='alert_action'></span>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                    	<div class="row">
+                        <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                            	<h3 class="panel-title">Equipment List</h3>
+                                <h3 class="panel-title">Equipment List</h3>
                             </div>
                         
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
@@ -78,45 +77,45 @@ include('header.php');
                             <table id="product_data" class="table table-bordered table-striped">
                                 <thead><tr>
                                     <th>ID</th>
-                                    <th>Category</th>
-                                    <th>Brand</th>
                                     <th>Product Name</th>
                                     <th>Quantity</th>
                                     <th>Enter By</th>
                                     <th>Status</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>More Details</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
                                 </tr></thead>
                             </table>
                         </div></div>
                     </div>
                 </div>
-			</div>
-		</div>
+            </div>
+        </div>
 
         <div id="productModal" class="modal fade">
             <div class="modal-dialog">
                 <form method="post" id="product_form">
                     <div class="modal-content">
+
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Product</h4>
+                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Item</h4>
                         </div>
+
                         <div class="modal-body">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Select Category</label>
                                 <select name="category_id" id="category_id" class="form-control" required>
                                     <option value="">Select Category</option>
                                     <?php echo fill_category_list($connect);?>
                                 </select>
-                            </div>
-                            <div class="form-group">
+                            </div> -->
+                            <!-- <div class="form-group">
                                 <label>Select Brand</label>
                                 <select name="brand_id" id="brand_id" class="form-control" required>
                                     <option value="">Select Brand</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label>Enter Product Name</label>
                                 <input type="text" name="product_name" id="product_name" class="form-control" required />
@@ -129,34 +128,11 @@ include('header.php');
                                 <label>Enter Product Quantity</label>
                                 <div class="input-group">
                                     <input type="text" name="product_quantity" id="product_quantity" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
-                                    <span class="input-group-addon">
-                                        <select name="product_unit" id="product_unit" required>
-                                            <option value="">Select Unit</option>
-                                            <option value="Bags">Bags</option>
-                                            <option value="Bottles">Bottles</option>
-                                            <option value="Box">Box</option>
-                                            <option value="Dozens">Dozens</option>
-                                            <option value="Feet">Feet</option>
-                                            <option value="Gallon">Gallon</option>
-                                            <option value="Grams">Grams</option>
-                                            <option value="Inch">Inch</option>
-                                            <option value="Kg">Kg</option>
-                                            <option value="Liters">Liters</option>
-                                            <option value="Meter">Meter</option>
-                                            <option value="Nos">Nos</option>
-                                            <option value="Packet">Packet</option>
-                                            <option value="Rolls">Rolls</option>
-                                        </select>
-                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Enter Product Base Price</label>
                                 <input type="text" name="product_base_price" id="product_base_price" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" />
-                            </div>
-                            <div class="form-group">
-                                <label>Enter Product Tax (%)</label>
-                                <input type="text" name="product_tax" id="product_tax" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" />
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -165,6 +141,7 @@ include('header.php');
                             <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
+
                     </div>
                 </form>
             </div>
@@ -176,7 +153,7 @@ include('header.php');
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Product Details</h4>
+                            <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
                         </div>
                         <div class="modal-body">
                             <Div id="product_details"></Div>
@@ -202,7 +179,9 @@ $(document).ready(function(){
         },
         "columnDefs":[
             {
-                "targets":[7, 8, 9],
+//AFTER COMMENTING THIS OUT, THE "PROCESSING" THING WENT AWAY
+
+                // "targets":[7, 8, 9],
                 "orderable":false,
             },
         ],
@@ -212,24 +191,24 @@ $(document).ready(function(){
     $('#add_button').click(function(){
         $('#productModal').modal('show');
         $('#product_form')[0].reset();
-        $('.modal-title').html("<i class='fa fa-plus'></i> Add Product");
+        $('.modal-title').html("<i class='fa fa-plus'></i> Add Item");
         $('#action').val("Add");
         $('#btn_action').val("Add");
     });
 
-    $('#category_id').change(function(){
-        var category_id = $('#category_id').val();
-        var btn_action = 'load_brand';
-        $.ajax({
-            url:"product_action.php",
-            method:"POST",
-            data:{category_id:category_id, btn_action:btn_action},
-            success:function(data)
-            {
-                $('#brand_id').html(data);
-            }
-        });
-    });
+    // $('#category_id').change(function(){
+    //     var category_id = $('#category_id').val();
+    //     var btn_action = 'load_brand';
+    //     $.ajax({
+    //         url:"product_action.php",
+    //         method:"POST",
+    //         data:{category_id:category_id, btn_action:btn_action},
+    //         success:function(data)
+    //         {
+    //             $('#brand_id').html(data);
+    //         }
+    //     });
+    // });
 
     $(document).on('submit', '#product_form', function(event){
         event.preventDefault();
@@ -274,15 +253,10 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 $('#productModal').modal('show');
-                $('#category_id').val(data.category_id);
-                $('#brand_id').html(data.brand_select_box);
-                $('#brand_id').val(data.brand_id);
                 $('#product_name').val(data.product_name);
                 $('#product_description').val(data.product_description);
                 $('#product_quantity').val(data.product_quantity);
-                $('#product_unit').val(data.product_unit);
                 $('#product_base_price').val(data.product_base_price);
-                $('#product_tax').val(data.product_tax);
                 $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Product");
                 $('#product_id').val(product_id);
                 $('#action').val("Edit");

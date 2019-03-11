@@ -83,7 +83,7 @@ function fetch_product_details($product_id, $connect)
 		$output['product_name'] = $row["product_name"];
 		$output['quantity'] = $row["product_quantity"];
 		$output['price'] = $row['product_base_price'];
-		$output['tax'] = $row['product_tax'];
+		// $output['tax'] = $row['product_tax'];
 	}
 	return $output;
 }

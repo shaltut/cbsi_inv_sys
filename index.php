@@ -1,5 +1,5 @@
 <?php
-//index.php
+//index. (cbsi_inv_sys)
 include('database_connection.php');
 include('function.php');
 
@@ -90,7 +90,7 @@ include('header.php');
 				</div>
 			</div>
 		</div> -->
-		
+
 		<hr />
 		<?php
 		if($_SESSION['type'] == 'master')

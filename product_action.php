@@ -14,22 +14,19 @@ if(isset($_POST['btn_action']))
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO product (category_id, product_name, product_description, product_quantity, product_unit, product_base_price, product_tax, product_enter_by, product_status, product_date) 
-		VALUES (:category_id, :product_name, :product_description, :product_quantity, :product_unit, :product_base_price, :product_tax, :product_enter_by, :product_status, :product_date)
+		INSERT INTO product (product_name, product_description, product_quantity,  product_base_price, product_enter_by, product_status, product_date) 
+		VALUES ( :product_name, :product_description, :product_quantity, :product_base_price, :product_enter_by, :product_status, :product_date)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':category_id'			=>	$_POST['category_id'],
 				':product_name'			=>	$_POST['product_name'],
 				':product_description'	=>	$_POST['product_description'],
 				':product_quantity'		=>	$_POST['product_quantity'],
-				':product_unit'			=>	$_POST['product_unit'],
 				':product_base_price'	=>	$_POST['product_base_price'],
-				':product_tax'			=>	$_POST['product_tax'],
 				':product_enter_by'		=>	$_SESSION["user_id"],
 				':product_status'		=>	'active',
-				':product_date'			=>	date("Y-m-d")
+				':product_date'			=>	date("d-m-Y")
 			)
 		);
 		$result = $statement->fetchAll();
@@ -40,12 +37,19 @@ if(isset($_POST['btn_action']))
 	}
 	if($_POST['btn_action'] == 'product_details')
 	{
+		// $query = "
+		// SELECT * FROM product 
+		// INNER JOIN category ON category.category_id = product.category_id
+		// INNER JOIN user_details ON user_details.user_id = product.product_enter_by 
+		// WHERE product.product_id = '".$_POST["product_id"]."'
+		// ";
+
 		$query = "
 		SELECT * FROM product 
-		INNER JOIN category ON category.category_id = product.category_id
 		INNER JOIN user_details ON user_details.user_id = product.product_enter_by 
 		WHERE product.product_id = '".$_POST["product_id"]."'
 		";
+
 		$statement = $connect->prepare($query);
 		$statement->execute();
 		$result = $statement->fetchAll();
@@ -74,24 +78,12 @@ if(isset($_POST['btn_action']))
 				<td>'.$row["product_description"].'</td>
 			</tr>
 			<tr>
-				<td>Category</td>
-				<td>'.$row["category_name"].'</td>
-			</tr>
-			<tr>
 				<td>Available Quantity</td>
-				<td>'.$row["product_quantity"].' '.$row["product_unit"].'</td>
+				<td>'.$row["product_quantity"].'</td>
 			</tr>
 			<tr>
 				<td>Base Price</td>
 				<td>'.$row["product_base_price"].'</td>
-			</tr>
-			<tr>
-				<td>Tax (%)</td>
-				<td>'.$row["product_tax"].'</td>
-			</tr>
-			<tr>
-				<td>Enter By</td>
-				<td>'.$row["user_name"].'</td>
 			</tr>
 			<tr>
 				<td>Status</td>
@@ -105,6 +97,7 @@ if(isset($_POST['btn_action']))
 		';
 		echo $output;
 	}
+
 	if($_POST['btn_action'] == 'fetch_single')
 	{
 		$query = "
@@ -119,14 +112,14 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
-			$output['category_id'] = $row['category_id'];
+			// $output['category_id'] = $row['category_id'];
 			$output['product_name'] = $row['product_name'];
 			$output['product_description'] = $row['product_description'];
 			$output['product_quantity'] = $row['product_quantity'];
-			$output['product_unit'] = $row['product_unit'];
+			// $output['product_unit'] = $row['product_unit'];
 
 			$output['product_base_price'] = $row['product_base_price'];
-			$output['product_tax'] = $row['product_tax'];
+			// $output['product_tax'] = $row['product_tax'];
 		}
 		echo json_encode($output);
 	}
@@ -135,25 +128,20 @@ if(isset($_POST['btn_action']))
 	{
 		$query = "
 		UPDATE product 
-		set category_id = :category_id, 
+		set 
 		product_name = :product_name,
 		product_description = :product_description, 
-		product_quantity = :product_quantity, 
-		product_unit = :product_unit, 
-		product_base_price = :product_base_price, 
-		product_tax = :product_tax 
+		product_quantity = :product_quantity,
+		product_base_price = :product_base_price
 		WHERE product_id = :product_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':category_id'			=>	$_POST['category_id'],
 				':product_name'			=>	$_POST['product_name'],
 				':product_description'	=>	$_POST['product_description'],
 				':product_quantity'		=>	$_POST['product_quantity'],
-				':product_unit'			=>	$_POST['product_unit'],
 				':product_base_price'	=>	$_POST['product_base_price'],
-				':product_tax'			=>	$_POST['product_tax'],
 				':product_id'			=>	$_POST['product_id']
 			)
 		);

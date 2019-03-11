@@ -30,7 +30,7 @@
 							These links should only be seen by master users. 
 						-->
 						<li><a href="user.php">Employees</a></li>
-						<li><a href="product.php">Equipment</a></li>
+						<li><a href="equipment.php">Equipment</a></li>
 					<?php
 					}
 					?>

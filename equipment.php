@@ -22,7 +22,8 @@ include('header.php');
 
 <div class="row">
             <!-- 
-                    Shows total number of pieces of equipment
+                ********** NEEDS WORK **********
+                    - The function needs to show total number of pieces of equipment
                 -->
             <div class="col-md-4">
                 <div class="panel panel-default">
@@ -34,7 +35,8 @@ include('header.php');
             </div>
 
             <!-- 
-                    Shows the total number of pieces of equipment checked out at the moment
+                ********** NEEDS WORK **********
+                - The function needs to show the total number of pieces of equipment checked out at the moment
                 -->
             <div class="col-md-4">
                 <div class="panel panel-default">
@@ -46,7 +48,8 @@ include('header.php');
             </div>
 
             <!-- 
-                    Shows ????? something useful here
+                ********** NEEDS WORK **********
+                    - The function needs to show ????? (some useful statistic)
                 -->
             <div class="col-md-4">
                 <div class="panel panel-default">
@@ -81,7 +84,7 @@ include('header.php');
                                     <th>Quantity</th>
                                     <th>Enter By</th>
                                     <th>Status</th>
-                                    <th>More Details</th>
+                                    <th>Details</th>
                                     <th>Update</th>
                                     <th>Delete</th>
                                 </tr></thead>

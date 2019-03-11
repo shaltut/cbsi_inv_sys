@@ -2,7 +2,6 @@
 
 //product_fetch.php
 
-//deleting brand references on this page cause issues with display for equipment/product list
 include('database_connection.php');
 include('function.php');
 
@@ -11,16 +10,12 @@ $query = '';
 $output = array();
 $query .= "
 	SELECT * FROM product 
--- INNER JOIN brand ON brand.brand_id = product.brand_id
--- INNER JOIN category ON category.category_id = product.category_id 
-INNER JOIN user_details ON user_details.user_id = product.product_enter_by 
-GROUP BY product_id
+	JOIN user_details ON user_details.user_id = product.product_enter_by 
+	GROUP BY product.product_id, product.product_enter_by
 ";
 
 if(isset($_POST["search"]["value"]))
 {
-	// $query .= 'WHERE brand.brand_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	// $query .= 'OR category.category_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR product.product_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR product.product_quantity LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR user_details.user_name LIKE "%'.$_POST["search"]["value"].'%" ';

@@ -1,5 +1,6 @@
 <?php
 //index. (cbsi_inv_sys)
+
 include('database_connection.php');
 include('function.php');
 
@@ -58,7 +59,7 @@ include('header.php');
 
 				That is to say, when the employee currently logged in checks out a piece of equipment, this number should increment, and when they check it back in, it should decrement.
 			-->
-		<div class="col-md-4">
+		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Equipment Checked Out By You</strong></div>
 				<div class="panel-body" align="center">

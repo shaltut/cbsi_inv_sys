@@ -19,9 +19,9 @@ include('header.php');
 	{
 	?>
 			<!-- 
-				NEEDS WORK
 
 				This function should show the TOTAL number of employees with accounts (excluding master admin users)
+
 			-->
 		<div class="col-md-4">
 			<div class="panel panel-default">
@@ -41,7 +41,7 @@ include('header.php');
 			-->
 		<div class="col-md-4">
 			<div class="panel panel-default">
-				<div class="panel-heading"><strong>Total Equipment Checked In</strong></div>
+				<div class="panel-heading"><strong>Total Equipment Checked Out</strong></div>
 				<div class="panel-body" align="center">
 					<h1><?php echo count_total_product($connect); ?></h1>
 				</div>
@@ -68,36 +68,11 @@ include('header.php');
 			</div>
 		</div>
 
-			<!-- 
-				These probs arent needed, but figured id keep them here just in case.
-
-				The first function 'count_total_cash_order_value($connect' returns the total value of all cash orders 
-
-				The second function 'count_total_credit_order_value($connect)' returns the total value of all cash orders.
-			-->
-		<!-- <div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading"><strong>Total Cash Order Value</strong></div>
-				<div class="panel-body" align="center">
-					<h1>$<?php //echo count_total_cash_order_value($connect); ?></h1>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-heading"><strong>Total Credit Order Value</strong></div>
-				<div class="panel-body" align="center">
-					<h1>$<?php //echo count_total_credit_order_value($connect); ?></h1>
-				</div>
-			</div>
-		</div> -->
-
 		<hr />
 		<?php
 		if($_SESSION['type'] == 'master')
 		{
 		?>
-
 				<!-- 
 					NEEDS WORK
 

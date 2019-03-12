@@ -79,8 +79,9 @@ include('header.php');
 					This function should show a table that lists the following:
 					- Employee#
 					- Employee name (first and last)
-					- SiteID
-					- Equipment_id
+					- equip_id
+					- equip_name
+					- site_id
 				-->
 			<div class="col-md-12">
 				<div class="panel panel-default">

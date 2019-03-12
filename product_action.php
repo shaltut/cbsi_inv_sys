@@ -9,7 +9,6 @@ include('function.php');
 
 if(isset($_POST['btn_action']))
 {
-	
 
 	if($_POST['btn_action'] == 'Add')
 	{
@@ -26,7 +25,7 @@ if(isset($_POST['btn_action']))
 				':product_base_price'	=>	$_POST['product_base_price'],
 				':product_enter_by'		=>	$_SESSION["user_id"],
 				':product_status'		=>	'active',
-				':product_date'			=>	date("d-m-Y")
+				':product_date'			=>	date("Y-m-d")
 			)
 		);
 		$result = $statement->fetchAll();
@@ -35,14 +34,9 @@ if(isset($_POST['btn_action']))
 			echo 'Product Added';
 		}
 	}
+
 	if($_POST['btn_action'] == 'product_details')
 	{
-		// $query = "
-		// SELECT * FROM product 
-		// INNER JOIN category ON category.category_id = product.category_id
-		// INNER JOIN user_details ON user_details.user_id = product.product_enter_by 
-		// WHERE product.product_id = '".$_POST["product_id"]."'
-		// ";
 
 		$query = "
 		SELECT * FROM product 
@@ -84,6 +78,11 @@ if(isset($_POST['btn_action']))
 			<tr>
 				<td>Base Price</td>
 				<td>'.$row["product_base_price"].'</td>
+			</tr>
+			<tr>
+				<td>Entered Into System By</td>
+				<td>'.'Employee ID: '.$row["product_enter_by"].
+					' ('.$row["product_date"].')'.'</td>
 			</tr>
 			<tr>
 				<td>Status</td>

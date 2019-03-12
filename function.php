@@ -362,4 +362,65 @@ function get_user_wise_total_order($connect)
 	return $output;
 }
 
+/*
+
+	Attempt to return the right columns:
+
+*/
+function get_checkouts_user_wise($connect)
+{
+	$query = '
+	SELECT user_details.user_name, product.product_id, product_name, product_status, product_date
+	FROM user_details JOIN product USING()
+	';
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+
+	//Displays the headdings for each column in the table
+	$output = '
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th>User Name</th>
+				<th>Equipment ID</th>
+				<th>Equipment Name</th>
+				<th>Item Status</th>
+				<th>Date of Checkout</th>
+			</tr>
+	';
+
+	$user_name = 'no data';
+	$product_id = 000000000;
+	$product_name = 'no data';
+	$product_status = 'no data';
+	$product_date = 'no data';
+
+	//Displays each row using data gathered from $query
+	foreach($result as $row)
+	{
+		$output .= '
+		<tr>
+			<td>'.$row['user_name'].'</td>
+			<td align="right">$ '.$row["order_total"].'</td>
+			<td align="right">$ '.$row["cash_order_total"].'</td>
+			<td align="right">$ '.$row["credit_order_total"].'</td>
+		</tr>
+		';
+
+		$total_order = $total_order + $row["order_total"];
+		$total_cash_order = $total_cash_order + $row["cash_order_total"];
+		$total_credit_order = $total_credit_order + $row["credit_order_total"];
+	}
+	$output .= '
+	<tr>
+		<td align="right"><b>Total</b></td>
+		<td align="right"><b>$ '.$total_order.'</b></td>
+		<td align="right"><b>$ '.$total_cash_order.'</b></td>
+		<td align="right"><b>$ '.$total_credit_order.'</b></td>
+	</tr></table></div>
+	';
+	return $output;
+}
+
 ?>

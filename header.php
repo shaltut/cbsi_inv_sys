@@ -1,5 +1,5 @@
 <?php
-//header.php
+//header.php (cbsi_inv_sys)
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,12 +23,10 @@
 					</div>
 					<ul class="nav navbar-nav">
 					<?php
-					if($_SESSION['type'] == 'master')
+
+					if($_SESSION['type'] == 'master') //Only seen by MASTER
 					{
 					?>
-						<!-- 
-							These links should only be seen by master users. 
-						-->
 						<li><a href="user.php">Employees</a></li>
 						<li><a href="equipment.php">Equipment</a></li>
 					<?php
@@ -49,6 +47,10 @@
 								- the system will know that the Equipment_ID being read in is being CHECKED OUT by the current user.
 						-->
 						<li><a href="scan_op.php">SCAN</a></li>
+					<?php
+					if($_SESSION['type'] == 'user') // Only seen by USER
+					{
+					?>
 						<!-- 
 							NEEDS WORK:
 							
@@ -56,7 +58,10 @@
 
 							There will be a search bar at the top, allowing them to search for and find equipment that they need.
 						-->
-						<li><a href="search.php">Search</a></li>
+						<li><a href="equipment_search.php">Search</a></li>
+					<?php
+					}//END
+					?>
 					</ul>
 
 
@@ -67,7 +72,10 @@
 					-->
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="label label-pill label-danger count"></span> <?php echo ucfirst($_SESSION["user_name"]); ?></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<span class="label label-pill label-danger count"></span> 
+									<?php echo ucfirst($_SESSION["user_name"]); ?>
+							</a>
 							<ul class="dropdown-menu">
 								<li><a href="profile.php">Profile</a></li>
 								<li><a href="logout.php">Logout</a></li>

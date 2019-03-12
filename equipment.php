@@ -106,19 +106,6 @@ include('header.php');
                         </div>
 
                         <div class="modal-body">
-                            <!-- <div class="form-group">
-                                <label>Select Category</label>
-                                <select name="category_id" id="category_id" class="form-control" required>
-                                    <option value="">Select Category</option>
-                                    <?php echo fill_category_list($connect);?>
-                                </select>
-                            </div> -->
-                            <!-- <div class="form-group">
-                                <label>Select Brand</label>
-                                <select name="brand_id" id="brand_id" class="form-control" required>
-                                    <option value="">Select Brand</option>
-                                </select>
-                            </div> -->
                             <div class="form-group">
                                 <label>Enter Product Name</label>
                                 <input type="text" name="product_name" id="product_name" class="form-control" required />

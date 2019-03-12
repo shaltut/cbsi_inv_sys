@@ -108,7 +108,7 @@ include('header.php');
 				-->
 			<div class="col-md-12">
 				<div class="panel panel-default">
-					<div class="panel-heading"><strong>Total Order Value User wise</strong></div>
+					<div class="panel-heading"><strong>Checkouts</strong></div>
 					<div class="panel-body" align="center">
 						<?php echo get_user_wise_total_order($connect); ?>
 					</div>

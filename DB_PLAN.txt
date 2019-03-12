@@ -1,0 +1,30 @@
+Table Name: EMPLOYEES
+Cols: 	empl_id			int(6)(101000-199999)		PRIMARY KEY
+	empl_name		varchar(40)			NOT NULL
+	empl_email		varchar(100)			null
+	empl_password		varchar(100)			NOT NULL
+	empl_type		ENUM('Master','User')		NOT NULL
+	empl_status		ENUM('Active','Inactive')	NOT NULL
+
+Table Name: EQUIPMENT
+Cols:  	equip_id		int(6)(202000-299999) 		PRIMARY KEY
+	equip_name		varchar(100)			NOT NULL
+	equip_desc		text				null
+	equip_price		double(10,2)			null
+	is_maintenance_needed 	boolean/enum			NOT NULL
+	maintain_time		int(5)				null
+	last_maintained		date				null		
+	entered_by		int(6)				FOREIGN KEY (EMPLOYEES.empl_id)
+	entered_by_date		date				NOT NULL
+
+Table Name: EQUIPMENT_CHECKOUT
+Cols:  	equip_id		int(6) 				FOREIGN KEY (EQUIPMENT.equip_id)
+	empl_id			int(6)				FOREIGN KEY (EMPLOYEES.empl_id)
+	cko_date		date				NOT NULL
+
+Table Name: SITES
+Cols:  	site_id			int(6)(303000-399999) 	PRIMARY KEY
+	site_name		varchar(100)		NOT NULL
+	job_desc		text				
+	start_date		date			NOT NULL
+	

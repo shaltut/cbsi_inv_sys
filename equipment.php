@@ -171,7 +171,7 @@ $(document).ready(function(){
             {
 //AFTER COMMENTING THIS OUT, THE "PROCESSING" THING WENT AWAY
 
-                // "targets":[7, 8, 9],
+                "targets":[5, 6, 7],
                 "orderable":false,
             },
         ],

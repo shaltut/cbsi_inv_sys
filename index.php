@@ -69,19 +69,26 @@ include('header.php');
 		</div>
 
 		<hr />
+
 		<?php
 		if($_SESSION['type'] == 'master')
 		{
 		?>
 				<!-- 
 					NEEDS WORK
-
+					**** Admins should see ****
 					This function should show a table that lists the following:
 					- Employee#
 					- Employee name (first and last)
 					- equip_id
 					- equip_name
 					- site_id
+
+					**** Users should see ****
+					- equip_id
+					- equip_name
+					- site_id
+					- 
 				-->
 			<div class="col-md-12">
 				<div class="panel panel-default">

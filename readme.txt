@@ -4,13 +4,6 @@
 Garrett:
 - Style login.php, header.php, index.php, profile.php
 
-Diana: 
-- Change database names (‘user_id’ to ‘employee_id’ etc.)
-
-
-Phillip:
-- Examine the form fields for any weak points (SQL injection) and patch if possible on the user.php ‘add’ button and ‘update’ button forms.
-
 
 
 ************ WEEK 2 ************
@@ -28,11 +21,14 @@ Garrett:
 - Also, start making the pages on the site mobile friendly by adding responsive CSS (so that it looks the same on desktop as it does now, but all fits properly on mobile devices and is easier to use).
 
 Diana: 
-- Fix the SQL queries that display the information for the user.php page so that the functions displaying totals, as well as the table below them display the right information.
+- Structure the user_details table so it matches the EMPLOYEES table in the DB_PLAN.txt file.
+- See if you can get those functions to look right as well on the users.php page
 
 
 Phillip:
-- Examine the form fields for any weak points (SQL injection) and patch if possible on the user.php ‘add’ button and ‘update’ button forms.
+- Create a new .php page called 'search.php' using the code from equipment.php. 
+	-This page will only be seen by standard users. so try to use those php functions that only display the page to users that are of type 'user' and limit their view of the data to only include basic info...
+	*** You're probs like "wot m8?", so private message me and ill explain it in more detail... lol
 
 Mariam:
 - Find areas of the site that need improvement (such as the login display, the information displayed on each page, etc). 

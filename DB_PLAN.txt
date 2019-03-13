@@ -12,14 +12,10 @@ Fields:
 	equip_id				int(6)(202000-299999) 		PRIMARY KEY(AUTO)
 	equip_name				varchar(100)				NOT NULL
 	equip_desc				text						null
-	equip_quantity			int(11)						NOT NULL(DF=1)
-	equip_cost				double(10,2)				null
-	is_maintenance_needed 	boolean/enum				NOT NULL(DF=false)
-	maintain_time			int(5)						null
-	last_maintained			date						null		
+	equip_cost				double(10,2)				null		
 	entered_by				int(6)						NOT NULL(AUTO)
 	entered_by_date			date						NOT NULL(DF='Active')
-	equip_status
+	equip_status			
 
 Table Name: EQUIPMENT_CHECKOUT
 Fields:  	

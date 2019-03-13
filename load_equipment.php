@@ -1,5 +1,5 @@
 <?php
 
-//load_product.php
+//load_equipment.php
 
 ?>

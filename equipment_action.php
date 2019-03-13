@@ -1,6 +1,6 @@
 <?php
 
-//product_action.php
+//equipment_action.php
 
 include('database_connection.php');
 

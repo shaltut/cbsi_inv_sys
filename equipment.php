@@ -1,5 +1,5 @@
 <?php
-//product.php
+//equipment.php
 
 include('database_connection.php');
 include('function.php');
@@ -164,12 +164,11 @@ $(document).ready(function(){
         "serverSide":true,
         "order":[],
         "ajax":{
-            url:"product_fetch.php",
+            url:"equipment_fetch.php",
             type:"POST"
         },
         "columnDefs":[
             {
-//AFTER COMMENTING THIS OUT, THE "PROCESSING" THING WENT AWAY
 
                 "targets":[5, 6, 7],
                 "orderable":false,
@@ -186,26 +185,12 @@ $(document).ready(function(){
         $('#btn_action').val("Add");
     });
 
-    // $('#category_id').change(function(){
-    //     var category_id = $('#category_id').val();
-    //     var btn_action = 'load_brand';
-    //     $.ajax({
-    //         url:"product_action.php",
-    //         method:"POST",
-    //         data:{category_id:category_id, btn_action:btn_action},
-    //         success:function(data)
-    //         {
-    //             $('#brand_id').html(data);
-    //         }
-    //     });
-    // });
-
     $(document).on('submit', '#product_form', function(event){
         event.preventDefault();
         $('#action').attr('disabled', 'disabled');
         var form_data = $(this).serialize();
         $.ajax({
-            url:"product_action.php",
+            url:"equipment_action.php",
             method:"POST",
             data:form_data,
             success:function(data)
@@ -223,7 +208,7 @@ $(document).ready(function(){
         var product_id = $(this).attr("id");
         var btn_action = 'product_details';
         $.ajax({
-            url:"product_action.php",
+            url:"equipment_action.php",
             method:"POST",
             data:{product_id:product_id, btn_action:btn_action},
             success:function(data){
@@ -237,7 +222,7 @@ $(document).ready(function(){
         var product_id = $(this).attr("id");
         var btn_action = 'fetch_single';
         $.ajax({
-            url:"product_action.php",
+            url:"equipment_action.php",
             method:"POST",
             data:{product_id:product_id, btn_action:btn_action},
             dataType:"json",
@@ -262,7 +247,7 @@ $(document).ready(function(){
         if(confirm("Are you sure you want to change status?"))
         {
             $.ajax({
-                url:"product_action.php",
+                url:"equipment_action.php",
                 method:"POST",
                 data:{product_id:product_id, status:status, btn_action:btn_action},
                 success:function(data){

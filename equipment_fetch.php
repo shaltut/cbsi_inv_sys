@@ -1,6 +1,6 @@
 <?php
 
-//product_fetch.php
+//equipment_fetch.php
 
 include('database_connection.php');
 include('function.php');

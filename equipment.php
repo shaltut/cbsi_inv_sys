@@ -120,32 +120,24 @@ include('header.php');
                             </div>
 
                             <div class="form-group">
-                                <label class="form-check-label" for="is_maintenance_required">Maintenance Required: </label>
-                                <input class="form-check-input" type="checkbox" value="yes" id="is_maintenance_required" onclick="moreOptions()">
+                                <label>Maintenance Required: </label>
+                                <input type="hidden" value="no" name="is_maintenance_required" checked/>
+                                <input type="checkbox" value="yes" name="is_maintenance_required" id="is_maintenance_required" class="form-check-input" onclick="moreOptions()"/>
                             </div>
 
                             <div class="invisible" id="maintain_vis">
                                 <div class="form-group">
                                     <label for="maintain_every">Maintain Every</label>
-                                    <select class="form-control" id="maintain_every">
-                                        <option value="0">2 Years</option>
-                                        <option value="1">1.5 Years</option>
+                                    <select class="form-control" name="maintain_every" id="maintain_every">
+                                        <option value="1">6 Months</option>
                                         <option value="2">1 Year</option>
-                                        <option value="3">6 Months</option>
-                                        <option value="4">3 Months</option>
-                                        <option value="5">1 Month</option>
+                                        <option value="3">1 Year 6 Months</option>
+                                        <option value="4">2 years</option>
                                     </select>
                                 </div>
                                 <div class="form-group">  
                                     <label for="last_maintained">Last Maintained</label>
-                                    <select class="form-control" id="last_maintained">
-                                        <option value="0">This Item Is New</option>
-                                        <option value="1">Less Than a Month Ago</option>
-                                        <option value="2">Less Than 6 Months Ago</option>
-                                        <option value="3">Less Than A Year Ago</option>
-                                        <option value="4">Over 1 Year, 6 Months Ago</option>
-                                        <option value="5">Never/Not Sure</option>
-                                    </select>
+                                    <input type="date" class="form-control" name="last_maintained" id="last_maintained"/>
                                 </div>
                             </div>
 
@@ -200,7 +192,7 @@ $(document).ready(function(){
                 "orderable":false,
             },
         ],
-        "pageLength": 10
+        "pageLength": 8
     });
 
     $('#add_button').click(function(){

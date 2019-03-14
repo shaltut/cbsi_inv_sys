@@ -13,25 +13,39 @@ if(isset($_POST['btn_action']))
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO equipment (equip_name, equip_desc, maintain_every,  equip_cost, equip_entered_by, equip_status, date_added) 
-		VALUES ( :equip_name, :equip_desc, :maintain_every, :equip_cost, :equip_entered_by, :equip_status, :date_added)
+		INSERT INTO equipment (equip_name, equip_desc, is_maintenance_required, maintain_every, last_maintained, equip_cost, equip_entered_by, equip_status, date_added) 
+		VALUES (:equip_name, :equip_desc, :is_maintenance_required, :maintain_every, :last_maintained, :equip_cost, :equip_entered_by, :equip_status, :date_added)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':equip_name'		=>	$_POST['equip_name'],
-				':equip_desc'		=>	$_POST['equip_desc'],
-				':maintain_every'	=>	$_POST['maintain_every'],
-				':equip_cost'		=>	$_POST['equip_cost'],
-				':equip_entered_by'	=>	$_SESSION["equip_id"],
-				':equip_status'		=>	'active',
-				':date_added'		=>	date("Y-m-d")
+				':equip_name'				=>	$_POST['equip_name'],
+				':equip_desc'				=>	$_POST['equip_desc'],
+				':is_maintenance_required'	=>	$_POST['is_maintenance_required'],
+				':maintain_every'			=>	$_POST['maintain_every'],
+				':last_maintained'			=> 	date('Y-m-d',strtotime($_POST['last_maintained'])),
+				':equip_cost'				=>	$_POST['equip_cost'],
+				':equip_entered_by'			=>	$_SESSION["user_id"],
+				':equip_status'				=>	'active',
+				':date_added'				=>	date("Y-m-d")
 			)
 		);
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product Added';
+			echo 'Product Added '
+			.'('
+			.$_POST['equip_name'].', '
+			.$_POST['equip_desc'].', '
+			.$_POST['is_maintenance_required'].', '
+			.$_POST['maintain_every'].', '
+			.date($_POST['last_maintained']).', '
+			.$_POST['equip_cost'].', '
+			.$_SESSION["user_id"].', '
+			.'active, '
+			.date("Y-m-d").') ';
+
+			;
 		}
 	}
 

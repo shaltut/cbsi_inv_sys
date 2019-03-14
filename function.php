@@ -8,23 +8,23 @@
 
 	-When you comment it out, and test the system, the equipment page (equipment.php) gets screwy... Might be a good place to start.
 */
-function fill_category_list($connect)
-{
-	$query = "
-	SELECT * FROM category 
-	WHERE category_status = 'active' 
-	ORDER BY category_name ASC
-	";
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
-	$output = '';
-	foreach($result as $row)
-	{
-		$output .= '<option value="'.$row["category_id"].'">'.$row["category_name"].'</option>';
-	}
-	return $output;
-}
+// function fill_category_list($connect)
+// {
+// 	$query = "
+// 	SELECT * FROM category 
+// 	WHERE category_status = 'active' 
+// 	ORDER BY category_name ASC
+// 	";
+// 	$statement = $connect->prepare($query);
+// 	$statement->execute();
+// 	$result = $statement->fetchAll();
+// 	$output = '';
+// 	foreach($result as $row)
+// 	{
+// 		$output .= '<option value="'.$row["category_id"].'">'.$row["category_name"].'</option>';
+// 	}
+// 	return $output;
+// }
 
 /* 
 	This function returns a user_name from the user_details table given any valid user_id from the user_details table.
@@ -44,8 +44,9 @@ function get_user_name($connect, $user_id)
 }
 
 /* 
-	********** NEEDS WORK **********
-	- Figure out what this function does, and where it is used in the system.
+	Returns an option value to be placed in a form for an individual piece of equipment. 
+
+	This isnt really used anymore in the system, but might be used later.
 */
 function fill_product_list($connect)
 {

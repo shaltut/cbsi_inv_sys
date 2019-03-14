@@ -107,24 +107,50 @@ include('header.php');
 
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Enter Equipment Name</label>
+                                <label>Enter Name</label>
                                 <input type="text" name="equip_name" id="equip_name" class="form-control" required />
                             </div>
                             <div class="form-group">
-                                <label>Enter Equipment Description</label>
+                                <label>Enter Description</label>
                                 <textarea name="equip_desc" id="equip_desc" class="form-control" rows="5" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Enter Equipment Quantity</label>
-                                <div class="input-group">
-                                    <input type="text" name="maintain_every" id="maintain_every" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Enter Equipment Cost</label>
+                                <label>Cost</label>
                                 <input type="text" name="equip_cost" id="equip_cost" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" />
                             </div>
+
+                            <div class="form-group">
+                                <label class="form-check-label" for="is_maintenance_required">Maintenance Required: </label>
+                                <input class="form-check-input" type="checkbox" value="yes" id="is_maintenance_required" onclick="moreOptions()">
+                            </div>
+
+                            <div class="invisible" id="maintain_vis">
+                                <div class="form-group">
+                                    <label for="maintain_every">Maintain Every</label>
+                                    <select class="form-control" id="maintain_every">
+                                        <option value="0">2 Years</option>
+                                        <option value="1">1.5 Years</option>
+                                        <option value="2">1 Year</option>
+                                        <option value="3">6 Months</option>
+                                        <option value="4">3 Months</option>
+                                        <option value="5">1 Month</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">  
+                                    <label for="last_maintained">Last Maintained</label>
+                                    <select class="form-control" id="last_maintained">
+                                        <option value="0">This Item Is New</option>
+                                        <option value="1">Less Than a Month Ago</option>
+                                        <option value="2">Less Than 6 Months Ago</option>
+                                        <option value="3">Less Than A Year Ago</option>
+                                        <option value="4">Over 1 Year, 6 Months Ago</option>
+                                        <option value="5">Never/Not Sure</option>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
+
                         <div class="modal-footer">
                             <input type="hidden" name="equip_id" id="equip_id" />
                             <input type="hidden" name="btn_action" id="btn_action" />
@@ -263,4 +289,16 @@ $(document).ready(function(){
     });
 
 });
+</script>
+
+<script>
+    //Used to display the extra maintenance options once checkbox is clicked on modal
+    function moreOptions() {
+        if(document.getElementById("is_maintenance_required").checked === true){
+            document.getElementById("maintain_vis").style.visibility = "visible";
+        }
+        if(document.getElementById("is_maintenance_required").checked === false){
+            document.getElementById("maintain_vis").style.visibility = "hidden";
+        }
+    }
 </script>

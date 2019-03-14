@@ -1,4 +1,4 @@
-﻿TODO:
+TODO:
 
 ************ WEEK 1 ************
 Garrett:
@@ -9,16 +9,7 @@ Garrett:
 ************ WEEK 2 ************
 
 Garrett:
-- Take a look at the JavaScript and JSON functions in the following pages and add comments at the top of them explaining in simple terms how they work
-	- equipment.php
-	- product_action.php
-	- product_fetch.php
-	- user.php
-	- user_action.php
-	- user_fetch.php
-	- functions.php
-	- (and any other pages w/ JS/JSON. These are just the most important at the moment)
-- Also, start making the pages on the site mobile friendly by adding responsive CSS (so that it looks the same on desktop as it does now, but all fits properly on mobile devices and is easier to use).
+- Make the site mobile friendly by adding responsive CSS (so that it looks the same on desktop as it does now, but all fits properly on mobile devices and is easier to use).
 
 Diana: 
 - Structure the user_details table so it matches the EMPLOYEES table in the DB_PLAN.txt file.

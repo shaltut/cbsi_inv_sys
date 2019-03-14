@@ -121,7 +121,7 @@ include('header.php');
 
                             <div class="form-group">
                                 <label>Maintenance Required: </label>
-                                <input type="hidden" value="no" name="is_maintenance_required" checked/>
+                                <input type="hidden" value="no" name="is_maintenance_required"/>
                                 <input type="checkbox" value="yes" name="is_maintenance_required" id="is_maintenance_required" class="form-check-input" onclick="moreOptions()"/>
                             </div>
 
@@ -246,11 +246,16 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 $('#productModal').modal('show');
+
                 $('#equip_name').val(data.equip_name);
                 $('#equip_desc').val(data.equip_desc);
-                $('#maintain_every').val(data.maintain_every);
                 $('#equip_cost').val(data.equip_cost);
+                $('#is_maintenance_required').val(data.is_maintenance_required);
+                $('#maintain_every').val(data.maintain_every);
+                $('#last_maintained').val(data.last_maintained);
+
                 $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Product");
+
                 $('#equip_id').val(equip_id);
                 $('#action').val("Edit");
                 $('#btn_action').val("Edit");

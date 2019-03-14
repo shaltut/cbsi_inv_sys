@@ -33,7 +33,15 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product Added ';
+			echo 'Product Added ('
+			.$_POST['equip_name'].', '
+			.$_POST['equip_desc'].', '
+			.$_POST['equip_cost'].', '
+			.$_POST['is_maintenance_required'].', '
+			.$_POST['maintain_every'].', '
+			.$_POST['last_maintained'].', '
+			.$_POST['equip_id'].')'
+			;
 
 			
 		}
@@ -134,8 +142,10 @@ if(isset($_POST['btn_action']))
 		{
 			$output['equip_name'] = $row['equip_name'];
 			$output['equip_desc'] = $row['equip_desc'];
-			$output['maintain_every'] = $row['maintain_every'];
 			$output['equip_cost'] = $row['equip_cost'];
+			$output['is_maintenance_required'] = $row['is_maintenance_required'];
+			$output['maintain_every'] = $row['maintain_every'];
+			$output['last_maintained'] = $row['last_maintained'];
 		}
 		echo json_encode($output);
 	}
@@ -148,24 +158,36 @@ if(isset($_POST['btn_action']))
 		set 
 		equip_name = :equip_name,
 		equip_desc = :equip_desc, 
+		equip_cost = :equip_cost,
+		is_maintenance_required = :is_maintenance_required,
 		maintain_every = :maintain_every,
-		equip_cost = :equip_cost
+		last_maintained = :last_maintained
 		WHERE equip_id = :equip_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':equip_name'			=>	$_POST['equip_name'],
-				':equip_desc'	=>	$_POST['equip_desc'],
-				':maintain_every'		=>	$_POST['maintain_every'],
-				':equip_cost'	=>	$_POST['equip_cost'],
-				':equip_id'			=>	$_POST['equip_id']
+				':equip_name'				=>	$_POST['equip_name'],
+				':equip_desc'				=>	$_POST['equip_desc'],
+				':equip_cost'				=>	$_POST['equip_cost'],
+				':is_maintenance_required'	=>	$_POST['is_maintenance_required'],
+				':maintain_every'			=>	$_POST['maintain_every'],
+				':last_maintained'			=>	$_POST['last_maintained'],
+				':equip_id'					=>	$_POST['equip_id']
 			)
 		);
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product Details Edited';
+			echo 'Product Details Edited ('
+			.$_POST['equip_name'].', '
+			.$_POST['equip_desc'].', '
+			.$_POST['equip_cost'].', '
+			.$_POST['is_maintenance_required'].', '
+			.$_POST['maintain_every'].', '
+			.$_POST['last_maintained'].', '
+			.$_POST['equip_id'].')'
+			;
 		}
 	}
  

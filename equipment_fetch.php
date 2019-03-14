@@ -9,17 +9,19 @@ $query = '';
 
 $output = array();
 $query .= "
-	SELECT * FROM product 
-	JOIN user_details ON user_details.user_id = product.product_enter_by 
-	GROUP BY product.product_id, product.product_enter_by
+	SELECT * FROM equipment 
+	JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
+	GROUP BY equipment.equip_id, equipment.equip_entered_by
 ";
 
 if(isset($_POST["search"]["value"]))
 {
-	$query .= 'OR product.product_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR product.product_quantity LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR equipment.equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR equipment.maintain_every LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR user_details.user_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR product.product_id LIKE "%'.$_POST["search"]["value"].'%" ';
+
+	//Heres the problem
+	$query .= 'OR equipment.equip_id LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 
 if(isset($_POST['order']))
@@ -28,7 +30,7 @@ if(isset($_POST['order']))
 }
 else
 {
-	$query .= 'ORDER BY product_id DESC ';
+	$query .= 'ORDER BY equip_id DESC ';
 }
 
 if($_POST['length'] != -1)
@@ -44,7 +46,7 @@ $filtered_rows = $statement->rowCount();
 foreach($result as $row)
 {
 	$status = '';
-	if($row['product_status'] == 'active')
+	if($row['equip_status'] == 'active')
 	{
 		$status = '<span class="label label-success">Active</span>';
 	}
@@ -53,19 +55,20 @@ foreach($result as $row)
 		$status = '<span class="label label-danger">Inactive</span>';
 	}
 	$sub_array = array();
-	$sub_array[] = $row['product_id'];
-	$sub_array[] = $row['product_name'];
-	$sub_array[] = available_product_quantity($connect, $row["product_id"]);
-	$sub_array[] = $row['user_name'];
+	$sub_array[] = $row['equip_id'];
+	$sub_array[] = $row['equip_name'];
+	// $sub_array[] = available_product_quantity($connect, $row["equip_id"]);
+	$sub_array[] = $row['equip_desc'];
+	$sub_array[] = $row['equip_entered_by'];
 	$sub_array[] = $status;
 	$sub_array[] = '
-		<button type="button" name="view" id="'.$row["product_id"].'" class="btn btn-info btn-xs view">View</button>
+		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 		';
 	$sub_array[] = '
-	<button type="button" name="update" id="'.$row["product_id"].'" class="btn btn-warning btn-xs update">Update</button>
+	<button type="button" name="update" id="'.$row["equip_id"].'" class="btn btn-warning btn-xs update">Update</button>
 	';
 	$sub_array[] = '
-	<button type="button" name="delete" id="'.$row["product_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["product_status"].'">Delete</button>
+	<button type="button" name="delete" id="'.$row["equip_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["equip_status"].'">Delete</button>
 	';
 	$data[] = $sub_array;
 }
@@ -73,7 +76,7 @@ foreach($result as $row)
 //	This function returns the total number of all rows returned by $query
 function get_total_all_records($connect)
 {
-	$statement = $connect->prepare('SELECT * FROM product');
+	$statement = $connect->prepare('SELECT * FROM equipment');
 	$statement->execute();
 	return $statement->rowCount();
 }

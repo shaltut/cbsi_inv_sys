@@ -9,23 +9,23 @@ include('function.php');
 
 if(isset($_POST['btn_action']))
 {
-
+	//********** ADD BUTTON **********
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO product (product_name, product_description, product_quantity,  product_base_price, product_enter_by, product_status, product_date) 
-		VALUES ( :product_name, :product_description, :product_quantity, :product_base_price, :product_enter_by, :product_status, :product_date)
+		INSERT INTO equipment (equip_name, equip_desc, maintain_every,  equip_cost, equip_entered_by, equip_status, date_added) 
+		VALUES ( :equip_name, :equip_desc, :maintain_every, :equip_cost, :equip_entered_by, :equip_status, :date_added)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':product_name'			=>	$_POST['product_name'],
-				':product_description'	=>	$_POST['product_description'],
-				':product_quantity'		=>	$_POST['product_quantity'],
-				':product_base_price'	=>	$_POST['product_base_price'],
-				':product_enter_by'		=>	$_SESSION["user_id"],
-				':product_status'		=>	'active',
-				':product_date'			=>	date("Y-m-d")
+				':equip_name'		=>	$_POST['equip_name'],
+				':equip_desc'		=>	$_POST['equip_desc'],
+				':maintain_every'	=>	$_POST['maintain_every'],
+				':equip_cost'		=>	$_POST['equip_cost'],
+				':equip_entered_by'	=>	$_SESSION["equip_id"],
+				':equip_status'		=>	'active',
+				':date_added'		=>	date("Y-m-d")
 			)
 		);
 		$result = $statement->fetchAll();
@@ -35,13 +35,14 @@ if(isset($_POST['btn_action']))
 		}
 	}
 
+	//********** DETAILS BUTTON **********
 	if($_POST['btn_action'] == 'product_details')
 	{
 
 		$query = "
-		SELECT * FROM product 
-		INNER JOIN user_details ON user_details.user_id = product.product_enter_by 
-		WHERE product.product_id = '".$_POST["product_id"]."'
+		SELECT * FROM equipment 
+		INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
+		WHERE equipment.equip_id = '".$_POST["equip_id"]."'
 		";
 
 		$statement = $connect->prepare($query);
@@ -65,24 +66,24 @@ if(isset($_POST['btn_action']))
 			$output .= '
 			<tr>
 				<td>Product Name</td>
-				<td>'.$row["product_name"].'</td>
+				<td>'.$row["equip_name"].'</td>
 			</tr>
 			<tr>
 				<td>Product Description</td>
-				<td>'.$row["product_description"].'</td>
+				<td>'.$row["equip_desc"].'</td>
 			</tr>
 			<tr>
 				<td>Available Quantity</td>
-				<td>'.$row["product_quantity"].'</td>
+				<td>'.$row["maintain_every"].'</td>
 			</tr>
 			<tr>
 				<td>Base Price</td>
-				<td>'.$row["product_base_price"].'</td>
+				<td>'.$row["equip_cost"].'</td>
 			</tr>
 			<tr>
 				<td>Entered Into System By</td>
-				<td>'.'Employee ID: '.$row["product_enter_by"].
-					' ('.$row["product_date"].')'.'</td>
+				<td>'.'Employee ID: '.$row["equip_entered_by"].
+					' ('.$row["date_added"].')'.'</td>
 			</tr>
 			<tr>
 				<td>Status</td>
@@ -97,51 +98,49 @@ if(isset($_POST['btn_action']))
 		echo $output;
 	}
 
+
 	if($_POST['btn_action'] == 'fetch_single')
 	{
 		$query = "
-		SELECT * FROM product WHERE product_id = :product_id
+		SELECT * FROM equipment WHERE equip_id = :equip_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':product_id'	=>	$_POST["product_id"]
+				':equip_id'	=>	$_POST["equip_id"]
 			)
 		);
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
-			// $output['category_id'] = $row['category_id'];
-			$output['product_name'] = $row['product_name'];
-			$output['product_description'] = $row['product_description'];
-			$output['product_quantity'] = $row['product_quantity'];
-			// $output['product_unit'] = $row['product_unit'];
-
-			$output['product_base_price'] = $row['product_base_price'];
-			// $output['product_tax'] = $row['product_tax'];
+			$output['equip_name'] = $row['equip_name'];
+			$output['equip_desc'] = $row['equip_desc'];
+			$output['maintain_every'] = $row['maintain_every'];
+			$output['equip_cost'] = $row['equip_cost'];
 		}
 		echo json_encode($output);
 	}
 
+	//********** EDIT BUTTON **********
 	if($_POST['btn_action'] == 'Edit')
 	{
 		$query = "
-		UPDATE product 
+		UPDATE equipment 
 		set 
-		product_name = :product_name,
-		product_description = :product_description, 
-		product_quantity = :product_quantity,
-		product_base_price = :product_base_price
-		WHERE product_id = :product_id
+		equip_name = :equip_name,
+		equip_desc = :equip_desc, 
+		maintain_every = :maintain_every,
+		equip_cost = :equip_cost
+		WHERE equip_id = :equip_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':product_name'			=>	$_POST['product_name'],
-				':product_description'	=>	$_POST['product_description'],
-				':product_quantity'		=>	$_POST['product_quantity'],
-				':product_base_price'	=>	$_POST['product_base_price'],
-				':product_id'			=>	$_POST['product_id']
+				':equip_name'			=>	$_POST['equip_name'],
+				':equip_desc'	=>	$_POST['equip_desc'],
+				':maintain_every'		=>	$_POST['maintain_every'],
+				':equip_cost'	=>	$_POST['equip_cost'],
+				':equip_id'			=>	$_POST['equip_id']
 			)
 		);
 		$result = $statement->fetchAll();
@@ -150,6 +149,8 @@ if(isset($_POST['btn_action']))
 			echo 'Product Details Edited';
 		}
 	}
+ 
+	//********** DELETE BUTTON **********
 	if($_POST['btn_action'] == 'delete')
 	{
 		$status = 'active';
@@ -158,15 +159,15 @@ if(isset($_POST['btn_action']))
 			$status = 'inactive';
 		}
 		$query = "
-		UPDATE product 
-		SET product_status = :product_status 
-		WHERE product_id = :product_id
+		UPDATE equipment 
+		SET equip_status = :equip_status 
+		WHERE equip_id = :equip_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':product_status'	=>	$status,
-				':product_id'		=>	$_POST["product_id"]
+				':equip_status'	=>	$status,
+				':equip_id'		=>	$_POST["equip_id"]
 			)
 		);
 		$result = $statement->fetchAll();

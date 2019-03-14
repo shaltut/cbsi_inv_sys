@@ -6,7 +6,7 @@
 	********** NEEDS WORK **********
 	-Figure out what this function does and where it is used.
 
-	-When you comment it out, and test the system, the equipment page (product.php) gets screwy... Might be a good place to start.
+	-When you comment it out, and test the system, the equipment page (equipment.php) gets screwy... Might be a good place to start.
 */
 function fill_category_list($connect)
 {
@@ -50,9 +50,9 @@ function get_user_name($connect, $user_id)
 function fill_product_list($connect)
 {
 	$query = "
-	SELECT * FROM product 
-	WHERE product_status = 'active' 
-	ORDER BY product_name ASC
+	SELECT * FROM equipment 
+	WHERE equip_status = 'active' 
+	ORDER BY equip_name ASC
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -60,30 +60,31 @@ function fill_product_list($connect)
 	$output = '';
 	foreach($result as $row)
 	{
-		$output .= '<option value="'.$row["product_id"].'">'.$row["product_name"].'</option>';
+		$output .= '<option value="'.$row["equip_id"].'">'.$row["equip_name"].'</option>';
 	}
 	return $output;
 }
 
 /* 
-	This function returns the product_name, quantity, price, and tax from the product table.
+	This function returns the equip_name, quantity, price, and tax from the equipment table.
 
 	c
 */
-function fetch_product_details($product_id, $connect)
+function fetch_product_details($equip_id, $connect)
 {
 	$query = "
-	SELECT * FROM product 
-	WHERE product_id = '".$product_id."'";
+	SELECT * FROM equipment 
+	WHERE equip_id = '".$equip_id."'";
+
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	$result = $statement->fetchAll();
+
 	foreach($result as $row)
 	{
-		$output['product_name'] = $row["product_name"];
-		$output['quantity'] = $row["product_quantity"];
-		$output['price'] = $row['product_base_price'];
-		// $output['tax'] = $row['product_tax'];
+		$output['equip_name'] = $row["equip_name"];
+		$output['quantity'] = $row["maintain_every"];
+		$output['price'] = $row['equip_cost'];
 	}
 	return $output;
 }
@@ -91,32 +92,34 @@ function fetch_product_details($product_id, $connect)
 /* 
 	This function is currently being used to display the "22" number on index.php
 
-	It returns the number of items in inventory (adds up the "quantity" value for each product available)
+	It returns the number of items in inventory (adds up the "quantity" value for each equipment available)
 */
-function available_product_quantity($connect, $product_id)
+function available_product_quantity($connect, $equip_id)
 {
-	$product_data = fetch_product_details($product_id, $connect);
+	$product_data = fetch_product_details($equip_id, $connect);
 	$query = "
-	SELECT 	inventory_order_product.quantity FROM inventory_order_product 
-	INNER JOIN inventory_order ON inventory_order.inventory_order_id = inventory_order_product.inventory_order_id
-	WHERE inventory_order_product.product_id = '".$product_id."' AND
+	SELECT 	inventory_order_product.quantity 
+	FROM inventory_order_product INNER JOIN inventory_order ON inventory_order.inventory_order_id = inventory_order_product.inventory_order_id
+	WHERE inventory_order_product.equip_id = '".$equip_id."' AND
 	inventory_order.inventory_order_status = 'active'
 	";
+
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	$result = $statement->fetchAll();
 	$total = 0;
+
 	foreach($result as $row)
 	{
-		$total = $total + $row['quantity'];
+		$total = $total + $row['maintain_every'];
 	}
-	$available_quantity = intval($product_data['quantity']) - intval($total);
+	$available_quantity = intval($product_data['maintain_every']) - intval($total);
 	if($available_quantity == 0)
 	{
 		$update_query = "
-		UPDATE product SET 
-		product_status = 'inactive' 
-		WHERE product_id = '".$product_id."'
+		UPDATE equipment SET 
+		equip_status = 'inactive' 
+		WHERE equip_id = '".$equip_id."'
 		";
 		$statement = $connect->prepare($update_query);
 		$statement->execute();
@@ -192,12 +195,12 @@ function count_total_category($connect)
 }
 
 /*
-	Returns the total number of (ACTIVE) products from the category table of the database.
+	Returns the total number of (ACTIVE) equipment from the category table of the database.
 */
 function count_total_product($connect)
 {
 	$query = "
-	SELECT * FROM product WHERE product_status='active'
+	SELECT * FROM equipment WHERE equip_status='active'
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -362,65 +365,6 @@ function get_user_wise_total_order($connect)
 	return $output;
 }
 
-/*
 
-	Attempt to return the right columns:
-
-*/
-function get_checkouts_user_wise($connect)
-{
-	$query = '
-	SELECT user_details.user_name, product.product_id, product_name, product_status, product_date
-	FROM user_details JOIN product USING()
-	';
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
-
-	//Displays the headdings for each column in the table
-	$output = '
-	<div class="table-responsive">
-		<table class="table table-bordered table-striped">
-			<tr>
-				<th>User Name</th>
-				<th>Equipment ID</th>
-				<th>Equipment Name</th>
-				<th>Item Status</th>
-				<th>Date of Checkout</th>
-			</tr>
-	';
-
-	$user_name = 'no data';
-	$product_id = 000000000;
-	$product_name = 'no data';
-	$product_status = 'no data';
-	$product_date = 'no data';
-
-	//Displays each row using data gathered from $query
-	foreach($result as $row)
-	{
-		$output .= '
-		<tr>
-			<td>'.$row['user_name'].'</td>
-			<td align="right">$ '.$row["order_total"].'</td>
-			<td align="right">$ '.$row["cash_order_total"].'</td>
-			<td align="right">$ '.$row["credit_order_total"].'</td>
-		</tr>
-		';
-
-		$total_order = $total_order + $row["order_total"];
-		$total_cash_order = $total_cash_order + $row["cash_order_total"];
-		$total_credit_order = $total_credit_order + $row["credit_order_total"];
-	}
-	$output .= '
-	<tr>
-		<td align="right"><b>Total</b></td>
-		<td align="right"><b>$ '.$total_order.'</b></td>
-		<td align="right"><b>$ '.$total_cash_order.'</b></td>
-		<td align="right"><b>$ '.$total_credit_order.'</b></td>
-	</tr></table></div>
-	';
-	return $output;
-}
 
 ?>

@@ -81,7 +81,7 @@ include('header.php');
                                 <thead><tr>
                                     <th>ID</th>
                                     <th>Product Name</th>
-                                    <th>Quantity</th>
+                                    <th>Description</th>
                                     <th>Enter By</th>
                                     <th>Status</th>
                                     <th>Details</th>
@@ -107,26 +107,26 @@ include('header.php');
 
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Enter Product Name</label>
-                                <input type="text" name="product_name" id="product_name" class="form-control" required />
+                                <label>Enter Equipment Name</label>
+                                <input type="text" name="equip_name" id="equip_name" class="form-control" required />
                             </div>
                             <div class="form-group">
-                                <label>Enter Product Description</label>
-                                <textarea name="product_description" id="product_description" class="form-control" rows="5" required></textarea>
+                                <label>Enter Equipment Description</label>
+                                <textarea name="equip_desc" id="equip_desc" class="form-control" rows="5" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Enter Product Quantity</label>
+                                <label>Enter Equipment Quantity</label>
                                 <div class="input-group">
-                                    <input type="text" name="product_quantity" id="product_quantity" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
+                                    <input type="text" name="maintain_every" id="maintain_every" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" /> 
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Enter Product Base Price</label>
-                                <input type="text" name="product_base_price" id="product_base_price" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" />
+                                <label>Enter Equipment Cost</label>
+                                <input type="text" name="equip_cost" id="equip_cost" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" />
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <input type="hidden" name="product_id" id="product_id" />
+                            <input type="hidden" name="equip_id" id="equip_id" />
                             <input type="hidden" name="btn_action" id="btn_action" />
                             <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -205,12 +205,12 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.view', function(){
-        var product_id = $(this).attr("id");
+        var equip_id = $(this).attr("id");
         var btn_action = 'product_details';
         $.ajax({
             url:"equipment_action.php",
             method:"POST",
-            data:{product_id:product_id, btn_action:btn_action},
+            data:{equip_id:equip_id, btn_action:btn_action},
             success:function(data){
                 $('#productdetailsModal').modal('show');
                 $('#product_details').html(data);
@@ -219,21 +219,21 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.update', function(){
-        var product_id = $(this).attr("id");
+        var equip_id = $(this).attr("id");
         var btn_action = 'fetch_single';
         $.ajax({
             url:"equipment_action.php",
             method:"POST",
-            data:{product_id:product_id, btn_action:btn_action},
+            data:{equip_id:equip_id, btn_action:btn_action},
             dataType:"json",
             success:function(data){
                 $('#productModal').modal('show');
-                $('#product_name').val(data.product_name);
-                $('#product_description').val(data.product_description);
-                $('#product_quantity').val(data.product_quantity);
-                $('#product_base_price').val(data.product_base_price);
+                $('#equip_name').val(data.equip_name);
+                $('#equip_desc').val(data.equip_desc);
+                $('#maintain_every').val(data.maintain_every);
+                $('#equip_cost').val(data.equip_cost);
                 $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Product");
-                $('#product_id').val(product_id);
+                $('#equip_id').val(equip_id);
                 $('#action').val("Edit");
                 $('#btn_action').val("Edit");
             }
@@ -241,7 +241,7 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.delete', function(){
-        var product_id = $(this).attr("id");
+        var equip_id = $(this).attr("id");
         var status = $(this).data("status");
         var btn_action = 'delete';
         if(confirm("Are you sure you want to change status?"))
@@ -249,7 +249,7 @@ $(document).ready(function(){
             $.ajax({
                 url:"equipment_action.php",
                 method:"POST",
-                data:{product_id:product_id, status:status, btn_action:btn_action},
+                data:{equip_id:equip_id, status:status, btn_action:btn_action},
                 success:function(data){
                     $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
                     productdataTable.ajax.reload();

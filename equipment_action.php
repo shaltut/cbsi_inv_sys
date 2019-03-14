@@ -33,23 +33,13 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product Added '
-			.'('
-			.$_POST['equip_name'].', '
-			.$_POST['equip_desc'].', '
-			.$_POST['is_maintenance_required'].', '
-			.$_POST['maintain_every'].', '
-			.date($_POST['last_maintained']).', '
-			.$_POST['equip_cost'].', '
-			.$_SESSION["user_id"].', '
-			.'active, '
-			.date("Y-m-d").') ';
+			echo 'Product Added ';
 
-			;
+			
 		}
 	}
 
-	//********** DETAILS BUTTON **********
+	//********** VIEW BUTTON (Details Column)**********
 	if($_POST['btn_action'] == 'product_details')
 	{
 
@@ -69,7 +59,7 @@ if(isset($_POST['btn_action']))
 		foreach($result as $row)
 		{
 			$status = '';
-			if($row['product_status'] == 'active')
+			if($row['equip_status'] == 'active')
 			{
 				$status = '<span class="label label-success">Active</span>';
 			}
@@ -77,6 +67,10 @@ if(isset($_POST['btn_action']))
 			{
 				$status = '<span class="label label-danger">Inactive</span>';
 			}
+			
+			$entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
+
+
 			$output .= '
 			<tr>
 				<td>Product Name</td>
@@ -86,18 +80,28 @@ if(isset($_POST['btn_action']))
 				<td>Product Description</td>
 				<td>'.$row["equip_desc"].'</td>
 			</tr>
-			<tr>
-				<td>Available Quantity</td>
-				<td>'.$row["maintain_every"].'</td>
-			</tr>
+			';
+			if($row['is_maintenance_required'] == 'yes'){
+				$output .= '
+					<tr>
+						<td>Maintain Every</td>
+						<td>'.$row["maintain_every"].' Months</td>
+					
+					</tr>
+					<tr>
+						<td>Last Maintained</td>
+						<td>'.$row["last_maintained"].'</td>
+					</tr>
+				';
+			}
+			$output .= '
 			<tr>
 				<td>Base Price</td>
 				<td>'.$row["equip_cost"].'</td>
 			</tr>
 			<tr>
 				<td>Entered Into System By</td>
-				<td>'.'Employee ID: '.$row["equip_entered_by"].
-					' ('.$row["date_added"].')'.'</td>
+				<td>'.$entered_by_user.' on '.$row["date_added"].'</td>
 			</tr>
 			<tr>
 				<td>Status</td>
@@ -105,6 +109,7 @@ if(isset($_POST['btn_action']))
 			</tr>
 			';
 		}
+
 		$output .= '
 			</table>
 		</div>

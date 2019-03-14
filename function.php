@@ -129,6 +129,19 @@ function available_product_quantity($connect, $equip_id)
 }
 
 /*
+	Returns the total number of pieces of equipment available (active) at the moment
+*/
+function count_equipment_total($connect){
+	$query = "
+	SELECT * 
+	FROM equipment 
+	WHERE equip_status = 'active'";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
+
+/*
 	Returns the total number of (ACTIVE) users (Both MASTER and NON-MASTER) from the user_details table of the database.
 
 	This count includes MASTER users (Admins)

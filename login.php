@@ -76,11 +76,11 @@ if(isset($_POST["login"]))
 						<?php echo $message; ?>
 						<div class="form-group">
 							<label>Employee Email:</label>
-							<input type="text" name="user_email" class="form-control" required />
+							<input type="text" name="user_email" placeholder="Enter Email" class="form-control" required />
 						</div>
 						<div class="form-group">
 							<label>Password:</label>
-							<input type="password" name="user_password" class="form-control" required />
+							<input type="password" name="user_password" placeholder="Enter Password" class="form-control" required />
 						</div>
 						<div class="form-group">
 							<input type="submit" name="login" value="Login" class="btn btn-info" />

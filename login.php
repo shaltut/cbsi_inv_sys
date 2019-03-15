@@ -45,17 +45,13 @@ if(isset($_POST["login"]))
 			}
 			else
 			{
-				$message = "<label>Your Account is Disabled, Contact Admin</label>";
+				$message = "<label>Your account is disabled, Contact Master</label>";
 			}
 		}
 	}
 	else
 	{
-<<<<<<< HEAD
-		$message = "<label>Account Does Not Exist, Contact Admin</label>";
-=======
 		$message = "<label>Account does not exist!</label>";
->>>>>>> ea58b49bd5fa60546c15ee4367454baf53df4477
 	}
 }
 

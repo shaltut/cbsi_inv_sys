@@ -60,7 +60,7 @@ if(isset($_POST["login"]))
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>CBSI | Log in</title>		
+		<title>CBSI Inventory System | Log in</title>		
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<script src="js/bootstrap.min.js"></script>

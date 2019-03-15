@@ -51,7 +51,7 @@ if(isset($_POST["login"]))
 	}
 	else
 	{
-		$message = "<label>Wrong Email Address</label>";
+		$message = "<label>Account does not exist!</label>";
 	}
 }
 
@@ -75,11 +75,11 @@ if(isset($_POST["login"]))
 					<form method="post">
 						<?php echo $message; ?>
 						<div class="form-group">
-							<label>Employee Id</label>
+							<label>Employee Email:</label>
 							<input type="text" name="user_email" class="form-control" required />
 						</div>
 						<div class="form-group">
-							<label>Password</label>
+							<label>Password:</label>
 							<input type="password" name="user_password" class="form-control" required />
 						</div>
 						<div class="form-group">

@@ -45,13 +45,13 @@ if(isset($_POST["login"]))
 			}
 			else
 			{
-				$message = "<label>Your account is disabled, Contact Master</label>";
+				$message = "<label>Your Account is Disabled, Contact Admin</label>";
 			}
 		}
 	}
 	else
 	{
-		$message = "<label>Wrong Email Address</label>";
+		$message = "<label>Account Does Not Exist, Contact Admin</label>";
 	}
 }
 
@@ -75,12 +75,12 @@ if(isset($_POST["login"]))
 					<form method="post">
 						<?php echo $message; ?>
 						<div class="form-group">
-							<label>Employee Id</label>
-							<input type="text" name="user_email" class="form-control" required />
+							<label>Employee Email:</label>
+							<input type="text" name="user_email" placeholder="Enter Email" class="form-control" required />
 						</div>
 						<div class="form-group">
-							<label>Password</label>
-							<input type="password" name="user_password" class="form-control" required />
+							<label>Password:</label>
+							<input type="password" name="user_password" placeholder="Enter Password" class="form-control" required />
 						</div>
 						<div class="form-group">
 							<input type="submit" name="login" value="Login" class="btn btn-info" />

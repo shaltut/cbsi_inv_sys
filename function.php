@@ -43,6 +43,26 @@ function get_user_name($connect, $user_id)
 	}
 }
 
+function check_is_maintenance_required($connect, $equip_id){
+	$query = "
+	SELECT is_maintenance_required FROM equipment WHERE equip_id = '".$equip_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	$bool = '';
+	foreach($result as $row)
+	{
+		$bool = $row['is_maintenance_required'];
+	}
+
+	if($bool = 'yes'){
+		return 'checked';
+	}else{
+		return '';
+	}
+}
+
 /* 
 	Returns an option value to be placed in a form for an individual piece of equipment. 
 

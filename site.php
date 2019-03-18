@@ -220,7 +220,6 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 $('#siteModal').modal('show');
-
                 $('#site_name').val(data.site_name);
                 $('#job_desc').val(data.job_desc);
                 $('#start_date').val(data.start_date);

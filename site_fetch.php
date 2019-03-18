@@ -18,8 +18,6 @@ if(isset($_POST["search"]["value"]))
 	$query .= 'OR site_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR job_desc LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR start_date LIKE "%'.$_POST["search"]["value"].'%" ';
-
-	//Heres the problem
 	$query .= 'OR site_id LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 

@@ -129,9 +129,10 @@ if(isset($_POST['btn_action']))
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':site_name'			=>	$_POST['site_name'],
-				':job_desc'				=>	$_POST['job_desc'],
-				':start_date' 			=> 	$_POST['start_date']
+				':site_name'		=>	$_POST['site_name'],
+				':job_desc'			=>	$_POST['job_desc'],
+				':start_date' 		=> 	date('Y-m-d', strtotime($_POST['start_date'])),
+				':site_id'			=>	$_POST['site_id']
 			)
 		);
 		$result = $statement->fetchAll();

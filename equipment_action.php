@@ -33,15 +33,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Equipment Added ('
-			.$_POST['equip_name'].', '
-			.$_POST['equip_desc'].', '
-			.$_POST['equip_cost'].', '
-			.$_POST['is_maintenance_required'].', '
-			.$_POST['maintain_every'].', '
-			.$_POST['last_maintained'].', '
-			.$_POST['equip_id'].')'
-			;
+			echo 'Equipment Added';
 
 			
 		}
@@ -179,15 +171,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Equipment Details Edited ('
-			.$_POST['equip_name'].', '
-			.$_POST['equip_desc'].', '
-			.$_POST['equip_cost'].', '
-			.$_POST['is_maintenance_required'].', '
-			.$_POST['maintain_every'].', '
-			.$_POST['last_maintained'].', '
-			.$_POST['equip_id'].')'
-			;
+			echo 'Equipment Details Edited';
 		}
 	}
  

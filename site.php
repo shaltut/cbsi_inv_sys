@@ -20,7 +20,9 @@ include('header.php');
 <!-- Alerts the user to changes they have made, or errors -->
         <span id='alert_action'></span>
 
-<div class="row">
+            <input class="btn" id="site_stat_btn" value="Show Site Stats" type="button" data-toggle="collapse" data-target="#stats" aria-expanded="false" aria-controls="collapseExample" onclick="buttontext()"/>
+
+        <div class="row collapse" id='stats'>
             <!-- 
                 ********** NEEDS WORK **********
                 -->
@@ -254,4 +256,15 @@ $(document).ready(function(){
     });
 
 });
+</script>
+
+<script>
+
+    //Used to toggle the 'view stats' button 
+    function buttontext() {
+        if(document.getElementById("site_stat_btn").value === "Show Site Stats")
+            document.getElementById("site_stat_btn").value = "Hide Site Stats";
+        else
+            document.getElementById("site_stat_btn").value = "Show Site Stats";
+    }
 </script>

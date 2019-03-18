@@ -20,7 +20,9 @@ include('header.php');
 <!-- Alerts the user to changes they have made, or errors -->
         <span id='alert_action'></span>
 
-<div class="row">
+    <input class="btn" id="equip_stat_btn" value="Show Equipment Stats" type="button" data-toggle="collapse" data-target="#stats" aria-expanded="false" aria-controls="collapseExample" onclick="buttontext()"/>
+
+<div class="row collapse" id='stats'>
             <!-- 
                 ********** NEEDS WORK **********
                     - The function needs to show total number of pieces of equipment
@@ -293,6 +295,7 @@ $(document).ready(function(){
 </script>
 
 <script>
+
     //Used to display the extra maintenance options once checkbox is clicked on modal
     function moreOptions() {
         if(document.getElementById("is_maintenance_required").checked === true){
@@ -301,5 +304,13 @@ $(document).ready(function(){
         if(document.getElementById("is_maintenance_required").checked === false){
             document.getElementById("maintain_vis").style.visibility = "hidden";
         }
+    }
+
+    //Used to toggle the 'view stats' button 
+    function buttontext() {
+        if(document.getElementById("equip_stat_btn").value === "Show Equipment Stats")
+            document.getElementById("equip_stat_btn").value = "Hide Equipment Stats";
+        else
+            document.getElementById("equip_stat_btn").value = "Show Equipment Stats";
     }
 </script>

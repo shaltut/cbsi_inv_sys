@@ -28,11 +28,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Site Added ('
-			.$_POST['site_name'].', '
-			.$_POST['job_desc'].', '
-			.$_POST['start_date'].', '
-			;
+			echo 'Site Added';
 
 			
 		}
@@ -138,11 +134,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Site Details Edited ('
-			.$_POST['site_name'].', '
-			.$_POST['job_desc'].', '
-			.$_POST['start_date'].''
-			;
+			echo 'Site Details Edited';
 		}
 	}
  

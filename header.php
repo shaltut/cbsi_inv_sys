@@ -29,6 +29,8 @@
 					?>
 						<li><a href="user.php">Employees</a></li>
 						<li><a href="equipment.php">Equipment</a></li>
+						<li><a href="site.php">Sites</a></li>
+
 					<?php
 					}
 					?>

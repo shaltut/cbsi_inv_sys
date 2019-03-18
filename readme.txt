@@ -29,6 +29,24 @@ Mariam:
 Tristan: (When you get back from vacay lol)
 - Look into how to set up a PHP based website with a relational database on GoDaddy and Amazon and create a pro/cons list for both (post that pro/con list here so we can all decide what the best option is)
 
+************ WEEK 3 ************
+
+Garrett:
+- Make the site mobile friendly by adding responsive CSS (so that it looks the same on desktop as it does now, but all fits properly on mobile devices and is easier to use).
+
+Diana: 
+- Start working on the search.php page that philip created. Make it so the users cant delete, update, or view any data they shouldnt have access to. 
+
+
+Phillip:
+- 
+
+Mariam:
+- 
+
+Tristan: (When you get back from vacay lol)
+- Hosting hosting hosting bla bla bla
+
 --------------------------------------------------------------------------
 
 

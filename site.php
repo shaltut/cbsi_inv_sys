@@ -1,5 +1,5 @@
 <?php
-//equipment.php
+//site.php
 
 include('database_connection.php');
 include('function.php');
@@ -23,11 +23,10 @@ include('header.php');
 <div class="row">
             <!-- 
                 ********** NEEDS WORK **********
-                    - The function needs to show total number of pieces of equipment
                 -->
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Total Equipment</strong></div>
+                    <div class="panel-heading"><strong>????</strong></div>
                     <div class="panel-body" align="center">
                         <h1><?php echo count_equipment_total($connect); ?></h1>
                     </div>
@@ -36,11 +35,10 @@ include('header.php');
 
             <!-- 
                 ********** NEEDS WORK **********
-                - The function needs to show the total number of pieces of equipment checked out at the moment
                 -->
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Total Checked-out</strong></div>
+                    <div class="panel-heading"><strong>????</strong></div>
                     <div class="panel-body" align="center">
                         <h1><?php echo count_master_active($connect); ?></h1>
                     </div>
@@ -49,11 +47,10 @@ include('header.php');
 
             <!-- 
                 ********** NEEDS WORK **********
-                    - The function needs to show ????? (some useful statistic)
                 -->
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Total ??????</strong></div>
+                    <div class="panel-heading"><strong>????</strong></div>
                     <div class="panel-body" align="center">
                         <h1><?php echo count_total_user_active($connect); ?></h1>
                     </div>
@@ -67,7 +64,7 @@ include('header.php');
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                                <h3 class="panel-title">Equipment List</h3>
+                                <h3 class="panel-title">Sites List</h3>
                             </div>
                         
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
@@ -80,9 +77,9 @@ include('header.php');
                             <table id="product_data" class="table table-bordered table-striped">
                                 <thead><tr>
                                     <th>ID</th>
-                                    <th>Product Name</th>
-                                    <th>Description</th>
-                                    <th>Enter By</th>
+                                    <th>Site Name</th>
+                                    <th>Job Description</th>
+                                    <th>Start Date</th>
                                     <th>Status</th>
                                     <th>Details</th>
                                     <th>Update</th>
@@ -102,49 +99,26 @@ include('header.php');
 
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Item</h4>
+                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Site</h4>
                         </div>
 
                         <div class="modal-body">
                             <div class="form-group">
-                                <label>Enter Name</label>
-                                <input type="text" name="equip_name" id="equip_name" class="form-control" required />
+                                <label>Enter Site Name</label>
+                                <input type="text" name="site_name" id="site_name" class="form-control" required />
                             </div>
                             <div class="form-group">
-                                <label>Enter Description</label>
-                                <textarea name="equip_desc" id="equip_desc" class="form-control" rows="5" required></textarea>
+                                <label>Enter Job Description</label>
+                                <textarea name="job_desc" id="job_desc" class="form-control" rows="5" required></textarea>
                             </div>
-                            <div class="form-group">
-                                <label>Cost</label>
-                                <input type="text" name="equip_cost" id="equip_cost" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" />
+                            <div class="form-group">  
+                                    <label for="start_date">Start Date</label>
+                                    <input type="date" class="form-control" name="start_date" id="start_date"/>
                             </div>
-
-                            <div class="form-group">
-                                <label>Maintenance Required: </label>
-                                <input type="hidden" value="no" name="is_maintenance_required"/>
-                                <input type="checkbox" value="yes" name="is_maintenance_required" id="is_maintenance_required" class="form-check-input" onclick="moreOptions()" />
-                            </div>
-
-                            <div class="invisible" id="maintain_vis">
-                                <div class="form-group">
-                                    <label for="maintain_every">Maintain Every</label>
-                                    <select class="form-control" name="maintain_every" id="maintain_every">
-                                        <option value="1">6 Months</option>
-                                        <option value="2">1 Year</option>
-                                        <option value="3">1 Year 6 Months</option>
-                                        <option value="4">2 years</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">  
-                                    <label for="last_maintained">Last Maintained</label>
-                                    <input type="date" class="form-control" name="last_maintained" id="last_maintained"/>
-                                </div>
-                            </div>
-
                         </div>
 
                         <div class="modal-footer">
-                            <input type="hidden" name="equip_id" id="equip_id" />
+                            <input type="hidden" name="site_id" id="site_id" />
                             <input type="hidden" name="btn_action" id="btn_action" />
                             <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -161,7 +135,7 @@ include('header.php');
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
+                            <h4 class="modal-title"><i class="fa fa-plus"></i> Site Details</h4>
                         </div>
                         <div class="modal-body">
                             <Div id="product_details"></Div>
@@ -182,7 +156,7 @@ $(document).ready(function(){
         "serverSide":true,
         "order":[],
         "ajax":{
-            url:"equipment_fetch.php",
+            url:"site_fetch.php",
             type:"POST"
         },
         "columnDefs":[
@@ -208,7 +182,7 @@ $(document).ready(function(){
         $('#action').attr('disabled', 'disabled');
         var form_data = $(this).serialize();
         $.ajax({
-            url:"equipment_action.php",
+            url:"site_action.php",
             method:"POST",
             data:form_data,
             success:function(data)
@@ -223,12 +197,12 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.view', function(){
-        var equip_id = $(this).attr("id");
+        var site_id = $(this).attr("id");
         var btn_action = 'product_details';
         $.ajax({
-            url:"equipment_action.php",
+            url:"site_action.php",
             method:"POST",
-            data:{equip_id:equip_id, btn_action:btn_action},
+            data:{site_id:site_id, btn_action:btn_action},
             success:function(data){
                 $('#productdetailsModal').modal('show');
                 $('#product_details').html(data);
@@ -237,30 +211,21 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.update', function(){
-        var equip_id = $(this).attr("id");
+        var site_id = $(this).attr("id");
         var btn_action = 'fetch_single';
         $.ajax({
-            url:"equipment_action.php",
+            url:"site_action.php",
             method:"POST",
-            data:{equip_id:equip_id, btn_action:btn_action},
+            data:{site_id:site_id, btn_action:btn_action},
             dataType:"json",
             success:function(data){
                 $('#productModal').modal('show');
 
-                $('#equip_name').val(data.equip_name);
-                $('#equip_desc').val(data.equip_desc);
-                $('#equip_cost').val(data.equip_cost);
-
-                if(data.is_maintenance_required == 'yes'){
-                    $('#is_maintenance_required').prop('checked', true);
-                }else{
-                    $('#is_maintenance_required').prop('checked', false);
-                }
-                
-                $('#maintain_every').val(data.maintain_every);
-                $('#last_maintained').val(data.last_maintained);
+                $('#site_name').val(data.site_name);
+                $('#job_desc').val(data.job_desc);
+                $('#start_date').val(data.start_date);
                 $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Product");
-                $('#equip_id').val(equip_id);
+                $('#site_id').val(site_id);
                 $('#action').val("Edit");
                 $('#btn_action').val("Edit");
             }
@@ -268,15 +233,15 @@ $(document).ready(function(){
     });
 
     $(document).on('click', '.delete', function(){
-        var equip_id = $(this).attr("id");
+        var site_id = $(this).attr("id");
         var status = $(this).data("status");
         var btn_action = 'delete';
         if(confirm("Are you sure you want to change status?"))
         {
             $.ajax({
-                url:"equipment_action.php",
+                url:"site_action.php",
                 method:"POST",
-                data:{equip_id:equip_id, status:status, btn_action:btn_action},
+                data:{site_id:site_id, status:status, btn_action:btn_action},
                 success:function(data){
                     $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
                     productdataTable.ajax.reload();
@@ -290,16 +255,4 @@ $(document).ready(function(){
     });
 
 });
-</script>
-
-<script>
-    //Used to display the extra maintenance options once checkbox is clicked on modal
-    function moreOptions() {
-        if(document.getElementById("is_maintenance_required").checked === true){
-            document.getElementById("maintain_vis").style.visibility = "visible";
-        }
-        if(document.getElementById("is_maintenance_required").checked === false){
-            document.getElementById("maintain_vis").style.visibility = "hidden";
-        }
-    }
 </script>

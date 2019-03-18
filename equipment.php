@@ -77,10 +77,10 @@ include('header.php');
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="product_data" class="table table-bordered table-striped">
+                            <table id="equipment_data" class="table table-bordered table-striped">
                                 <thead><tr>
                                     <th>ID</th>
-                                    <th>Product Name</th>
+                                    <th>Equipment Name</th>
                                     <th>Description</th>
                                     <th>Enter By</th>
                                     <th>Status</th>
@@ -95,9 +95,9 @@ include('header.php');
             </div>
         </div>
 
-        <div id="productModal" class="modal fade">
+        <div id="equipmentModal" class="modal fade">
             <div class="modal-dialog">
-                <form method="post" id="product_form">
+                <form method="post" id="equipment_form">
                     <div class="modal-content">
 
                         <div class="modal-header">
@@ -155,16 +155,16 @@ include('header.php');
             </div>
         </div>
 
-        <div id="productdetailsModal" class="modal fade">
+        <div id="equipmentdetailsModal" class="modal fade">
             <div class="modal-dialog">
-                <form method="post" id="product_form">
+                <form method="post" id="equipment_form">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
                         </div>
                         <div class="modal-body">
-                            <Div id="product_details"></Div>
+                            <Div id="equipment_details"></Div>
                         </div>
                         <div class="modal-footer">
                             
@@ -177,7 +177,7 @@ include('header.php');
 
 <script>
 $(document).ready(function(){
-    var productdataTable = $('#product_data').DataTable({
+    var equipmentdataTable = $('#equipment_data').DataTable({
         "processing":true,
         "serverSide":true,
         "order":[],
@@ -196,14 +196,14 @@ $(document).ready(function(){
     });
 
     $('#add_button').click(function(){
-        $('#productModal').modal('show');
-        $('#product_form')[0].reset();
+        $('#equipmentModal').modal('show');
+        $('#equipment_form')[0].reset();
         $('.modal-title').html("<i class='fa fa-plus'></i> Add Item");
         $('#action').val("Add");
         $('#btn_action').val("Add");
     });
 
-    $(document).on('submit', '#product_form', function(event){
+    $(document).on('submit', '#equipment_form', function(event){
         event.preventDefault();
         $('#action').attr('disabled', 'disabled');
         var form_data = $(this).serialize();
@@ -213,25 +213,25 @@ $(document).ready(function(){
             data:form_data,
             success:function(data)
             {
-                $('#product_form')[0].reset();
-                $('#productModal').modal('hide');
+                $('#equipment_form')[0].reset();
+                $('#equipmentModal').modal('hide');
                 $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
                 $('#action').attr('disabled', false);
-                productdataTable.ajax.reload();
+                equipmentdataTable.ajax.reload();
             }
         })
     });
 
     $(document).on('click', '.view', function(){
         var equip_id = $(this).attr("id");
-        var btn_action = 'product_details';
+        var btn_action = 'equipment_details';
         $.ajax({
             url:"equipment_action.php",
             method:"POST",
             data:{equip_id:equip_id, btn_action:btn_action},
             success:function(data){
-                $('#productdetailsModal').modal('show');
-                $('#product_details').html(data);
+                $('#equipmentdetailsModal').modal('show');
+                $('#equipment_details').html(data);
             }
         })
     });
@@ -245,7 +245,7 @@ $(document).ready(function(){
             data:{equip_id:equip_id, btn_action:btn_action},
             dataType:"json",
             success:function(data){
-                $('#productModal').modal('show');
+                $('#equipmentModal').modal('show');
 
                 $('#equip_name').val(data.equip_name);
                 $('#equip_desc').val(data.equip_desc);
@@ -259,7 +259,7 @@ $(document).ready(function(){
                 
                 $('#maintain_every').val(data.maintain_every);
                 $('#last_maintained').val(data.last_maintained);
-                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Product");
+                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Equipment");
                 $('#equip_id').val(equip_id);
                 $('#action').val("Edit");
                 $('#btn_action').val("Edit");
@@ -279,7 +279,7 @@ $(document).ready(function(){
                 data:{equip_id:equip_id, status:status, btn_action:btn_action},
                 success:function(data){
                     $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
-                    productdataTable.ajax.reload();
+                    equipmentdataTable.ajax.reload();
                 }
             });
         }

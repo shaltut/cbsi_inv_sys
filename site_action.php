@@ -28,7 +28,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product Added ('
+			echo 'Site Added ('
 			.$_POST['site_name'].', '
 			.$_POST['job_desc'].', '
 			.$_POST['start_date'].', '
@@ -39,7 +39,7 @@ if(isset($_POST['btn_action']))
 	}
 
 	//********** VIEW BUTTON (Details Column)**********
-	if($_POST['btn_action'] == 'product_details')
+	if($_POST['btn_action'] == 'site_details')
 	{
 
 		$query = "
@@ -110,7 +110,7 @@ if(isset($_POST['btn_action']))
 		{
 			$output['site_name'] = $row['site_name'];
 			$output['job_desc'] = $row['job_desc'];
-			$output['equip_cost'] = $row['equip_cost'];
+			$output['start_date'] = $row['start_date'];
 		}
 		echo json_encode($output);
 	}
@@ -137,7 +137,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product Details Edited ('
+			echo 'Site Details Edited ('
 			.$_POST['site_name'].', '
 			.$_POST['job_desc'].', '
 			.$_POST['start_date'].''
@@ -168,7 +168,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product status change to ' . $status;
+			echo 'Site status change to ' . $status;
 		}
 	}
 }

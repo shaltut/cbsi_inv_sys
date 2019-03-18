@@ -33,7 +33,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product Added ('
+			echo 'Equipment Added ('
 			.$_POST['equip_name'].', '
 			.$_POST['equip_desc'].', '
 			.$_POST['equip_cost'].', '
@@ -48,7 +48,7 @@ if(isset($_POST['btn_action']))
 	}
 
 	//********** VIEW BUTTON (Details Column)**********
-	if($_POST['btn_action'] == 'product_details')
+	if($_POST['btn_action'] == 'equipment_details')
 	{
 
 		$query = "
@@ -81,11 +81,11 @@ if(isset($_POST['btn_action']))
 
 			$output .= '
 			<tr>
-				<td>Product Name</td>
+				<td>Equipment Name</td>
 				<td>'.$row["equip_name"].'</td>
 			</tr>
 			<tr>
-				<td>Product Description</td>
+				<td>Equipment Description</td>
 				<td>'.$row["equip_desc"].'</td>
 			</tr>
 			';
@@ -179,7 +179,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product Details Edited ('
+			echo 'Equipment Details Edited ('
 			.$_POST['equip_name'].', '
 			.$_POST['equip_desc'].', '
 			.$_POST['equip_cost'].', '
@@ -214,7 +214,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Product status change to ' . $status;
+			echo 'Equipment status change to ' . $status;
 		}
 	}
 }

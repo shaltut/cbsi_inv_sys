@@ -74,7 +74,7 @@ include('header.php');
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="product_data" class="table table-bordered table-striped">
+                            <table id="site_data" class="table table-bordered table-striped">
                                 <thead><tr>
                                     <th>ID</th>
                                     <th>Site Name</th>
@@ -92,9 +92,9 @@ include('header.php');
             </div>
         </div>
 
-        <div id="productModal" class="modal fade">
+        <div id="siteModal" class="modal fade">
             <div class="modal-dialog">
-                <form method="post" id="product_form">
+                <form method="post" id="site_form">
                     <div class="modal-content">
 
                         <div class="modal-header">
@@ -129,16 +129,16 @@ include('header.php');
             </div>
         </div>
 
-        <div id="productdetailsModal" class="modal fade">
+        <div id="sitedetailsModal" class="modal fade">
             <div class="modal-dialog">
-                <form method="post" id="product_form">
+                <form method="post" id="site_form">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title"><i class="fa fa-plus"></i> Site Details</h4>
                         </div>
                         <div class="modal-body">
-                            <Div id="product_details"></Div>
+                            <Div id="site_details"></Div>
                         </div>
                         <div class="modal-footer">
                             
@@ -151,7 +151,7 @@ include('header.php');
 
 <script>
 $(document).ready(function(){
-    var productdataTable = $('#product_data').DataTable({
+    var sitedataTable = $('#site_data').DataTable({
         "processing":true,
         "serverSide":true,
         "order":[],
@@ -170,14 +170,14 @@ $(document).ready(function(){
     });
 
     $('#add_button').click(function(){
-        $('#productModal').modal('show');
-        $('#product_form')[0].reset();
+        $('#siteModal').modal('show');
+        $('#site_form')[0].reset();
         $('.modal-title').html("<i class='fa fa-plus'></i> Add Item");
         $('#action').val("Add");
         $('#btn_action').val("Add");
     });
 
-    $(document).on('submit', '#product_form', function(event){
+    $(document).on('submit', '#site_form', function(event){
         event.preventDefault();
         $('#action').attr('disabled', 'disabled');
         var form_data = $(this).serialize();
@@ -187,25 +187,25 @@ $(document).ready(function(){
             data:form_data,
             success:function(data)
             {
-                $('#product_form')[0].reset();
-                $('#productModal').modal('hide');
+                $('#site_form')[0].reset();
+                $('#siteModal').modal('hide');
                 $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
                 $('#action').attr('disabled', false);
-                productdataTable.ajax.reload();
+                sitedataTable.ajax.reload();
             }
         })
     });
 
     $(document).on('click', '.view', function(){
         var site_id = $(this).attr("id");
-        var btn_action = 'product_details';
+        var btn_action = 'site_details';
         $.ajax({
             url:"site_action.php",
             method:"POST",
             data:{site_id:site_id, btn_action:btn_action},
             success:function(data){
-                $('#productdetailsModal').modal('show');
-                $('#product_details').html(data);
+                $('#sitedetailsModal').modal('show');
+                $('#site_details').html(data);
             }
         })
     });
@@ -219,12 +219,12 @@ $(document).ready(function(){
             data:{site_id:site_id, btn_action:btn_action},
             dataType:"json",
             success:function(data){
-                $('#productModal').modal('show');
+                $('#siteModal').modal('show');
 
                 $('#site_name').val(data.site_name);
                 $('#job_desc').val(data.job_desc);
                 $('#start_date').val(data.start_date);
-                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Product");
+                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Site");
                 $('#site_id').val(site_id);
                 $('#action').val("Edit");
                 $('#btn_action').val("Edit");
@@ -244,7 +244,7 @@ $(document).ready(function(){
                 data:{site_id:site_id, status:status, btn_action:btn_action},
                 success:function(data){
                     $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
-                    productdataTable.ajax.reload();
+                    sitedataTable.ajax.reload();
                 }
             });
         }

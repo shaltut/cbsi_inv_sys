@@ -60,7 +60,7 @@
 
 							There will be a search bar at the top, allowing them to search for and find equipment that they need.
 						-->
-						<li><a href="equipment_search.php">Search</a></li>
+						<li><a href="Search.php">Search</a></li>
 					<?php
 					}//END
 					?>

@@ -64,15 +64,22 @@ Hosting AWS VS GoDaddy
 
  	Create Amazonn Linux EC2 instance and install Apache
 
-GoDaddy Option:
+GoDaddy Option: Linux Hosting and MySQL over cPanel
 
- Pros: 
+ Pros: Seems to be a common feature of the site although documentation presented on site is very vague
+ They're already using goDaddy
 
- Cons:
+ Cons: Vague documentation, not as customizable as AWS, No free testing period, difficult to gauge the upfront cost
+ Prices are set upfront and not based on usage
 
- Price: 
+ Price: Likely Deluxe tier at 4.99/month. Need to see their current planm
 
  Initial implementation steps
+
+ Obtain current plan from CBSI
+ Research the process for how it is hosted and connected with the DB
+ Upload files with FTP
+ connect DB
  	
 --------------------------------------------------------------------------
 

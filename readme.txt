@@ -47,6 +47,33 @@ Mariam:
 Tristan: (When you get back from vacay lol)
 - Hosting hosting hosting bla bla bla
 
+Hosting AWS VS GoDaddy
+
+ AWS Option: All running in Amazon Virtual Private Cloud 
+ Apache Web Server with PHP + MySQL DB running on an EC2 instance of Amazon Linux... MySQL database as Amazon RDS MySQL DB
+
+ Pros: Very well documented with clear tutorials
+ Built in security groups and easy configuration
+
+ Cons:
+
+ Price: Will calculate ranges using AWS CloudWatch
+
+ Initial implementation steps
+ 	Create RDS DB instance (Will look into and show to our DB pros)
+
+ 	Create Amazonn Linux EC2 instance and install Apache
+
+GoDaddy Option:
+
+ Pros: 
+
+ Cons:
+
+ Price: 
+
+ Initial implementation steps
+ 	
 --------------------------------------------------------------------------
 
 

@@ -64,14 +64,29 @@ if(isset($_POST["login"]))
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<script src="js/bootstrap.min.js"></script>
+		<style>
+			.center{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				padding-left: 0;
+				min-width:300px;
+				width:50%;
+			}
+
+		</style>
 	</head>
 	<body>
 		<br />
 		<div class="container">
+				<div class="center">
+					<a href="#">
+						<img src="images/logo.png" alt="CBSI logo"width="300" height="171">
+					</a>
+				</div>
 			<br />
 			<div class="panel panel-default">
 				<div class="panel-heading">Login</div>
-				<div class="logo"><a href="#"><img src="CBSILogo2.png"></a></div>
 				<div class="panel-body">
 					<form method="post">
 						<?php echo $message; ?>

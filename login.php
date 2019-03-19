@@ -71,7 +71,7 @@ if(isset($_POST["login"]))
 			<br />
 			<div class="panel panel-default">
 				<div class="panel-heading">Login</div>
-				<center><div class="logo"><a href="#"><img src="CBSILogo2.png"></a></div></center>
+				<div class="logo"><a href="#"><img src="CBSILogo2.png"></a></div>
 				<div class="panel-body">
 					<form method="post">
 						<?php echo $message; ?>

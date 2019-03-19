@@ -15,7 +15,7 @@ $output = array();
 */
 $query .= "
 SELECT * FROM user_details 
-WHERE user_type = 'user' AND 
+WHERE user_type = 'user' AND
 ";
 
 
@@ -69,11 +69,13 @@ foreach($result as $row)
 	$sub_array[] = $row['user_id'];
 	$sub_array[] = $row['user_email'];
 	$sub_array[] = $row['user_name'];
+	$sub_array[] = $row['user_job'];
 	$sub_array[] = $status;
 	//Update button for each user
 	$sub_array[] = '<button type="button" name="update" id="'.$row["user_id"].'" class="btn btn-warning btn-xs update">Update</button>';
 	//Delete button for each user
-	$sub_array[] = '<button type="button" name="delete" id="'.$row["user_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["user_status"].'">Delete</button>';
+	$sub_array[] = '<button type="button" name="disable" id="'.$row["user_id"].'" class="btn btn-danger btn-xs disable" data-status="'.$row["user_status"].'">Change Status</button>';
+	//$sub_array[] = $row['user_job'];
 	$data[] = $sub_array;
 }
 

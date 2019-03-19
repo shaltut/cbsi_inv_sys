@@ -38,7 +38,7 @@ include('header.php');
 				-->
 			<div class="col-md-4">
 				<div class="panel panel-default">
-					<div class="panel-heading"><strong>Admins</strong></div>
+					<div class="panel-heading"><strong>Admin Accounts</strong></div>
 					<div class="panel-body" align="center">
 						<h1><?php echo count_master_active($connect); ?></h1>
 					</div>
@@ -67,10 +67,10 @@ include('header.php');
                     <div class="panel-heading">
                     	<div class="row">
                         	<div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                            	<h3 class="panel-title">User List</h3>
+                            	<h3 class="panel-title">Employee List</h3>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align="right">
-                            	<button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-success btn-xs">Add</button>
+                            	<button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-success btn-xs">Add User</button>
                         	</div>
                         </div>
                        
@@ -84,9 +84,10 @@ include('header.php');
 										<th>ID</th>
 										<th>Email</th>
 										<th>Name</th>
+										<th>Job Title</th>
 										<th>Status</th>
 										<th>Edit</th>
-										<th>Delete</th>
+										<th>Change Status</th>
 									</tr>
 								</thead>
                    			</table>
@@ -111,6 +112,10 @@ include('header.php');
         				<div class="form-group">
 							<label>Enter Employee Name</label>
 							<input type="text" name="user_name" id="user_name" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label>Enter Employee Job Title</label>
+							<input type="text" name="user_job" id="user_job" class="form-control" required />
 						</div>
 						<div class="form-group">
 							<label>Enter Employee Email</label>
@@ -152,11 +157,11 @@ $(document).ready(function(){
 		},
 		"columnDefs":[
 			{
-				"target":[4,5],
+				"target":[6, 7],
 				"orderable":false
 			}
 		],
-		"pageLength": 25
+		"pageLength": 7
 	});
 
 	$(document).on('submit', '#user_form', function(event){
@@ -190,7 +195,9 @@ $(document).ready(function(){
 			{
 				$('#userModal').modal('show');
 				$('#user_name').val(data.user_name);
+				$('#user_job').val(data.user_job);
 				$('#user_email').val(data.user_email);
+				$('#user_status').val(data.status);
 				$('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit User");
 				$('#user_id').val(user_id);
 				$('#action').val('Edit');
@@ -200,10 +207,10 @@ $(document).ready(function(){
 		})
 	});
 
-	$(document).on('click', '.delete', function(){
+	$(document).on('click', '.disable', function(){
 		var user_id = $(this).attr("id");
 		var status = $(this).data('status');
-		var btn_action = "delete";
+		var btn_action = "disable";
 		if(confirm("Are you sure you want to change status?"))
 		{
 			$.ajax({

@@ -47,6 +47,40 @@ Mariam:
 Tristan: (When you get back from vacay lol)
 - Hosting hosting hosting bla bla bla
 
+Hosting AWS VS GoDaddy
+
+ AWS Option: All running in Amazon Virtual Private Cloud 
+ Apache Web Server with PHP + MySQL DB running on an EC2 instance of Amazon Linux... MySQL database as Amazon RDS MySQL DB
+
+ Pros: Very well documented with clear tutorials
+ Built in security groups and easy configuration
+
+ Cons:
+
+ Price: Will calculate ranges using AWS CloudWatch
+
+ Initial implementation steps
+ 	Create RDS DB instance (Will look into and show to our DB pros)
+
+ 	Create Amazonn Linux EC2 instance and install Apache
+
+GoDaddy Option: Linux Hosting and MySQL over cPanel
+
+ Pros: Seems to be a common feature of the site although documentation presented on site is very vague
+ They're already using goDaddy
+
+ Cons: Vague documentation, not as customizable as AWS, No free testing period, difficult to gauge the upfront cost
+ Prices are set upfront and not based on usage
+
+ Price: Likely Deluxe tier at 4.99/month. Need to see their current planm
+
+ Initial implementation steps
+
+ Obtain current plan from CBSI
+ Research the process for how it is hosted and connected with the DB
+ Upload files with FTP
+ connect DB
+ 	
 --------------------------------------------------------------------------
 
 

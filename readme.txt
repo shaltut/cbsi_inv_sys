@@ -28,6 +28,7 @@ Mariam:
 
 Tristan: (When you get back from vacay lol)
 - Look into how to set up a PHP based website with a relational database on GoDaddy and Amazon and create a pro/cons list for both (post that pro/con list here so we can all decide what the best option is)
+- Look at the code for the site and really familliarize yourself with it. Mess with it to try and understand what everything does and how the database works and all that.
 
 ************ WEEK 3 ************
 
@@ -56,7 +57,9 @@ Mariam:
 
 Tristan: (When you get back from vacay lol)
 - Nice work on the hosting info! Ill have to ask them about the GoDaddy login info and how to use it. Looks like Amazon would be the best option, but could potentially cost more if they already have server space that theyre paying for.. Ill have to figure that out...
-- 
+- Take a look at the functions in the functions.php page and the data they display in the user.php, equipment.php, and sites.php pages. 
+	-Make them display useful data by creating functions and using them in those pages.
+	**I think the user.php page is fine right now, but the other two need work.
 
 
 ============================================================================

@@ -10,13 +10,13 @@ $query = '';
 $output = array();
 $query .= "
 	SELECT * FROM equipment 
-	JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
-	GROUP BY equipment.equip_id, equipment.equip_entered_by
+	INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
+	
 ";
 
 if(isset($_POST["search"]["value"]))
 {
-	$query .= 'OR equipment.equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'WHERE equipment.equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR equipment.maintain_every LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR user_details.user_name LIKE "%'.$_POST["search"]["value"].'%" ';
 

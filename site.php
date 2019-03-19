@@ -81,8 +81,8 @@ include('header.php');
                                     <th>ID</th>
                                     <th>Site Name</th>
                                     <th>Address</th>
-                                    <th>Job Description</th>
-                                    <th>Start Date</th>
+                                    <!-- <th>Job Description</th> -->
+                                    <!-- <th>Start Date</th> -->
                                     <th>Status</th>
                                     <th>Details</th>
                                     <th>Update</th>
@@ -169,11 +169,11 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-                "targets":[5, 6, 7],
+                "targets":[4, 5, 6],
                 "orderable":false,
             },
         ],
-        "pageLength": 8
+        "pageLength": 6
     });
 
     $('#add_button').click(function(){

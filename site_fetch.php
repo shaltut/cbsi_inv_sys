@@ -16,9 +16,9 @@ $query .= "
 if(isset($_POST["search"]["value"]))
 {
 	$query .= 'OR site_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR job_desc LIKE "%'.$_POST["search"]["value"].'%" ';
+	// $query .= 'OR job_desc LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR site_address LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR start_date LIKE "%'.$_POST["search"]["value"].'%" ';
+	// $query .= 'OR start_date LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR site_id LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 
@@ -56,18 +56,18 @@ foreach($result as $row)
 	$sub_array[] = $row['site_id'];
 	$sub_array[] = $row['site_name'];
 	$sub_array[] = $row['site_address'];
-	$sub_array[] = $row['job_desc'];
-	$sub_array[] = $row['start_date'];
+	// $sub_array[] = $row['job_desc'];
+	// $sub_array[] = $row['start_date'];
 	$sub_array[] = $status;
 	$sub_array[] = '
 		<button type="button" name="view" id="'.$row["site_id"].'" class="btn btn-info btn-xs view">View</button>
 		';
 	$sub_array[] = '
-	<button type="button" name="update" id="'.$row["site_id"].'" class="btn btn-warning btn-xs update">Update</button>
-	';
+		<button type="button" name="update" id="'.$row["site_id"].'" class="btn btn-warning btn-xs update">Update</button>
+		';
 	$sub_array[] = '
-	<button type="button" name="delete" id="'.$row["site_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["site_status"].'">Delete</button>
-	';
+		<button type="button" name="delete" id="'.$row["site_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["site_status"].'">Delete</button>
+		';
 	$data[] = $sub_array;
 }
 

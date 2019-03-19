@@ -69,7 +69,7 @@ if(isset($_POST['btn_action']))
 				<td>'.$row["site_name"].'</td>
 			</tr>
 			<tr>
-				<td>Site Name</td>
+				<td>Address</td>
 				<td>'.$row["site_address"].'</td>
 			</tr>
 			<tr>

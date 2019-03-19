@@ -33,20 +33,33 @@ Tristan: (When you get back from vacay lol)
 
 Garrett:
 - Make the site mobile friendly by adding responsive CSS (so that it looks the same on desktop as it does now, but all fits properly on mobile devices and is easier to use).
+- Theres some CSS in the login.php page that I added there to center the image. Try to move that to the CSS pages. I didnt want to mess with anything in there since you probs know it better than I do. 	
+	- Also feel free to change it or mess with the image in there or whatever you want as long as it looks good in mobile and desktop.(I didnt spend much time on it so if theres a cleaner way to do it or a better looking way to do it, go for it!)
 
 Diana: 
-- Start working on the search.php page that philip created. Make it so the users cant delete, update, or view any data they shouldnt have access to. 
+- Keep working on anything that needs to be done in the users pages.
+- Work on user views. We've been so concentrated on master accounts that I feel like user accounts arent all there. Change whatever you think you need to change and make the standard user accounts user-friendly and whatnot. 
 
 
 Phillip:
-- 
+- Take a look at the error codes displayed by the system. Make sure they dont display any data about the database (like table names, column names, etc.)... We Learned in IT-369 that hackers will purposefully break websites to get the default error codes (or pages) returned by the system which usually contain vital info about the database. 
+	- Ive seen this a few times already on the site... like "Error:234215jhh:h on page /Applications/XAMPP/htdocs/cbsi_inv_sys/user_fetch.php : Invalid data marker on user_details table, user_id cannot be Null"
+	.....This tells the user both the name of the table in the database, as well as the column name of the primary key for that table... Thats bad...
+- Once you find some of these errors, create default error pages. So make the system navigate to an error page that you've created instead of showing them the default system error code...
+	- I highly suggest you do all this on a copy of the project (since youll pretty much just be breaking the project). You dont want to accidentally push those errors, and plus, youll be working on pages that the rest of us are working on, so youll have conflicts as well if you use the main repo.
+***Again, ive given you a weird ass assignment, so if you have questions, or want to know of ways to break the database, just ask me and ill see if i can help!
 
 Mariam:
-- 
+- Img on login.php (which youve done already)
+- Use a duplicate of the system to help Philip find error codes (read above). Basically just help him break the site and find the error codes that are returned. This is a big job since theres plenty of areas that can be broken in the site.	
+	-Maybe also look up how to create custom error codes for a website for phillip and send him any info you can find on that.
 
 Tristan: (When you get back from vacay lol)
-- Hosting hosting hosting bla bla bla
+- Nice work on the hosting info! Ill have to ask them about the GoDaddy login info and how to use it. Looks like Amazon would be the best option, but could potentially cost more if they already have server space that theyre paying for.. Ill have to figure that out...
+- 
 
+
+============================================================================
 Hosting AWS VS GoDaddy
 
  AWS Option: All running in Amazon Virtual Private Cloud 
@@ -81,6 +94,7 @@ GoDaddy Option: Linux Hosting and MySQL over cPanel
  Upload files with FTP
  connect DB
  	
+
 --------------------------------------------------------------------------
 
 

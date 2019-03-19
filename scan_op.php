@@ -31,37 +31,37 @@ include('header.php');
 	<input type="button" class="btn btn-primary btn-lg btn-block" id="check_out_btn" value="Check-Out" data-toggle="collapse" data-target="#siteModal"/>
 
 	<div id="siteModal" class="modal fade" >
-            <div class="modal-dialog">
-                <form method="post" id="equip_id_form">
-                    <div class="modal-content">
+        <div class="modal-dialog">
+            <form method="post" id="equip_id_form">
+                <div class="modal-content">
 
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Site</h4>
-                        </div>
-
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label>Enter ID Number on Equipment</label>
-                                <input type="text" name="equip_name" id="equip_name" class="form-control" required />
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                        	/*
-                        		Here we need hidden fields to grab the data that the user wont have to enter manually...
-                        		(user_id, site_id, etc.)
-                        	*/
-                            <input type="hidden" name="site_id" id="site_id" />
-                            <input type="hidden" name="btn_action" id="btn_action" />
-                            <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><i class="fa fa-plus"></i> Add Site</h4>
                     </div>
-                </form>
-            </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Enter ID Number on Equipment</label>
+                            <input type="text" name="equip_name" id="equip_name" class="form-control" required />
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                    	/*
+                    		Here we need hidden fields to grab the data that the user wont have to enter manually...
+                    		(user_id, site_id, etc.)
+                        */
+                        <input type="hidden" name="site_id" id="site_id" />
+                        <input type="hidden" name="btn_action" id="btn_action" />
+                        <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+
+                 </div>
+            </form>
         </div>
+    </div>
 	<input type="button" class="btn btn-primary btn-lg btn-block" id="check_in_btn" value="Check-In"role="button"/>
 
 

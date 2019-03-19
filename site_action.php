@@ -13,13 +13,14 @@ if(isset($_POST['btn_action']))
 	if($_POST['btn_action'] == 'Add')
 	{
 		$query = "
-		INSERT INTO sites (site_name, job_desc, start_date, site_status) 
-		VALUES (:site_name, :job_desc, :start_date, :site_status)
+		INSERT INTO sites (site_name, site_address, job_desc, start_date, site_status) 
+		VALUES (:site_name, :site_address, :job_desc, :start_date, :site_status)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
 				':site_name'			=>	$_POST['site_name'],
+				':site_address'			=>	$_POST['site_address'],
 				':job_desc'				=>	$_POST['job_desc'],
 				':start_date'			=> 	date('Y-m-d', strtotime($_POST['start_date'])),
 				':site_status'			=>	'active'
@@ -68,6 +69,10 @@ if(isset($_POST['btn_action']))
 				<td>'.$row["site_name"].'</td>
 			</tr>
 			<tr>
+				<td>Site Name</td>
+				<td>'.$row["site_address"].'</td>
+			</tr>
+			<tr>
 				<td>Job Description</td>
 				<td>'.$row["job_desc"].'</td>
 			</tr>
@@ -105,6 +110,7 @@ if(isset($_POST['btn_action']))
 		foreach($result as $row)
 		{
 			$output['site_name'] = $row['site_name'];
+			$output['site_address'] = $row['site_address'];
 			$output['job_desc'] = $row['job_desc'];
 			$output['start_date'] = $row['start_date'];
 		}
@@ -118,6 +124,7 @@ if(isset($_POST['btn_action']))
 		UPDATE sites 
 		set 
 		site_name = :site_name,
+		site_address = :site_address,
 		job_desc = :job_desc, 
 		start_date = :start_date
 		WHERE site_id = :site_id
@@ -126,6 +133,7 @@ if(isset($_POST['btn_action']))
 		$statement->execute(
 			array(
 				':site_name'		=>	$_POST['site_name'],
+				':site_address'		=>	$_POST['site_address'],
 				':job_desc'			=>	$_POST['job_desc'],
 				':start_date' 		=> 	date('Y-m-d', strtotime($_POST['start_date'])),
 				':site_id'			=>	$_POST['site_id']

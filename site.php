@@ -80,6 +80,7 @@ include('header.php');
                                 <thead><tr>
                                     <th>ID</th>
                                     <th>Site Name</th>
+                                    <th>Address</th>
                                     <th>Job Description</th>
                                     <th>Start Date</th>
                                     <th>Status</th>
@@ -108,6 +109,10 @@ include('header.php');
                             <div class="form-group">
                                 <label>Enter Site Name</label>
                                 <input type="text" name="site_name" id="site_name" class="form-control" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Enter Site Address</label>
+                                <input type="text" name="site_address" id="site_address" class="form-control" required />
                             </div>
                             <div class="form-group">
                                 <label>Enter Job Description</label>
@@ -223,6 +228,7 @@ $(document).ready(function(){
             success:function(data){
                 $('#siteModal').modal('show');
                 $('#site_name').val(data.site_name);
+                $('#site_address').val(data.site_address);
                 $('#job_desc').val(data.job_desc);
                 $('#start_date').val(data.start_date);
                 $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Site");

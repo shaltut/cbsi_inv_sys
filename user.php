@@ -20,7 +20,9 @@ include('header.php');
 ?>
 		<span id="alert_action"></span>
 
-		<div class="row">
+		<input class="btn" id="user_stat_btn" value="Show User Stats" type="button" data-toggle="collapse" data-target="#stats" aria-expanded="false" aria-controls="collapseExample" onclick="buttontext()"/>
+
+        <div class="row collapse" id="stats">
 			<!-- 
 					Shows total number of Employees (Non-Master)
 				-->
@@ -231,6 +233,17 @@ $(document).ready(function(){
 	});
 
 });
+</script>
+
+<script>
+
+    //Used to toggle the 'view stats' button 
+    function buttontext() {
+        if(document.getElementById("user_stat_btn").value === "Show User Stats")
+            document.getElementById("user_stat_btn").value = "Hide User Stats";
+        else
+            document.getElementById("user_stat_btn").value = "Show User Stats";
+    }
 </script>
 
 <?php

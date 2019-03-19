@@ -27,6 +27,7 @@ if(!isset($_SESSION['type']))
 include('header.php');
 
 ?>
+<br>
 <form method="post" id="site_form">
 	<input type="button" class="btn btn-primary btn-lg btn-block" id="check_out_btn" value="Check-Out" data-toggle="collapse" data-target="#siteModal"/>
 
@@ -62,6 +63,7 @@ include('header.php');
             </form>
         </div>
     </div>
+    <br>
 	<input type="button" class="btn btn-primary btn-lg btn-block" id="check_in_btn" value="Check-In"role="button"/>
 
 

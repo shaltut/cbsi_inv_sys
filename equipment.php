@@ -248,7 +248,6 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 $('#equipmentModal').modal('show');
-
                 $('#equip_name').val(data.equip_name);
                 $('#equip_desc').val(data.equip_desc);
                 $('#equip_cost').val(data.equip_cost);

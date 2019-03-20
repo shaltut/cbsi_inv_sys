@@ -15,58 +15,69 @@ if(!isset($_SESSION['type']))
 	header('location:login.php');
 }
 
-/*
-	This if statement sends the user back to the index.php homepage if they arent master users.
-*/
-// if($_SESSION['type'] != 'master')
-// {
-// 	header('location:index.php');
-// }
-
 //Includes the code for the navbar 
 include('header.php');
 
 ?>
-<br>
-<form method="post" id="site_form">
-	<input type="button" class="btn btn-primary btn-lg btn-block" id="check_out_btn" value="Check-Out" data-toggle="collapse" data-target="#siteModal"/>
+<!-- Alerts the user to changes they have made, or errors -->
+<span id='alert_action'></span>
 
-	<div id="siteModal" class="modal fade" >
+<br/>
+<form method="post" id="check_out_btn_form">
+
+	<!-- <input type="button" class="btn btn-primary btn-lg btn-block" name="check-out" id="check_out_btn" value="Check-Out"/> -->
+
+    <button type="button" name="check" id="chkout_button" class="btn btn-primary btn-lg btn-block">Check-Out</button>
+</form>
+    <!-- 
+        Modal that asks the user to enter the unique id for the piece of equipment they wish to check out.
+    -->
+	<div id="chkout_modal" class="modal fade" >
         <div class="modal-dialog">
             <form method="post" id="equip_id_form">
                 <div class="modal-content">
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><i class="fa fa-plus"></i> Add Site</h4>
+                        <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
                     </div>
 
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Enter ID Number on Equipment</label>
-                            <input type="text" name="equip_name" id="equip_name" class="form-control" required />
+                            <input type="text" name="equip_id" id="equip_id" />
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                    	/*
+                    	<!--
                     		Here we need hidden fields to grab the data that the user wont have to enter manually...
                     		(user_id, site_id, etc.)
-                        */
-                        <input type="hidden" name="site_id" id="site_id" />
+                        -->
+                        <input type="hidden" name="site_id" id="site_id" value="303000"/>
                         <input type="hidden" name="btn_action" id="btn_action" />
-                        <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
+                        <input type="submit" name="action" id="action" class="btn btn-info" value="Check Out" />
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
 
-                 </div>
+                </div>
             </form>
         </div>
     </div>
-    <br>
+    <br/>
+<form method="post" id="check_in_btn_form" >
 	<input type="button" class="btn btn-primary btn-lg btn-block" id="check_in_btn" value="Check-In"role="button"/>
+</form>
 
+        <?php 
+        //foreach($data as $row){
+        ?>
 
+        <!--Print equipment checked out by $_SESSION['user_id'] (current user) here with a button that sends the individual piece of equipment's unique id to the check_out.php page along with the user's user_id-->
+
+        <?php 
+        //}
+        ?>
 </form>
 <?php
 include('footer.php');
@@ -76,36 +87,32 @@ include('footer.php');
 <script>
 $(document).ready(function(){
 
-    $('#check_out_btn').click(function(){
-        $('#site_form')[0].reset();
-        $('.modal-title').html("<i class='fa fa-plus'></i> Add Item");
-        $('#action').val("Add");
-        $('#btn_action').val("Add");
+    $('#chkout_button').click(function(){
+        $('#chkout_modal').modal('show');
+        $('#equip_id_form')[0].reset();
+        $('.modal-title').html("<i class='fa fa-plus'></i> Check Out");
+        $('#action').val("Check Out");
+        $('#btn_action').val("Check Out");
     });
-
-    $('#check_out_btn').click(function(){
-        $('#site_form')[0].reset();
-        $('.modal-title').html("<i class='fa fa-plus'></i> Add Item");
-        $('#action').val("Add");
-        $('#btn_action').val("Add");
-    });
-    $(document).on('click', '.check_out_btn', function(){
-        var site_id = $(this).attr("id");
-        var btn_action = 'fetch_single';
+    
+    $(document).on('submit', '#equip_id_form', function(event){
+        event.preventDefault();
+        $('#action').attr('disabled', 'disabled');
+        var form_data = $(this).serialize();
         $.ajax({
-            url:"site_action.php",
+            url:"chk_out_action.php",
             method:"POST",
-            data:{site_id:site_id, btn_action:btn_action},
-            dataType:"json",
-            success:function(data){
-                $('#siteModal').modal('show');
-                $('#site_name').val(data.site_name);
-                $('#job_desc').val(data.job_desc);
-                $('#start_date').val(data.start_date);
-                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Site");
-                $('#site_id').val(site_id);
-                $('#action').val("Edit");
-                $('#btn_action').val("Edit");
+            data:form_data,
+            success:function(data)
+            {
+                $('#equip_id_form')[0].reset();
+                $('#chkout_modal').modal('hide');
+                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+                $('#action').attr('disabled', false);
+                
+                /*This line of code will be used to update the table below the buttons showing items checked out by the user (it should show that the item they just checked out was added to that list)*/
+
+                // equipmentdataTable.ajax.reload();
             }
         })
     });

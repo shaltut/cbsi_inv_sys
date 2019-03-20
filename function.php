@@ -26,6 +26,37 @@
 // 	return $output;
 // }
 
+
+function check_equip_id_exists($connect, $equip_id){
+	$query = "
+	SELECT equip_id, equip_status
+	FROM equipment 
+	WHERE equip_id = '".$equip_id."' AND equip_status = 'active'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	$data = 'The ID you have entered does not exist!';
+	foreach($result as $row)
+	{
+
+		if($row['equip_id'] == $equip_id){
+
+			if($row['equip_status'] == 'inactive'){
+
+				$data = 'This item is currently unavailable';
+
+			}else{
+
+				$data = 'yes';
+
+			}
+
+		}
+
+	}
+	return $data;
+}
 /* 
 	This function returns a user_name from the user_details table given any valid user_id from the user_details table.
 */

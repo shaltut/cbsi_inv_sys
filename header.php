@@ -16,24 +16,27 @@
 		<br />
 		<div class="container">
 
+<!-- NAVBAR ----------------------------------------------------------------------------------------------------->
+
+
 			<nav class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<a href="index.php" class="navbar-brand">CBSI</a>
 					</div>
 					<ul class="nav navbar-nav">
+					
 					<?php
-
 					if($_SESSION['type'] == 'master') //Only seen by MASTER
 					{
 					?>
 						<li><a href="user.php">Employees</a></li>
 						<li><a href="equipment.php">Equipment</a></li>
 						<li><a href="site.php">Sites</a></li>
-
 					<?php
 					}
 					?>
+
 						<!-- 
 							NEEDS WORK:
 
@@ -49,6 +52,7 @@
 								- the system will know that the Equipment_ID being read in is being CHECKED OUT by the current user.
 						-->
 						<li><a href="scan_op.php">SCAN</a></li>
+					
 					<?php
 					if($_SESSION['type'] == 'user') // Only seen by USER
 					{
@@ -64,6 +68,7 @@
 					<?php
 					}//END
 					?>
+
 					</ul>
 
 
@@ -87,4 +92,6 @@
 
 				</div>
 			</nav>
+
+<!-- END NAVBAR ----------------------------------------------------------------------------------------->
 			

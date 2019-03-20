@@ -121,7 +121,9 @@ if(isset($_POST['btn_action']))
 	if($_POST['btn_action'] == 'fetch_single')
 	{
 		$query = "
-		SELECT * FROM equipment WHERE equip_id = :equip_id
+		SELECT * 
+		FROM equipment 
+		WHERE equip_id = :equip_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
@@ -202,6 +204,4 @@ if(isset($_POST['btn_action']))
 		}
 	}
 }
-
-
 ?>

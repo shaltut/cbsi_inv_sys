@@ -25,7 +25,29 @@
 // 	}
 // 	return $output;
 // }
+/*
+	Returns the total number of pieces of equipment available (active) at the moment
+*/
+function count_check_out_total($connect){
+	$query = "
+	SELECT * 
+	FROM equipment_checkout
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
 
+function count_check_out_user($connect, $user_id){
+	$query = "
+	SELECT * 
+	FROM equipment_checkout
+	WHERE empl_id = '".$user_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
 
 function check_equip_id_exists($connect, $equip_id){
 	$query = "

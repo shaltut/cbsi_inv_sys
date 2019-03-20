@@ -10,8 +10,8 @@ $query = '';
 
 $output = array();
 $query .= "
-	SELECT equip_id, equip_name, equip_desc, equip_status FROM equipment 
-	INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by
+	SELECT equip_id, equip_name, equip_desc, equip_status 
+	FROM equipment INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by
 ";
 
 if(isset($_POST["search"]["value"]))
@@ -57,19 +57,8 @@ foreach($result as $row)
 	$sub_array = array();
 	$sub_array[] = $row['equip_id'];
 	$sub_array[] = $row['equip_name'];
-	// $sub_array[] = available_product_quantity($connect, $row["equip_id"]);
 	$sub_array[] = $row['equip_desc'];
-	//$sub_array[] = $row['equip_entered_by'];
 	$sub_array[] = $status;
-	//$sub_array[] = '
-		//<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
-		//';
-//$sub_array[] = '
-	//<button type="button" name="update" id="'.$row["equip_id"].'" class="btn btn-warning btn-xs update">Update</button>
-	//';
-	//$sub_array[] = '
-	//<button type="button" name="delete" id="'.$row["equip_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["equip_status"].'">Delete</button>
-	//';
 	$data[] = $sub_array;
 }
 

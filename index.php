@@ -43,7 +43,7 @@ include('header.php');
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Total Equipment Checked Out</strong></div>
 				<div class="panel-body" align="center">
-					<h1><?php echo count_total_product($connect); ?></h1>
+					<h1><?php echo count_check_out_total($connect); ?></h1>
 				</div>
 			</div>
 		</div>
@@ -63,17 +63,13 @@ include('header.php');
 			<div class="panel panel-default">
 				<div class="panel-heading"><strong>Equipment Checked Out By You</strong></div>
 				<div class="panel-body" align="center">
-					<h1>$<?php echo count_total_order_value($connect); ?></h1>
+					<h1><?php echo count_check_out_user($connect, $_SESSION['user_id']); ?></h1>
 				</div>
 			</div>
 		</div>
 
 		<hr />
-
-		<?php
-		if($_SESSION['type'] == 'master')
-		{
-		?>
+	
 				<!-- 
 					NEEDS WORK
 					**** Admins should see ****
@@ -90,19 +86,63 @@ include('header.php');
 					- site_id
 					- 
 				-->
-			<div class="col-md-12">
+<!-- 
+			Displays the "User List" table 
+		-->
+		<div class="row">
+			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading"><strong>Checkouts</strong></div>
-					<div class="panel-body" align="center">
-						<?php echo get_user_wise_total_order($connect); ?>
-					</div>
-				</div>
-			</div>
-		<?php
-		}
-		?>
-	</div>
+	                <div class="panel-heading">
+	                   	<div class="row">
+	                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+	                           	<h3 class="panel-title">Checkouts Today</h3>
+	                        </div>
+	                    </div>
+	                    <div class="clear:both"></div>
+	                </div>
+	                <div class="panel-body">
+	                   	<div class="row"><div class="col-sm-12 table-responsive">
+	                   		<table id="index_data" class="table table-bordered table-striped">
+	                   			<thead>
+									<tr>
+										<th>Employee ID</th>
+										<th>Name</th>
+										<th>Equipment ID</th>
+										<th>Equipment</th>
+										<th>Date of Checkout</th>
+									</tr>
+								</thead>
+	                   		</table>
+	                   	</div>
+	               	</div>
+	           	</div>
+	       	</div>
+	    </div>
+    </div>
 
-<?php
-include("footer.php");
-?>
+    <?php
+	include("footer.php");
+	?>
+
+<script>
+$(document).ready(function(){
+    var equipmentdataTable = $('#index_data').DataTable({
+        "processing":true,
+        "serverSide":true,
+        "order":[],
+        "ajax":{
+            url:"index_fetch.php",
+            type:"POST"
+        },
+        "columnDefs":[
+            {
+
+                // "targets":[],
+                "orderable":false,
+            },
+        ],
+        "pageLength": 5
+    });
+
+});
+</script>

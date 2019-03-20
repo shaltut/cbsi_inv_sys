@@ -22,8 +22,21 @@
 			<nav class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<div class="navbar-header">
+						
+						<!-- mobile navbar -->
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+							<span class="sr-only" >Toggle Navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+
+
 						<a href="index.php" class="navbar-brand">CBSI</a>
-					</div>
+					</div> <!-- navbar-header -->
+
+					<div id="menu" class="collapse navbar-collapse">
+
 					<ul class="nav navbar-nav">
 					
 					<?php
@@ -69,7 +82,7 @@
 					}//END
 					?>
 
-					</ul>
+					</ul> <!-- left list -->
 
 
 					<!-- 
@@ -88,9 +101,11 @@
 								<li><a href="logout.php">Logout</a></li>
 							</ul>
 						</li>
-					</ul>
+					</ul> <!-- right list dropdown -->
 
-				</div>
+				</div> <!-- collapse -->
+
+				</div> <!-- container-fluid -->
 			</nav>
 
 <!-- END NAVBAR ----------------------------------------------------------------------------------------->

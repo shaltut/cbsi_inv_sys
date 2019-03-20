@@ -1,30 +1,6 @@
 <?php
 //function.php
 
-
-/* 
-	********** NEEDS WORK **********
-	-Figure out what this function does and where it is used.
-
-	-When you comment it out, and test the system, the equipment page (equipment.php) gets screwy... Might be a good place to start.
-*/
-// function fill_category_list($connect)
-// {
-// 	$query = "
-// 	SELECT * FROM category 
-// 	WHERE category_status = 'active' 
-// 	ORDER BY category_name ASC
-// 	";
-// 	$statement = $connect->prepare($query);
-// 	$statement->execute();
-// 	$result = $statement->fetchAll();
-// 	$output = '';
-// 	foreach($result as $row)
-// 	{
-// 		$output .= '<option value="'.$row["category_id"].'">'.$row["category_name"].'</option>';
-// 	}
-// 	return $output;
-// }
 /*
 	Returns the total number of pieces of equipment available (active) at the moment
 */

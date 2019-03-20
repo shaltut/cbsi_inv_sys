@@ -72,7 +72,7 @@ include('header.php');
 	
 				<!-- 
 					NEEDS WORK
-					**** Admins should see ****
+					**** Admins should see **** DONE!
 					This function should show a table that lists the following:
 					- Employee#
 					- Employee name (first and last)
@@ -86,9 +86,6 @@ include('header.php');
 					- site_id
 					- 
 				-->
-<!-- 
-			Displays the "User List" table 
-		-->
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">

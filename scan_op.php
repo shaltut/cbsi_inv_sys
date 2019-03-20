@@ -19,6 +19,17 @@ if(!isset($_SESSION['type']))
 include('header.php');
 
 ?>
+<style>
+            .center{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                padding-left: 0;
+                min-width:300px;
+                width:50%;
+            }
+
+        </style>
 <!-- Alerts the user to changes they have made, or errors -->
 <span id='alert_action'></span>
 
@@ -27,7 +38,7 @@ include('header.php');
 
 	<!-- <input type="button" class="btn btn-primary btn-lg btn-block" name="check-out" id="check_out_btn" value="Check-Out"/> -->
 
-    <button type="button" name="check" id="chkout_button" class="btn btn-primary btn-lg btn-block">Check-Out</button>
+    <button type="button" name="check" id="chkout_button" class="btn btn-primary btn-lg btn-block">Check-Out Equipment</button>
 </form>
     <!-- 
         Modal that asks the user to enter the unique id for the piece of equipment they wish to check out.
@@ -44,8 +55,9 @@ include('header.php');
 
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Enter ID Number on Equipment</label>
-                            <input type="text" name="equip_id" id="equip_id" />
+                            <label class="center">
+                            Equipment ID</label>
+                            <input type="text" name="equip_id" id="equip_id" class="center"/>
                         </div>
                     </div>
 
@@ -65,10 +77,32 @@ include('header.php');
         </div>
     </div>
     <br/>
-<form method="post" id="check_in_btn_form" >
-	<input type="button" class="btn btn-primary btn-lg btn-block" id="check_in_btn" value="Check-In"role="button"/>
-</form>
 
+<form method="post" id="check_in_btn_form" >
+    <button type="button" name="check" id="chkin_button" class="btn btn-primary btn-lg btn-block">Return Equipment</button>
+</form>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12 table-responsive">
+                                <table id="index_data" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                           <th>Date of Checkout</th>
+                                           <th>Equipment ID</th>
+                                           <th>Equipment Name</th>
+                                           <th>Site ID</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <?php 
         //foreach($data as $row){
         ?>
@@ -86,6 +120,24 @@ include('footer.php');
 
 <script>
 $(document).ready(function(){
+
+    var equipmentdataTable = $('#index_data').DataTable({
+        "processing":true,
+        "serverSide":true,
+        "order":[],
+        "ajax":{
+            url:"chk_in_fetch.php",
+            type:"POST"
+        },
+        "columnDefs":[
+            {
+
+                // "targets":[],
+                "orderable":false,
+            },
+        ],
+        "pageLength": 4
+    });
 
     $('#chkout_button').click(function(){
         $('#chkout_modal').modal('show');

@@ -2,7 +2,7 @@
 //function.php
 
 /*
-	Returns the total number of pieces of equipment available (active) at the moment
+	Returns the number of pieces of equipment that are currently checked out
 */
 function count_check_out_total($connect){
 	$query = "
@@ -14,6 +14,9 @@ function count_check_out_total($connect){
 	return $statement->rowCount();
 }
 
+/*
+	returns the number of pieces of equipment that are currently checked out by a given user
+*/
 function count_check_out_user($connect, $user_id){
 	$query = "
 	SELECT * 
@@ -25,6 +28,9 @@ function count_check_out_user($connect, $user_id){
 	return $statement->rowCount();
 }
 
+/*
+	Returns a string that tells the system, and the user, if the given piece of equipment is currently available.
+*/
 function check_equip_id_exists($connect, $equip_id){
 	$query = "
 	SELECT equip_id, equip_status
@@ -55,6 +61,7 @@ function check_equip_id_exists($connect, $equip_id){
 	}
 	return $data;
 }
+
 /* 
 	This function returns a user_name from the user_details table given any valid user_id from the user_details table.
 */
@@ -72,6 +79,9 @@ function get_user_name($connect, $user_id)
 	}
 }
 
+/*
+	Checks if a given piece of equipment requires maintenance
+*/
 function check_is_maintenance_required($connect, $equip_id){
 	$query = "
 	SELECT is_maintenance_required FROM equipment WHERE equip_id = '".$equip_id."'
@@ -117,8 +127,6 @@ function fill_product_list($connect)
 
 /* 
 	This function returns the equip_name, quantity, price, and tax from the equipment table.
-
-	c
 */
 function fetch_product_details($equip_id, $connect)
 {
@@ -144,38 +152,38 @@ function fetch_product_details($equip_id, $connect)
 
 	It returns the number of items in inventory (adds up the "quantity" value for each equipment available)
 */
-function available_product_quantity($connect, $equip_id)
-{
-	$product_data = fetch_product_details($equip_id, $connect);
-	$query = "
-	SELECT 	inventory_order_product.quantity 
-	FROM inventory_order_product INNER JOIN inventory_order ON inventory_order.inventory_order_id = inventory_order_product.inventory_order_id
-	WHERE inventory_order_product.equip_id = '".$equip_id."' AND
-	inventory_order.inventory_order_status = 'active'
-	";
+// function available_product_quantity($connect, $equip_id)
+// {
+// 	$product_data = fetch_product_details($equip_id, $connect);
+// 	$query = "
+// 	SELECT 	inventory_order_product.quantity 
+// 	FROM inventory_order_product INNER JOIN inventory_order ON inventory_order.inventory_order_id = inventory_order_product.inventory_order_id
+// 	WHERE inventory_order_product.equip_id = '".$equip_id."' AND
+// 	inventory_order.inventory_order_status = 'active'
+// 	";
 
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
-	$total = 0;
+// 	$statement = $connect->prepare($query);
+// 	$statement->execute();
+// 	$result = $statement->fetchAll();
+// 	$total = 0;
 
-	foreach($result as $row)
-	{
-		$total = $total + $row['maintain_every'];
-	}
-	$available_quantity = intval($product_data['maintain_every']) - intval($total);
-	if($available_quantity == 0)
-	{
-		$update_query = "
-		UPDATE equipment SET 
-		equip_status = 'inactive' 
-		WHERE equip_id = '".$equip_id."'
-		";
-		$statement = $connect->prepare($update_query);
-		$statement->execute();
-	}
-	return $available_quantity;
-}
+// 	foreach($result as $row)
+// 	{
+// 		$total = $total + $row['maintain_every'];
+// 	}
+// 	$available_quantity = intval($product_data['maintain_every']) - intval($total);
+// 	if($available_quantity == 0)
+// 	{
+// 		$update_query = "
+// 		UPDATE equipment SET 
+// 		equip_status = 'inactive' 
+// 		WHERE equip_id = '".$equip_id."'
+// 		";
+// 		$statement = $connect->prepare($update_query);
+// 		$statement->execute();
+// 	}
+// 	return $available_quantity;
+// }
 
 /*
 	Returns the total number of pieces of equipment available (active) at the moment

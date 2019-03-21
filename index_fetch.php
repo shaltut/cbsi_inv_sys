@@ -59,7 +59,11 @@ foreach($result as $row)
 //	This function returns the total number of all rows returned by $query
 function get_total_all_records($connect)
 {
-	$statement = $connect->prepare('SELECT * FROM equipment');
+	$statement = $connect->prepare('
+		SELECT * FROM equipment 
+		INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
+		INNER JOIN equipment_checkout on equipment_checkout.empl_id = user_details.user_id
+		');
 	$statement->execute();
 	return $statement->rowCount();
 }

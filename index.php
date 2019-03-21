@@ -86,21 +86,24 @@ include('header.php');
 					- site_id
 					- 
 				-->
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-	                <div class="panel-heading">
-	                   	<div class="row">
-	                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-	                           	<h3 class="panel-title">Checkouts Today</h3>
-	                        </div>
+	<!-- <div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+	            <div class="panel-heading">
+	              	<div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+	                        <h3 class="panel-title">Checkouts Today</h3>
 	                    </div>
-	                    <div class="clear:both"></div>
 	                </div>
-	                <div class="panel-body">
-	                   	<div class="row"><div class="col-sm-12 table-responsive">
-	                   		<table id="index_data" class="table table-bordered table-striped">
-	                   			<thead>
+	                <div class="clear:both">
+                        
+                    </div>
+	            </div>
+	            <div class="panel-body">
+	                <div class="row">
+                        <div class="col-sm-12 table-responsive">
+	                   	    <table id="index_data" class="table table-bordered table-striped">
+	                   		  <thead>
 									<tr>
 										<th>Employee ID</th>
 										<th>Name</th>
@@ -115,13 +118,20 @@ include('header.php');
 	           	</div>
 	       	</div>
 	    </div>
-    </div>
-
+    </div> -->
+<div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Total Order Value User wise</strong></div>
+                <div class="panel-body" align="center">
+                    <?php echo get_user_wise_checkouts($connect); ?>
+                </div>
+            </div>
+        </div>
     <?php
 	include("footer.php");
 	?>
 
-<script>
+<!-- <script>
 $(document).ready(function(){
     var equipmentdataTable = $('#index_data').DataTable({
         "processing":true,
@@ -140,4 +150,4 @@ $(document).ready(function(){
     });
 
 });
-</script>
+</script> -->

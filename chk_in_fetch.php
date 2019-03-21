@@ -15,8 +15,6 @@ INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
 WHERE equipment_checkout.empl_id = "'.$_SESSION['user_id'].'" 
 ';
 
-// $query .= 'WHERE equipment_checkout.empl_id = "'.$_SESSION['user_id'].'" ';
-
 if(isset($_POST["search"]["value"]))
 {
 	$query .= 'AND (equipment_checkout.chk_date_time LIKE "%'.$_POST["search"]["value"].'%" ';
@@ -48,7 +46,6 @@ foreach($result as $row)
 {
 
 	$sub_array = array();
-	// if($row['empl_id'] == $_SESSION['user_id'])
 
 		/*
 			Test Values
@@ -72,7 +69,6 @@ foreach($result as $row)
 		$sub_array[] = $row['site_id'];
 	
 		$data[] = $sub_array;
-	// }
 }
 
 //	This function returns the total number of all rows returned by $query

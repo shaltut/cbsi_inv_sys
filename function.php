@@ -428,6 +428,72 @@ function get_user_wise_total_order($connect)
 	return $output;
 }
 
+function get_user_wise_checkouts($connect){
+	$query = '
+	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time
+	FROM user_details
+	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
+	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
+	WHERE user_details.user_id = "'.$_SESSION['user_id'].'"
+	';
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	$output = '
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped">
+			<tr>
+				<th style="width:110px;">Employee ID</th>
+				<th>Name</th>
+				<th>Equipment ID</th>
+				<th>Equipment</th>
+				<th>Date of Checkout</th>
+			</tr>
+	';
+	foreach($result as $row)
+	{
+		$output .= '
+		<tr>
+			<td> '.$row["user_id"].'</td>
+			<td> '.$row["user_name"].'</td>
+			<td> '.$row["equip_id"].'</td>
+			<td> '.$row["equip_name"].'</td>
+			<td> '.$row["chk_date_time"].'</td>
+		</tr>
+		';
+	}
+	$output .= '
+	</table>
+	</div>
+	';
+	return $output;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ?>

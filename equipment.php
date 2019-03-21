@@ -194,7 +194,7 @@ $(document).ready(function(){
                 "orderable":false,
             },
         ],
-        "pageLength": 8
+        "pageLength": 10
     });
 
     $('#add_button').click(function(){
@@ -313,3 +313,19 @@ $(document).ready(function(){
             document.getElementById("equip_stat_btn").value = "Show Equipment Stats";
     }
 </script>
+
+DECLARE
+lv_name_txt VARCHAR2(25);
+BEGIN
+
+
+DECLARE
+lv_name_txt VARCHAR2(25);
+BEGIN
+DBMS_OUTPUT.PUT_LINE('hi '+lv_name_txt);
+END;
+/
+
+
+
+

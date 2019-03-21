@@ -34,12 +34,11 @@ include('header.php');
 <span id='alert_action'></span>
 
 <br/>
-<form method="post" id="check_out_btn_form">
 
-	<!-- <input type="button" class="btn btn-primary btn-lg btn-block" name="check-out" id="check_out_btn" value="Check-Out"/> -->
+<!-- <input type="button" class="btn btn-primary btn-lg btn-block" name="check-out" id="check_out_btn" value="Check-Out"/> -->
 
-    <button type="button" name="check" id="chkout_button" class="btn btn-primary btn-lg btn-block">Check-Out Equipment</button>
-</form>
+<button type="button" name="check" id="chkout_button" class="btn btn-primary btn-lg btn-block">Check-Out Equipment</button>
+
     <!-- 
         Modal that asks the user to enter the unique id for the piece of equipment they wish to check out.
     -->
@@ -78,50 +77,36 @@ include('header.php');
     </div>
     <br/>
 
-<form method="post" id="check_in_btn_form" >
-    <button type="button" name="check" id="chkin_button" class="btn btn-primary btn-lg btn-block">Return Equipment</button>
-</form>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel">
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-sm-12 table-responsive">
-                                <table id="index_data" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                           <th>Date of Checkout</th>
-                                           <th>Equipment ID</th>
-                                           <th>Equipment Name</th>
-                                           <th>Site ID</th>
-                                        </tr>
-                                    </thead>
-                                </table>
-                            </div>
+<button type="button" name="check" id="chkin_button" class="btn btn-primary btn-lg btn-block">Return Equipment</button>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12 table-responsive">
+                            <table id="index_data" class="table table-bordered table-striped">
+                                <thead><tr>
+                                        <th>Date of Checkout</th>
+                                        <th>Equipment ID</th>
+                                        <th>Equipment Name</th>
+                                        <th>Site ID</th>
+                                </tr></thead>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <?php 
-        //foreach($data as $row){
-        ?>
+    </div>
 
-        <!--Print equipment checked out by $_SESSION['user_id'] (current user) here with a button that sends the individual piece of equipment's unique id to the check_out.php page along with the user's user_id-->
-
-        <?php 
-        //}
-        ?>
-</form>
 <?php
 include('footer.php');
 ?>
 
-
 <script>
 $(document).ready(function(){
-
-    var equipmentdataTable = $('#index_data').DataTable({
+    var tbl = $('#index_data').DataTable({
         "processing":true,
         "serverSide":true,
         "order":[],
@@ -132,11 +117,11 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-                // "targets":[],
+
                 "orderable":false,
             },
         ],
-        "pageLength": 4
+        "pageLength": 10
     });
 
     $('#chkout_button').click(function(){
@@ -161,13 +146,17 @@ $(document).ready(function(){
                 $('#chkout_modal').modal('hide');
                 $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
                 $('#action').attr('disabled', false);
-                
-                /*This line of code will be used to update the table below the buttons showing items checked out by the user (it should show that the item they just checked out was added to that list)*/
-
-                // equipmentdataTable.ajax.reload();
+                // tbl.ajax.reload();
             }
         })
     });
 
 });
 </script>
+
+
+
+
+
+
+

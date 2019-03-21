@@ -8,17 +8,21 @@ include('function.php');
 $query = '';
 
 $output = array();
-$query .= "
+$uid = $_SESSION['user_id'];
+$query .= '
 	SELECT * FROM equipment_checkout 
-	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
-";
+INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
+WHERE equipment_checkout.empl_id = "'.$_SESSION['user_id'].'" 
+';
+
+// $query .= 'WHERE equipment_checkout.empl_id = "'.$_SESSION['user_id'].'" ';
 
 if(isset($_POST["search"]["value"]))
 {
-	$query .= 'WHERE equipment_checkout.chk_date_time LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'AND (equipment_checkout.chk_date_time LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR equipment.equip_id LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR equipment.equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR equipment_checkout.site_id LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR equipment_checkout.site_id LIKE "%'.$_POST["search"]["value"].'%" )';
 }
 
 if(isset($_POST['order']))
@@ -41,22 +45,44 @@ $data = array();
 $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
-{	
-	if($row['empl_id'] == $_SESSION['user_id']){
-		$sub_array = array();
+{
+
+	$sub_array = array();
+	// if($row['empl_id'] == $_SESSION['user_id'])
+
+		/*
+			Test Values
+		*/
+		// $sub_array[] = $_POST['start'];
+		// $sub_array[] = $_POST['length'];
+		// $sub_array[] = $_SESSION['user_id'];
+		// $sub_array[] = intval($_POST["draw"]);
+		// $sub_array[] = $filtered_rows;
+		// $sub_array[] = get_total_all_records($connect);
+		// $sub_array[] = $row['chk_id'];
+		// $sub_array[] = $row['empl_id'];
+
+
+		/*
+			Actual Values
+		*/
 		$sub_array[] = $row['chk_date_time'];
 		$sub_array[] = $row['equip_id'];
 		$sub_array[] = $row['equip_name'];
 		$sub_array[] = $row['site_id'];
+	
 		$data[] = $sub_array;
-	}
+	// }
 }
 
 //	This function returns the total number of all rows returned by $query
 function get_total_all_records($connect)
 {
-	$statement = $connect->prepare('SELECT * FROM equipment_checkout 
-	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id');
+	$statement = $connect->prepare('
+		SELECT * FROM equipment_checkout 
+		INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
+		WHERE equipment_checkout.empl_id = "'.$_SESSION['user_id'].'" 
+	');
 	$statement->execute();
 	return $statement->rowCount();
 }

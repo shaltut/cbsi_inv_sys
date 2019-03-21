@@ -133,12 +133,10 @@ $(document).ready(function(){
         },
         "columnDefs":[
             {
-
-                // "targets":[],
                 "orderable":false,
             },
         ],
-        "pageLength": 5
+        "pageLength": 10
     });
 
 });

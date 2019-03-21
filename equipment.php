@@ -24,9 +24,8 @@ include('header.php');
 
 <div class="row collapse" id='stats'>
             <!-- 
-                ********** NEEDS WORK **********
-                    - The function needs to show total number of pieces of equipment
-                -->
+                function shows total count of all pieces of equipment
+            -->
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading"><strong>Total Equipment</strong></div>
@@ -313,18 +312,6 @@ $(document).ready(function(){
             document.getElementById("equip_stat_btn").value = "Show Equipment Stats";
     }
 </script>
-
-DECLARE
-lv_name_txt VARCHAR2(25);
-BEGIN
-
-
-DECLARE
-lv_name_txt VARCHAR2(25);
-BEGIN
-DBMS_OUTPUT.PUT_LINE('hi '+lv_name_txt);
-END;
-/
 
 
 

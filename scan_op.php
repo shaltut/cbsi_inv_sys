@@ -1,6 +1,7 @@
 <?php
 //brand.php
 
+
 //Includes connection to the database
 include('database_connection.php');
 
@@ -91,6 +92,7 @@ include('header.php');
                                         <th>Equipment ID</th>
                                         <th>Equipment Name</th>
                                         <th>Site ID</th>
+                                        <th>Action</th>
                                 </tr></thead>
                             </table>
                         </div>
@@ -117,11 +119,24 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-
+                "targets":[4],
                 "orderable":false,
             },
         ],
         "pageLength": 10
+    });
+
+    $(document).on('click', '.view', function(){
+        var chk_id = $(this).attr("id");
+        var btn_action = 'chk_in_btn';
+        $.ajax({
+            url:"chk_in_action.php",
+            method:"POST",
+            data:{chk_id:chk_id, btn_action:btn_action},
+            success:function(data){
+                $('#chk_in_btn').html(data);
+            }
+        })
     });
 
     $('#chkout_button').click(function(){
@@ -150,6 +165,7 @@ $(document).ready(function(){
             }
         })
     });
+
 
 });
 </script>

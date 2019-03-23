@@ -16,24 +16,14 @@ if(isset($_POST['btn_action']))
     if($_POST['btn_action'] == 'chk_in_btn' )
     {
         //Makes sure the equip_id that the user is trying to check-out exists in the database and is available... If true, should return "yes", if false, should return error string.
-        $equip_id_chk = check_equip_id_exists($connect, $_POST['equip_id']);
+        // $equip_id_chk = check_equip_id_exists($connect, $_POST['equip_id']);
         
-        
-
             $query = "
             DELETE FROM equipment_checkout
-            WHERE chk_id = '"$_POST['chk_id']"'
+            WHERE chk_id = '".$_POST["chk_id"]."'
             ";  
             $statement = $connect->prepare($query);
-            $statement->execute(
-                array(
-                    ':equip_id'         =>  $_POST["equip_id"],
-                    ':empl_id'          =>  $_SESSION["user_id"],
-                    ':site_id'          =>  $_POST["site_id"],
-                    ':chk_date_time'    =>  date("Y-m-d h:i a")
-                    
-                )
-            );
+            $statement->execute();
 
             //Verifying that the database was updated successfully
             $result = $statement->fetchAll();

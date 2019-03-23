@@ -66,7 +66,7 @@ include('header.php');
 	</div>
 
 	<hr />
-	
+	<!--
 		Shows the currently checked out items, and the users who checked them out
 
 		THIS IS A STATIC TABLE. IT JUST DISPLAYS ITEMS CHECKED OUT ON THE CURREN#T SYSDATE. 

@@ -134,7 +134,8 @@ $(document).ready(function(){
             method:"POST",
             data:{chk_id:chk_id, btn_action:btn_action},
             success:function(data){
-                $('#chk_in_btn').html(data);
+                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+                tbl.ajax.reload();
             }
         })
     });

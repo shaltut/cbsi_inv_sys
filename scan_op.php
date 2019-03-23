@@ -87,14 +87,25 @@ include('header.php');
     <br/>
 
 <button type="button" name="check" id="chkin_button" class="btn btn-primary btn-lg btn-block">Return Equipment</button>
+<!-- -->
+<div id="ret_modal" class="modal fade" >
+    <div class="modal-dialog">
+        <div class="modal-content">
 
-    <div class="row">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
+            </div>
+
+            <div class="modal-body">
+<!-- -->
+    <div class="row" id="chk_in_tbl">
         <div class="col-lg-12">
             <div class="panel">
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-12 table-responsive">
-                            <table id="index_data" class="table table-bordered table-striped">
+                            <table id="index_data" class="table  table-striped">
                                 <thead><tr>
                                         <th>Date of Checkout</th>
                                         <th>Equipment ID</th>
@@ -110,12 +121,37 @@ include('header.php');
         </div>
     </div>
 
+<!-- -->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+         </div>
+    </div>
+</div>
+<!-- -->
 <?php
 include('footer.php');
 ?>
 
 <script>
 $(document).ready(function(){
+    
+    /*
+        Action sequence for the 'Check-out' button
+    */
+    $('#chkin_button').click(function(){
+        $('#ret_modal').modal('show');
+        $('.modal-title').html("<i class='fa fa-plus'></i> Return Equipment");
+        $('#action').val("Check Out");
+        $('#btn_action').val("Check Out");
+    });
+
+    /*
+        Displays and populates the table under the "Return Equipment" button
+    */
     var tbl = $('#index_data').DataTable({
         "processing":true,
         "serverSide":true,
@@ -134,20 +170,34 @@ $(document).ready(function(){
         "pageLength": 10
     });
 
+    /*
+        Database action, and action sequence for the 'check-in' buttons located inside the table below the 'Return Equipment' button.
+    */
     $(document).on('click', '.view', function(){
         var chk_id = $(this).attr("id");
         var btn_action = 'chk_in_btn';
-        $.ajax({
-            url:"chk_in_action.php",
-            method:"POST",
-            data:{chk_id:chk_id, btn_action:btn_action},
-            success:function(data){
-                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
-                tbl.ajax.reload();
-            }
-        })
+        if(confirm("Are you sure you want to return this item?"))
+        {
+            $.ajax({
+                url:"chk_in_action.php",
+                method:"POST",
+                data:{chk_id:chk_id, btn_action:btn_action},
+                success:function(data){
+                    $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+                    $('#ret_modal').modal('hide');
+                    tbl.ajax.reload();
+                }
+            })
+        }
+        else
+        {
+            return false;
+        }
     });
 
+    /*
+        Action sequence for the 'Check-out' button
+    */
     $('#chkout_button').click(function(){
         $('#chkout_modal').modal('show');
         $('#equip_id_form')[0].reset();
@@ -156,6 +206,9 @@ $(document).ready(function(){
         $('#btn_action').val("Check Out");
     });
     
+    /*
+        Database action, and jQuery action sequence query for 'check-out' modal's form entry
+    */
     $(document).on('submit', '#equip_id_form', function(event){
         event.preventDefault();
         $('#action').attr('disabled', 'disabled');
@@ -170,7 +223,7 @@ $(document).ready(function(){
                 $('#chkout_modal').modal('hide');
                 $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
                 $('#action').attr('disabled', false);
-                // tbl.ajax.reload();
+                tbl.ajax.reload();
             }
         })
     });

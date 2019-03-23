@@ -14,10 +14,7 @@ if(isset($_POST['btn_action']))
 {
     //  **********  Add button pressed  ********** 
     if($_POST['btn_action'] == 'chk_in_btn' )
-    {
-        //Makes sure the equip_id that the user is trying to check-out exists in the database and is available... If true, should return "yes", if false, should return error string.
-        // $equip_id_chk = check_equip_id_exists($connect, $_POST['equip_id']);
-        
+    {   
             $query = "
             DELETE FROM equipment_checkout
             WHERE chk_id = '".$_POST["chk_id"]."'
@@ -29,9 +26,9 @@ if(isset($_POST['btn_action']))
             $result = $statement->fetchAll();
             if(isset($result))
             {
-                echo 'Successfully checked in an item!';
+                echo 'Successfully Returned an Item!';
             }else{
-                echo 'Something went wrong!';
+                echo 'Something Went Wrong!';
             }
     }
 }

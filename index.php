@@ -1,13 +1,6 @@
 <?php
 //index. (cbsi_inv_sys)
 
-/*
-TODO:
-    - make it so equipment can only be checked out once at a time
-    - make return equipment button work and allow users to return pieces of equipment
-    - Make the table go away until you click the return equipment button
-*/
-
 include('database_connection.php');
 include('function.php');
 

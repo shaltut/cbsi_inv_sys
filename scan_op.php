@@ -1,6 +1,14 @@
 <?php
-//brand.php
+//scan_op.php
 
+
+/*
+TODO:
+    - Make it so equipment can only be checked out by 1 employee at a time at a time
+    - Make it so equipment can't be checked out multiple times by the same employee
+    - Make the return equipment button work and allow users to return pieces of equipment. (DONE)
+    - Make the table on scan_op.php go away until you click the return equipment button
+*/
 
 //Includes connection to the database
 include('database_connection.php');

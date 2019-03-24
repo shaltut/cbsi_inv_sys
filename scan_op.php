@@ -8,6 +8,7 @@ TODO:
     - Make it so equipment can't be checked out multiple times by the same employee
     - Make the return equipment button work and allow users to return pieces of equipment. (DONE)
     - Make the table on scan_op.php go away until you click the return equipment button
+    - Give a 'site' option when checking out
 */
 
 //Includes connection to the database
@@ -106,13 +107,15 @@ include('header.php');
                     <div class="row">
                         <div class="col-sm-12 table-responsive">
                             <table id="index_data" class="table  table-striped">
-                                <thead><tr>
+                                <thead>
+                                	<tr>
                                         <th>Date of Checkout</th>
                                         <th>Equipment ID</th>
                                         <th>Equipment Name</th>
                                         <th>Site ID</th>
                                         <th>Action</th>
-                                </tr></thead>
+                                	</tr>
+                            	</thead>
                             </table>
                         </div>
                     </div>
@@ -138,7 +141,41 @@ include('footer.php');
 
 <script>
 $(document).ready(function(){
+
+    /*
+        Action sequence for the 'Check-out' button
+    */
+    $('#chkout_button').click(function(){
+        $('#chkout_modal').modal('show');
+        $('#equip_id_form')[0].reset();
+        $('.modal-title').html("<i class='fa fa-plus'></i> Check Out");
+        $('#action').val("Check Out");
+        $('#btn_action').val("Check Out");
+    });
     
+    /*
+        Database action, and jQuery action sequence query for 'check-out' modal's form entry
+    */
+    $(document).on('submit', '#equip_id_form', function(event){
+        event.preventDefault();
+        $('#action').attr('disabled', 'disabled');
+        var form_data = $(this).serialize();
+        // var equip_id = $(this).attr("id");
+        $.ajax({
+            url:"chk_out_action.php",
+            method:"POST",
+            data:form_data,
+            success:function(data)
+            {
+                $('#equip_id_form')[0].reset();
+                $('#chkout_modal').modal('hide');
+                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+                $('#action').attr('disabled', false);
+                tbl.ajax.reload();
+            }
+        })
+    });
+
     /*
         Action sequence for the 'Check-out' button
     */
@@ -173,15 +210,16 @@ $(document).ready(function(){
     /*
         Database action, and action sequence for the 'check-in' buttons located inside the table below the 'Return Equipment' button.
     */
-    $(document).on('click', '.view', function(){
+    $(document).on('click', '.chk_in_row', function(){
         var chk_id = $(this).attr("id");
+        var status = $(this).data("status");
         var btn_action = 'chk_in_btn';
         if(confirm("Are you sure you want to return this item?"))
         {
             $.ajax({
                 url:"chk_in_action.php",
                 method:"POST",
-                data:{chk_id:chk_id, btn_action:btn_action},
+                data:{chk_id:chk_id, status:status, btn_action:btn_action},
                 success:function(data){
                     $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
                     $('#ret_modal').modal('hide');
@@ -194,41 +232,6 @@ $(document).ready(function(){
             return false;
         }
     });
-
-    /*
-        Action sequence for the 'Check-out' button
-    */
-    $('#chkout_button').click(function(){
-        $('#chkout_modal').modal('show');
-        $('#equip_id_form')[0].reset();
-        $('.modal-title').html("<i class='fa fa-plus'></i> Check Out");
-        $('#action').val("Check Out");
-        $('#btn_action').val("Check Out");
-    });
-    
-    /*
-        Database action, and jQuery action sequence query for 'check-out' modal's form entry
-    */
-    $(document).on('submit', '#equip_id_form', function(event){
-        event.preventDefault();
-        $('#action').attr('disabled', 'disabled');
-        var form_data = $(this).serialize();
-        $.ajax({
-            url:"chk_out_action.php",
-            method:"POST",
-            data:form_data,
-            success:function(data)
-            {
-                $('#equip_id_form')[0].reset();
-                $('#chkout_modal').modal('hide');
-                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
-                $('#action').attr('disabled', false);
-                tbl.ajax.reload();
-            }
-        })
-    });
-
-
 });
 </script>
 

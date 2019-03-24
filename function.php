@@ -15,6 +15,41 @@ function count_check_out_total($connect){
 }
 
 /*
+	Returns TRUE if the given piece of equipment is available, and FALSE if it is unavailable
+*/
+function check_equip_availability($connect, $equip_id){
+	$query = "
+	SELECT *
+	FROM equipment
+	WHERE equip_id = '".$equip_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	$data = 'The ID you have entered does not exist!';
+	foreach($result as $row)
+	{
+
+		if($row['equip_id'] == $equip_id){
+
+			if($row['is_available'] == 'available'){
+
+				$data = true;
+
+			}else{
+
+				$data = false;
+
+			}
+
+		}
+
+	}
+	return $data;
+}
+
+
+/*
 	returns the number of pieces of equipment that are currently checked out by a given user
 */
 function count_check_out_user($connect, $user_id){
@@ -25,6 +60,7 @@ function count_check_out_user($connect, $user_id){
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
+
 	return $statement->rowCount();
 }
 

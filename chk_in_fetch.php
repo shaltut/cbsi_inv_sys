@@ -44,31 +44,16 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
-
+	$equipid = $row['equip_id'];
 	$sub_array = array();
-
-		/*
-			Test Values
-		*/
-		// $sub_array[] = $_POST['start'];
-		// $sub_array[] = $_POST['length'];
-		// $sub_array[] = $_SESSION['user_id'];
-		// $sub_array[] = intval($_POST["draw"]);
-		// $sub_array[] = $filtered_rows;
-		// $sub_array[] = get_total_all_records($connect);
-		// $sub_array[] = $row['chk_id'];
-		// $sub_array[] = $row['empl_id'];
-
-
-		/*
-			Actual Values
-		*/
 		$sub_array[] = $row['chk_date_time'];
-		$sub_array[] = $row['equip_id'];
+		$sub_array[] = $equipid;
 		$sub_array[] = $row['equip_name'];
 		$sub_array[] = $row['site_id'];
 		$sub_array[] = '
-		<button type="button" name="view" id="'.$row["chk_id"].'" class="btn btn-primary btn-xs view">Check-In</button>
+		<button type="button" name="chk_in_row" id="'.$row["chk_id"].'" class="btn btn-primary btn-xs chk_in_row" data-status="'.$row["equip_id"].'">
+				Check-In
+		</button>
 		';
 		$data[] = $sub_array;
 }

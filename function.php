@@ -65,6 +65,67 @@ function count_check_out_user($connect, $user_id){
 }
 
 /*
+Should return total items currently needing maintenance, need to discuss how this will return items that currently need maintenance and not items in general that will require maintenace (In 6 months for example)
+
+function count_maintenance_needed($connect){
+	$query = "
+	SELECT is_maintenance_required 
+	FROM equipment
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count=0
+	foreach($result as $row)
+	{
+		if($bool = 'yes'){
+			return 'checked';
+			$count++
+		}
+	}
+	return $count
+}
+*/
+
+/*
+Check site_status if active or inactive and returns the count
+
+function count_active_site($connect){
+	$query = "
+	SELECT site_status 
+	FROM sites
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count=0
+	foreach($result as $row)
+	{
+		if($site_status = 'active'){
+			$count++
+		}
+	}
+	return $count
+}
+
+function count_inactive_site($connect){
+	$query = "
+	SELECT site_status 
+	FROM sites
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count=0
+	foreach($result as $row)
+	{
+		if($site_status = 'inactive'){
+			$count++
+		}
+	}
+	return $count
+}
+*/
+
+
+/*
 	Returns a string that tells the system, and the user, if the given piece of equipment is currently available.
 */
 function check_equip_id_exists($connect, $equip_id){

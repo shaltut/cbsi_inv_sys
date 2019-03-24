@@ -61,6 +61,10 @@ Tristan: (When you get back from vacay lol)
 	-Make them display useful data by creating functions and using them in those pages.
 	**I think the user.php page is fine right now, but the other two need work.
 
+	Been messing with them and functions and I'm reluctant to make any major styling changes to it as I feel then it wouldn't fit with the rest of the page. We can discuss on that though. 
+	Added a column to stats and changed the names so that we can monitor sites in DC or NOVA, began function and continued implementation dependent on how we can monitor that and if it would be useful, besides that just active and inactive are the columns. 
+	For equipment changed the function for currently checked out and began working on a needs maintenance function, need to discuss how it will actually work to provide useful info not just what is marked as will need maintenance at some point.
+
 
 ============================================================================
 Hosting AWS VS GoDaddy

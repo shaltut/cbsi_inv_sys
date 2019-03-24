@@ -24,11 +24,12 @@ include('header.php');
 
         <div class="row collapse" id='stats'>
             <!-- 
-                ********** NEEDS WORK **********
+                ********** NEEDS WORK ********** Needs function to show which sites are active and which are closed
                 -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>????</strong></div>
+                    <div class="panel-heading"><strong>
+                    Active Sites</strong></div>
                     <div class="panel-body" align="center">
                         <h1><?php echo count_equipment_total($connect); ?></h1>
                     </div>
@@ -36,11 +37,11 @@ include('header.php');
             </div>
 
             <!-- 
-                ********** NEEDS WORK **********
+                ********** NEEDS WORK ********** Function for inactive sites
                 -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>????</strong></div>
+                    <div class="panel-heading"><strong>Inactive Sites</strong></div>
                     <div class="panel-body" align="center">
                         <h1><?php echo count_master_active($connect); ?></h1>
                     </div>
@@ -48,17 +49,33 @@ include('header.php');
             </div>
 
             <!-- 
-                ********** NEEDS WORK **********
+                ********** NEEDS WORK ********** Function for sites that are tagged DC (if we chose to input tags for DC or NOVA)
                 -->
-            <div class="col-md-4">
+
+            <div class="col-md-3">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>????</strong></div>
+                    <div class="panel-heading"><strong>
+                    DC</strong></div>
+                    <div class="panel-body" align="center">
+                        <h1><?php echo count_master_active($connect); ?></h1>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 
+                ********** NEEDS WORK ********** Function for sites that are tagged NOVA (if we chose to input tags for DC or NOVA)
+                -->
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Northern VA</strong></div>
                     <div class="panel-body" align="center">
                         <h1><?php echo count_total_user_active($connect); ?></h1>
                     </div>
                 </div>
             </div>
         </div>
+
+
 
         <div class="row">
             <div class="col-lg-12">

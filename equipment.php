@@ -36,25 +36,24 @@ include('header.php');
             </div>
 
             <!-- 
-                ********** NEEDS WORK **********
-                - The function needs to show the total number of pieces of equipment checked out at the moment
+                - Shows total checked out items
                 -->
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading"><strong>Total Checked-out</strong></div>
                     <div class="panel-body" align="center">
-                        <h1><?php echo count_master_active($connect); ?></h1>
+                        <h1><?php echo count_check_out_total($connect); ?></h1>
                     </div>
                 </div>
             </div>
 
             <!-- 
                 ********** NEEDS WORK **********
-                    - The function needs to show ????? (some useful statistic)
+                    - The function needs to show items that need maintenance, currently working on the function in functions.php however, need to find a way for items that currently need maintenance to be  returned and not those that need in general (6months from now)
                 -->
             <div class="col-md-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Total ??????</strong></div>
+                    <div class="panel-heading"><strong>Needs Maintenance</strong></div>
                     <div class="panel-body" align="center">
                         <h1><?php echo count_total_user_active($connect); ?></h1>
                     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2019 at 11:26 PM
+-- Generation Time: Mar 19, 2019 at 05:26 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -38,17 +38,15 @@ CREATE TABLE `equipment` (
   `equip_cost` double(10,2) DEFAULT NULL,
   `equip_entered_by` int(6) NOT NULL,
   `equip_status` enum('active','inactive') NOT NULL,
-  `date_added` date NOT NULL,
-  `is_available` enum('available','unavailable') NOT NULL DEFAULT 'available'
+  `date_added` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `equipment`
 --
 
-INSERT INTO `equipment` (`equip_id`, `equip_name`, `equip_desc`, `is_maintenance_required`, `maintain_every`, `last_maintained`, `equip_cost`, `equip_entered_by`, `equip_status`, `date_added`, `is_available`) VALUES
-(202000, 'Power Washer', 'Blue Power Washer', 'no', 1, '1970-01-01', 234.00, 11, 'active', '2019-03-23', 'available'),
-(202001, 'Jack Hammer', 'Red Jack Hammer', 'yes', 3, '2018-12-06', 321.00, 11, 'active', '2019-03-23', 'available');
+INSERT INTO `equipment` (`equip_id`, `equip_name`, `equip_desc`, `is_maintenance_required`, `maintain_every`, `last_maintained`, `equip_cost`, `equip_entered_by`, `equip_status`, `date_added`) VALUES
+(24, 'Power Washer', 'Coleman Power Washer (2-Stroke)', 'no', 182, '0000-00-00', 890.98, 11, 'active', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -84,7 +82,7 @@ CREATE TABLE `sites` (
 --
 
 INSERT INTO `sites` (`site_id`, `site_name`, `site_address`, `job_desc`, `start_date`, `site_status`) VALUES
-(303000, 'Hilton Hotels', '123 Fleetwood St. Vienna, VA', 'Renovation of the hotel\'s lobby and bathrooms.', '2018-07-12', 'active');
+(303000, 'Hilton Hotel', '123 Fleetwood St.', 'Renovation of the hotel\'s lobby and bathrooms.', '2019-02-26', 'active');
 
 -- --------------------------------------------------------
 
@@ -147,13 +145,13 @@ ALTER TABLE `user_details`
 -- AUTO_INCREMENT for table `equipment`
 --
 ALTER TABLE `equipment`
-  MODIFY `equip_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202003;
+  MODIFY `equip_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202000;
 
 --
 -- AUTO_INCREMENT for table `equipment_checkout`
 --
 ALTER TABLE `equipment_checkout`
-  MODIFY `chk_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=404107;
+  MODIFY `chk_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=404008;
 
 --
 -- AUTO_INCREMENT for table `sites`

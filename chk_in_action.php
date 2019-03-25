@@ -33,7 +33,7 @@ if(isset($_POST['btn_action']))
             $result = $statement->fetchAll();
             if(isset($result))
             {
-                echo 'Successfully Returned an Item!'.$_POST['chk_id'].', '.$_POST['status'];
+                echo 'Successfully Returned an Item!';
             }else{
                 echo 'Something Went Wrong!';
             }

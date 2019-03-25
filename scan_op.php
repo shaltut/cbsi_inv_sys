@@ -4,11 +4,9 @@
 
 /*
 TODO:
-    - Make it so equipment can only be checked out by 1 employee at a time at a time
-    - Make it so equipment can't be checked out multiple times by the same employee
-    - Make the return equipment button work and allow users to return pieces of equipment. (DONE)
-    - Make the table on scan_op.php go away until you click the return equipment button
+    - TIME PERMITTING: Make it so that when an item is checked back in, it isnt deleted form the equipment_checkout table so that it still shows up as a "past checkout" in the table on the homepage
     - Give a 'site' option when checking out
+    
 */
 
 //Includes connection to the database
@@ -30,16 +28,16 @@ include('header.php');
 
 ?>
 <style>
-            .center{
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                padding-left: 0;
-                min-width:300px;
-                width:50%;
-            }
+    .center{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        min-width:300px;
+        width:50%;
+     }
+</style>
 
-        </style>
 <!-- Alerts the user to changes they have made, or errors -->
 <span id='alert_action'></span>
 

@@ -1,20 +1,29 @@
 <?php
 //function.php
 
-function return_site_array($connect, $user_id)
+function sites_options($connect)
 {
 	$query = "
-		SELECT user_name 
-		FROM user_details 
-		WHERE user_id = '".$user_id."'
+		SELECT site_id, site_name
+		FROM sites
 	";
+	$output = '<option>Select a Site:</option>';
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	$result = $statement->fetchAll();
-	foreach($result as $row)
-	{
-		return $row['user_name'];
-	}
+	if(!isset($result)){
+		$output = '
+			<option> No Sites Listed!</option>
+		';
+	}else{
+		foreach($result as $row)
+		{
+			$output .= '
+			<option value="'.$row['site_id'].'">'.$row['site_name'].'</option>
+			';
+		}
+	}  
+	return $output;
 }
 
 /*

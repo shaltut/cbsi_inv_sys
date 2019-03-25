@@ -69,19 +69,17 @@ include('header.php');
                             <input type="text" name="equip_id" id="equip_id" class="center"/>
 
                             <!-- Location ID field -->
-                            <label class="center">
-                            Location</label>
-                            <input type="text" name="site_id" id="site_id" class="center">
-
                             <!-- <label class="center">
                             Location</label>
+                            <input type="text" name="site_id" id="site_id" class="center"> -->
+
+                            <label class="center">
+                            Location</label>
                             <select class="form-control center" name="site_id" id="site_id">
-                                <
-                                <option value="1">6 Months</option>
-                                <option value="2">1 Year</option>
-                                <option value="3">1 Year 6 Months</option>
-                                <option value="4">2 years</option>
-                            </select> -->
+                                <?php
+                                    echo sites_options($connect);
+                                ?>
+                            </select>
 
                         </div>
                     </div>

@@ -79,7 +79,7 @@ if(isset($_POST["login"]))
 	<body>
 		<br />
 		<div class="container">
-				<div class="logo">
+				<div class="center">
 					<a href="#">
 						<img src="images/logo.png" alt="CBSI logo"width="300" height="171">
 					</a>

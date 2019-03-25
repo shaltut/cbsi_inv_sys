@@ -80,7 +80,7 @@ Mariam:
 	- Find where the Search (and input for search), Show Entries (and the input for show entries), and the 'showing' txt is added to tables by default. Then figure out how to make that extra stuff optional.
 
 Tristan:
-	- Create a function that returns an associative array consisting of Site_ID's and their associated Site_names to be used in the checkout pages.
+	- fix the error in the check-out function (sites_options($connect)) where if you dont enter a 'site' option, it still lets you check out that piece of equipment, and returns 0 as the site_id.
 
 
 ========================================================================

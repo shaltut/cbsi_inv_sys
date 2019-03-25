@@ -1,6 +1,22 @@
 <?php
 //function.php
 
+function return_site_array($connect, $user_id)
+{
+	$query = "
+		SELECT user_name 
+		FROM user_details 
+		WHERE user_id = '".$user_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	foreach($result as $row)
+	{
+		return $row['user_name'];
+	}
+}
+
 /*
 	Returns the number of pieces of equipment that are currently checked out
 */

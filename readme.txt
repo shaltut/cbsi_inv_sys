@@ -1,4 +1,4 @@
-TODO:
+fTODO:
 
 ************ WEEK 1 ************
 Garrett:
@@ -65,8 +65,25 @@ Tristan: (When you get back from vacay lol)
 	Added a column to stats and changed the names so that we can monitor sites in DC or NOVA, began function and continued implementation dependent on how we can monitor that and if it would be useful, besides that just active and inactive are the columns. 
 	For equipment changed the function for currently checked out and began working on a needs maintenance function, need to discuss how it will actually work to provide useful info not just what is marked as will need maintenance at some point.
 
+************ WEEK 4 ************
 
-============================================================================
+Garrett:
+
+Diana: 
+	- Try to fix github
+
+
+Phillip:
+	- Make the site mobile friendly by adding responsive CSS (so that it looks the same on desktop as it does now, but all fits properly on mobile devices and is easier to use).
+
+Mariam:
+	- Find where the Search (and input for search), Show Entries (and the input for show entries), and the 'showing' txt is added to tables by default. Then figure out how to make that extra stuff optional.
+
+Tristan:
+	- Create a function that returns an associative array consisting of Site_ID's and their associated Site_names to be used in the checkout pages.
+
+
+========================================================================
 Hosting AWS VS GoDaddy
 
  AWS Option: All running in Amazon Virtual Private Cloud 

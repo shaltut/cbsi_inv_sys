@@ -27,8 +27,48 @@ include('header.php');
             
 
          <center><h2 class="decorated"><span>Site Stats</span></h2></center>
-
         
+
+
+            <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+                                <h3 class="panel-title">Site Stats</h3>
+                            </div>
+                        
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row"><div class="col-sm-12 table-responsive">
+                            <table id="equipment_data" class="table table-bordered table-striped">
+                                <thead><tr>
+                                    <th>ID</th>
+                                    <th>Equipment Name</th>
+                                </tr></thead>
+                                <thead><tr>
+                                    <th>Active Sites</th>
+                                    <th><?php echo count_equipment_total($connect); ?></th>
+                                </tr></thead>
+                                <thead><tr>
+                                    <th>ID</th>
+                                    <th>Equipment Name</th>
+                                </tr></thead>
+                            </table>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
             <!--
                 ********** NEEDS WORK ********** Needs function to show which sites are active and which are closed
               -->  

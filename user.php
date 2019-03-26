@@ -20,56 +20,14 @@ include('header.php');
 ?>
 		<span id="alert_action"></span>
 
-		<form method="get" action="stats.php"><button type="submit">Stats</button></form>
+		<!-- Button navigates to stats page-->
+    <form method="get" action="stats.php">
+    	<button type="submit">Stats</button>
+	</form>
 
-         <br>
+    <br>
 
-         <!-- Commented out stats cards in favor of stats page
-
-
-		<input class="btn" id="user_stat_btn" value="Show User Stats" type="button" data-toggle="collapse" data-target="#stats" aria-expanded="false" aria-controls="collapseExample" onclick="buttontext()"/>
-
-        <div class="row collapse" id="stats">
-
-					Shows total number of Employees (Non-Master)
-				
-			<div class="col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading"><strong>Employees</strong></div>
-					<div class="panel-body" align="center">
-						<h1><?php echo count_employee_total($connect); ?></h1>
-					</div>
-				</div>
-			</div>
-
-			 
-					Shows the total number of Admins (Master)
-				
-			<div class="col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading"><strong>Admin Accounts</strong></div>
-					<div class="panel-body" align="center">
-						<h1><?php echo count_master_active($connect); ?></h1>
-					</div>
-				</div>
-			</div>
-
-			
-					Shows total number of users (Master & Non-Master)
-				
-			<div class="col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading"><strong>Total Users</strong></div>
-					<div class="panel-body" align="center">
-						<h1><?php echo count_total_user_active($connect); ?></h1>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		 
-			Displays the "User List" table 
-		-->
+     
 
 		<div class="row">
 			<div class="col-lg-12">

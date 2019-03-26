@@ -82,6 +82,19 @@ Mariam:
 Tristan:
 	- fix the error in the check-out function (sites_options($connect)) where if you dont enter a 'site' option, it still lets you check out that piece of equipment, and returns 0 as the site_id.
 
+OTHER STUFF TO DO:
+	--- Add a back button to the 'stats' page that takes the user back to whatever page they were just on before clicking the 'stats' btn
+	--- figure out how to notify admin when a piece of equipment needs to be maintained (would like to notify them via email but we can do that later if we have time). Theres 3 ways I can think of to do it...:
+		1:
+			if( Integer(MONTHS_BETWEEN(last_maintained, SYSDATE)) > maintain_every ){
+				$output .= 'Maintenance required on item #'.$_POST['equip_id'].' ('.$_POST['equip_name'].'!\n'
+			}
+			**	This would be the easiest way that I can think of since you would only have to do 1 conversion (DATE->Integer), BUT it requires a PHP function that returns the number of months between 2 DATE datatypes... which i havent checked if that even exists... 
+			**	You might also be able to return the months between 2 dates in MySql. I know it's possible in Oracle databases using MONTHS_BETWEEN() function, but im not sure about MySQL.
+		**** last_maintained is stored as a SQL/PHP date: (date(Y-m-d) = '2019-12-06')
+		**** maintain_every is stored in the DB as an INT representing the number of months: (6 = '6 Months')
+		**** SYSDATE is used to get the current date from the DB: ($query = 'SELECT SYSDATE FROM dual') 
+				[dual is a dummy table used when you want to grab database objects that arent stored in regular tables (like SYSTDATE or USER_TABLES etc.)]
 
 ========================================================================
 Hosting AWS VS GoDaddy

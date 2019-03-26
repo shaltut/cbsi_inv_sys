@@ -1,7 +1,8 @@
 <?php
 
-//user equipment_fetch.php is the functionality that grabs the data from the database
-//
+//search.php
+//Used to fetch data from the database for search.php
+
 
 include('database_connection.php');
 include('function.php');

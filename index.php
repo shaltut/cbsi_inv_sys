@@ -58,6 +58,11 @@ include('header.php');
 		</div>
 	</div>
 
+	<?php
+	if($_SESSION['type'] == 'master')	
+	{
+	?>
+
 	<hr />
 	<!--
 		Shows the currently checked out items, and the users who checked them out
@@ -72,7 +77,9 @@ include('header.php');
             </div>
         </div>
     </div>
-
+	<?php
+	}
+	?>
     <?php
 	include("footer.php");
 	?>

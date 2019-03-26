@@ -481,8 +481,7 @@ function get_checkouts_today($connect){
 	FROM user_details
 	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
 	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
-	WHERE user_details.user_id = "'.$_SESSION['user_id'].'" AND
-	equipment_checkout.chk_date_time = "'.date('Y-m-d').'"
+	WHERE equipment_checkout.chk_date_time = "'.date('Y-m-d').'"
 	';
 	$statement = $connect->prepare($query);
 	$statement->execute();

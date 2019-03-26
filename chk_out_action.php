@@ -46,7 +46,7 @@ if(isset($_POST['btn_action']))
 	            $result = $statement->fetchAll();
 	            if(isset($result))
 	            {
-	                echo 'Successfully checked out an item!'.$_POST['site_id'];
+	                echo 'Successfully checked out an item!';
 	            }else{
 	                echo 'Something went wrong!';
 	            }

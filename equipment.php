@@ -18,7 +18,7 @@ include('header.php');
 
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
-        <span id='alert_action'></span>
+<span id='alert_action'></span>
 
     <input class="btn" id="equip_stat_btn" value="Show Equipment Stats" type="button" data-toggle="collapse" data-target="#stats" aria-expanded="false" aria-controls="collapseExample" onclick="buttontext()"/>
 

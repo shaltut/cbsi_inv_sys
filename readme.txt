@@ -67,7 +67,7 @@ Tristan: (When you get back from vacay lol)
 
 ************ WEEK 4 ************
 
-Garrett:
+Garrett: Display tables (DataTables) as 'cards' for mobile compatibility.
 
 Diana: 
 	- Try to fix github

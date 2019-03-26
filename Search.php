@@ -21,45 +21,7 @@ include('header.php');
         <span id='alert_action'></span>
 
 <div class="row">
-            <!-- 
-                ********** NEEDS WORK **********
-                    - The function needs to show total number of pieces of equipment
-                -->
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Total Equipment</strong></div>
-                    <div class="panel-body" align="center">
-                        <h1><?php echo count_equipment_total($connect); ?></h1>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 
-                ********** NEEDS WORK **********
-                - The function needs to show the total number of pieces of equipment checked out at the moment
-                -->
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Total Checked-out</strong></div>
-                    <div class="panel-body" align="center">
-                        <h1><?php echo count_master_active($connect); ?></h1>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 
-                ********** NEEDS WORK **********
-                    - The function needs to show ????? (some useful statistic)
-                -->
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><strong>Total ??????</strong></div>
-                    <div class="panel-body" align="center">
-                        <h1><?php echo count_total_user_active($connect); ?></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
+           
 
         <div class="row">
             <div class="col-lg-12">

@@ -21,6 +21,20 @@ include('header.php');
 
     <span id='alert_action'></span>
 
+	<?php
+	if(check_equip_maintenance($connect) > 0){
+	?>
+	    <!-- Alerts user if equipment needs to be maintained-->
+		<div class="alert alert-danger" role="alert" style="padding-top: 10px;">
+	  		Maintenance Required!<?php echo check_equip_maintenance($connect); ?>
+	  		<a class="btn btn-warning" href="#" role="button" style="float: right; height:30px; padding-top:3px;">
+	  			View
+	  		</a>
+		</div>
+	<?php
+	}
+	?>
+
     <!-- Button navigates to stats page-->
     <form method="get" action="stats.php">
     	<button type="submit">Stats</button>
@@ -96,10 +110,10 @@ include('header.php');
                                 <div class="form-group">
                                     <label for="maintain_every">Maintain Every</label>
                                     <select class="form-control" name="maintain_every" id="maintain_every">
-                                        <option value="1">6 Months</option>
-                                        <option value="2">1 Year</option>
-                                        <option value="3">1 Year 6 Months</option>
-                                        <option value="4">2 years</option>
+                                        <option value="6">6 Months</option>
+                                        <option value="12">1 Year</option>
+                                        <option value="18">1 Year 6 Months</option>
+                                        <option value="24">2 years</option>
                                     </select>
                                 </div>
                                 <div class="form-group">  

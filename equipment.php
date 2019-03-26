@@ -18,14 +18,20 @@ include('header.php');
 
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
-        <span id='alert_action'></span>
+    <span id='alert_action'></span>
+
+    <form method="get" action="stats.php"><button type="submit">Stats</button></form>
+
+    <br>
+
+    <!-- Commented out stats cards in favor of stats page
 
     <input class="btn" id="equip_stat_btn" value="Show Equipment Stats" type="button" data-toggle="collapse" data-target="#stats" aria-expanded="false" aria-controls="collapseExample" onclick="buttontext()"/>
 
 <div class="row collapse" id='stats'>
-            <!-- 
+           
                 function shows total count of all pieces of equipment
-            -->
+            
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading"><strong>Total Equipment</strong></div>
@@ -35,9 +41,9 @@ include('header.php');
                 </div>
             </div>
 
-            <!-- 
+           
                 - Shows total checked out items
-                -->
+               
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading"><strong>Total Checked-out</strong></div>
@@ -47,10 +53,10 @@ include('header.php');
                 </div>
             </div>
 
-            <!-- 
+             
                 ********** NEEDS WORK **********
                     - The function needs to show items that need maintenance, currently working on the function in functions.php however, need to find a way for items that currently need maintenance to be  returned and not those that need in general (6months from now)
-                -->
+                
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading"><strong>Needs Maintenance</strong></div>
@@ -60,6 +66,8 @@ include('header.php');
                 </div>
             </div>
         </div>
+        
+        -->
 
         <div class="row">
             <div class="col-lg-12">

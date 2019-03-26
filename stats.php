@@ -48,16 +48,12 @@ include('header.php');
                         <div class="row"><div class="col-sm-12 table-responsive">
                             <table id="equipment_data" class="table table-bordered table-striped">
                                 <thead><tr>
-                                    <th>ID</th>
-                                    <th>Equipment Name</th>
-                                </tr></thead>
-                                <thead><tr>
                                     <th>Active Sites</th>
-                                    <th><?php echo count_equipment_total($connect); ?></th>
+                                    <th><?php echo count_master_active($connect); ?></th>
                                 </tr></thead>
                                 <thead><tr>
-                                    <th>ID</th>
-                                    <th>Equipment Name</th>
+                                    <th>Inactive Sites</th>
+                                    <th><?php echo count_equipment_total($connect); ?></th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -66,6 +62,82 @@ include('header.php');
             </div>
         </div>
 
+
+<center><h2 class="decorated"><span>Employee Stats</span></h2></center>
+
+<div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+                                <h3 class="panel-title">Employee Stats</h3>
+                            </div>
+                        
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row"><div class="col-sm-12 table-responsive">
+                            <table id="equipment_data" class="table table-bordered table-striped">
+                                <thead><tr>
+                                    <th>Employees</th>
+                                    <th><?php echo count_employee_total($connect); ?></th>
+                                </tr></thead>
+                                <thead><tr>
+                                    <th>Admin Accounts</th>
+                                    <th><?php echo count_master_active($connect); ?></th>
+                                </tr></thead>
+                                <thead><tr>
+                                    <th>Total Users</th>
+                                    <th><?php echo count_total_user_active($connect); ?></th>
+                                </tr></thead>
+                            </table>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<center><h2 class="decorated"><span>Equipment Stats</span></h2></center>
+
+<div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+                                <h3 class="panel-title">Equipment Stats</h3>
+                            </div>
+                        
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row"><div class="col-sm-12 table-responsive">
+                            <table id="equipment_data" class="table table-bordered table-striped">
+                                <thead><tr>
+                                    <th>Total Equipment</th>
+                                    <th><?php echo count_equipment_total($connect); ?></th>
+                                </tr></thead>
+                                <thead><tr>
+                                    <th>Total Checked Out</th>
+                                    <th><?php echo count_check_out_total($connect); ?></th>
+                                </tr></thead>
+                                <thead><tr>
+                                    <th>Needs Maintenance</th>
+                                    <th>In progress</th>
+                                </tr></thead>
+                            </table>
+                        </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 

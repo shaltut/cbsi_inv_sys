@@ -20,12 +20,23 @@ include('header.php');
 <!-- Alerts the user to changes they have made, or errors -->
         <span id='alert_action'></span>
 
+        <!-- Directs to stats page -->
+
+         <form method="get" action="stats.php"><button type="submit">Stats</button></form>
+
+         <br>
+
+         <!-- Commented out stats cards in favor of stats page
+
             <input class="btn" id="site_stat_btn" value="Show Site Stats" type="button" data-toggle="collapse" data-target="#stats" aria-expanded="false" aria-controls="collapseExample" onclick="buttontext()"/>
 
+       
+
+        
         <div class="row collapse" id='stats'>
-            <!-- 
+            
                 ********** NEEDS WORK ********** Needs function to show which sites are active and which are closed
-                -->
+                
             <div class="col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading"><strong>
@@ -36,9 +47,9 @@ include('header.php');
                 </div>
             </div>
 
-            <!-- 
+            
                 ********** NEEDS WORK ********** Function for inactive sites
-                -->
+                
             <div class="col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading"><strong>Inactive Sites</strong></div>
@@ -48,9 +59,9 @@ include('header.php');
                 </div>
             </div>
 
-            <!-- 
+             
                 ********** NEEDS WORK ********** Function for sites that are tagged DC (if we chose to input tags for DC or NOVA)
-                -->
+               
 
             <div class="col-md-3">
                 <div class="panel panel-default">
@@ -62,9 +73,9 @@ include('header.php');
                 </div>
             </div>
 
-            <!-- 
+           
                 ********** NEEDS WORK ********** Function for sites that are tagged NOVA (if we chose to input tags for DC or NOVA)
-                -->
+                
             <div class="col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading"><strong>Northern VA</strong></div>
@@ -75,7 +86,7 @@ include('header.php');
             </div>
         </div>
 
-
+        -->
 
         <div class="row">
             <div class="col-lg-12">

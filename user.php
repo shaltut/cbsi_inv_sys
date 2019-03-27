@@ -38,7 +38,7 @@ include('header.php');
                             	<h3 class="panel-title">Employee List</h3>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align="right">
-                            	<button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-success btn-xs">Add User</button>
+                            	<button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-success btn-xs">New User</button>
                         	</div>
                         </div>
                        

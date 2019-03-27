@@ -37,7 +37,7 @@ include('header.php');
                             </div>
                         
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
-                                <button type="button" name="add" id="add_button" class="btn btn-success btn-xs">Add</button>
+                                <button type="button" name="add" id="add_button" class="btn btn-success btn-xs">New Site</button>
                             </div>
                         </div>
                     </div>

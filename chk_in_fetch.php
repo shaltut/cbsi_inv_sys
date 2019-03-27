@@ -44,18 +44,20 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
-	$equipid = $row['equip_id'];
-	$sub_array = array();
-		$sub_array[] = $row['chk_date_time'];
-		$sub_array[] = $equipid;
-		$sub_array[] = $row['equip_name'];
-		$sub_array[] = $row['site_id'];
-		$sub_array[] = '
-		<button type="button" name="chk_in_row" id="'.$row["chk_id"].'" class="btn btn-primary btn-xs chk_in_row" data-status="'.$row["equip_id"].'">
-				Check-In
-		</button>
-		';
-		$data[] = $sub_array;
+	if($row['returned'] == 'false'){
+		$equipid = $row['equip_id'];
+		$sub_array = array();
+			$sub_array[] = $row['chk_date_time'];
+			$sub_array[] = $equipid;
+			$sub_array[] = $row['equip_name'];
+			$sub_array[] = $row['site_id'];
+			$sub_array[] = '
+			<button type="button" name="chk_in_row" id="'.$row["chk_id"].'" class="btn btn-primary btn-xs chk_in_row" data-status="'.$row["equip_id"].'">
+					Check-In
+			</button>
+			';
+			$data[] = $sub_array;
+	}
 }
 
 //	This function returns the total number of all rows returned by $query

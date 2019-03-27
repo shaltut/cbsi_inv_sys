@@ -19,7 +19,8 @@ if(isset($_POST['btn_action']))
     if($_POST['btn_action'] == 'chk_in_btn' )
     {   
             $query = "
-            DELETE FROM equipment_checkout
+            UPDATE equipment_checkout
+            SET returned = 'true'
             WHERE chk_id = '".$_POST['chk_id']."';
 
             UPDATE equipment

@@ -20,8 +20,9 @@ include('header.php');
 <!-- Alerts the user to changes they have made, or errors -->
 
     <span id='alert_action'></span>
-
-    <br>
+	<button onclick="goBack()" style="float:right;">Go Back</button>
+	
+    <br/><br/>
 
         <div class="row">
             <div class="col-lg-12">
@@ -259,8 +260,9 @@ $(document).ready(function(){
             document.getElementById("maintain_vis").style.visibility = "hidden";
         }
     }
+    function goBack() {
+  		window.history.back();
+	}
 </script>
-
-
 
 

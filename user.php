@@ -86,8 +86,7 @@ include('header.php');
 							<select class ="form-control" name="user_job" id="user_job">
 								<option value="Project Manager">Project Manager</option>
                                 <option value="Foreman">Foreman</option>
-                                <option value="Skilled">Skilled</option>
-                                <option value="Laborer">Laborer</option>
+                                <option value="Skilled Laborer">Skilled Laborer</option>
                                 <option value="Supervisor">Supervisor</option>
                                 <option value="Other">Other</option>
                             </select>

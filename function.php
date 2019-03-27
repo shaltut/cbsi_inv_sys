@@ -3,29 +3,40 @@
 
 //Checks if maintenance is required on any of the pieces of equipment in the equipment table
 function check_equip_maintenance($connect){
+	$sysdate = date('Y-m-d');
 	$query = "
-		SELECT equip_id, TIMESTAMPDIFF(MONTH, last_maintained, SYSDATE) as m_between, maintain_every
-		FROM equipment
+	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' FROM equipment WHERE is_maintenance_required = 'yes' AND equip_status = 'active'
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
-	// $count = 0;
-	$test = 'm_between(s)';
+	$count = 0;
+	$test = ' ';
 	$result = $statement->fetchAll();
 	if(isset($result)){
-		$test .= ', in 1st if';
 		foreach($result as $row)
 		{
-			$test .= 'in loop';
-			if($row['m_between'] >= $row['maintain_every']){
-				// $count = $count + 1;
-				$test .= 'in inner if';
-				$test .= ', '.$row['m_between']; 
+			$today = $row['tday'];
+			$last_m = $row['lm'];
+			$m_every = $row['me'];
+
+			$ts1 = strtotime($last_m);
+			$ts2 = strtotime($today);
+
+			$year1 = date('Y', $ts1);
+			$year2 = date('Y', $ts2);
+
+			$month1 = date('m', $ts1);
+			$month2 = date('m', $ts2);
+
+			$diff = (($year2 - $year1) * 12) + ($month2 - $month1);
+
+			if($diff > $row['me'] ){
+				$count = $count + 1;
 			}
 		}
 	}
 	// return $count;
-	return $test;
+	return $count;
 }
 
 //Returns every site_id and site_name in the form of a option HTML tag to be used in HTML forms.

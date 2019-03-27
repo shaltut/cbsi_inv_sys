@@ -22,12 +22,13 @@ include('header.php');
     <span id='alert_action'></span>
 
 	<?php
-	if(check_equip_maintenance($connect) > 0){
+	$count_equip_require_maintainance = check_equip_maintenance($connect);
+	if($count_equip_require_maintainance > 0){
 	?>
 	    <!-- Alerts user if equipment needs to be maintained-->
 		<div class="alert alert-danger" role="alert" style="padding-top: 10px;">
-	  		Maintenance Required!<?php echo check_equip_maintenance($connect); ?>
-	  		<a class="btn btn-warning" href="#" role="button" style="float: right; height:30px; padding-top:3px;">
+	  		<?php echo $count_equip_require_maintainance.' piece(s) of equipment require maintenance!'; ?>
+	  		<a class="btn btn-warning" href="maintenance.php" role="button" style="float: right; height:30px; padding-top:3px;">
 	  			View
 	  		</a>
 		</div>

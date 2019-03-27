@@ -19,7 +19,10 @@ include('header.php');
 
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
-        <span id='alert_action'></span>
+<span id='alert_action'></span>
+
+<button onclick="goBack()" style="float:right;">Go Back</button>
+
 
 
          <!-- Commented out stats cards in favor of stats page --> 
@@ -262,4 +265,7 @@ $(document).ready(function(){
         else
             document.getElementById("site_stat_btn").value = "Show Site Stats";
     }
+    function goBack() {
+  		window.history.back();
+	}
 </script>

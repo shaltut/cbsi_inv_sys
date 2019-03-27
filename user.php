@@ -21,11 +21,11 @@ include('header.php');
 		<span id="alert_action"></span>
 
 		<!-- Button navigates to stats page-->
-    <form method="get" action="stats.php">
-    	<button type="submit">Stats</button>
-	</form>
+	    <form method="get" action="stats.php">
+	    	<button type="submit" style="float:right;">Stats</button>
+		</form>
 
-    <br>
+    <br/><br/>
 
      
 

@@ -20,19 +20,12 @@ include('header.php');
 <!-- Alerts the user to changes they have made, or errors -->
         <span id='alert_action'></span>
 
-        <!-- Button navigates to stats page-->
-    <form method="get" action="stats.php">
-        <button type="submit">Stats</button>
-    </form>
+	<!-- Button navigates to stats page-->
+	<form method="get" action="stats.php">
+		<button type="submit" style="float:right;">Stats</button>
+	</form>
 
-    <br>
-         <!-- Commented out stats cards in favor of stats page
-        -->
-
-       
-
-        
-       
+    <br/><br/>
 
         <div class="row">
             <div class="col-lg-12">
@@ -55,8 +48,6 @@ include('header.php');
                                     <th>ID</th>
                                     <th>Site Name</th>
                                     <th>Address</th>
-                                    <!-- <th>Job Description</th> -->
-                                    <!-- <th>Start Date</th> -->
                                     <th>Status</th>
                                     <th>Details</th>
                                     <th>Update</th>

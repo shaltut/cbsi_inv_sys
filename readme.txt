@@ -2,10 +2,11 @@ TODO:
 
 ************ WEEK 4 ************
 
-Garrett: Display tables (DataTables) as 'cards' for mobile compatibility.
+Garrett: 
+	- Display tables (DataTables) as 'cards' (or something similar) for mobile compatibility.
 
 Diana: 
-	- Try to fix github
+	- make the 'view' button on the maintain.php page for each item requireing maintenance display only info about maintenace, not the user who entered it in, etc.
 
 
 Phillip:
@@ -18,7 +19,11 @@ Tristan:
 	- fix the error in the check-out function (sites_options($connect)) where if you dont enter a 'site' option, it still lets you check out that piece of equipment, and returns 0 as the site_id.
 
 OTHER STUFF TO DO:
-	--- Add a back button to the 'stats' page that takes the user back to whatever page they were just on before clicking the 'stats' btn
+	--- Make equipment that requires maimtenance red and equipment that will need maintenance in the next 2 weeks yellow.
+	--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.
+	--- Fix the maintenance function:
+		- Create another column in the equipment table that stores the date that the piece of equipment will need to be maintained (by using the current function, creating a new date in the future and storing it in that column upon creation (or modification))
+
 
 ========================================================================
 Hosting AWS VS GoDaddy

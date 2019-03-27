@@ -18,15 +18,12 @@ include('header.php');
 
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
-        <span id='alert_action'></span>
+<span id='alert_action'></span>
 
-	<!-- Button navigates to stats page-->
-	<form method="get" action="stats.php">
-		<button type="submit" style="float:right;">Stats</button>
-	</form>
+<!-- Button navigates to stats page-->
+<a class="btn btn-link" href="stats.php#sites" role="button" style="float:right;">View Stats</a>
 
     <br/><br/>
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">

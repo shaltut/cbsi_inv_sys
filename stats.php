@@ -23,7 +23,7 @@ include('header.php');
 
 <button onclick="goBack()" style="float:right;">Go Back</button>
 
-<center><h2 class="decorated"><span>Site Stats</span></h2></center>
+<center><h2 class="decorated"><span id="sites">Site Stats</span></h2></center>
 <div class="row">
 	<div class="col-lg-12">
 	    <div class="panel panel-default">
@@ -53,7 +53,7 @@ include('header.php');
 </div>
 
 
-<center><h2 class="decorated"><span>Employee Stats</span></h2></center>
+<center><h2 class="decorated"><span id="employees">Employee Stats</span></h2></center>
 <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -90,7 +90,7 @@ include('header.php');
             </div>
         </div>
 
-<center><h2 class="decorated"><span>Equipment Stats</span></h2></center>
+<center><h2 class="decorated"><span id="equipment">Equipment Stats</span></h2></center>
 <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">

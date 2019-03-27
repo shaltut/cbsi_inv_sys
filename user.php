@@ -20,10 +20,8 @@ include('header.php');
 ?>
 		<span id="alert_action"></span>
 
-		<!-- Button navigates to stats page-->
-	    <form method="get" action="stats.php">
-	    	<button type="submit" style="float:right;">Stats</button>
-		</form>
+<!-- Button navigates to stats page-->
+<a class="btn btn-link" href="stats.php#employees" role="button" style="float:right;">View Stats</a>
 
     <br/><br/>
 

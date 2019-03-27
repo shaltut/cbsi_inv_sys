@@ -83,7 +83,14 @@ include('header.php');
 						</div>
 						<div class="form-group">
 							<label>Enter Employee Job Title</label>
-							<input type="text" name="user_job" id="user_job" class="form-control" required />
+							<select class ="form-control" name="user_job" id="user_job">
+								<option value="Project Manager">Project Manager</option>
+                                <option value="Foreman">Foreman</option>
+                                <option value="Skilled">Skilled</option>
+                                <option value="Laborer">Laborer</option>
+                                <option value="Supervisor">Supervisor</option>
+                                <option value="Other">Other</option>
+                            </select>
 						</div>
 						<div class="form-group">
 							<label>Enter Employee Email</label>

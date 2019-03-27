@@ -1,5 +1,5 @@
 <?php
-//equipment.php
+//maintain.php
 
 include('database_connection.php');
 include('function.php');
@@ -21,26 +21,6 @@ include('header.php');
 
     <span id='alert_action'></span>
 
-	<?php
-	$count_equip_require_maintainance = check_equip_maintenance($connect);
-	if($count_equip_require_maintainance > 0){
-	?>
-	    <!-- Alerts user if equipment needs to be maintained-->
-		<div class="alert alert-danger" role="alert" style="padding-top: 10px;">
-	  		<?php echo $count_equip_require_maintainance.' piece(s) of equipment require maintenance!'; ?>
-	  		<a class="btn btn-warning" href="maintain.php" role="button" style="float: right; height:30px; padding-top:3px;">
-	  			View
-	  		</a>
-		</div>
-	<?php
-	}
-	?>
-
-    <!-- Button navigates to stats page-->
-    <form method="get" action="stats.php">
-    	<button type="submit">Stats</button>
-	</form>
-
     <br>
 
         <div class="row">
@@ -49,27 +29,22 @@ include('header.php');
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                                <h3 class="panel-title">Equipment List</h3>
-                            </div>
-                        
-                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
-                                <button type="button" name="add" id="add_button" class="btn btn-success btn-xs">Add</button>
+                                <h3 class="panel-title">Equipment Requiring Maintenance</h3>
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
                             <table id="equipment_data" class="table table-bordered table-striped">
-                                <thead><tr>
-                                    <th>ID</th>
-                                    <th>Equipment Name</th>
-                                    <th>Description</th>
-                                    <th>Enter By</th>
-                                    <th>Status</th>
-                                    <th>Details</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
-                                </tr></thead>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Equipment Name</th>
+                                        <th>Required Since</th>
+                                        <th>Details</th>
+                                        <th>Update</th>
+                                    </tr>
+                                </thead>
                             </table>
                         </div></div>
                     </div>
@@ -164,13 +139,13 @@ $(document).ready(function(){
         "serverSide":true,
         "order":[],
         "ajax":{
-            url:"equipment_fetch.php",
+            url:"maintain_fetch.php",
             type:"POST"
         },
         "columnDefs":[
             {
 
-                "targets":[5, 6, 7],
+                "targets":[3, 4],
                 "orderable":false,
             },
         ],
@@ -190,7 +165,7 @@ $(document).ready(function(){
         $('#action').attr('disabled', 'disabled');
         var form_data = $(this).serialize();
         $.ajax({
-            url:"equipment_action.php",
+            url:"maintain_action.php",
             method:"POST",
             data:form_data,
             success:function(data)
@@ -208,7 +183,7 @@ $(document).ready(function(){
         var equip_id = $(this).attr("id");
         var btn_action = 'equipment_details';
         $.ajax({
-            url:"equipment_action.php",
+            url:"maintain_action.php",
             method:"POST",
             data:{equip_id:equip_id, btn_action:btn_action},
             success:function(data){
@@ -222,7 +197,7 @@ $(document).ready(function(){
         var equip_id = $(this).attr("id");
         var btn_action = 'fetch_single';
         $.ajax({
-            url:"equipment_action.php",
+            url:"maintain_action.php",
             method:"POST",
             data:{equip_id:equip_id, btn_action:btn_action},
             dataType:"json",
@@ -255,7 +230,7 @@ $(document).ready(function(){
         if(confirm("Are you sure you want to change status?"))
         {
             $.ajax({
-                url:"equipment_action.php",
+                url:"maintain_action.php",
                 method:"POST",
                 data:{equip_id:equip_id, status:status, btn_action:btn_action},
                 success:function(data){
@@ -283,14 +258,6 @@ $(document).ready(function(){
         if(document.getElementById("is_maintenance_required").checked === false){
             document.getElementById("maintain_vis").style.visibility = "hidden";
         }
-    }
-
-    //Used to toggle the 'view stats' button 
-    function buttontext() {
-        if(document.getElementById("equip_stat_btn").value === "Show Equipment Stats")
-            document.getElementById("equip_stat_btn").value = "Hide Equipment Stats";
-        else
-            document.getElementById("equip_stat_btn").value = "Show Equipment Stats";
     }
 </script>
 

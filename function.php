@@ -1,7 +1,9 @@
 <?php
 //function.php
 
-//Checks if maintenance is required on any of the pieces of equipment in the equipment table
+/*Returns the number of pieces of equipment that currently require maintenance.
+USED IN: equipment.php, stats.php
+*/
 function check_equip_maintenance($connect){
 	$sysdate = date('Y-m-d');
 	$query = "

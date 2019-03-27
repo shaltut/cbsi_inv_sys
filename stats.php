@@ -130,7 +130,7 @@ include('header.php');
                                 </tr></thead>
                                 <thead><tr>
                                     <th>Needs Maintenance</th>
-                                    <th>In progress</th>
+                                    <th><?php echo check_equip_maintenance($connect); ?></th>
                                 </tr></thead>
                             </table>
                         </div></div>

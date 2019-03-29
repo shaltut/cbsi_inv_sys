@@ -70,19 +70,31 @@ include('header.php');
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Enter Site Name</label>
-                                <input type="text" name="site_name" id="site_name" class="form-control" required />
+                                <input type="text" name="site_name" id="site_name" class="form-control" style="width:85%; display:inline;" required />
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Name" data-content="What the site is typically called, either by business name, location (city), etc." data-placement="left">
+                                    <img src="images/info5_sm.png" alt="info">
+                                </button>
                             </div>
                             <div class="form-group">
                                 <label>Enter Site Address</label>
-                                <input type="text" name="site_address" id="site_address" class="form-control" required />
+                                <input type="text" name="site_address" id="site_address" class="form-control" style="width:85%; display:inline;" required />
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Address" data-content="The site's physical address. If no address is available, list the closest address to the site's physical location" data-placement="left">
+                                    <img src="images/info5_sm.png" alt="info">
+                                </button>
                             </div>
                             <div class="form-group">
                                 <label>Enter Job Description</label>
-                                <textarea name="job_desc" id="job_desc" class="form-control" rows="5" required></textarea>
+                                <textarea name="job_desc" id="job_desc" class="form-control" rows="5" style="width:85%; display:inline;" required></textarea>
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Job Description" data-content="What work is being done at this site? What are we here to do?" data-placement="left">
+                                    <img src="images/info5_sm.png" alt="info">
+                                </button>
                             </div>
                             <div class="form-group">  
-                                    <label for="start_date">Start Date</label>
-                                    <input type="date" class="form-control" name="start_date" id="start_date"/>
+                                    <label for="start_date" style="width:100px;">Start Date</label>
+                                    <input type="date" class="form-control" name="start_date" id="start_date" style="width:85%; display:inline;"/>
+                                    <button type="button" class="btn btn-link" data-toggle="popover" title="Start Date" data-content="Select the date that work began at this site. If that date is unknown, leave this line blank." data-placement="left">
+                                    <img src="images/info5_sm.png" alt="info">
+                                </button>
                             </div>
                         </div>
 
@@ -200,6 +212,10 @@ $(document).ready(function(){
             }
         })
     });
+
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
 
     $(document).on('click', '.delete', function(){
         var site_id = $(this).attr("id");

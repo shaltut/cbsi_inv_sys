@@ -23,92 +23,108 @@ include('header.php');
 <!-- Button navigates to stats page-->
 <a class="btn btn-link" href="stats.php#employees" role="button" style="float:right;">View Stats</a>
 
-    <br/><br/>
+<br/><br/>
 
      
 
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-                    <div class="panel-heading">
-                    	<div class="row">
-                        	<div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                            	<h3 class="panel-title">Employee List</h3>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align="right">
-                            	<button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-success btn-xs">New User</button>
-                        	</div>
-                        </div>
-                       
-                        <div class="clear:both"></div>
-                   	</div>
-                   	<div class="panel-body">
-                   		<div class="row"><div class="col-sm-12 table-responsive">
-                   			<table id="user_data" class="table table-bordered table-striped">
-                   				<thead>
-									<tr>
-										<th>ID</th>
-										<th>Email</th>
-										<th>Name</th>
-										<th>Job Title</th>
-										<th>Status</th>
-										<th>Edit</th>
-										<th>Change Status</th>
-									</tr>
-								</thead>
-                   			</table>
-                   		</div>
-                   	</div>
-               	</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+            <div class="panel-heading">
+            	<div class="row">
+                	<div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+                    	<h3 class="panel-title">Employee List</h3>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align="right">
+                    	<button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-success btn-xs">New User</button>
+                	</div>
+                </div>
+               
+                <div class="clear:both"></div>
            	</div>
-        </div>
+           	<div class="panel-body">
+           		<div class="row"><div class="col-sm-12 table-responsive">
+           			<table id="user_data" class="table table-bordered table-striped">
+           				<thead>
+							<tr>
+								<th>ID</th>
+								<th>Email</th>
+								<th>Name</th>
+								<th>Job Title</th>
+								<th>Status</th>
+								<th>Edit</th>
+								<th>Change Status</th>
+							</tr>
+						</thead>
+           			</table>
+           		</div>
+           	</div>
+       	</div>
+   	</div>
+</div>
 
-        <!-- 
-			Displays the modal that appears after the "add" button is pressed
-        -->
-        <div id="userModal" class="modal fade">
-        	<div class="modal-dialog">
-        		<form method="post" id="user_form">
-        			<div class="modal-content">
-        			<div class="modal-header">
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title"><i class="fa fa-plus"></i> Add Employee</h4>
-        			</div>
-        			<div class="modal-body">
-        				<div class="form-group">
-							<label>Enter Employee Name</label>
-							<input type="text" name="user_name" id="user_name" class="form-control" required />
-						</div>
-						<div class="form-group">
-							<label>Enter Employee Job Title</label>
-							<select class ="form-control" name="user_job" id="user_job">
-								<option value="Project Manager">Project Manager</option>
-                                <option value="Foreman">Foreman</option>
-                                <option value="Skilled Laborer">Skilled Laborer</option>
-                                <option value="Supervisor">Supervisor</option>
-                                <option value="Other">Other</option>
-                            </select>
-						</div>
-						<div class="form-group">
-							<label>Enter Employee Email</label>
-							<input type="email" name="user_email" id="user_email" class="form-control" required />
-						</div>
-						<div class="form-group">
-							<label>Enter Employee Password</label>
-							<input type="password" name="user_password" id="user_password" class="form-control" required />
-						</div>
-        			</div>
-        			<div class="modal-footer">
-        				<input type="hidden" name="user_id" id="user_id" />
-        				<input type="hidden" name="btn_action" id="btn_action" />
-        				<input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
-        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        			</div>
-        		</div>
-        		</form>
+<!-- 
+	Displays the modal that appears after the "New User" or "Update" buttons are pressed
+-->
+<div id="userModal" class="modal fade">
+	<div class="modal-dialog">
+		<form method="post" id="user_form">	<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><i class="fa fa-plus"></i> Add Employee </h4>
+			</div>
+			<div class="modal-body">
 
-        	</div>
-    	</div>
+				<div class="form-group">
+					<label for="user_name">Enter Employee Name</label>
+					<input type="text" name="user_name" id="user_name" class="form-control" style="width:86%; display:inline;" required />
+					<button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter the employee's Full Name." data-placement="left">
+							<img src="images/info5_sm.png" alt="info">
+					</button>
+				</div>
+
+				<div class="form-group">
+					<label for="user_job">Enter Employee Job Title</label>
+					<select class ="form-control" name="user_job" id="user_job" style="width:86%; display:inline;">
+						<option value="Project Manager">Project Manager</option>
+                        <option value="Foreman">Foreman</option>
+                        <option value="Skilled Laborer">Skilled Laborer</option>
+                        <option value="Supervisor">Supervisor</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <button type="button" class="btn btn-link" data-toggle="popover" title="Job Title" data-content="Select the employee's job title. If you cant find a proper option, select 'other'." data-placement="left">
+							<img src="images/info5_sm.png" alt="info">
+					</button>
+				</div>
+
+				<div class="form-group">
+					<label for="user_email">Enter Employee Email</label>
+					<div class="input-group">
+						<input type="email" name="user_email" id="user_email" class="form-control" required />
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label>Enter Employee Password</label>
+					<div class="input-group">
+						<input type="password" name="user_password" id="user_password" class="form-control" required />
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<input type="hidden" name="user_id" id="user_id" />
+				<input type="hidden" name="btn_action" id="btn_action" />
+				<input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div></form>
+
+	</div>
+</div>
+
 <script>
 $(document).ready(function(){
 
@@ -178,6 +194,10 @@ $(document).ready(function(){
 			}
 		})
 	});
+
+	$(function () {
+  		$('[data-toggle="popover"]').popover()
+	})
 
 	$(document).on('click', '.disable', function(){
 		var user_id = $(this).attr("id");

@@ -206,6 +206,10 @@ $(document).ready(function(){
     var tbl = $('#index_data').DataTable({
         "processing":true,
         "serverSide":true,
+        "searching": false, 
+        "paging": true,
+        "bLengthChange": false,
+         "bInfo" : false,
         "order":[],
         "ajax":{
             url:"chk_in_fetch.php",

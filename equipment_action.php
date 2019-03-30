@@ -117,7 +117,7 @@ if(isset($_POST['btn_action']))
 		echo $output;
 	}
 
-
+	//When the 'Update' button is pressed, this function sends data to the modal to display whatever current data is saved for each option
 	if($_POST['btn_action'] == 'fetch_single')
 	{
 		$query = "
@@ -144,7 +144,7 @@ if(isset($_POST['btn_action']))
 		echo json_encode($output);
 	}
 
-	//********** EDIT BUTTON **********
+	//When the 'Edit' button inside the 'update' modal is pressed, this function changes the old data values with the newly edited ones sent from the form.
 	if($_POST['btn_action'] == 'Edit')
 	{
 		$query = "

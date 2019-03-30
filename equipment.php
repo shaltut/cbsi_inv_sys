@@ -181,6 +181,8 @@ include('header.php');
 
 <script>
 $(document).ready(function(){
+
+    //Used to control the DataTable (Table) on the page
     var equipmentdataTable = $('#equipment_data').DataTable({
         "processing":true,
         "serverSide":true,
@@ -199,14 +201,17 @@ $(document).ready(function(){
         "pageLength": 10
     });
 
+    //Used to control the "NEW EQUIPMENT" button action
     $('#add_button').click(function(){
         $('#equipmentModal').modal('show');
         $('#equipment_form')[0].reset();
+        moreOptions();
         $('.modal-title').html("<i class='fa fa-plus'></i> Add Item");
         $('#action').val("Add");
         $('#btn_action').val("Add");
     });
 
+    //Used to control the SUBMIT/ADD button action in the form
     $(document).on('submit', '#equipment_form', function(event){
         event.preventDefault();
         $('#action').attr('disabled', 'disabled');
@@ -226,6 +231,7 @@ $(document).ready(function(){
         })
     });
 
+    //Used to control the VIEW button action 
     $(document).on('click', '.view', function(){
         var equip_id = $(this).attr("id");
         var btn_action = 'equipment_details';
@@ -240,6 +246,7 @@ $(document).ready(function(){
         })
     });
 
+    //Used to control the update button action
     $(document).on('click', '.update', function(){
         var equip_id = $(this).attr("id");
         var btn_action = 'fetch_single';
@@ -256,8 +263,10 @@ $(document).ready(function(){
 
                 if(data.is_maintenance_required == 'yes'){
                     $('#is_maintenance_required').prop('checked', true);
+                    moreOptions();
                 }else{
                     $('#is_maintenance_required').prop('checked', false);
+                    moreOptions();
                 }
                 
                 $('#maintain_every').val(data.maintain_every);
@@ -270,10 +279,12 @@ $(document).ready(function(){
         })
     });
 
+    //Used to toggle off/on the INFO popovers on the forms
     $(function () {
         $('[data-toggle="popover"]').popover()
-    })
+    });
 
+    //Controls the delete button inside the dataTable
     $(document).on('click', '.delete', function(){
         var equip_id = $(this).attr("id");
         var status = $(this).data("status");
@@ -296,12 +307,22 @@ $(document).ready(function(){
         }
     });
 
+    //Controls the initial view of the extra maintenance options within the form
+    // $(document).onload( function () {
+    //     if(document.getElementById('is_maintenance_required').checked === true){
+    //         document.getElementById('maintain_vis').style.visibility = "visible";
+
+    //     }else{
+    //         document.getElementById('maintain_vis').style.visibility = "hidden";
+    //     }
+    // });
+
 });
 </script>
 
 <script>
 
-    //Used to display the extra maintenance options once checkbox is clicked on modal
+    //Used to toggle the extra maintenance options once checkbox is clicked on modal after the modal is already loaded
     function moreOptions() {
         if(document.getElementById("is_maintenance_required").checked === true){
             document.getElementById("maintain_vis").style.visibility = "visible";
@@ -309,14 +330,6 @@ $(document).ready(function(){
         if(document.getElementById("is_maintenance_required").checked === false){
             document.getElementById("maintain_vis").style.visibility = "hidden";
         }
-    }
-
-    //Used to toggle the 'view stats' button 
-    function buttontext() {
-        if(document.getElementById("equip_stat_btn").value === "Show Equipment Stats")
-            document.getElementById("equip_stat_btn").value = "Hide Equipment Stats";
-        else
-            document.getElementById("equip_stat_btn").value = "Show Equipment Stats";
     }
 </script>
 

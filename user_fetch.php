@@ -73,9 +73,14 @@ foreach($result as $row)
 	$sub_array[] = $status;
 	//Update button for each user
 	$sub_array[] = '<button type="button" name="update" id="'.$row["user_id"].'" class="btn btn-warning btn-xs update">Update</button>';
-	//Delete button for each user
-	$sub_array[] = '<button type="button" name="disable" id="'.$row["user_id"].'" class="btn btn-danger btn-xs disable" data-status="'.$row["user_status"].'">Change Status</button>';
-	//$sub_array[] = $row['user_job'];
+
+	//Button used to change user status.
+	if($row['user_status'] == 'Active'){
+		$sub_array[] = '<button type="button" name="disable" id="'.$row["user_id"].'" class="btn btn-danger btn-xs disable" data-status="'.$row["user_status"].'">Deactivate</button>';
+	}else{
+		$sub_array[] = '<button type="button" name="disable" id="'.$row["user_id"].'" class="btn btn-success btn-xs disable" data-status="'.$row["user_status"].'">Activate</button>';
+	}
+
 	$data[] = $sub_array;
 }
 

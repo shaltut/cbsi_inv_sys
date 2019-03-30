@@ -61,9 +61,14 @@ foreach($result as $row)
 	$sub_array[] = '
 		<button type="button" name="update" id="'.$row["site_id"].'" class="btn btn-warning btn-xs update">Update</button>
 		';
-	$sub_array[] = '
-		<button type="button" name="delete" id="'.$row["site_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["site_status"].'">Delete</button>
-		';
+
+	if($row['site_status'] == 'active'){
+		$sub_array[] = '
+			<button type="button" name="delete" id="'.$row["site_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["site_status"].'">Deactivate</button>';
+	}else{
+		$sub_array[] = '
+			<button type="button" name="delete" id="'.$row["site_id"].'" class="btn btn-success btn-xs delete" data-status="'.$row["site_status"].'">Activate</button>';
+	}
 	$data[] = $sub_array;
 }
 

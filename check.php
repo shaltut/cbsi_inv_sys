@@ -174,7 +174,6 @@ $(document).ready(function(){
         event.preventDefault();
         $('#action').attr('disabled', 'disabled');
         var form_data = $(this).serialize();
-        // var equip_id = $(this).attr("id");
         $.ajax({
             url:"chk_out_action.php",
             method:"POST",
@@ -183,7 +182,7 @@ $(document).ready(function(){
             {
                 $('#equip_id_form')[0].reset();
                 $('#chkout_modal').modal('hide');
-                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+                $('#alert_action').fadeIn().html(data);
                 $('#action').attr('disabled', false);
                 tbl.ajax.reload();
             }

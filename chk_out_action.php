@@ -47,20 +47,21 @@ if(isset($_POST['btn_action']))
 		            $result = $statement->fetchAll();
 		            if(isset($result))
 		            {
-		                echo 'Successfully checked out an item!';
+		            	echo '<div class="alert alert-success">Successfully checked out an item!</div>';
 		            }else{
-		                echo 'Something went wrong!';
+		            	echo '<div class="alert alert-danger">Something went wrong!</div>';
 		            }
 		        }else{
-		        	echo 'ERROR! This Item is in use by someone else!';
+		        	echo'<div class="alert alert-danger">ERROR! This item is already in use!</div>';
 		        }
 		    }elseif ($_POST['site_id'] == 0) {
-		    	echo 'ERROR - Please select a site!';
+		    	echo '<div class="alert alert-danger">Please select a site!</div>';
 		    }else{
-		    	echo 'ERROR - The site you selected is incorrect, or no longer in operation!';
+		    	echo '<div class="alert alert-danger">The site you selected is incorrect, or no longer in operation!</div>';
 		    }
         }else{
-            echo $chk_equip_id;
+
+        	echo '<div class="alert alert-danger">'.$chk_equip_id.'</div>';
         }
     }
 }

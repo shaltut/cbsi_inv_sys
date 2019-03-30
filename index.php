@@ -67,7 +67,7 @@ include('header.php');
 	<!--
 		Shows the currently checked out items, and the users who checked them out
 
-		THIS IS A STATIC TABLE. IT JUST DISPLAYS ITEMS CHECKED OUT ON THE CURREN#T SYSDATE. 
+		THIS IS A STATIC TABLE. IT JUST DISPLAYS ITEMS CHECKED OUT ON THE CURRENT SYS DATE. 
 	-->
 	<div class="col-md-12">
         <div class="panel panel-default">

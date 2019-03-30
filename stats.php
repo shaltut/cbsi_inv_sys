@@ -39,11 +39,11 @@ include('header.php');
 	                <table id="equipment_data" class="table table-bordered table-striped">
 	                    <thead><tr>
 	                        <th>Active Sites</th>
-	                        <th><?php echo count_master_active($connect); ?></th>
+	                        <th><?php echo count_active_site($connect); ?></th>
 	                    </tr></thead>
 	                    <thead><tr>
 	                        <th>Inactive Sites</th>
-	                        <th><?php echo count_equipment_total($connect); ?></th>
+	                        <th><?php echo count_inactive_site($connect); ?></th>
 	                    </tr></thead>
 	                </table>
 	            </div></div>

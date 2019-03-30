@@ -152,43 +152,45 @@ function count_maintenance_needed($connect){
 }
 */
 
-/*
-Check site_status if active or inactive and returns the count
+
+//Function to return number of active sites
 
 function count_active_site($connect){
 	$query = "
 	SELECT site_status 
 	FROM sites
+	WHERE site_status = 'active'
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
-	$count=0
+	$result = $statement->fetchAll();
+	$count=0;
 	foreach($result as $row)
 	{
-		if($site_status = 'active'){
-			$count++
-		}
+			$count++;
+		
 	}
-	return $count
+	return $count;
 }
 
+//Function to return number of inactive sites
 function count_inactive_site($connect){
 	$query = "
 	SELECT site_status 
 	FROM sites
+	WHERE site_status = 'inactive'
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
-	$count=0
+	$result = $statement->fetchAll();
+	$count=0;
 	foreach($result as $row)
 	{
-		if($site_status = 'inactive'){
-			$count++
-		}
+			$count++;
 	}
-	return $count
+	return $count;
 }
-*/
+
 
 
 /*

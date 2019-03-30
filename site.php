@@ -40,7 +40,7 @@ include('header.php');
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="site_data" class="table table-bordered table-striped">
+                            <table id="site_data" class="table table-bordered table-striped display" cellspacing="0" width="100%">
                                 <thead><tr>
                                     <th>ID</th>
                                     <th>Site Name</th>

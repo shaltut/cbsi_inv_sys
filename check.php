@@ -209,7 +209,7 @@ $(document).ready(function(){
         "searching": false, 
         "paging": true,
         "bLengthChange": false,
-         "bInfo" : false,
+        "bInfo" : false,
         "order":[],
         "ajax":{
             url:"chk_in_fetch.php",

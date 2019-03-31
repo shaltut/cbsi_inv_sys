@@ -60,13 +60,13 @@ include('header.php');
                             <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%">
                                 <thead><tr>
                                     <th>ID</th>
-                                    <th>Equipment Name</th>
+                                    <th>Equipment</th>
                                     <th>Description</th>
-                                    <th>Enter By</th>
+                                    <th>Entered By</th>
                                     <th>Status</th>
                                     <th>Details</th>
                                     <th>Update</th>
-                                    <th>Delete</th>
+                                    <th>Change Status</th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -82,12 +82,12 @@ include('header.php');
 
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Item</h4>
+                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Equipment</h4>
                         </div>
 
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="equip_name">Enter Name/Type</label>
+                                <label for="equip_name">Equipment Name</label>
                                 <input type="text" name="equip_name" id="equip_name" class="form-control" style="width:85%; display:inline;" required />
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" title="Name/Title" data-content="Enter what the equipment is commonly called." data-placement="left">
@@ -95,15 +95,15 @@ include('header.php');
                                 </button>
                             </div>
                             <div class="form-group">
-                                <label for="equip_desc">Enter Description</label>
-                                <textarea name="equip_desc" id="equip_desc" class="form-control" rows="5" style="width:85%; display:inline;" required></textarea>
+                                <label for="equip_desc">Description</label>
+                                <textarea name="equip_desc" id="equip_desc" class="form-control" rows="5" style="width:100%; display:inline;" required></textarea>
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" title="Description" data-content="Describe any defining characteristics, such as color, VIN number, whether a permit is required to operate it or not, etc." data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
                             </div>
                             <div class="form-group">
-                                <label for="equip_cost" style="width:100px">Cost</label>
+                                <label for="equip_cost" style="width:200px">Equipment Cost</label>
                                 <input type="text" name="equip_cost" id="equip_cost" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" style="width:85%; display:inline;"/>
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" title="Cost" data-content="If the price paid for this piece of equipment is unknown, enter the estimated current value." data-placement="left">
@@ -112,7 +112,7 @@ include('header.php');
                             </div>
 
                             <div class="form-group">
-                                <label for="is_maintenance_required">Maintenance Required: </label>
+                                <label for="is_maintenance_required">Maintenance Required </label>
                                 <input type="hidden" value="no" name="is_maintenance_required"/>
                                 <input type="checkbox" value="yes" name="is_maintenance_required" id="is_maintenance_required" class="form-check-input" onclick="moreOptions()" style="width:2%; display:inline;"/>
                                 <!-- INFO BTN -->
@@ -123,7 +123,7 @@ include('header.php');
 
                             <div class="invisible" id="maintain_vis">
                                 <div class="form-group">
-                                    <label for="maintain_every">Maintain Every</label>
+                                    <label for="maintain_every">Requires Maintenance Every</label>
                                     <select class="form-control" name="maintain_every" id="maintain_every" style="width:85%; display:inline;">
                                         <option value="6">6 Months</option>
                                         <option value="12">1 Year</option>
@@ -131,12 +131,12 @@ include('header.php');
                                         <option value="24">2 years</option>
                                     </select>
                                     <!-- INFO BTN -->
-                                    <button type="button" class="btn btn-link" data-toggle="popover" data-content="How often does this piece of equipement require maintenance?" data-placement="left">
+                                    <button type="button" class="btn btn-link" data-toggle="popover" data-content="How often does this piece of equipment require maintenance?" data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
                                 </div>
                                 <div class="form-group">  
-                                    <label for="last_maintained">Last Maintained</label>
+                                    <label for="last_maintained">Last Maintenance Date</label>
                                     <input type="date" class="form-control" name="last_maintained" id="last_maintained" style="width:85%; display:inline;"/>
                                     <!-- INFO BTN -->
                                     <button type="button" class="btn btn-link" data-toggle="popover" data-content="When was the last time this piece of equipment was maintained?" data-placement="left">

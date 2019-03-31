@@ -71,10 +71,14 @@ include('header.php');
 	-->
 	<div class="col-md-12">
         <div class="panel panel-default">
-            <div class="panel-heading"><strong>Equipment Checked Out Today</strong></div>
-            <div class="panel-body" align="center">
-                <?php echo get_checkouts_today($connect); ?>
+            <div class="panel-heading" style="font-size:1.4em;">
+            	<center><strong>Equipment Checked Out Today</strong></center>
             </div>
+                <?php echo get_checkouts_today($connect); ?>
+                <div style="float:right">
+            		<span class="glyphicon glyphicon-ok" style="text-size:1em;"></span> = Returned,
+            		<span class="glyphicon glyphicon-remove" style="text-size:1em;"></span> = Still In Use
+            	</div>
         </div>
     </div>
 	<?php

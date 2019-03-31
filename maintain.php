@@ -41,7 +41,8 @@ include('header.php');
                                     <tr>
                                         <th>ID</th>
                                         <th>Equipment Name</th>
-                                        <th>Required Since</th>
+                                        <!--<th>Required Since</th> -->
+                                        <th>Last Maintenance Date</th>
                                         <th>Details</th>
                                         <th>Update</th>
                                     </tr>

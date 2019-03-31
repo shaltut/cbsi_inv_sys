@@ -227,17 +227,6 @@ $(document).ready(function(){
 });
 </script>
 
-<script>
-
-    //Used to toggle the 'view stats' button 
-    function buttontext() {
-        if(document.getElementById("user_stat_btn").value === "Show User Stats")
-            document.getElementById("user_stat_btn").value = "Hide User Stats";
-        else
-            document.getElementById("user_stat_btn").value = "Show User Stats";
-    }
-</script>
-
 <?php
 include('footer.php');
 ?>

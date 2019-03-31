@@ -26,11 +26,11 @@ include('header.php');
 	if($count_equip_require_maintainance > 0){
 	?>
 	    <!-- Alerts user if equipment needs to be maintained-->
-		<div class="alert alert-danger" role="alert" style="padding-top: 10px;">
-	  		<?php echo $count_equip_require_maintainance.' piece(s) of equipment require maintenance!'; ?>
-	  		<a class="btn btn-warning" href="maintain.php" role="button" style="float: right; height:30px; padding-top:3px;">
-	  			View
-	  		</a>
+		<div class="alert alert-danger" role="alert" style="display:inline-block; width:100%;">
+	  		   <a class="btn btn-warning" href="maintain.php" role="button" style="float: right;">View</a>
+            <span style="float:left; padding-top:5px;">
+                <?php echo $count_equip_require_maintainance.' piece(s) of equipment require maintenance!'; ?>
+            </span>
 		</div>
 	<?php
 	}
@@ -41,7 +41,7 @@ include('header.php');
 
     <br/><br/>
 
-        <div class="row">
+        <div class="row" style="margin-top:20px">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -226,7 +226,7 @@ $(document).ready(function(){
             {
                 $('#equipment_form')[0].reset();
                 $('#equipmentModal').modal('hide');
-                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>').delay(4000).fadeOut();
                 $('#action').attr('disabled', false);
                 equipmentdataTable.ajax.reload();
             }
@@ -283,7 +283,7 @@ $(document).ready(function(){
 
     //Used to toggle off/on the INFO popovers on the forms
     $(function () {
-        $('[data-toggle="popover"]').popover()
+        $('[data-toggle="popover"]').popover();
     });
 
     //Controls the delete button inside the dataTable
@@ -298,7 +298,7 @@ $(document).ready(function(){
                 method:"POST",
                 data:{equip_id:equip_id, status:status, btn_action:btn_action},
                 success:function(data){
-                    $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+                    $('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>').delay(4000).fadeOut();
                     equipmentdataTable.ajax.reload();
                 }
             });
@@ -308,16 +308,6 @@ $(document).ready(function(){
             return false;
         }
     });
-
-    //Controls the initial view of the extra maintenance options within the form
-    // $(document).onload( function () {
-    //     if(document.getElementById('is_maintenance_required').checked === true){
-    //         document.getElementById('maintain_vis').style.visibility = "visible";
-
-    //     }else{
-    //         document.getElementById('maintain_vis').style.visibility = "hidden";
-    //     }
-    // });
 
 });
 </script>

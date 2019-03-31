@@ -208,7 +208,7 @@ $(document).ready(function(){
         $('#equipmentModal').modal('show');
         $('#equipment_form')[0].reset();
         moreOptions();
-        $('.modal-title').html("<i class='fa fa-plus'></i> Add Item");
+        $('.modal-title').html("<i class='fa fa-plus'></i> Add New Equipment");
         $('#action').val("Add");
         $('#btn_action').val("Add");
     });
@@ -243,6 +243,7 @@ $(document).ready(function(){
             data:{equip_id:equip_id, btn_action:btn_action},
             success:function(data){
                 $('#equipmentdetailsModal').modal('show');
+                $('.modal-title').html("<i class='fa fa-plus'></i>Equipment Details");
                 $('#equipment_details').html(data);
             }
         })

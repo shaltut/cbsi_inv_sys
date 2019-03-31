@@ -155,7 +155,7 @@ $(document).ready(function(){
     $('#add_button').click(function(){
         $('#siteModal').modal('show');
         $('#site_form')[0].reset();
-        $('.modal-title').html("<i class='fa fa-plus'></i> Add Item");
+        $('.modal-title').html("<i class='fa fa-plus'></i> Add New Site");
         $('#action').val("Add");
         $('#btn_action').val("Add");
     });
@@ -188,6 +188,7 @@ $(document).ready(function(){
             data:{site_id:site_id, btn_action:btn_action},
             success:function(data){
                 $('#sitedetailsModal').modal('show');
+                $('.modal-title').html("<i class='fa fa-plus'></i>Site Details");
                 $('#site_details').html(data);
             }
         })

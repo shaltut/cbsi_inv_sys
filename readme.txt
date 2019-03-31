@@ -23,8 +23,9 @@ OTHER STUFF TO DO:
 	--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.
 	--- Fix the maintenance function:
 		- Create another column in the equipment table that stores the date that the piece of equipment will need to be maintained (by using the current function, creating a new date in the future and storing it in that column upon creation (or modification))
-	--- (Im working on this atm) Add a column to the index.php table that tells the admin if the checked out piece of equipment has been returned. (like a green check mark or icon)
-
+	--- Change the 'Entered By' column on the equipment.php page to display the user's name (user_name) instead of the user's ID number.
+	--- When you navigate to the site.php page, and open a modal, whatever modal you open, the heading for that modal gets stuck on that headding. 
+		-- So if you click the "add" button, the modal will open up with a heading that says "Add Item" (it should say "Add Site" but thats another problem...) then you close that modal, and click the "View" button for a site on the table, the view modal opens, but it keeps the "Add Item" heading.
 
 ========================================================================
 Hosting AWS VS GoDaddy

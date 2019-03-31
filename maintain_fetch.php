@@ -61,7 +61,8 @@ foreach($result as $row){
 		$sub_array = array();
 		$sub_array[] = $row['equip_id'];
 		$sub_array[] = $row['equip_name'];
-		$sub_array[] = $od_date.' days';
+		//$sub_array[] = $od_date.' days';
+		$sub_array[] = $row['lm'];
 		$sub_array[] = '
 			<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 			';

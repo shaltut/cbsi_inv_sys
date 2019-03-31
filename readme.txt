@@ -6,7 +6,7 @@ Garrett:
 	- Display tables (DataTables) as 'cards' (or something similar) for mobile compatibility.
 
 Diana: 
-	- make the 'view' button on the maintain.php page for each item requireing maintenance display only info about maintenace, not the user who entered it in, etc.
+	- make the 'view' button on the maintain.php page for each item requireing maintenance display only info about maintenace, not the user who entered it in, etc.--REMOVED THE USER INFO ON THE VIEW AND THE BASE PRICE.
 
 
 Phillip:
@@ -23,12 +23,13 @@ OTHER STUFF TO DO:
 	--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.
 	--- Fix the maintenance function:
 		- Create another column in the equipment table that stores the date that the piece of equipment will need to be maintained (by using the current function, creating a new date (in the future using last_maintained + maintain_every) and storing it in that column upon creation (or modification)
-	--- Change the 'Entered By' column on the equipment.php page to display the user's name (user_name) instead of the user's ID number.
-	--- When you navigate to the site.php page, and open a modal, whatever modal you open, the heading for that modal gets stuck on that headding. 
+	--- (SOLVED ON 3/31 BY DIANA B.)Change the 'Entered By' column on the equipment.php page to display the user's name (user_name) instead of the user's ID number.
+	--- When you navigate to the site.php page, and open a modal, whatever modal you open, the heading for that modal gets stuck on that headding. Connor, what do you mean here?
 
 		-- (SOLVED ON 3/31 BY DIANA B.) So if you click the "add" button, the modal will open up with a heading that says "Add Item" (it should say "Add Site" but thats another problem...) then you close that modal, and click the "View" button for a site on the table, the view modal opens, but it keeps the "Add Item" heading.
 
-		-- This same error can be found on Equipment.php!
+		-- (SOLVED ON 3/31 BY DIANA B.) This same error can be found on Equipment.php!
+
 	--- Adding color coded Glyphicons could make the site more unique and user friendly! Check out Bootstrap Glyphicons and try to find ways to implement them!
 ========================================================================
 Hosting AWS VS GoDaddy

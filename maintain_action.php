@@ -65,14 +65,7 @@ if(isset($_POST['btn_action']))
 				';
 			}
 			$output .= '
-			<tr>
-				<td>Base Price</td>
-				<td>'.$row["equip_cost"].'</td>
-			</tr>
-			<tr>
-				<td>Entered Into System By</td>
-				<td>'.$entered_by_user.' on '.$row["date_added"].'</td>
-			</tr>
+
 			<tr>
 				<td>Status</td>
 				<td>'.$status.'</td>

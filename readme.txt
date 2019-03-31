@@ -22,6 +22,9 @@ OTHER STUFF TO DO:
 	--- Make equipment that requires maimtenance red and equipment that will need maintenance in the next 2 weeks yellow.
 	--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.
 	--- Adding color coded Glyphicons could make the site more unique and user friendly! Check out Bootstrap Glyphicons and try to find ways to implement them!
+	--- Found another possible error... The "Equipment Checked Out Today" table on the index.php page displays checkouts that are over a day old as long as the user stays logged in.. When they log out and log back in, the table gets reset (realizes that the data in those tables arent from the current day.)
+		--- I believe this is because the table is populated only once (when the user logs in) then, as long as they log in, the table never checks for and prunes outdated rows.
+		---Im gonna start looking into this, but I have a feeling its a bigger problem than it looks.
 
 	SOLVED:
 	--- (SOLVED ON 3/31 BY DIANA B.)Change the 'Entered By' column on the equipment.php page to display the user's name (user_name) instead of the user's ID number.

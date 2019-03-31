@@ -37,9 +37,10 @@ CREATE TABLE `equipment` (
   `last_maintained` date DEFAULT NULL,
   `equip_cost` double(10,2) DEFAULT NULL,
   `equip_entered_by` int(6) NOT NULL,
+  `is_available` enum('available','unavailable') NOT NULL DEFAULT 'available'
   `equip_status` enum('active','inactive') NOT NULL,
   `date_added` date NOT NULL,
-  `is_available` enum('available','unavailable') NOT NULL DEFAULT 'available'
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

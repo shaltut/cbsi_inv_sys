@@ -65,6 +65,7 @@ include('header.php');
                                     <th>Equipment</th>
                                     <th>Description</th>
                                     <th>Entered By</th>
+                                    <th>Availability</th>
                                     <th>Status</th>
                                     <th>Details</th>
                                     <th>Update</th>

@@ -61,7 +61,7 @@ foreach($result as $row)
 	{
 		$status = '<span class="label label-success">Active</span>';
 	}else{
-		$status = '<span class="label label-danger">Inactive</span>';
+		$status = '<span class="label label-danger">Disabled</span>';
 	}
 
 	//Displays each column of info in a specifc way depending on that column's value.

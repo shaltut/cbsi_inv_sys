@@ -166,7 +166,7 @@ $(document).ready(function(){
 			{
 				$('#user_form')[0].reset();
 				$('#userModal').modal('hide');
-				$('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>');
+				$('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>').delay(4000).fadeOut();
 				$('#action').attr('disabled', false);
 				userdataTable.ajax.reload();
 			}
@@ -213,7 +213,7 @@ $(document).ready(function(){
 				data:{user_id:user_id, status:status, btn_action:btn_action},
 				success:function(data)
 				{
-					$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>');
+					$('#alert_action').fadeIn().html('<div class="alert alert-info">'+data+'</div>').delay(4000).fadeOut();
 					userdataTable.ajax.reload();
 				}
 			})

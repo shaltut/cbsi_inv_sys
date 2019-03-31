@@ -74,6 +74,7 @@ function count_check_out_total($connect){
 	$query = "
 	SELECT * 
 	FROM equipment_checkout
+	WHERE returned = 'false'
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -122,7 +123,7 @@ function count_check_out_user($connect, $user_id){
 	$query = "
 	SELECT * 
 	FROM equipment_checkout
-	WHERE empl_id = '".$user_id."'
+	WHERE empl_id = '".$user_id."' AND returned = 'false'
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -382,7 +383,7 @@ function count_master_active($connect)
 */
 function get_checkouts_today($connect){
 	$query = '
-	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time
+	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
 	FROM user_details
 	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
 	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
@@ -400,17 +401,25 @@ function get_checkouts_today($connect){
 				<th>Equipment ID</th>
 				<th>Equipment</th>
 				<th>Date of Checkout</th>
+				<th style="text-align:center;">Returned?</th>
 			</tr>
 	';
 	foreach($result as $row)
 	{
+		if($row['returned'] == 'true'){
+			$ret_val = '<span class="label label-success">TRUE</span>';
+		}else{
+			$ret_val = '<span class="label label-danger">FALSE</span>';
+		}
+
 		$output .= '
 		<tr>
-			<td> '.$row["user_id"].'</td>
+			<td style="text-align:center;"> '.$row["user_id"].'</td>
 			<td> '.$row["user_name"].'</td>
 			<td> '.$row["equip_id"].'</td>
 			<td> '.$row["equip_name"].'</td>
 			<td> '.$row["chk_date_time"].'</td>
+			<td style="text-align:center;"> '.$ret_val.'</td>
 		</tr>
 		';
 	}

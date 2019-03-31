@@ -27,7 +27,7 @@ OTHER STUFF TO DO:
 	--- When you navigate to the site.php page, and open a modal, whatever modal you open, the heading for that modal gets stuck on that headding. 
 		-- So if you click the "add" button, the modal will open up with a heading that says "Add Item" (it should say "Add Site" but thats another problem...) then you close that modal, and click the "View" button for a site on the table, the view modal opens, but it keeps the "Add Item" heading.
 		-- This same error can be found on Equipment.php!
-
+	--- Adding color coded Glyphicons could make the site more unique and user friendly! Check out Bootstrap Glyphicons and try to find ways to implement them!
 ========================================================================
 Hosting AWS VS GoDaddy
 

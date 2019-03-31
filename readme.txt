@@ -26,6 +26,7 @@ OTHER STUFF TO DO:
 	--- Change the 'Entered By' column on the equipment.php page to display the user's name (user_name) instead of the user's ID number.
 	--- When you navigate to the site.php page, and open a modal, whatever modal you open, the heading for that modal gets stuck on that headding. 
 		-- So if you click the "add" button, the modal will open up with a heading that says "Add Item" (it should say "Add Site" but thats another problem...) then you close that modal, and click the "View" button for a site on the table, the view modal opens, but it keeps the "Add Item" heading.
+		-- This same error can be found on Equipment.php!
 
 ========================================================================
 Hosting AWS VS GoDaddy

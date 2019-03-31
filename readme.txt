@@ -23,6 +23,7 @@ OTHER STUFF TO DO:
 	--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.
 	--- Fix the maintenance function:
 		- Create another column in the equipment table that stores the date that the piece of equipment will need to be maintained (by using the current function, creating a new date in the future and storing it in that column upon creation (or modification))
+	--- (Im working on this atm) Add a column to the index.php table that tells the admin if the checked out piece of equipment has been returned. (like a green check mark or icon)
 
 
 ========================================================================

@@ -407,9 +407,9 @@ function get_checkouts_today($connect){
 	foreach($result as $row)
 	{
 		if($row['returned'] == 'true'){
-			$ret_val = '<span class="label label-success">TRUE</span>';
+			$ret_val = '<span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span>';
 		}else{
-			$ret_val = '<span class="label label-danger">FALSE</span>';
+			$ret_val = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
 		}
 
 		$output .= '

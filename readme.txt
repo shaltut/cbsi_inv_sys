@@ -25,6 +25,8 @@ OTHER STUFF TO DO:
 	--- Found another possible error... The "Equipment Checked Out Today" table on the index.php page displays checkouts that are over a day old as long as the user stays logged in.. When they log out and log back in, the table gets reset (realizes that the data in those tables arent from the current day.)
 		--- I believe this is because the table is populated only once (when the user logs in) then, as long as they log in, the table never checks for and prunes outdated rows.
 		---Im gonna start looking into this, but I have a feeling its a bigger problem than it looks.
+	--- Add graphs to the stats page. Maybe based on checkouts? Or other visual representations of data.
+	--- Animations (easy to do in Jquery. I already added a few, and have been looking for more cool implementations)
 	--- LETS START DEBUGGING. (see "shit to test").
 
 	SHIT TO TEST:

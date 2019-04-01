@@ -150,7 +150,7 @@ $(document).ready(function(){
                 "orderable":false,
             },
         ],
-        "pageLength": 4
+        "pageLength": 10
     });
 
     $('#add_button').click(function(){

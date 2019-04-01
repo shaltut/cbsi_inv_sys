@@ -26,12 +26,14 @@ include('header.php');
 	if($count_equip_require_maintainance > 0){
 	?>
 	    <!-- Alerts user if equipment needs to be maintained-->
+    <div class="row">
 		<div class="alert alert-danger" role="alert" style="display:inline-block; width:100%;">
 	  		   <a class="btn btn-warning" href="maintain.php" role="button" style="float: right;">View</a>
             <span style="float:left; padding-top:5px;">
                 <?php echo $count_equip_require_maintainance.' piece(s) of equipment require maintenance!'; ?>
             </span>
 		</div>
+    </div>
 	<?php
 	}
 	?>

@@ -2,7 +2,59 @@
 //function.php
 
 /*
-	Functions for chartjs.
+	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites.
+*/
+function checkouts_by_site_names($connect){
+	$output = '';
+	$query = "
+	SELECT sites.site_name as 'site', count(equipment_checkout.site_id) as 'checks'
+	FROM sites INNER JOIN equipment_checkout ON sites.site_id = equipment_checkout.site_id
+	GROUP BY sites.site_id
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$test = ' ';
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $count + 1;
+			$output .= "'".$row['site']."',";
+		}
+	}
+	// return $count;
+	return $output;
+}
+/*
+	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites.
+*/
+function checkouts_by_site_num_checkouts($connect){
+	$output = '';
+	$query = "
+	SELECT sites.site_name as 'site', count(equipment_checkout.site_id) as 'checks'
+	FROM sites INNER JOIN equipment_checkout ON sites.site_id = equipment_checkout.site_id
+	GROUP BY sites.site_id
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$test = ' ';
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $count + 1;
+			$output .= $row['checks'].",";
+		}
+	}
+	// return $count;
+	return $output;
+}
+/*
+	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites
+
+	CHARTjs
 */
 function checkouts_by_site($connect){
 	$output = '';

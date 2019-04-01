@@ -4,7 +4,6 @@
 
 include('database_connection.php');
 include('function.php');
-include('charts_js.php');
 
 if(!isset($_SESSION["type"]))
 {
@@ -17,6 +16,7 @@ if($_SESSION['type'] != 'master')
 }
 
 include('header.php');
+
 
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
@@ -50,7 +50,9 @@ include('header.php');
 	                    </tr></thead>
 	                </table>
 	            </div></div>
-                <center><div id="chartContainer" style="height: 500px; width: 50%;"></div></center>
+                <center>
+                    <canvas id="myChart"></canvas>
+                </center>
 	        </div>
 	    </div>
 	</div>
@@ -130,6 +132,9 @@ include('header.php');
     </div>
 </div>
 
+<?php
+    include('charts_js.php');
+?>
 
 <script>
 function goBack() {

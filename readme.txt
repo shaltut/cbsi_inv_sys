@@ -25,6 +25,18 @@ OTHER STUFF TO DO:
 	--- Found another possible error... The "Equipment Checked Out Today" table on the index.php page displays checkouts that are over a day old as long as the user stays logged in.. When they log out and log back in, the table gets reset (realizes that the data in those tables arent from the current day.)
 		--- I believe this is because the table is populated only once (when the user logs in) then, as long as they log in, the table never checks for and prunes outdated rows.
 		---Im gonna start looking into this, but I have a feeling its a bigger problem than it looks.
+	--- LETS START DEBUGGING. (see "shit to test").
+
+	SHIT TO TEST:
+	--- 10+, 25+, 50+, and 100+ users. Add dummy test user accounts 10 at a time and test how the tables/database reacts to the influx of data.
+	--- User accounts vs Master accounts. DONT FORGET TO TEST AS AN ADMIN AND AS A REGULAR USER!
+	--- FORMS:
+		-Input fields (specifically inputting incorrect input, and viewing how the system handles it)
+		-The ability to NOT enter values for values that arent required (make sure all 'optional' fields are actually optional)
+	--- Different Browser:
+		- Google Chrome, Safari, Opera, IE, FireFox, etc.
+	--- Moblie compatibility. Download emulators (or just use XCode if you have that downloaded)
+	--- SYSTEM DATES: Almost the entire check system, as well as the maintenance system works based off of system dates... We should make sure the dates are correctly entered, and properly interpreted by the system. (more on this talk to me)
 
 	SOLVED:
 	--- (SOLVED ON 3/31 BY DIANA B.)Change the 'Entered By' column on the equipment.php page to display the user's name (user_name) instead of the user's ID number.

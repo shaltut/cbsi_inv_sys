@@ -22,7 +22,6 @@ include('header.php');
 
 <!-- Button navigates to stats page-->
 <a class="btn btn-link" href="stats.php#sites" role="button" style="float:right;">View Stats</a>
-
     <br/><br/>
         <div class="row">
             <div class="col-lg-12">

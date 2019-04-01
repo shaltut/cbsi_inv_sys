@@ -1,6 +1,32 @@
 <?php
 //function.php
 
+/*
+	Functions for chartjs.
+*/
+function checkouts_by_site($connect){
+	$output = '';
+	$query = "
+	SELECT sites.site_name as 'site', count(equipment_checkout.site_id) as 'checks'
+	FROM sites INNER JOIN equipment_checkout ON sites.site_id = equipment_checkout.site_id
+	GROUP BY sites.site_id
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$test = ' ';
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $count + 1;
+			$output .= '{ x: '.$count.', y: '.$row['checks'].', label: "'.$row['site'].'"},';
+		}
+	}
+	// return $count;
+	return $output;
+}
+
 /*Returns the number of pieces of equipment that currently require maintenance.
 USED IN: equipment.php, stats.php
 */

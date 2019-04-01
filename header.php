@@ -66,7 +66,7 @@
 								- *User scans the barcode*
 								- the system will know that the Equipment_ID being read in is being CHECKED OUT by the current user.
 						-->
-						<li><a href="check.php">SCAN</a></li>
+						<li><a href="check.php">Checkout</a></li>
 					
 					<?php
 					if($_SESSION['type'] == 'user') // Only seen by USER

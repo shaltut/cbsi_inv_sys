@@ -27,6 +27,7 @@ OTHER STUFF TO DO:
 		---Im gonna start looking into this, but I have a feeling its a bigger problem than it looks.
 	--- Add graphs to the stats page. Maybe based on checkouts? Or other visual representations of data.
 	--- Animations (easy to do in Jquery. I already added a few, and have been looking for more cool implementations)
+	--- search.php should show id, prod_name, view button, availability (glyph).
 	--- LETS START DEBUGGING. (see "shit to test").
 
 	SHIT TO TEST:

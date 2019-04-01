@@ -9,7 +9,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: [<?php echo checkouts_by_site_names($connect); ?>],
         datasets: [{
-            label: '# of Votes',
+            label: 'Checkouts by Site',
             data: [<?php echo checkouts_by_site_num_checkouts($connect); ?>],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

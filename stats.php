@@ -96,7 +96,7 @@ include('header.php');
 </div>
 
 <!-- EQUIPMENT STATS CARD-->
-<div class="row">
+<div class="row" id="equipment">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">

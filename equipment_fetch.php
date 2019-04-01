@@ -57,9 +57,7 @@ foreach($result as $row)
 	$sub_array = array();
 	$sub_array[] = $row['equip_id'];
 	$sub_array[] = $row['equip_name'];
-	// $sub_array[] = available_product_quantity($connect, $row["equip_id"]);
 	$sub_array[] = $row['equip_desc'];
-	//$sub_array[] = $row['equip_entered_by'];
 	$sub_array[] = $entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
 	$sub_array[] = $row['is_available'];
 	$sub_array[] = $status;

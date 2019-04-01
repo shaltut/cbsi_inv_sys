@@ -11,6 +11,7 @@
 		<script src="js/dataTables.bootstrap.min.js"></script>		
 		<link rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
 		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/canvasjs.min.js"></script>
 	</head>
 	<body>
 		<br />

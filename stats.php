@@ -4,6 +4,7 @@
 
 include('database_connection.php');
 include('function.php');
+include('charts_js.php');
 
 if(!isset($_SESSION["type"]))
 {
@@ -122,6 +123,7 @@ include('header.php');
                                 </tr></thead>
                             </table>
                         </div></div>
+                        <center><div id="chartContainer" style="height: 500px; width: 50%;"></div></center>
                     </div>
                 </div>
             </div>

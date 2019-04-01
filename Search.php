@@ -33,7 +33,6 @@ include('header.php');
                             </div>
                         
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
-                                <button type="button" name="add" id="add_button" class="btn btn-success btn-xs">Add</button>
                             </div>
                         </div>
                     </div>
@@ -153,13 +152,6 @@ $(document).ready(function(){
         "pageLength": 4
     });
 
-    $('#add_button').click(function(){
-        $('#productModal').modal('show');
-        $('#product_form')[0].reset();
-        $('.modal-title').html("<i class='fa fa-plus'></i> Add Item");
-        $('#action').val("Add");
-        $('#btn_action').val("Add");
-    });
 
 });
 </script>

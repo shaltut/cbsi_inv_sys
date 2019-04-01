@@ -1,6 +1,5 @@
 <?php
 //stats.php
-//Work in progress, debating best way to style/present and developing functions with relevant info
 
 include('database_connection.php');
 include('function.php');

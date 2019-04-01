@@ -65,13 +65,10 @@ if(isset($_POST["login"]))
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<script src="js/bootstrap.min.js"></script>
 		<style>
-			.center{
+			.logoimg {
 				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				padding-left: 0;
-				min-width:300px;
-				width:50%;
+  				margin-right: auto;
+  				margin-left: auto;
 			}
 
 		</style>
@@ -79,12 +76,10 @@ if(isset($_POST["login"]))
 	<body>
 		<br />
 		<div class="container">
-				<div class="center">
-					<a href="#">
-						<img src="images/logo.png" alt="CBSI logo"width="300" height="171">
-					</a>
-				</div>
-			<br />
+
+			<img class="logoimg" src="images/logo.png" alt="CBSI logo" width="300" height="171">	
+			
+			</br></br>
 			<div class="panel panel-default">
 				<div class="panel-heading">Login</div>
 				<div class="panel-body">

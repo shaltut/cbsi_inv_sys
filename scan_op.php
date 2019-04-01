@@ -1,15 +1,6 @@
 <?php
 //scan_op.php
 
-
-/*
-TODO:
-    - TIME PERMITTING: Make it so that when an item is checked back in, it isnt deleted form the equipment_checkout table so that it still shows up as a "past checkout" in the table on the homepage
-    - Give a 'site' option when checking out (done)
-    - Make the 'site' option an option input field to lessen the chaces of incorrect inputs
-
-*/
-
 //Includes connection to the database
 include('database_connection.php');
 
@@ -73,16 +64,6 @@ include('header.php');
                             Location</label>
                             <input type="text" name="site_id" id="site_id" class="center">
 
-                            <!-- <label class="center">
-                            Location</label>
-                            <select class="form-control center" name="site_id" id="site_id">
-                                <
-                                <option value="1">6 Months</option>
-                                <option value="2">1 Year</option>
-                                <option value="3">1 Year 6 Months</option>
-                                <option value="4">2 years</option>
-                            </select> -->
-
                         </div>
                     </div>
 
@@ -91,7 +72,6 @@ include('header.php');
                     		Here we need hidden fields to grab the data that the user wont have to enter manually...
                     		(user_id, site_id, etc.)
                         -->
-                        <!-- <input type="hidden" name="site_id" id="site_id" value="303000"/> -->
                         <input type="hidden" name="btn_action" id="btn_action" />
                         <input type="submit" name="action" id="action" class="btn btn-info" value="Check Out" />
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

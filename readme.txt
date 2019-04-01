@@ -19,6 +19,8 @@ Tristan:
 	- fix the error in the check-out function (sites_options($connect)) where if you dont enter a 'site' option, it still lets you check out that piece of equipment, and returns 0 as the site_id.
 
 OTHER STUFF TO DO:
+	--- Add time to the date displayed in checkouts (and on index.php) tables
+	--- Make dates appear in a different format
 	--- Make equipment that requires maimtenance red and equipment that will need maintenance in the next 2 weeks yellow.
 	--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.
 	--- Adding color coded Glyphicons could make the site more unique and user friendly! Check out Bootstrap Glyphicons and try to find ways to implement them!
@@ -39,13 +41,7 @@ OTHER STUFF TO DO:
 	--- Different Browser:
 		- Google Chrome, Safari, Opera, IE, FireFox, etc.
 	--- Moblie compatibility. Download emulators (or just use XCode if you have that downloaded)
-	--- SYSTEM DATES: Almost the entire check system, as well as the maintenance system works based off of system dates... We should make sure the dates are correctly entered, and properly interpreted by the system. (more on this talk to me)
-
-	SOLVED:
-	--- (SOLVED ON 3/31 BY DIANA B.)Change the 'Entered By' column on the equipment.php page to display the user's name (user_name) instead of the user's ID number.
-	--- (SOLVED ON 3/31 BY DIANA B.)When you navigate to the site.php page, and open a modal, whatever modal you open, the heading for that modal gets stuck on that headding. 
-		-- (SOLVED ON 3/31 BY DIANA B.) So if you click the "add" button, the modal will open up with a heading that says "Add Item" (it should say "Add Site" but thats another problem...) then you close that modal, and click the "View" button for a site on the table, the view modal opens, but it keeps the "Add Item" heading.
-		-- (SOLVED ON 3/31 BY DIANA B.) This same error can be found on Equipment.php!
+	--- SYSTEM DATES: Almost the entire check system, as well as the maintenance system works based off of system dates... We should make sure the dates are correctly entered, and properly interpreted by the system. (more on this talk to me
 
 
 ========================================================================

@@ -97,6 +97,7 @@
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 								<span class="label label-pill label-danger count"></span> 
 									<?php echo ucfirst($_SESSION["user_name"]); ?>
+									<span class="glyphicon glyphicon-user"></span>
 							</a>
 							<ul class="dropdown-menu">
 								<li><a href="profile.php">Profile</a></li>

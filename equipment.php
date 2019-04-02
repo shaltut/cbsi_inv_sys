@@ -101,7 +101,7 @@ include('header.php');
                             </div>
                             <div class="form-group">
                                 <label for="equip_desc">Description</label>
-                                <textarea name="equip_desc" id="equip_desc" class="form-control" rows="5" style="width:100%; display:inline;" required></textarea>
+                                <textarea name="equip_desc" id="equip_desc" class="form-control" rows="5" style="width:100%; display:inline;"></textarea>
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" title="Description" data-content="Describe any defining characteristics, such as color, VIN number, whether a permit is required to operate it or not, etc." data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
@@ -109,7 +109,7 @@ include('header.php');
                             </div>
                             <div class="form-group">
                                 <label for="equip_cost" style="width:200px">Equipment Cost</label>
-                                <input type="text" name="equip_cost" id="equip_cost" class="form-control" required pattern="[+-]?([0-9]*[.])?[0-9]+" style="width:85%; display:inline;"/>
+                                <input type="text" name="equip_cost" id="equip_cost" class="form-control" pattern="[+-]?([0-9]*[.])?[0-9]+" style="width:85%; display:inline;"/>
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" title="Cost" data-content="If the price paid for this piece of equipment is unknown, enter the estimated current value." data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">

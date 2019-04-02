@@ -75,12 +75,23 @@ if(isset($_POST['btn_action']))
 			<tr>
 				<td>Equipment Name</td>
 				<td>'.$row["equip_name"].'</td>
-			</tr>
-			<tr>
-				<td>Equipment Description</td>
-				<td>'.$row["equip_desc"].'</td>
-			</tr>
-			';
+			</tr>';
+
+			if($row['equip_desc'] == ''){
+				$output .= '
+				<tr>
+					<td>Equipment Description</td>
+					<td>(no description)</td>
+				</tr>
+				';
+			}else{
+				$output .= '
+				<tr>
+					<td>Equipment Description</td>
+					<td>'.$row["equip_desc"].'</td>
+				</tr>
+				';
+			}
 			if($row['is_maintenance_required'] == 'yes'){
 				$output .= '
 					<tr>
@@ -94,15 +105,25 @@ if(isset($_POST['btn_action']))
 					</tr>
 				';
 			}
+			if($row['equip_cost'] > 0.00){
+				$output .= '
+				<tr>
+					<td>Base Price</td>
+					<td>'.$row["equip_cost"].'</td>
+				</tr>';
+			}else{
+				$output .= '
+				<tr>
+					<td>Base Price</td>
+					<td> (Price Unknown) </td>
+				</tr>';
+			}
 			$output .= '
-			<tr>
-				<td>Base Price</td>
-				<td>'.$row["equip_cost"].'</td>
-			</tr>
 			<tr>
 				<td>Entered Into System By</td>
 				<td>'.$entered_by_user.' on '.$row["date_added"].'</td>
-			</tr>
+			</tr>';
+			$output .= '
 			<tr>
 				<td>Status</td>
 				<td>'.$status.'</td>

@@ -1,6 +1,30 @@
 <?php
 //function.php
 
+
+function get_last_checkout_id($connect, $equip_id){
+	$query = "
+	SELECT *
+	FROM equipment_checkout
+	WHERE chk_date_time = (
+		SELECT max(chk_date_time)
+		FROM equipment_checkout
+		WHERE equip_id = '".$equip_id."'
+	) AND equip_id = '".$equip_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$output = $row['chk_id'];
+		}
+	}
+	// return $count;
+	return $output;
+}
+
 /*
 	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites.
 */

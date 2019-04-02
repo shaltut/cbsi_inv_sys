@@ -147,11 +147,11 @@ $(document).ready(function(){
 		},
 		"columnDefs":[
 			{
-				"target":[6, 7],
+				"target":[5,6],
 				"orderable":false
 			}
 		],
-		"pageLength": 7
+		"pageLength": 10
 	});
 
 	$(document).on('submit', '#user_form', function(event){

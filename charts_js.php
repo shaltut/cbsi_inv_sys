@@ -9,7 +9,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: [<?php echo checkouts_by_site_names($connect); ?>],
         datasets: [{
-            label: 'Checkouts Today',
+            label: 'Today',
             hidden: false,
             data: [<?php echo checkouts_by_site_num_checkouts_today($connect); ?>],
             backgroundColor: [
@@ -30,7 +30,7 @@ var myChart = new Chart(ctx, {
             ],
             borderWidth: 1
         },{
-            label: 'Checkouts This Week',
+            label: 'This Week',
             hidden: true,
             data: [<?php echo checkouts_by_site_num_checkouts_week($connect); ?>],
             backgroundColor: [
@@ -51,7 +51,7 @@ var myChart = new Chart(ctx, {
             ],
             borderWidth: 1
         },{
-            label: 'Checkouts This Month',
+            label: 'This Month',
             hidden: true,
             data: [<?php echo checkouts_by_site_num_checkouts_month($connect); ?>],
             backgroundColor: [
@@ -72,7 +72,7 @@ var myChart = new Chart(ctx, {
             ],
             borderWidth: 1
         },{
-            label: 'All Checkouts',
+            label: 'End of Time',
             hidden: true,
             data: [<?php echo checkouts_by_site_num_checkouts($connect); ?>],
             backgroundColor: [
@@ -95,6 +95,12 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+        title: {
+            display: true,
+            text: 'Checkouts By Site',
+            fontColor: '#000',
+            fontSize: 22
+        },
         scales: {
             yAxes: [{
                 ticks: {

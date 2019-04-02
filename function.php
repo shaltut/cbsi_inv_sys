@@ -1,6 +1,45 @@
 <?php
 //function.php
 
+function user_wise_num_checkouts($connect, $user_id){
+	$query = "
+	SELECT count(equipment_checkout.empl_id) as 'checks'
+	FROM equipment_checkout
+	WHERE empl_id = '".$user_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['checks'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+function user_wise_num_checkins($connect, $user_id){
+	$query = "
+	SELECT count(equipment_checkout.empl_id) as 'checks'
+	FROM equipment_checkout
+	WHERE empl_id = '".$user_id."' AND returned = 'true'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['checks'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+
 function users_options($connect){
 	$query = "
 		SELECT user_id, user_name

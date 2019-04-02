@@ -102,6 +102,8 @@ include('header.php');
                         </center>
                     </form>
                     <center><canvas id="empl_stat"></canvas></center>
+                    <h1>  
+                    </h1>
             </div>
         </div>
     </div>

@@ -77,7 +77,7 @@ include('header.php');
                                 <label for="last_chk">Last Checked out by</label>
                                 <input type="text" name="last_chk" id="last_chk" class="form-control" style="width:85%; display:inline;" readonly/>
                                 <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Name/Title" data-content="Enter what the equipment is commonly called." data-placement="left">
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout" data-content="The name and user id of the last person who checked this piece of equipment out." data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
                             </div>
@@ -86,7 +86,7 @@ include('header.php');
                                 <label for="last_date">Date of Last Checkout</label>
                                 <input type="text" name="last_date" id="last_date" class="form-control" style="width:85%; display:inline;" readonly/>
                                 <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Name/Title" data-content="Enter what the equipment is commonly called." data-placement="left">
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout Date" data-content="The date in which this piece of equipment was last checked out of this system." data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
                             </div>
@@ -177,12 +177,17 @@ $(document).ready(function(){
                 $('#last_loc').val(data.last_loc);
                 $('#last_chk').val(data.last_chk);
                 $('#last_date').val(data.last_date);
-                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Equipment");
+                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Last Known Location");
                 $('#equip_id').val(equip_id);
                 $('#action').val("Edit");
                 $('#btn_action').val("Edit");
             }
         })
+    });
+
+    //Used to toggle off/on the INFO popovers on the forms
+    $(function () {
+        $('[data-toggle="popover"]').popover();
     });
 
 });

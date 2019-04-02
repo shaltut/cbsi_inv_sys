@@ -11,7 +11,7 @@ $query = '';
 
 $output = array();
 $query .= "
-	SELECT equip_id, equip_name, equip_desc, equip_status 
+	SELECT equip_id, equip_name, equip_desc, equip_status, is_available
 	FROM equipment INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by
 ";
 
@@ -47,19 +47,19 @@ $filtered_rows = $statement->rowCount();
 foreach($result as $row)
 {
 	$status = '';
-	if($row['equip_status'] == 'active')
+	if($row['is_available'] == 'available')
 	{
-		$status = '<span class="label label-success">Active</span>';
-	}
-	else
-	{
-		$status = '<span class="label label-danger">Inactive</span>';
+		$status = '<span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span>';
+	}else{
+		$status = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
 	}
 	$sub_array = array();
 	$sub_array[] = $row['equip_id'];
 	$sub_array[] = $row['equip_name'];
-	$sub_array[] = $row['equip_desc'];
 	$sub_array[] = $status;
+	$sub_array[] = '
+		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
+		';
 	$data[] = $sub_array;
 }
 

@@ -21,9 +21,9 @@ include('header.php');
 <!-- Alerts the user to changes they have made, or errors -->
 <span id='alert_action'></span>
 
-<button onclick="goBack()" style="float:right;">Go Back</button>
+<button class="btn btn-info" onclick="goBack()" style="float:right;">Go Back</button>
 
-<br/><br/>
+<br/><br/><br/>
 
 <!-- SITE STATS CARD-->
 <div class="row">

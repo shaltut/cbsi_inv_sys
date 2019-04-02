@@ -52,6 +52,93 @@ function checkouts_by_site_num_checkouts($connect){
 	return $output;
 }
 /*
+	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites.
+
+	Limits checkouts returned to those checkouts that occured on the current system date.
+*/
+function checkouts_by_site_num_checkouts_today($connect){
+	$output = '';
+	$query = "
+	SELECT sites.site_name as 'site', count(equipment_checkout.site_id) as 'checks'
+	FROM sites INNER JOIN equipment_checkout ON sites.site_id = equipment_checkout.site_id
+	WHERE equipment_checkout.chk_date_time = '".date('Y-m-d')."'
+	GROUP BY sites.site_id
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$test = ' ';
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $count + 1;
+			$output .= $row['checks'].",";
+		}
+	}
+	// return $count;
+	return $output;
+}
+
+/*
+	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites.
+
+	Limits checkouts returned to those checkouts that occured on the current system date.
+*/
+function checkouts_by_site_num_checkouts_week($connect){
+	$output = '';
+	$query = "
+	SELECT sites.site_name as 'site', count(equipment_checkout.site_id) as 'checks'
+	FROM sites INNER JOIN equipment_checkout ON sites.site_id = equipment_checkout.site_id
+	WHERE equipment_checkout.chk_date_time BETWEEN CURDATE() - INTERVAL 7 DAY AND CURDATE()
+	GROUP BY sites.site_id
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$test = ' ';
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $count + 1;
+			$output .= $row['checks'].",";
+		}
+	}
+	// return $count;
+	return $output;
+}
+
+/*
+	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites.
+
+	Limits checkouts returned to those checkouts that occured on the current system date.
+*/
+function checkouts_by_site_num_checkouts_month($connect){
+	$output = '';
+	$query = "
+	SELECT sites.site_name as 'site', count(equipment_checkout.site_id) as 'checks'
+	FROM sites INNER JOIN equipment_checkout ON sites.site_id = equipment_checkout.site_id
+	WHERE equipment_checkout.chk_date_time BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE()
+	GROUP BY sites.site_id
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$test = ' ';
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $count + 1;
+			$output .= $row['checks'].",";
+		}
+	}
+	// return $count;
+	return $output;
+}
+
+/*
 	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites
 
 	CHARTjs

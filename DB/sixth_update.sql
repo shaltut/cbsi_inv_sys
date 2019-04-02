@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 02, 2019 at 10:09 PM
+-- Generation Time: Mar 28, 2019 at 09:02 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `equipment` (
   `equip_id` int(6) NOT NULL,
   `equip_name` varchar(50) NOT NULL,
-  `equip_desc` varchar(250) NOT NULL DEFAULT '(no description)',
+  `equip_desc` text NOT NULL,
   `is_maintenance_required` enum('yes','no') NOT NULL DEFAULT 'no',
   `maintain_every` int(4) DEFAULT '1',
   `last_maintained` date DEFAULT NULL,
@@ -47,15 +47,9 @@ CREATE TABLE `equipment` (
 --
 
 INSERT INTO `equipment` (`equip_id`, `equip_name`, `equip_desc`, `is_maintenance_required`, `maintain_every`, `last_maintained`, `equip_cost`, `equip_entered_by`, `equip_status`, `date_added`, `is_available`) VALUES
-(202000, 'Power Washer', 'Blue Power Washer', 'no', 6, '1970-01-01', 234.00, 11, 'active', '2019-03-23', 'unavailable'),
+(202000, 'Power Washer', 'Blue Power Washer', 'no', 6, '1970-01-01', 234.00, 11, 'active', '2019-03-23', 'available'),
 (202001, 'Jack Hammer', 'Red Jack Hammer', 'yes', 18, '2018-12-06', 321.00, 11, 'active', '2019-03-23', 'available'),
-(202003, 'Test Item', 'This is a test description for the test item. ', 'yes', 6, '2018-05-03', 321.00, 11, 'active', '2019-03-26', 'unavailable'),
-(202004, 'DEWALT 20-Volt Cordless Drill', 'DEWALT 20-Volt MAX XR Lithium-Ion Cordless\r\nColor: Yellow', 'no', 6, '1970-01-01', 319.95, 11, 'active', '2019-04-02', 'available'),
-(202005, '2017 Ford F-150 Platinum 4WD (LM4-DSTN)', 'Truck with flat bed and trailer.\r\nLicense Plate #: LM4-DSTN\r\nRegistration: 142j3h3iuhb42k (Jack Mencia)\r\nMax Towing Capacity: 14,500 - 16,000 lb\r\nBed measurements: 88.6 in (between wheel hubs)\r\n4WD', 'yes', 6, '2018-12-01', 44125.88, 11, 'active', '2019-04-02', 'available'),
-(202006, '2018 Toyota Tacoma 4WD (R4U-0C33)', 'Truck with flat bed \r\nMax Towing Capacity: 6,500 - 8,500 lb\r\nTrailer hitch but no trailer\r\nBed measurements: 50.6 in (between wheel hubs)\r\n4WD', 'yes', 6, '2019-04-04', 28677.22, 11, 'active', '2019-04-02', 'available'),
-(202007, 'Table Saw (DEWALT) (Lumber/Wood)', '15-Amp Corded 10 in. Compact Job Site Table Saw with Site-Pro Modular Guarding System with Stand\r\nHardwood, Pressure treated lumber, etc.\r\nLightweight', 'yes', 24, '2019-01-25', 299.00, 11, 'active', '2019-04-02', 'available'),
-(202008, 'test name', '', 'no', 6, '1970-01-01', 234.00, 11, 'active', '2019-04-02', 'available'),
-(202009, 'Another Test', '', 'no', 6, '1970-01-01', 0.00, 11, 'active', '2019-04-02', 'available');
+(202003, 'test', 'test', 'yes', 6, '2018-05-03', 321.00, 11, 'active', '2019-03-26', 'available');
 
 -- --------------------------------------------------------
 
@@ -77,21 +71,7 @@ CREATE TABLE `equipment_checkout` (
 --
 
 INSERT INTO `equipment_checkout` (`chk_id`, `equip_id`, `empl_id`, `site_id`, `chk_date_time`, `returned`) VALUES
-(404135, 202000, 11, 303001, '2018-03-14', 'true'),
-(404136, 202001, 11, 303000, '2018-05-08', 'true'),
-(404137, 202003, 11, 303001, '2018-10-18', 'true'),
-(404138, 202000, 11, 303001, '2018-09-04', 'true'),
-(404139, 202000, 11, 303001, '2018-12-20', 'true'),
-(404140, 202000, 11, 303000, '2019-03-13', 'true'),
-(404141, 202001, 11, 303001, '2019-03-15', 'true'),
-(404142, 202003, 11, 303002, '2018-09-05', 'true'),
-(404143, 202001, 101008, 303000, '2019-04-01', 'true'),
-(404144, 202001, 11, 303002, '2019-03-15', 'true'),
-(404145, 202001, 11, 303002, '2019-04-02', 'true'),
-(404146, 202003, 11, 303000, '2018-11-14', 'true'),
-(404147, 202000, 11, 303002, '2019-04-02', 'true'),
-(404148, 202003, 11, 303001, '2019-04-02', 'false'),
-(404149, 202000, 11, 303000, '2019-04-02', 'false');
+(404127, 202000, 11, 303000, '2019-03-28', 'true');
 
 -- --------------------------------------------------------
 
@@ -113,12 +93,8 @@ CREATE TABLE `sites` (
 --
 
 INSERT INTO `sites` (`site_id`, `site_name`, `site_address`, `job_desc`, `start_date`, `site_status`) VALUES
-(303000, 'HILTON HOTELS', '12352 3RD St. SW Washington, DC', 'Property Maintenance, Brick Paver Driveway Repairs â€“ Hilton Embassy Row â€“ Washington, D.C', '2018-07-12', 'active'),
-(303001, 'WATERGATE HOTEL', '123 25th st. SW, DC', 'Exterior Cleaning â€“ Washington, D.C.', '2018-12-06', 'active'),
-(303002, 'CATHOLIC UNIVERSITY', '666, Test St. Oakton, VA', 'Exterior Paint Removal  & Painting of Oâ€™Boyle Hall â€“ Washington, D.C.', '2019-03-31', 'active'),
-(303003, 'THE METROPOLITAN CLUB OF WDC', '1626 NW Washington DC 22028', 'Exterior Restoration â€“ Washington, D.C.', '2018-08-02', 'active'),
-(303004, 'TEXTILE MUSEUM', '88823 27th and Constitution SW Washington, DC', 'Historical Restoration Lead Paint Abatement, FaÃ§ade Cleaning and Painting of Exterior Wood Doors, Windows, Shutters, Moldings and Ironwork â€“ Washington, D.C.', '2018-10-27', 'active'),
-(303005, 'MONUMENT REALTY', '7283, Destination Way. McLean VA 22033', 'Demolition, Tenant Build-out, Paintingâ€“ Tyler Building â€“ McLean, Virginia', '2019-04-04', 'active');
+(303000, 'Hilton Hotels', '123 Fleetwood St. Vienna, VA', 'Renovation of the hotel\'s lobby and bathrooms.', '2018-07-12', 'active'),
+(303001, 'Watergate Hotel', '123 25th st. SW, DC', 'Refinishing', '2018-12-06', 'active');
 
 -- --------------------------------------------------------
 
@@ -141,9 +117,9 @@ CREATE TABLE `user_details` (
 --
 
 INSERT INTO `user_details` (`user_id`, `user_email`, `user_password`, `user_name`, `user_job`, `user_type`, `user_status`) VALUES
-(11, 'admin@gmail.com', '$2y$10$sMVh.x6QWJNzjU9/9PAU2.WzGViZtAWO53Jm3Wm3Nf6S/PEeSxbNC', 'Admin', 'administrator', 'master', 'Active'),
-(101008, 'user@gmail.com', '$2y$10$aBM18Xc8lFd.wBXHIJCPM.hAVGjyg6y2SepGUxBm9GG6SUEc06eQ2', 'Standard User', 'Supervisor', 'user', 'Active'),
-(101010, 'test@test.com', '$2y$10$w3jB2gBpDPD0pW0JTESMvOXZFNxnWF0FcyUWVNYN3dMxAPzb3R8T.', 'Test User', 'Skilled Laborer', 'user', 'Active');
+(11, 'admin@gmail.com', '$2y$10$sMVh.x6QWJNzjU9/9PAU2.WzGViZtAWO53Jm3Wm3Nf6S/PEeSxbNC', 'admin', 'administrator', 'master', 'Active'),
+(101008, 'user@gmail.com', '$2y$10$jYq/0DdzmC0tKMeOT2AUwe2KtubW6rcd4Bo5R5sK.e9R/9tl2QJ76', 'user', 'Supervisor', 'user', 'Active'),
+(101010, 'test@test.com', '$2y$10$h7eU4bWaEHSkwG30rc0QIemiYgoHMjFL72V4AMb2q6fzuR29QT4wa', 'test', 'Skilled Laborer', 'user', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -181,25 +157,25 @@ ALTER TABLE `user_details`
 -- AUTO_INCREMENT for table `equipment`
 --
 ALTER TABLE `equipment`
-  MODIFY `equip_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202010;
+  MODIFY `equip_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202004;
 
 --
 -- AUTO_INCREMENT for table `equipment_checkout`
 --
 ALTER TABLE `equipment_checkout`
-  MODIFY `chk_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=404150;
+  MODIFY `chk_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=404129;
 
 --
 -- AUTO_INCREMENT for table `sites`
 --
 ALTER TABLE `sites`
-  MODIFY `site_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=303006;
+  MODIFY `site_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=303002;
 
 --
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101012;
+  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101011;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

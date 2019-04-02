@@ -41,9 +41,9 @@ include('header.php');
                                 <thead><tr>
                                     <th>ID</th>
                                     <th>Equipment</th>
-                                    <th>Description</th>
-                                    <th>Details</th>
-                                    <th>LOCATE</th>
+                                    <th>Desc</th>
+                                    <th style="width:3%">Details</th>
+                                    <th style="width:3%"></th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -68,7 +68,7 @@ include('header.php');
                                 <label for="last_loc">Last Known Location</label>
                                 <input type="text" name="last_loc" id="last_loc" class="form-control" style="width:85%; display:inline;" readonly/>
                                 <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Known Location" data-content="This piece of equipment was last checked out from this location" data-placement="left">
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Known Location" data-content="The last location this piece of equipment was checked out from." data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
                             </div>
@@ -77,7 +77,7 @@ include('header.php');
                                 <label for="last_chk">Last Checked out by</label>
                                 <input type="text" name="last_chk" id="last_chk" class="form-control" style="width:85%; display:inline;" readonly/>
                                 <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout" data-content="The name and user id of the last person who checked this piece of equipment out." data-placement="left">
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Person to Check it Out" data-content="The last person who checked out this piece of equipment." data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
                             </div>
@@ -86,7 +86,7 @@ include('header.php');
                                 <label for="last_date">Date of Last Checkout</label>
                                 <input type="text" name="last_date" id="last_date" class="form-control" style="width:85%; display:inline;" readonly/>
                                 <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout Date" data-content="The date in which this piece of equipment was last checked out of this system." data-placement="left">
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout Date" data-content="The date that this piece of equipment was last checked out of the system." data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
                             </div>

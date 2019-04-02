@@ -26,7 +26,7 @@ include('header.php');
 <br/><br/><br/>
 
 <!-- SITE STATS CARD-->
-<div class="row">
+<div class="row" id="sites">
 	<div class="col-lg-12">
 	    <div class="panel panel-default">
 	        <div class="panel-heading">
@@ -101,7 +101,7 @@ include('header.php');
                             <input type="submit" name="emp_go" id="emp_go" class="btn btn-success" value="GO" onClick="submitEmplStats()"/>
                         </center>
                     </form>
-                    <center><canvas id="empl_stat"></canvas></center>
+                    <center><canvas id="empl_stat" style="max-width:600px; max-height:450px;"></canvas></center>
                     <h1>  
                     </h1>
             </div>

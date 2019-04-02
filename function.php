@@ -66,6 +66,7 @@ function users_options($connect){
 
 //Returns empl_name given empl_id
 function get_empl_name_by_id($connect, $user_id){
+	$output = '';
 	$query = "
 	SELECT user_name
 	FROM user_details

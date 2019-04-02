@@ -21,7 +21,7 @@ include('header.php');
 <span id='alert_action'></span>
 
 <!-- Button navigates to stats page-->
-<a class="btn btn-link" href="stats.php#employees" role="button" style="float:right;">View Stats</a>
+<a class="btn btn-link" href="stats.php#sites" role="button" style="float:right;">View Stats</a>
 
     <br/><br/>
         <div class="row">

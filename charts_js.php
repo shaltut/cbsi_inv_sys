@@ -124,7 +124,13 @@ var check_by_site = new Chart(ctx, {
         data: {
             labels: ['Checkouts', 'Returns'],
             datasets: [{
-                label: 'Selected User',
+                label: <?php 
+                    if(isset($_POST['btn_action']) AND isset($_POST['empl_id'])){
+                        echo '\'Selected Employee\'';
+                    }else{
+                       echo '\'You\'';
+                    }
+                    ?>,
                 data: [<?php 
                     if(isset($_POST['btn_action']) AND isset($_POST['empl_id'])){
                         echo user_wise_num_checkouts($connect, $_POST['empl_id']).','.user_wise_num_checkins($connect, $_POST['empl_id']);
@@ -153,7 +159,13 @@ var check_by_site = new Chart(ctx, {
         options: {
             title: {
                 display: true,
-                text: 'Employee Stats',
+                text: <?php 
+                    if(isset($_POST['btn_action']) AND isset($_POST['empl_id'])){
+                        echo '\'Selected Employee Stats\'';
+                    }else{
+                       echo '\'Your Stats\'';
+                    }
+                    ?>,
                 fontColor: '#000',
                 fontSize: 22
             },

@@ -1,6 +1,45 @@
 <?php
 //function.php
 
+//Returns empl_name given empl_id
+function get_empl_name_by_id($connect, $user_id){
+	$query = "
+	SELECT user_name
+	FROM user_details
+	WHERE user_id = '".$user_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$output = $row['user_name'];
+		}
+	}
+	// return $count;
+	return $output;
+}
+
+//Returns sit_name given site_id
+function get_site_name_by_id($connect, $site_id){
+	$query = "
+	SELECT site_name
+	FROM sites
+	WHERE site_id = '".$site_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$output = $row['site_name'];
+		}
+	}
+	// return $count;
+	return $output;
+}
 
 function get_last_checkout_id($connect, $equip_id){
 	$query = "

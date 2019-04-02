@@ -50,7 +50,7 @@ include('header.php');
 	                </table>
 	            </div></div>
                 <center>
-                    <canvas id="myChart"></canvas>
+                    <canvas id="check_by_site"></canvas>
                 </center>
 	        </div>
 	    </div>
@@ -58,7 +58,7 @@ include('header.php');
 </div>
 
 <!-- EMPLOYEE STATS CARD-->
-<div class="row">
+<div class="row" id="employees">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -88,7 +88,20 @@ include('header.php');
                             <th><?php echo count_total_user_active($connect); ?></th>
                         </tr></thead>
                     </table>
-                </div></div>
+                    <br/>
+                    <form action="#employees" method="post" id="user_stats_form">
+                        <label for="empl_select" class="center">Select User to View Stats:</label>
+                        <center>
+                            <select class="form-control center" name="empl_id" id="empl_id" style="width:85%; display:inline">
+                                <?php
+                                    echo users_options($connect);
+                                ?>
+                            </select>
+                            <input type="hidden" name="btn_action" id="btn_action"value="user_stat"/>
+                            <input type="submit" name="emp_go" id="emp_go" class="btn btn-success" value="GO" onClick="submitEmplStats()"/>
+                        </center>
+                    </form>
+                    <center><canvas id="empl_stat"></canvas></center>
             </div>
         </div>
     </div>
@@ -134,7 +147,16 @@ include('header.php');
 <?php
     include('charts_js.php');
 ?>
+<script>
+$(document).ready(function(){
 
+    $('#user_stats_form').on('change', function() {
+        var $form = $(this).closest('form');
+        $form.find('input[type=submit]').click();
+    });
+
+});
+</script>
 <script>
 function goBack() {
   window.history.back();

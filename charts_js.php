@@ -3,8 +3,8 @@
 ?>
 
 <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+var ctx = document.getElementById('check_by_site').getContext('2d');
+var check_by_site = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [<?php echo checkouts_by_site_names($connect); ?>],
@@ -117,8 +117,43 @@ var myChart = new Chart(ctx, {
         }
     }
 });
-// myChart.getDatasetMeta(3).hidden=true;
-chart.update();
+
+    var emp = document.getElementById('empl_stat').getContext('2d');
+    var check_by_empl = new Chart(emp, {
+        type: 'radar',
+        data: {
+            labels: ['Check-outs', 'Check-ins', 'Sites'],
+            datasets: [{
+                label: 'Selected User',
+                data: [15, 12, 18],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: ['rgba(255, 99, 132, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Employee Stats',
+                fontColor: '#000',
+                fontSize: 22
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                         userCallback: function(label, index, labels) {
+                         // when the floored value is the same as the value we have a whole number
+                         if (Math.floor(label) === label) {
+                             return label;
+                         }
+
+                     },
+                    }
+                }]
+            }
+        }
+    });
 </script>
 
 

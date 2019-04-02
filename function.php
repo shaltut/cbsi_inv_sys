@@ -1,6 +1,30 @@
 <?php
 //function.php
 
+function users_options($connect){
+	$query = "
+		SELECT user_id, user_name
+		FROM user_details
+	";
+	$output = '<option>Select Employee:</option>';
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(!isset($result)){
+		$output = '
+			<option> No Sites Listed!</option>
+		';
+	}else{
+		foreach($result as $row)
+		{
+			$output .= '
+			<option value="'.$row['user_id'].'">'.$row['user_name'].' (ID: '.$row['user_id'].')</option>
+			';
+		}
+	}  
+	return $output;
+}
+
 //Returns empl_name given empl_id
 function get_empl_name_by_id($connect, $user_id){
 	$query = "
@@ -14,7 +38,7 @@ function get_empl_name_by_id($connect, $user_id){
 	if(isset($result)){
 		foreach($result as $row)
 		{
-			$output = $row['user_name'];
+			$output = "'".$row['user_name']."',";
 		}
 	}
 	// return $count;

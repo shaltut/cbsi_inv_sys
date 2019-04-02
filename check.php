@@ -68,11 +68,6 @@ include('header.php');
                             Equipment ID</label>
                             <input type="text" name="equip_id" id="equip_id" class="center"/>
 
-                            <!-- Location ID field -->
-                            <!-- <label class="center">
-                            Location</label>
-                            <input type="text" name="site_id" id="site_id" class="center"> -->
-
                             <label class="center">
                             Location</label>
                             <select class="form-control center" name="site_id" id="site_id">
@@ -89,7 +84,6 @@ include('header.php');
                     		Here we need hidden fields to grab the data that the user wont have to enter manually...
                     		(user_id, site_id, etc.)
                         -->
-                        <!-- <input type="hidden" name="site_id" id="site_id" value="303000"/> -->
                         <input type="hidden" name="btn_action" id="btn_action" />
                         <input type="submit" name="action" id="action" class="btn btn-info" value="Check Out" />
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

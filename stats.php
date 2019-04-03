@@ -38,7 +38,7 @@ include('header.php');
 	        </div>
 	        <div class="panel-body">
 	            <div class="row"><div class="col-sm-12 table-responsive">
-	                <table id="equipment_data" class="table table-bordered table-striped">
+	                <table id="site_stats_tbl" class="table table-bordered table-striped">
 	                    <thead><tr>
 	                        <th>Active Sites</th>
 	                        <th><?php echo count_active_site($connect); ?></th>
@@ -74,13 +74,13 @@ include('header.php');
             </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
-                    <table id="equipment_data" class="table table-bordered table-striped">
+                    <table id="empl_stats_tbl" class="table table-bordered table-striped">
                         <thead><tr>
-                            <th>Employees</th>
+                            <th>Number of Employees Registered</th>
                             <th><?php echo count_employee_total($connect); ?></th>
                         </tr></thead>
                         <thead><tr>
-                            <th>Admin Accounts</th>
+                            <th>Number of Admin Accounts</th>
                             <th><?php echo count_master_active($connect); ?></th>
                         </tr></thead>
                         <thead><tr>
@@ -127,7 +127,7 @@ include('header.php');
             </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
-                    <table id="equipment_data" class="table table-bordered table-striped">
+                    <table id="equip_stats_tbl" class="table table-bordered table-striped">
                         <thead><tr>
                             <th>Equipment Total</th>
                             <th><?php echo count_equipment_total($connect); ?></th>

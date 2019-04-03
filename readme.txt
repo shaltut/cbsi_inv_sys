@@ -17,25 +17,24 @@ Mariam:
 
 Tristan:
 	- fix the error in the check-out function (sites_options($connect)) where if you dont enter a 'site' option, it still lets you check out that piece of equipment, and returns 0 as the site_id.
-========================================================================
-Probs found from testing:
-	--- Search field not working in sites.php
 
 ========================================================================
+
+******** FEEL FREE TO WORK ON ANY OF THE FOLLOWING ********
+(Post in chat when you start so we dont get conflicts)
+
 OTHER STUFF TO DO:
 	--- Make equipment that requires maimtenance red (just the text, or something to notify them that is small and looks good) and equipment that will need maintenance in the next 2 weeks yellow. (in equipment.php)
 		-This will require a lot of sql, php, JavaScript, and possibly jquery.
 	--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.
 		-This will require a lot of sql, php, JavaScript, and API (if you decide to use one) knowlege.
-	--- Add graphs to the stats page. Maybe based on checkouts? Or other visual representations of data.
-	--- Animations (easy to do in Jquery. I already added a few, and have been looking for more cool implementations)
-	--- search.php should show id, prod_name, view button, availability (glyph).
+	--- Adding animations anywhere they would look good and fit well. (easy to do in Jquery. I already added a few, and have been looking for more cool implementations)
 	--- LETS START DEBUGGING. (see "shit to test").
 	--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
 
 
 
-	SHIT TO TEST:
+SHIT TO TEST:
 	--- 10+, 25+, 50+, and 100+ users. Add dummy test user accounts 10 at a time and test how the tables/database reacts to the influx of data.
 	--- User accounts vs Master accounts. DONT FORGET TO TEST AS AN ADMIN AND AS A REGULAR USER!
 	--- FORMS:
@@ -48,11 +47,12 @@ OTHER STUFF TO DO:
 
 
 
-	Errors Found:
+Errors Found That Need Fixin':
 	--- Found another possible error... The "Equipment Checked Out Today" table on the index.php page displays checkouts that are over a day old as long as the user stays logged in.. When they log out and log back in, the table gets reset (realizes that the data in those tables arent from the current day.)
-		--- I believe this is because the table is populated only once (when the user logs in) then, as long as they log in, the table never checks for and prunes outdated rows.
-		---Im gonna start looking into this, but I have a feeling its a bigger problem than it looks.
-
+		- I believe this is because the table is populated only once (when the user logs in) then, as long as they log in, the table never checks for and prunes outdated rows.
+		- Im gonna start looking into this, but I have a feeling its a bigger problem than it looks.
+	--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
+	--- Search field not working in sites.php
 
 ========================================================================
 Hosting AWS VS GoDaddy

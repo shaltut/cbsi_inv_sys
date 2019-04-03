@@ -64,14 +64,14 @@ include('header.php');
                             <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%">
                                 <thead><tr>
                                     <th>ID</th>
-                                    <th>Equipment</th>
+                                    <th>Name</th>
                                     <th>Description</th>
                                     <th>Entered By</th>
                                     <th>Availability</th>
                                     <th>Status</th>
-                                    <th>Details</th>
-                                    <th>Update</th>
-                                    <th>Change Status</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -199,7 +199,7 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-                "targets":[5, 6, 7],
+                "targets":[6, 7, 8],
                 "orderable":false,
             },
         ],

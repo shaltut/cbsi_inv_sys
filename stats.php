@@ -101,11 +101,10 @@ include('header.php');
                             <input type="submit" name="emp_go" id="emp_go" class="btn btn-success" value="GO" onClick="submitEmplStats()"/>
                         </center>
                     </form>
-                    <center>
-                        <canvas id="empl_stat" style="max-width:600px; max-height:450px;"></canvas>
-                    </center>
-                    <h1>  
-                    </h1>
+                </div></div>
+                <center>
+                    <canvas id="empl_stat" style="max-width:600px; max-height:450px;"></canvas>
+                </center>
             </div>
         </div>
     </div>
@@ -156,9 +155,14 @@ include('header.php');
                             ?></th>
                         </tr></thead>
                     </table>
-                <center>
-                    <canvas id="equip_stat" style="max-width:600px; max-height:450px;"></canvas>
-                </center>
+                </div></div>
+                <div class="card">
+                    <div class="card-body" style="border:5px">
+                        <center>
+                            <canvas id="equip_stat" style="max-width:600px; max-height:450px;"></canvas>
+                        </center>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

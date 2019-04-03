@@ -317,10 +317,18 @@ function checkouts_by_site_names($connect){
 		{
 			$count = $count + 1;
 			$string = explode(" ", $row['site']);
-			if(strtoupper($string[0]) == 'THE'){
-				$output .= "'".$string[1]."',";
+			if(strtoupper($string[0]) == "THE" && count($string) > 1){
+				if(strlen($string[1]) > 4){
+					$output .= "'".substr($string[1],0,4)."..',";
+				}else{
+					$output .= "'".$string[1]."',";
+				}
 			}else{
-				$output .= "'".$string[0]."',";
+				if(strlen($string[0]) > 4){
+					$output .= "'".substr($string[0],0,4)."..',";
+				}else{
+					$output .= "'".$string[0]."',";
+				}
 			}
 		}
 	}

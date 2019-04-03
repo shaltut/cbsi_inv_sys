@@ -48,9 +48,9 @@ include('header.php');
                                     <th>Site Name</th>
                                     <th>Address</th>
                                     <th>Status</th>
-                                    <th>Details</th>
-                                    <th>Update</th>
-                                    <th>Delete</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr></thead>
                             </table>
                         </div></div>

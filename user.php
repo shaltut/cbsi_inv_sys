@@ -54,8 +54,8 @@ include('header.php');
 								<th>Name</th>
 								<th>Job Title</th>
 								<th>Status</th>
-								<th>Edit</th>
-								<th>Change Status</th>
+								<th></th>
+								<th></th>
 							</tr>
 						</thead>
            			</table>
@@ -146,10 +146,11 @@ $(document).ready(function(){
 			type:"POST"
 		},
 		"columnDefs":[
-			{
-				"target":[5,6],
-				"orderable":false
-			}
+            {
+
+                "targets":[5,6],
+                "orderable":false,
+            },
 		],
 		"pageLength": 10
 	});

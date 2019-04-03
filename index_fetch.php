@@ -1,5 +1,4 @@
 <?php
-
 //index_fetch.php
 
 include('database_connection.php');

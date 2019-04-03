@@ -1,6 +1,5 @@
 <?php
-
-//equipment_fetch.php
+//locate_fetch.php
 
 include('database_connection.php');
 include('function.php');

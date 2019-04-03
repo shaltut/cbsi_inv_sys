@@ -1,5 +1,6 @@
  <?php
  //chk_out_action.php
+ 
 include('function.php');
 
 /*

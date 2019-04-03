@@ -1,5 +1,4 @@
 <?php
-
 //equipment_fetch.php
 
 include('database_connection.php');

@@ -1,5 +1,4 @@
 <?php
-
 //site_fetch.php
 
 include('database_connection.php');

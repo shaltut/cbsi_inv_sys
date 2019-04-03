@@ -1,5 +1,12 @@
 <?php
-//header.php (cbsi_inv_sys)
+//header.php
+
+error_reporting(0);
+
+if(!isset($_SESSION["type"]))
+{
+    header('location:login.php');
+}
 ?>
 <!DOCTYPE html>
 <html>

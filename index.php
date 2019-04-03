@@ -1,5 +1,5 @@
 <?php
-//index. (cbsi_inv_sys)
+//index.php
 
 include('database_connection.php');
 include('function.php');

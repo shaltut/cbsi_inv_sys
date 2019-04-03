@@ -2,14 +2,6 @@
 //check.php
 
 
-/*
-TODO:
-    - TIME PERMITTING: Make it so that when an item is checked back in, it isnt deleted form the equipment_checkout table so that it still shows up as a "past checkout" in the table on the homepage
-    - Give a 'site' option when checking out (done)
-    - Make the 'site' option an option input field to lessen the chaces of incorrect inputs
-
-*/
-
 //Includes connection to the database
 include('database_connection.php');
 
@@ -43,8 +35,6 @@ include('header.php');
 <span id='alert_action'></span>
 
 <br/>
-
-<!-- <input type="button" class="btn btn-primary btn-lg btn-block" name="check-out" id="check_out_btn" value="Check-Out"/> -->
 
 <button type="button" name="check" id="chkout_button" class="btn btn-primary btn-lg btn-block">Check-Out Equipment</button>
 

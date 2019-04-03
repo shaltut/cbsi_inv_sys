@@ -1,14 +1,12 @@
  <?php
- //chk_out_action.php
+ //chk_in_action.php
+ 
 include('function.php');
 
 /*
         Users are sent here after clicking a button or doing some action (like
     adding a user) on user.php. Below is the php, javascript, and SQL commands 
     called whenever someone performs one of those actions.
-
- 	404097, 202000
-    404095, 202001
 */
 
 include('database_connection.php');

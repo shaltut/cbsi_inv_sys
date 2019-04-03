@@ -1,5 +1,10 @@
 <?php
-//pdf.php;
+//pdf.php
+
+if(!isset($_SESSION["type"]))
+{
+    header('location:login.php');
+}
 
 require_once 'dompdf/autoload.inc.php';
 

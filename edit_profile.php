@@ -1,5 +1,4 @@
 <?php
-
 //edit_profile.php
 
 include('database_connection.php');

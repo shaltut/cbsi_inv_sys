@@ -1,5 +1,5 @@
 <?php
-//Search.php is for the user view only. Allows the users to view equipment name, description, status and details
+//Search.php
 
 include('database_connection.php');
 include('function.php');

@@ -1,5 +1,4 @@
 <?php
-
 //maintain_action.php
 
 include('database_connection.php');

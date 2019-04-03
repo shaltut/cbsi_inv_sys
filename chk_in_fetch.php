@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 //chk_in_fetch.php
 
 include('database_connection.php');

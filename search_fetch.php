@@ -1,7 +1,5 @@
 <?php
-
-//search.php
-//Used to fetch data from the database for search.php
+//search_fetch.php
 
 
 include('database_connection.php');

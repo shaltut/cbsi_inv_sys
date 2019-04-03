@@ -1,6 +1,5 @@
 <?php
-
-//equipment_action.php
+//search_action.php
 
 include('database_connection.php');
 

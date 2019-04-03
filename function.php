@@ -1,6 +1,133 @@
 <?php
 //function.php
 
+//Returns the number of pieces of equipment that have a cost over 5000
+function equip_price_range_Over5000($connect){
+	$query = "
+	SELECT count(equipment.equip_cost) as 'countCost'
+	FROM equipment
+	WHERE equip_cost > 5000
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['countCost'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+
+//Returns the number of pieces of equipment that have a cost between 2500 and 5000
+function equip_price_range_2501To5000($connect){
+	$query = "
+	SELECT count(equipment.equip_cost) as 'countCost'
+	FROM equipment
+	WHERE equip_cost BETWEEN 2500 AND 5000
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['countCost'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+
+//Returns the number of pieces of equipment that have a cost between 1001 and 2500
+function equip_price_range_1001T02500($connect){
+	$query = "
+	SELECT count(equipment.equip_cost) as 'countCost'
+	FROM equipment
+	WHERE equip_cost BETWEEN 1001 AND 2500
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['countCost'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+
+//Returns the number of pieces of equipment that have a cost between 501 and 1000
+function equip_price_range_501To1000($connect){
+	$query = "
+	SELECT count(equipment.equip_cost) as 'countCost'
+	FROM equipment
+	WHERE equip_cost BETWEEN 501 AND 1000
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['countCost'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+
+//Returns the number of pieces of equipment that have a cost between 101 and 500
+function equip_price_range_101To500($connect){
+	$query = "
+	SELECT count(equipment.equip_cost) as 'countCost'
+	FROM equipment
+	WHERE equip_cost BETWEEN 101 AND 500
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['countCost'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+
+//Returns the number of pieces of equipment that have a cost between 1 dollar and 100 dollars
+function equip_price_range_1To100($connect){
+	$query = "
+	SELECT count(equipment.equip_cost) as 'countCost'
+	FROM equipment
+	WHERE equip_cost BETWEEN 1 AND 100
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['countCost'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+
+//Returns the number of times the user checked out a piece of equipment
 function user_wise_num_checkouts($connect, $user_id){
 	$query = "
 	SELECT count(equipment_checkout.empl_id) as 'checks'
@@ -20,6 +147,8 @@ function user_wise_num_checkouts($connect, $user_id){
 	// return $count;
 	return $count;
 }
+
+//Returns the number of times the user returned a piece of equipment
 function user_wise_num_checkins($connect, $user_id){
 	$query = "
 	SELECT count(equipment_checkout.empl_id) as 'checks'

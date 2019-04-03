@@ -50,7 +50,7 @@ include('header.php');
 	                </table>
 	            </div></div>
                 <center>
-                    <canvas id="check_by_site"></canvas>
+                    <canvas id="check_by_site" style="max-width:600px; max-height:450px;"></canvas>
                 </center>
 	        </div>
 	    </div>
@@ -101,7 +101,9 @@ include('header.php');
                             <input type="submit" name="emp_go" id="emp_go" class="btn btn-success" value="GO" onClick="submitEmplStats()"/>
                         </center>
                     </form>
-                    <center><canvas id="empl_stat" style="max-width:600px; max-height:450px;"></canvas></center>
+                    <center>
+                        <canvas id="empl_stat" style="max-width:600px; max-height:450px;"></canvas>
+                    </center>
                     <h1>  
                     </h1>
             </div>
@@ -140,7 +142,9 @@ include('header.php');
                             <th><?php echo check_equip_maintenance($connect); ?></th>
                         </tr></thead>
                     </table>
-                </div></div>
+                <center>
+                    <canvas id="equip_stat" style="max-width:600px; max-height:450px;"></canvas>
+                </center>
             </div>
         </div>
     </div>

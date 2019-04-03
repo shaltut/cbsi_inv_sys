@@ -140,18 +140,24 @@ var check_by_empl = new Chart(emp, {
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
+            ],
+            borderWidth: 1
+        },{
+            label: 'All Employees',
+            data: [<?php 
+                   echo num_checkouts($connect).','.num_returned($connect);
+                ?>],
+            backgroundColor: [
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+            ],
+            borderColor: [
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(153, 102, 255, 1)',
             ],
             borderWidth: 1
         }]
@@ -192,15 +198,30 @@ new Chart(document.getElementById("equip_stat"), {
       labels: ["$1-$100", "$101-$500", "$501-$1,000", "$1,001-$2,500", "$2,500-$5,000", "$5,001+"],
       datasets: [
         {
-          label: "Population (millions)",
-          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#045830","#c45850"],
-          data: [<?php 
-            echo equip_price_range_1To100($connect).','.
-            equip_price_range_101To500($connect).','.
-            equip_price_range_501To1000($connect).','.
-            equip_price_range_1001T02500($connect).','.
-            equip_price_range_2501To5000($connect).','.
-            equip_price_range_Over5000($connect)
+            label: "Population (millions)",
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            data: [<?php 
+                echo equip_price_range_1To100($connect).','.
+                equip_price_range_101To500($connect).','.
+                equip_price_range_501To1000($connect).','.
+                equip_price_range_1001T02500($connect).','.
+                equip_price_range_2501To5000($connect).','.
+                equip_price_range_Over5000($connect)
             ;?>]
         }
       ]

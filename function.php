@@ -169,6 +169,47 @@ function user_wise_num_checkins($connect, $user_id){
 	return $count;
 }
 
+//Returns the number of times items were checked out
+function num_checkouts($connect){
+	$query = "
+	SELECT count(equipment_checkout.chk_id) as 'checks'
+	FROM equipment_checkout
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['checks'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+
+//Returns the number of times items were returned
+function num_returned($connect){
+	$query = "
+	SELECT count(equipment_checkout.chk_id) as 'checks'
+	FROM equipment_checkout
+	WHERE returned = 'true'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$count = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $row['checks'];
+		}
+	}
+	// return $count;
+	return $count;
+}
+
 function users_options($connect){
 	$query = "
 		SELECT user_id, user_name

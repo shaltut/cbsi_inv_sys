@@ -23,12 +23,10 @@ Probs found from testing:
 
 ========================================================================
 OTHER STUFF TO DO:
-	--- Make equipment that requires maimtenance red and equipment that will need maintenance in the next 2 weeks yellow.
+	--- Make equipment that requires maimtenance red (just the text, or something to notify them that is small and looks good) and equipment that will need maintenance in the next 2 weeks yellow. (in equipment.php)
+		-This will require a lot of sql, php, JavaScript, and possibly jquery.
 	--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.
-	--- Adding color coded Glyphicons could make the site more unique and user friendly! Check out Bootstrap Glyphicons and try to find ways to implement them!
-	--- Found another possible error... The "Equipment Checked Out Today" table on the index.php page displays checkouts that are over a day old as long as the user stays logged in.. When they log out and log back in, the table gets reset (realizes that the data in those tables arent from the current day.)
-		--- I believe this is because the table is populated only once (when the user logs in) then, as long as they log in, the table never checks for and prunes outdated rows.
-		---Im gonna start looking into this, but I have a feeling its a bigger problem than it looks.
+		-This will require a lot of sql, php, JavaScript, and API (if you decide to use one) knowlege.
 	--- Add graphs to the stats page. Maybe based on checkouts? Or other visual representations of data.
 	--- Animations (easy to do in Jquery. I already added a few, and have been looking for more cool implementations)
 	--- search.php should show id, prod_name, view button, availability (glyph).
@@ -50,12 +48,10 @@ OTHER STUFF TO DO:
 
 
 
-
-	SOLVED:
-	--- (SOLVED ON 3/31 BY DIANA B.)Change the 'Entered By' column on the equipment.php page to display the user's name (user_name) instead of the user's ID number.
-	--- (SOLVED ON 3/31 BY DIANA B.)When you navigate to the site.php page, and open a modal, whatever modal you open, the heading for that modal gets stuck on that headding. 
-		-- (SOLVED ON 3/31 BY DIANA B.) So if you click the "add" button, the modal will open up with a heading that says "Add Item" (it should say "Add Site" but thats another problem...) then you close that modal, and click the "View" button for a site on the table, the view modal opens, but it keeps the "Add Item" heading.
-		-- (SOLVED ON 3/31 BY DIANA B.) This same error can be found on Equipment.php!
+	Errors Found:
+	--- Found another possible error... The "Equipment Checked Out Today" table on the index.php page displays checkouts that are over a day old as long as the user stays logged in.. When they log out and log back in, the table gets reset (realizes that the data in those tables arent from the current day.)
+		--- I believe this is because the table is populated only once (when the user logs in) then, as long as they log in, the table never checks for and prunes outdated rows.
+		---Im gonna start looking into this, but I have a feeling its a bigger problem than it looks.
 
 
 ========================================================================

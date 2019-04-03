@@ -316,7 +316,12 @@ function checkouts_by_site_names($connect){
 		foreach($result as $row)
 		{
 			$count = $count + 1;
-			$output .= "'".$row['site']."',";
+			$string = explode(" ", $row['site']);
+			if(strtoupper($string[0]) == 'THE'){
+				$output .= "'".$string[1]."',";
+			}else{
+				$output .= "'".$string[0]."',";
+			}
 		}
 	}
 	// return $count;

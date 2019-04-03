@@ -192,7 +192,7 @@ var check_by_empl = new Chart(emp, {
     }
 });
 
-new Chart(document.getElementById("equip_stat"), {
+new Chart(document.getElementById("equip_stat").getContext('2d'), {
     type: 'pie',
     data: {
       labels: ["Under $100", "$100-$999", "$1,000-$4,999", "$5,000-$9,999", "$10,000+"],

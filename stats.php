@@ -50,7 +50,7 @@ include('header.php');
 	                </table>
 	            </div></div>
                 <center>
-                    <canvas id="check_by_site" style="max-width:600px; max-height:450px;"></canvas>
+                    <canvas id="check_by_site" style="max-width:600px;"></canvas>
                 </center>
 	        </div>
 	    </div>

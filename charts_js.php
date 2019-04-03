@@ -187,7 +187,7 @@ var check_by_empl = new Chart(emp, {
 });
 
 new Chart(document.getElementById("equip_stat"), {
-    type: 'doughnut',
+    type: 'pie',
     data: {
       labels: ["$1-$100", "$101-$500", "$501-$1,000", "$1,001-$2,500", "$2,500-$5,000", "$5,001+"],
       datasets: [
@@ -208,7 +208,9 @@ new Chart(document.getElementById("equip_stat"), {
     options: {
       title: {
         display: true,
-        text: 'Equipment Cost Visualized'
+        text: 'Equipment Cost Visualized',
+        fontColor: '#000',
+        fontSize: 22
       }
     }
 });

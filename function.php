@@ -2,32 +2,11 @@
 //function.php
 
 //Returns the number of pieces of equipment that have a cost over 5000
-function equip_price_range_Over5000($connect){
+function equip_price_range_Over10000($connect){
 	$query = "
 	SELECT count(equipment.equip_cost) as 'countCost'
 	FROM equipment
-	WHERE equip_cost > 5000
-	";
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$count = 0;
-	$result = $statement->fetchAll();
-	if(isset($result)){
-		foreach($result as $row)
-		{
-			$count = $row['countCost'];
-		}
-	}
-	// return $count;
-	return $count;
-}
-
-//Returns the number of pieces of equipment that have a cost between 2500 and 5000
-function equip_price_range_2501To5000($connect){
-	$query = "
-	SELECT count(equipment.equip_cost) as 'countCost'
-	FROM equipment
-	WHERE equip_cost BETWEEN 2500 AND 5000
+	WHERE equip_cost >= 10000
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -44,11 +23,11 @@ function equip_price_range_2501To5000($connect){
 }
 
 //Returns the number of pieces of equipment that have a cost between 1001 and 2500
-function equip_price_range_1001T02500($connect){
+function equip_price_range_5000To9999($connect){
 	$query = "
 	SELECT count(equipment.equip_cost) as 'countCost'
 	FROM equipment
-	WHERE equip_cost BETWEEN 1001 AND 2500
+	WHERE equip_cost BETWEEN 5000 AND 9999.99
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -65,11 +44,11 @@ function equip_price_range_1001T02500($connect){
 }
 
 //Returns the number of pieces of equipment that have a cost between 501 and 1000
-function equip_price_range_501To1000($connect){
+function equip_price_range_1000To4999($connect){
 	$query = "
 	SELECT count(equipment.equip_cost) as 'countCost'
 	FROM equipment
-	WHERE equip_cost BETWEEN 501 AND 1000
+	WHERE equip_cost BETWEEN 1000 AND 4999.99
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -86,11 +65,11 @@ function equip_price_range_501To1000($connect){
 }
 
 //Returns the number of pieces of equipment that have a cost between 101 and 500
-function equip_price_range_101To500($connect){
+function equip_price_range_100To999($connect){
 	$query = "
 	SELECT count(equipment.equip_cost) as 'countCost'
 	FROM equipment
-	WHERE equip_cost BETWEEN 101 AND 500
+	WHERE equip_cost BETWEEN 100 AND 999.99
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -107,11 +86,11 @@ function equip_price_range_101To500($connect){
 }
 
 //Returns the number of pieces of equipment that have a cost between 1 dollar and 100 dollars
-function equip_price_range_1To100($connect){
+function equip_price_range_Under100($connect){
 	$query = "
 	SELECT count(equipment.equip_cost) as 'countCost'
 	FROM equipment
-	WHERE equip_cost BETWEEN 1 AND 100
+	WHERE equip_cost BETWEEN 1 AND 99.99
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();

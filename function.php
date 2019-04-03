@@ -1,6 +1,43 @@
 <?php
 //function.php
 
+
+//Returns the number of sites whoes site_name's contain 'DC', 'Washington', etc.
+function total_sites_MD($connect){
+	$query = "
+	SELECT *
+	FROM sites
+	WHERE site_address LIKE '% MD %' OR site_address LIKE '% MD,%' OR site_address LIKE '% MD' OR site_address LIKE '% MARYLAND' OR site_address LIKE '% MARYLAND %' OR site_address LIKE '% MARYLAND,%'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
+
+//Returns the number of sites whoes site_name's contain 'DC', 'Washington', etc.
+function total_sites_DC($connect){
+	$query = "
+	SELECT *
+	FROM sites
+	WHERE site_address LIKE '% DC %' OR site_address LIKE '% DC,%' OR site_address LIKE '% DC' OR site_address LIKE '% WASHINGTON' OR site_address LIKE '% WASHINGTON %' OR site_address LIKE '% WASHINGTON,%'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
+
+//Returns the number of sites whoes site_name's contain 'virginia', 'VA', etc.
+function total_sites_VA($connect){
+	$query = "
+	SELECT *
+	FROM sites
+	WHERE site_address LIKE '% VA %' OR site_address LIKE '% VA,%' OR site_address LIKE '% VA' OR site_address LIKE '% VIRGINIA' OR site_address LIKE '% VIRGINIA %' OR site_address LIKE '% VIRGINIA,%'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+}
+
 //Returns the number of pieces of equipment that have a cost over 5000
 function total_equipment_cost($connect){
 	$query = "

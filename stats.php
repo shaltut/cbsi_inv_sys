@@ -26,7 +26,7 @@ include('header.php');
 <br/><br/><br/>
 
 <!-- SITE STATS CARD-->
-<div class="row" id="sites">
+<div class="row" id="sites" style="padding-top: 10px">
 	<div class="col-lg-12">
 	    <div class="panel panel-default">
 	        <div class="panel-heading">
@@ -58,7 +58,7 @@ include('header.php');
 </div>
 
 <!-- EMPLOYEE STATS CARD-->
-<div class="row" id="employees">
+<div class="row" id="employees" style="padding-top: 10px">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -112,7 +112,7 @@ include('header.php');
 </div>
 
 <!-- EQUIPMENT STATS CARD-->
-<div class="row" id="equipment">
+<div class="row" id="equipment" style="padding-top: 10px">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">

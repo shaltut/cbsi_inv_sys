@@ -305,6 +305,7 @@ function checkouts_by_site_names($connect){
 	$query = "
 	SELECT sites.site_name as 'site', count(equipment_checkout.site_id) as 'checks'
 	FROM sites INNER JOIN equipment_checkout ON sites.site_id = equipment_checkout.site_id
+	WHERE sites.site_status = 'active'
 	GROUP BY sites.site_id
 	";
 	$statement = $connect->prepare($query);

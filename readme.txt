@@ -33,6 +33,9 @@ OTHER STUFF TO DO:
 	--- Animations (easy to do in Jquery. I already added a few, and have been looking for more cool implementations)
 	--- search.php should show id, prod_name, view button, availability (glyph).
 	--- LETS START DEBUGGING. (see "shit to test").
+	--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
+
+
 
 	SHIT TO TEST:
 	--- 10+, 25+, 50+, and 100+ users. Add dummy test user accounts 10 at a time and test how the tables/database reacts to the influx of data.
@@ -44,6 +47,9 @@ OTHER STUFF TO DO:
 		- Google Chrome, Safari, Opera, IE, FireFox, etc.
 	--- Moblie compatibility. Download emulators (or just use XCode if you have that downloaded)
 	--- SYSTEM DATES: Almost the entire check system, as well as the maintenance system works based off of system dates... We should make sure the dates are correctly entered, and properly interpreted by the system. (more on this talk to me)
+
+
+
 
 	SOLVED:
 	--- (SOLVED ON 3/31 BY DIANA B.)Change the 'Entered By' column on the equipment.php page to display the user's name (user_name) instead of the user's ID number.

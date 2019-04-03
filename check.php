@@ -121,7 +121,7 @@ include('header.php');
                                         <th>Equipment ID</th>
                                         <th>Equipment Name</th>
                                         <th>Site ID</th>
-                                        <th>Action</th>
+                                        <th></th>
                                 	</tr>
                             	</thead>
                             </table>

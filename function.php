@@ -2,6 +2,26 @@
 //function.php
 
 //Returns the number of pieces of equipment that have a cost over 5000
+function total_equipment_cost($connect){
+	$query = "
+	SELECT sum(equip_cost) as 'totalCost'
+	FROM equipment
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$total = 0;
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$total = $row['totalCost'];
+		}
+	}
+	// return $total;
+	return $total;
+}
+
+//Returns the number of pieces of equipment that have a cost over 5000
 function equip_price_range_Over10000($connect){
 	$query = "
 	SELECT count(equipment.equip_cost) as 'countCost'

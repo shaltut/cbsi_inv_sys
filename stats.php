@@ -130,16 +130,30 @@ include('header.php');
                 <div class="row"><div class="col-sm-12 table-responsive">
                     <table id="equipment_data" class="table table-bordered table-striped">
                         <thead><tr>
-                            <th>Total Equipment</th>
+                            <th>Equipment Total</th>
                             <th><?php echo count_equipment_total($connect); ?></th>
                         </tr></thead>
                         <thead><tr>
-                            <th>Total Checked Out</th>
+                            <th>Equipment Checked Out</th>
                             <th><?php echo count_check_out_total($connect); ?></th>
                         </tr></thead>
                         <thead><tr>
-                            <th>Needs Maintenance</th>
-                            <th><?php echo check_equip_maintenance($connect); ?></th>
+                            <th>Equipment Needing Maintenance</th>
+                            <th><?php echo check_equip_maintenance($connect); 
+                                if(check_equip_maintenance($connect) > 0){
+                                    echo "<a class=\"btn btn-xs btn-danger\" href=\"maintain.php\" role=\"button\" style=\"float:right; margin-right:10px;\">View</a>";
+                                }else{
+                                    echo "NOPE";
+                                }
+                            ?>    
+                            </th>
+                        </tr></thead>
+                        <thead><tr>
+                            <th>Total Cost of All Equipment</th>
+                            <th><?php 
+                            setlocale(LC_MONETARY, 'en_US');
+                            echo money_format('%(#10n', total_equipment_cost($connect)); 
+                            ?></th>
                         </tr></thead>
                     </table>
                 <center>

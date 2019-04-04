@@ -317,10 +317,21 @@ new Chart(document.getElementById("equip_monthly_checkouts"), {
         datasets: [{ 
             data: [<?php echo equip_monthly_checkouts_line_graph_data($connect); ?>],
             label: "Checkouts",
-            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-            borderColor: ['rgba(255, 99, 132, 1)'],
-            fill: true
-        }]
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            pointBackgroundColor: 'rgba(153, 102, 255, .8)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            fill: true,
+            lineTension: .3,
+            pointRadius: 8,
+            pointStyle: 'rectRounded',
+            borderWidth: 5,
+            pointBorderWidth: 0,
+            pointHoverBackgroundColor: 'rgba(153, 102, 255, .7)',
+            pointHoverRadius: 20,
+            pointHoverBorderWidth: 0,
+            pointHoverBorderColor: 'rgba(153, 102, 255, .3)'
+
+        }],
     },
     options: {
         title: {

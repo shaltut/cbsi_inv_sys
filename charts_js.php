@@ -324,7 +324,7 @@ new Chart(document.getElementById("equip_monthly_checkouts"), {
             lineTension: .3,
             pointRadius: 8,
             pointStyle: 'rectRounded',
-            borderWidth: 5,
+            borderWidth: 3,
             pointBorderWidth: 0,
             pointHoverBackgroundColor: 'rgba(153, 102, 255, .7)',
             pointHoverRadius: 20,
@@ -347,7 +347,7 @@ new Chart(document.getElementById("equip_monthly_checkouts"), {
                 fontColor: 'rgba(54, 162, 255, 1)',
                 fontSize: 13,
                 fontStyle: 'bold',
-                padding: -5
+                padding: -5,
             }
         },
         layout: {

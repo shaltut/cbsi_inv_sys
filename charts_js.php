@@ -329,7 +329,9 @@ new Chart(document.getElementById("equip_monthly_checkouts"), {
   options: {
     title: {
       display: true,
-      text: 'Checkouts By Month'
+      text: 'Checkouts By Month',
+      fontSize: 18,
+      fontColor: 'black'
     }
   }
 });

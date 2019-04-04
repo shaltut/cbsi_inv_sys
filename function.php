@@ -1,6 +1,7 @@
 <?php
 //function.php
 
+//For ChartJS output label (line graph)
 function equip_monthly_checkouts_line_graph_labels($connect){
 	$currentMonth = ltrim(date("m"),'0');
 	$allMonths = array('Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
@@ -16,6 +17,7 @@ function equip_monthly_checkouts_line_graph_labels($connect){
 	return $output;
 }
 
+//For ChartJS data input (line graph)
 function equip_monthly_checkouts_line_graph_data($connect){
 	$query = "
 	SELECT chk_date_time as 'date'
@@ -389,9 +391,7 @@ function checkouts_by_site_names_count($connect){
 	return $statement->rowCount();
 }
 
-/*
-	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites.
-*/
+//For ChartJS output label (bar graph for #sites... "Checkouts By Site")
 function checkouts_by_site_names($connect){
 	$output = '';
 	$query = "

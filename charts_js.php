@@ -296,8 +296,8 @@ new Chart(document.getElementById("equip_cost_pie").getContext('2d'), {
         },
         layout: {
             padding: {
-                left: -100,
-                right: -10,
+                left: 0,
+                right: 0,
                 top: -12,
                 bottom: 0 
             }
@@ -311,29 +311,47 @@ new Chart(document.getElementById("equip_cost_pie").getContext('2d'), {
 
 //Checkouts By Month (Line Chart) for Equipment stats (stats.php#equipment)
 new Chart(document.getElementById("equip_monthly_checkouts"), {
-  type: 'line',
-  data: {
-    labels: [<?php echo equip_monthly_checkouts_line_graph_labels($connect); ?>],
-    datasets: [{ 
-        data: [<?php echo equip_monthly_checkouts_line_graph_data($connect); ?>],
-        label: "Checkouts",
-        backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-            ],
-        fill: true
-      }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Checkouts By Month',
-      fontSize: 18,
-      fontColor: 'black'
+    type: 'line',
+    data: {
+        labels: [<?php echo equip_monthly_checkouts_line_graph_labels($connect); ?>],
+        datasets: [{ 
+            data: [<?php echo equip_monthly_checkouts_line_graph_data($connect); ?>],
+            label: "Checkouts",
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: ['rgba(255, 99, 132, 1)'],
+            fill: true
+        }]
+    },
+    options: {
+        title: {
+            display: true,
+            text: 'Checkouts By Month',
+            fontSize: 16,
+            fontColor: 'black',
+        },
+        legend: {
+            position: 'top',
+            labels: {
+                boxWidth: 15,
+                fontColor: 'rgba(54, 162, 255, 1)',
+                fontSize: 13,
+                fontStyle: 'bold',
+                padding: -5
+            }
+        },
+        layout: {
+            padding: {
+                left: -8,
+                right: 0,
+                top: 0,
+                bottom: 0 
+            }
+        },
+        animation: {
+            duration: 1500,
+            easing: 'easeOutBounce'
+        }
     }
-  }
 });
 </script>
 

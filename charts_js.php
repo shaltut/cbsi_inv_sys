@@ -309,6 +309,7 @@ new Chart(document.getElementById("equip_cost_pie").getContext('2d'), {
     }
 });
 
+//Checkouts By Month (Line Chart) for Equipment stats (stats.php#equipment)
 new Chart(document.getElementById("equip_monthly_checkouts"), {
   type: 'line',
   data: {

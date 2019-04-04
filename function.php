@@ -1,6 +1,44 @@
 <?php
 //function.php
 
+function equip_monthly_checkouts_line_graph_labels($connect){
+	$currentMonth = ltrim(date("m"),'0');
+	$allMonths = array('Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec');
+	$output = "'Jan',";
+	for($i=0;$i<$currentMonth-1;$i++){
+			if($i == ($currentMonth-2)){
+				$output .= "'".$allMonths[$i]."'";
+			}else{
+				$output .= "'".$allMonths[$i]."',";
+			}
+	}
+
+	return $output;
+}
+
+function equip_monthly_checkouts_line_graph_data($connect){
+	$query = "
+	SELECT chk_date_time as 'date'
+	FROM equipment_checkout
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$months = array(0,0,0,0,0,0,0,0,0,0,0,0,0);
+	$output = '';
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$curYear = date("Y");
+			if(substr($row['date'],0,4) == strval($curYear)){
+				$months[intval(substr($row['date'],5,2))] = $months[intval(substr($row['date'],5,2))]+1;
+			}
+		}
+	}
+	$output = $months[1].",".$months[2].",".$months[3].",".$months[4].",".$months[5].",".$months[6].",".$months[7].",".$months[8].",".$months[9].",".$months[10].",".$months[11].",".$months[12];
+	// return $count;
+	return $output;
+}
 
 //Returns the number of sites whoes site_name's contain 'DC', 'Washington', etc.
 function total_sites_MD($connect){
@@ -337,6 +375,23 @@ function get_last_checkout_id($connect, $equip_id){
 /*
 	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites.
 */
+function checkouts_by_site_names_count($connect){
+	$output = '';
+	$query = "
+	SELECT sites.site_name as 'site', count(equipment_checkout.site_id) as 'checks'
+	FROM sites INNER JOIN equipment_checkout ON sites.site_id = equipment_checkout.site_id
+	WHERE sites.site_status = 'active'
+	GROUP BY sites.site_id
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	// return count;
+	return $statement->rowCount();
+}
+
+/*
+	Returns data for the "Equipment Usage (Per-Site)" bar graph on stats.php#sites.
+*/
 function checkouts_by_site_names($connect){
 	$output = '';
 	$query = "
@@ -355,17 +410,56 @@ function checkouts_by_site_names($connect){
 		{
 			$count = $count + 1;
 			$string = explode(" ", $row['site']);
-			if(strtoupper($string[0]) == "THE" && count($string) > 1){
-				if(strlen($string[1]) > 4){
-					$output .= "'".substr($string[1],0,4)."..',";
+			$numTitles = checkouts_by_site_names_count($connect);
+			if($numTitles >= 1 && $numTitles <= 2){
+				if(strtoupper($string[0]) == "THE" && count($string) > 1){
+						$output .= "'".$string[1]."',";
 				}else{
-					$output .= "'".$string[1]."',";
+						$output .= "'".$string[0]."',";
 				}
-			}else{
-				if(strlen($string[0]) > 4){
-					$output .= "'".substr($string[0],0,4)."..',";
+
+			}elseif($numTitles >= 3 && $numTitles <= 4){
+				if(strtoupper($string[0]) == "THE" && count($string) > 1){
+					if(strlen($string[1]) > 8){
+						$output .= "'".substr($string[1],0,8)."..',";
+					}else{
+						$output .= "'".$string[1]."',";
+					}
 				}else{
-					$output .= "'".$string[0]."',";
+					if(strlen($string[0]) > 8){
+						$output .= "'".substr($string[0],0,8)."..',";
+					}else{
+						$output .= "'".$string[0]."',";
+					}
+				}
+
+			}elseif($numTitles >= 5 && $numTitles <= 6){
+				if(strtoupper($string[0]) == "THE" && count($string) > 1){
+					if(strlen($string[1]) > 4){
+						$output .= "'".substr($string[1],0,4)."..',";
+					}else{
+						$output .= "'".$string[1]."',";
+					}
+				}else{
+					if(strlen($string[0]) > 4){
+						$output .= "'".substr($string[0],0,4)."..',";
+					}else{
+						$output .= "'".$string[0]."',";
+					}
+				}
+			}elseif($numTitles > 7){
+				if(strtoupper($string[0]) == "THE" && count($string) > 1){
+					if(strlen($string[1]) > 4){
+						$output .= "'".substr($string[1],0,2)."..',";
+					}else{
+						$output .= "'".$string[1]."',";
+					}
+				}else{
+					if(strlen($string[0]) > 4){
+						$output .= "'".substr($string[0],0,4)."..',";
+					}else{
+						$output .= "'".$string[0]."',";
+					}
 				}
 			}
 		}

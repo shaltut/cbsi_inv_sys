@@ -98,12 +98,28 @@ var check_by_site = new Chart(ctx, {
         title: {
             display: true,
             text: 'Checkouts By Site',
-            fontColor: '#000',
-            fontSize: 22
+            fontColor: 'black',
+            fontSize: 18
+        },
+        legend: {
+            position: 'bottom',
+            labels: {
+                fontColor: 'rgba(54, 162, 255, 1)',
+                boxWidth: 0,
+                fontStyle: 'bold',
+                padding: 3
+            }
         },
         scales: {
+            xAxes: [{
+                barPercentage: 1.25,
+                ticks:{
+                    fontSize: 10
+                }
+            }],
             yAxes: [{
                 ticks: {
+                    fontSize: 8,
                     beginAtZero: true,
                      userCallback: function(label, index, labels) {
                      // when the floored value is the same as the value we have a whole number
@@ -114,6 +130,18 @@ var check_by_site = new Chart(ctx, {
                  },
                 }
             }]
+        },
+        layout: {
+            padding: {
+                left: 0,
+                right: 0,
+                top: -13,
+                bottom: -12
+            }
+        },
+        animation: {
+            duration: 1500,
+            easing: 'easeOutElastic'
         }
     }
 });
@@ -136,7 +164,8 @@ var check_by_empl = new Chart(emp, {
                     echo user_wise_num_checkouts($connect, $_POST['empl_id']).','.user_wise_num_checkins($connect, $_POST['empl_id']);
                 }else{
                    echo user_wise_num_checkouts($connect, $_SESSION['user_id']).','.user_wise_num_checkins($connect, $_SESSION['user_id']);
-                }?>],
+            }?>],
+                
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
@@ -173,8 +202,18 @@ var check_by_empl = new Chart(emp, {
                    echo '\'Your Stats\'';
                 }
                 ?>,
-            fontColor: '#000',
-            fontSize: 22
+            fontColor: 'black',
+            fontSize: 18
+        },
+        legend: {
+            position: 'right',
+            labels: {
+                boxWidth: 18,
+                fontColor: 'rgba(54, 162, 255, 1)',
+                fontSize: 13,
+                fontStyle: 'bold',
+                padding: 15
+            }
         },
         scales: {
             yAxes: [{
@@ -189,14 +228,26 @@ var check_by_empl = new Chart(emp, {
                  },
                 }
             }]
+        },
+        layout: {
+            padding: {
+                left: -2,
+                right: -10,
+                top: -5,
+                bottom: -9 
+            }
+        },
+        animation: {
+            duration: 1500,
+            easing: 'easeOutElastic'
         }
     }
 });
 
-new Chart(document.getElementById("equip_stat").getContext('2d'), {
+new Chart(document.getElementById("equip_cost_pie").getContext('2d'), {
     type: 'pie',
     data: {
-      labels: ["Under $100", "$100-$999", "$1,000-$4,999", "$5,000-$9,999", "$10,000+"],
+      labels: ["Under $100", "$100-$999", "$1k-$4,999", "$5k-$9,999", "$10k+"],
       datasets: [
         {
             label: "Population (millions)",
@@ -227,13 +278,59 @@ new Chart(document.getElementById("equip_stat").getContext('2d'), {
       ]
     },
     options: {
-      title: {
-        display: true,
-        text: 'Equipment Cost Visualized',
-        fontColor: '#000',
-        fontSize: 22
-      }
+        title: {
+            display: true,
+            text: 'Equipment Cost Visualized',
+            fontColor: 'black',
+            fontSize: 16
+        },
+        legend: {
+            position: 'right',
+            labels: {
+                boxWidth: 15,
+                fontColor: 'rgba(54, 162, 255, 1)',
+                fontSize: 13,
+                fontStyle: 'bold',
+                padding: 5
+            }
+        },
+        layout: {
+            padding: {
+                left: -100,
+                right: -10,
+                top: -12,
+                bottom: 0 
+            }
+        },
+        animation: {
+            duration: 1500,
+            easing: 'easeOutBack'
+        }
     }
+});
+
+new Chart(document.getElementById("equip_monthly_checkouts"), {
+  type: 'line',
+  data: {
+    labels: [<?php echo equip_monthly_checkouts_line_graph_labels($connect); ?>],
+    datasets: [{ 
+        data: [<?php echo equip_monthly_checkouts_line_graph_data($connect); ?>],
+        label: "Checkouts",
+        backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+            ],
+        fill: true
+      }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: 'Checkouts By Month'
+    }
+  }
 });
 </script>
 

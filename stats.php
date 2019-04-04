@@ -185,7 +185,10 @@ include('header.php');
                 <div class="card">
                     <div class="card-body" style="border:5px">
                         <center>
-                            <canvas id="equip_stat" style="max-width:600px; max-height:450px;"></canvas>
+                            <!-- Pie Chart (Equipment Cost Visualized) -->
+                            <canvas id="equip_cost_pie" style="max-width:600px; max-height:450px;"></canvas>
+                            <!-- Line Graph (Checkouts by month) -->
+                            <canvas id="equip_monthly_checkouts" width="800" height="450"></canvas>
                         </center>
                     </div>
                 </div>

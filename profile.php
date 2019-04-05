@@ -33,22 +33,22 @@ include('header.php');
 				<form method="post" id="edit_profile_form">
 					<span id="message"></span>
 					<div class="form-group">
-						<label>Name</label>
+						<label>Name: </label>
 						<input type="text" name="user_name" id="user_name" class="form-control" value="<?php echo $name; ?>" required />
 					</div>
 					<div class="form-group">
-						<label>Email</label>
+						<label>Email: </label>
 						<input type="email" name="user_email" id="user_email" class="form-control" required value="<?php echo $email; ?>" />
 					</div>
 					<hr />
-					<label>Leave Password blank if you do not want to change</label>
+					<label>**Leave Password fields blank if you do not want to change it</label>
 					<div class="form-group">
-						<label>New Password</label>
-						<input type="password" name="user_new_password" id="user_new_password" class="form-control" />
+						<label>New Password: </label>
+						<input type="password" name="user_new_password" placeholder="Enter New Password" id="user_new_password" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label>Re-enter Password</label>
-						<input type="password" name="user_re_enter_password" id="user_re_enter_password" class="form-control" />
+						<label>Confirm New Password: </label>
+						<input type="password" name="user_re_enter_password" placeholder="Re-Enter New Password" id="user_re_enter_password" class="form-control" />
 						<span id="error_password"></span>	
 					</div>
 					<div class="form-group">

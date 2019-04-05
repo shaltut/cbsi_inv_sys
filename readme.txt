@@ -56,6 +56,8 @@ Errors Found That Need Fixin':
 		- Im gonna start looking into this, but I have a feeling its a bigger problem than it looks.
 	--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
 	--- Search field not working in sites.php
+	--- 'Go Back' button on sites.php and user.php not working
+	--- Graphs shown on Monday not showing in stats anymore
 
 ========================================================================
 Hosting AWS VS GoDaddy

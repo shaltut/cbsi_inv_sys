@@ -44,13 +44,13 @@ include('header.php');
                         <div class="row"><div class="col-sm-12 table-responsive">
                             <table id="site_data" class="table table-bordered table-striped display" cellspacing="0" width="100%">
                                 <thead><tr>
-                                    <th>ID</th>
+                                    <!-- <th>ID</th> -->
                                     <th>Site Name</th>
-                                    <th>Address</th>
+                                    <!-- <th>Address</th> -->
                                     <th>Status</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>View</th>
+                                    <th>Update</th>
+                                    <th>Deactivate</th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -145,7 +145,7 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-                "targets":[4, 5, 6],
+                "targets":[2, 3, 4],
                 "orderable":false,
             },
         ],

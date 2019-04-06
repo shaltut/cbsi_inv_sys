@@ -50,9 +50,9 @@ foreach($result as $row)
 		$status = '<span class="label label-danger">Inactive</span>';
 	}
 	$sub_array = array();
-	$sub_array[] = $row['site_id'];
+	// $sub_array[] = $row['site_id'];
 	$sub_array[] = $row['site_name'];
-	$sub_array[] = $row['site_address'];
+	// $sub_array[] = $row['site_address'];
 	$sub_array[] = $status;
 	$sub_array[] = '
 		<button type="button" name="view" id="'.$row["site_id"].'" class="btn btn-info btn-xs view">View</button>

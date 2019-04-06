@@ -65,13 +65,13 @@ include('header.php');
                                 <thead><tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Entered By</th>
+                                    <!-- <th>Description</th> -->
+                                    <!-- <th>Entered By</th> -->
                                     <th>Availability</th>
                                     <th>Status</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>View</th>
+                                    <th>Update</th>
+                                    <th>Deactivate</th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -199,7 +199,7 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-                "targets":[6, 7, 8],
+                "targets":[4, 5, 6],
                 "orderable":false,
             },
         ],

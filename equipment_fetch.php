@@ -56,9 +56,9 @@ foreach($result as $row)
 
 	$is_av = '';
 	if($row['is_available'] == 'available'){
-		$is_av = '<span class="text-success glyphicon glyphicon-ok"></span>';
+		$is_av = '<center><span class="text-success glyphicon glyphicon-ok"></span></center>';
 	}else{
-		$is_av = '<span class="text-danger glyphicon glyphicon-remove"></span>';
+		$is_av = '<center><span class="text-danger glyphicon glyphicon-remove"></span></center>';
 	}
 
 	$sub_array = array();

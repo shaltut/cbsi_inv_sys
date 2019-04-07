@@ -65,13 +65,11 @@ include('header.php');
                                 <thead><tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <!-- <th>Description</th> -->
-                                    <!-- <th>Entered By</th> -->
                                     <th>Availability</th>
-                                    <th>Status</th>
-                                    <th>View</th>
-                                    <th>Update</th>
-                                    <th>Deactivate</th>
+                                    <th style="width:3%">Status</th>
+                                    <th style="width:3%"></th>
+                                    <th style="width:3%"></th>
+                                    <th style="width:3%"></th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -92,7 +90,10 @@ include('header.php');
 
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="equip_name">Equipment Name</label>
+                                <label for="equip_name">
+                                    Equipment Name
+                                        <span style="color:red;font-size:1.5em"> *</span>
+                                </label>
                                 <input type="text" name="equip_name" id="equip_name" class="form-control" style="width:85%; display:inline;" required />
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" title="Name/Title" data-content="Enter what the equipment is commonly called." data-placement="left">
@@ -312,6 +313,27 @@ $(document).ready(function(){
             return false;
         }
     });
+
+    /* 
+        THIS IS HARDCODED JQUERY STYLING FOR THE TABLE PAGNATION
+        IF THEY OVERLAP ON MOBILE, DELETE THESE LINES AND IT WILL GO BACK TO NORMAL
+    */
+
+    //TOP (Show Entries and Search)
+    $( "#equipment_data_length" ).css( "float", "left" );
+    $( ".dataTables_filter" ).css( "text-align", "right" );
+    $( "input" ).css( "padding-left", "0" );
+    $( "input" ).css( "padding-right", "0" );
+    //BOTTOM (Showing x to y of z entries & Previous/Next)
+    $( "#equipment_data_info" ).css( "float", "left" );
+    $( "#equipment_data_info" ).css( "padding-left", "0" );
+    $( "#equipment_data_info" ).css( "margin-left", "0" );
+    $( "#equipment_data_paginate" ).css( "float", "right" );
+    $( "#equipment_data_paginate" ).css( "padding-right", "0" );
+    $( "#equipment_data_paginate" ).css( "margin-right", "0" );
+
+
+
 
 });
 </script>

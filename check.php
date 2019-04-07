@@ -54,12 +54,16 @@ include('header.php');
                     <div class="modal-body">
                         <div class="form-group">
                             <!-- Equipment ID Field -->
-                            <label class="center">
-                            Equipment ID</label>
+                            <label class="center" for="equip_id">
+                                Equipment ID
+                                <span style="color:red;font-size:1.5em"> *</span>
+                            </label>
                             <input type="text" name="equip_id" id="equip_id" class="center"/>
 
-                            <label class="center">
-                            Location</label>
+                            <label class="center" for="site_id">
+                                Location
+                                <span style="color:red;font-size:1.5em"> *</span>
+                            </label>
                             <select class="form-control center" name="site_id" id="site_id">
                                 <?php
                                     echo sites_options($connect);
@@ -104,14 +108,14 @@ include('header.php');
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-12 table-responsive">
-                            <table id="index_data" class="table  table-striped">
+                            <table id="index_data" class="table table-striped display compact" style="width:100%">
                                 <thead>
                                 	<tr>
                                         <th>Date of Checkout</th>
                                         <th>Equipment ID</th>
                                         <th>Equipment Name</th>
                                         <th>Site ID</th>
-                                        <th></th>
+                                        <th style="width:3%"></th>
                                 	</tr>
                             	</thead>
                             </table>

@@ -96,10 +96,6 @@ if(isset($_POST['btn_action']))
 			$output['last_loc'] = get_site_name_by_id($connect, $row['site_id']).' (ID: '.$row['site_id'].')';
 			$output['last_chk'] = get_empl_name_by_id($connect, $row['empl_id']).' (ID: '.$row['empl_id'].')';
 			$output['last_date'] = $row['chk_date_time'];
-			// $output['equip_cost'] = $row['equip_cost'];
-			// $output['is_maintenance_required'] = $row['is_maintenance_required'];
-			// $output['maintain_every'] = $row['maintain_every'];
-			// $output['last_maintained'] = $row['last_maintained'];
 		}
 		echo json_encode($output);
 	}

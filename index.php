@@ -59,29 +59,87 @@ include('header.php');
 	</div>
 
 	<?php
-	if($_SESSION['type'] == 'master')	
-	{
+	if($_SESSION['type'] == 'master'){
+	   	if(count_check_out_total($connect) <= 0){
 	?>
-
-	<hr />
-	<!--
-		Shows the currently checked out items, and the users who checked them out
-
-		THIS IS A STATIC TABLE. IT JUST DISPLAYS ITEMS CHECKED OUT ON THE CURRENT SYS DATE. 
-	-->
-	<div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading" style="font-size:1.4em;">
-            	<center><strong>Equipment Checked Out Today</strong></center>
-            </div>
-                <?php echo get_checkouts_today($connect); ?>
-                <div style="float:right">
-            		<span class="glyphicon glyphicon-ok" style="text-size:1em;"></span> = Returned,
-            		<span class="glyphicon glyphicon-remove" style="text-size:1em;"></span> = Still In Use
-            	</div>
-        </div>
-    </div>
+	   		<div class="col-md-12">
+		        <div class="panel panel-default">
+		            <div class="panel-heading" style="font-size:1.4em; background-color:rgba(0, 255, 0, 0.2);">
+		            	<center>
+		            		<strong>All Equipment Accounted For</strong>
+		            		<button type="button" class="btn btn-link" data-toggle="popover" data-content="There are no items currently checked out, and all previously checked out items have been returned." data-placement="left" style="position: absolute; top:-5px; right:10px">
+		                     	<img src="images/info5_sm.png" alt="info">
+		                    </button>
+		            	</center>
+		            </div>
+		        </div>
+		    </div>
 	<?php
+	   	}else{
+	?>
+			<!--
+				Shows the currently checked out items, and the users who checked them out
+
+				THIS IS A STATIC TABLE. IT JUST DISPLAYS ITEMS CHECKED OUT ON THE CURRENT SYS DATE. 
+			-->
+			<div class="col-md-12">
+		        <div class="panel panel-default">
+		            <div class="panel-heading" style="font-size:1.4em;">
+		            	<center>
+			            	<strong>Currently Checked Out</strong>
+			           	<center>
+			            <button type="button" class="btn btn-link" data-toggle="popover" data-content="This table displays equipment still in use (or that hasn't been returned)." data-placement="left" style="position: absolute; top:-5px; right:10px">
+			            	<img src="images/info5_sm.png" alt="info">
+			           	</button>
+		            </div>
+		                <?php echo get_checkouts($connect); ?>
+		        </div>
+		    </div>
+
+		<hr />
+	<?php
+		}
+	   	if(num_checkout_today($connect) <= 0){
+	?>
+	   		<div class="col-md-12">
+		        <div class="panel panel-default">
+		            <div class="panel-heading" style="font-size:1.4em; background-color:rgba(0, 255, 0, 0.2);">
+		            	<center>
+		            		<strong>No Checkouts Occured Today</strong>
+		            		<button type="button" class="btn btn-link" data-toggle="popover" data-content="No checkouts have occured yet today." data-placement="left" style="position: absolute; top:-5px; right:10px">
+		                     	<img src="images/info5_sm.png" alt="info">
+		                    </button>
+		            	</center>
+		            </div>
+		        </div>
+		    </div>
+	<?php
+	    }else{
+	?>
+		    <!--
+				Shows the currently checked out items, and the users who checked them out
+
+				THIS IS A STATIC TABLE. IT JUST DISPLAYS ITEMS CHECKED OUT ON THE CURRENT SYS DATE. 
+			-->
+			<div class="col-md-12">
+		        <div class="panel panel-default">
+		            <div class="panel-heading" style="font-size:1.4em;">
+		            	<center>
+		            		<strong>Equipment Checked Out Today</strong>
+		            		<button type="button" class="btn btn-link" data-toggle="popover" data-content="This table displays all the checkouts that have occured today. (Both returned and not returned)" data-placement="left" style="position: absolute; top:-5px; right:10px">
+		                     	<img src="images/info5_sm.png" alt="info">
+		                    </button>
+		            	</center>
+		            </div>
+		                <?php echo get_checkouts_today($connect); ?>
+		                <div style="float:right">
+		            		<span class="glyphicon glyphicon-ok" style="text-size:1em;"></span> = Returned,
+		            		<span class="glyphicon glyphicon-remove" style="text-size:1em;"></span> = Still In Use
+		            	</div>
+		        </div>
+		    </div>
+	<?php
+	    }
 	}
 	?>
     <?php
@@ -89,6 +147,18 @@ include('header.php');
 	?>
 
 
+
+
+
+<script>
+$(document).ready(function(){
+    //Used to toggle off/on the INFO popovers on the forms
+    $(function () {
+        $('[data-toggle="popover"]').popover();
+    });
+
+});
+</script>
 
 
 

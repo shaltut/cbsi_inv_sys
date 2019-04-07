@@ -18,8 +18,6 @@ if(isset($_POST["search"]["value"]))
 	$query .= 'WHERE equipment.equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR equipment.maintain_every LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR user_details.user_name LIKE "%'.$_POST["search"]["value"].'%" ';
-
-	//Heres the problem
 	$query .= 'OR equipment.equip_id LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 
@@ -44,35 +42,15 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
-	// $status = '';
-	// if($row['equip_status'] == 'active')
-	// {
-	// 	$status = '<span class="label label-success">Active</span>';
-	// }
-	// else
-	// {
-	// 	$status = '<span class="label label-danger">Inactive</span>';
-	// }
 	$sub_array = array();
 	$sub_array[] = $row['equip_id'];
 	$sub_array[] = $row['equip_name'];
-	$sub_array[] = $row['equip_desc'];
-	// $sub_array[] = $entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
-	// $sub_array[] = $row['is_available'];
-	// $sub_array[] = $status;
 	$sub_array[] = '
 		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
-		';
-	$sub_array[] = '
-	<button type="button" name="update" id="'.$row["equip_id"].'" class="btn btn-warning btn-xs locate glyphicon glyphicon-map-marker"></button>
 	';
-	// if($row['equip_status'] == 'active'){
-	// 	$sub_array[] = '
-	// 	<button type="button" name="delete" id="'.$row["equip_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["equip_status"].'">Deactivate</button>';
-	// }else{
-	// 	$sub_array[] = '
-	// 	<button type="button" name="delete" id="'.$row["equip_id"].'" class="btn btn-success btn-xs delete" data-status="'.$row["equip_status"].'">Activate</button>';
-	// }
+	$sub_array[] = '
+		<button type="button" name="update" id="'.$row["equip_id"].'" class="btn btn-warning btn-xs locate glyphicon glyphicon-map-marker"></button>
+	';
 	$data[] = $sub_array;
 }
 

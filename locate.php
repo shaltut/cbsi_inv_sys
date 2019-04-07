@@ -37,11 +37,10 @@ include('header.php');
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%">
+                            <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="overflow-y: hidden;">
                                 <thead><tr>
-                                    <th>ID</th>
-                                    <th>Equipment</th>
-                                    <th>Desc</th>
+                                    <th style="width:3%">ID</th>
+                                    <th>Equipment Name</th>
                                     <th style="width:3%">Details</th>
                                     <th style="width:3%"></th>
                                 </tr></thead>
@@ -94,9 +93,6 @@ include('header.php');
                         </div>
 
                         <div class="modal-footer">
-                            <!-- <input type="hidden" name="equip_id" id="equip_id" />
-                            <input type="hidden" name="btn_action" id="btn_action" />
-                            <input type="submit" name="action" id="action" class="btn btn-info" value="Add" /> -->
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
 
@@ -140,7 +136,7 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-                "targets":[3,4],
+                "targets":[2,3],
                 "orderable":false,
             },
         ],
@@ -189,6 +185,24 @@ $(document).ready(function(){
     $(function () {
         $('[data-toggle="popover"]').popover();
     });
+
+    /* 
+        THIS IS HARDCODED JQUERY STYLING FOR THE TABLE PAGNATION
+        IF THEY OVERLAP ON MOBILE, DELETE THESE LINES AND IT WILL GO BACK TO NORMAL
+    */
+
+    //TOP (Show Entries and Search)
+    $( "#equipment_data_length" ).css( "float", "left" );
+    $( "#equipment_data_filter" ).css( "text-align", "right" );
+    $( "input" ).css( "padding-left", "0" );
+    $( "input" ).css( "padding-right", "0" );
+    //BOTTOM (Showing x to y of z entries & Previous/Next)
+    $( "#equipment_data_info" ).css( "float", "left" );
+    $( "#equipment_data_info" ).css( "padding-left", "0" );
+    $( "#equipment_data_info" ).css( "margin-left", "0" );
+    $( "#equipment_data_paginate" ).css( "float", "right" );
+    $( "#equipment_data_paginate" ).css( "padding-right", "0" );
+    $( "#equipment_data_paginate" ).css( "margin-right", "0" );
 
 });
 </script>

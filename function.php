@@ -324,7 +324,7 @@ function get_empl_name_by_id($connect, $user_id){
 	if(isset($result)){
 		foreach($result as $row)
 		{
-			$output = "'".$row['user_name']."',";
+			$output = $row['user_name'];
 		}
 	}
 	// return $count;
@@ -985,6 +985,79 @@ function count_master_active($connect)
 }
 
 /*
+	Returns information on all items that are currently checked out
+*/
+function get_checkouts($connect){
+	$query = '
+	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
+	FROM user_details
+	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
+	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
+	WHERE equipment_checkout.returned = "false"
+	';
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	$output = '
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped" style="text-align:center;">
+			<thead style="font-size:16px">
+				<tr>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Employee</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Equipment</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Date</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Returned</th>
+				</tr>
+			</thead>
+	';
+	foreach($result as $row)
+	{
+		if($row['returned'] == 'true'){
+			$ret_val = '<span class="label label-success"><span class="glyphicon glyphicon-ok" style="text-size:1em;"></span></span>';
+		}else{
+			$ret_val = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
+		}
+
+		$output .= '
+		<tbody style="font-size:12px">
+			<tr>
+				<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
+				<td> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
+				<td> '.$row["chk_date_time"].'</td>
+				<td> '.$ret_val.'</td>
+			</tr>
+		</tbody>
+		';
+	}
+	$output .= '
+	</table>
+	</div>
+	';
+	return $output;
+}
+
+/*
+	Returns the number of checkouts that took place on the current system date
+*/
+function num_checkout_today($connect){
+	$count = 0;
+	$query = '
+	SELECT count(chk_id) as "chks"
+	FROM equipment_checkout
+	WHERE chk_date_time = "'.date('Y-m-d').'"
+	';
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	foreach($result as $row)
+	{
+		$count = $row['chks'];
+	}
+	return $count;
+
+}
+
+/*
 	Returns information on checkouts that took place on the current system date
 */
 function get_checkouts_today($connect){
@@ -1000,15 +1073,15 @@ function get_checkouts_today($connect){
 	$result = $statement->fetchAll();
 	$output = '
 	<div class="table-responsive">
-		<table class="table table-bordered table-striped">
-			<tr>
-				<th style="width:110px;">Employee ID</th>
-				<th>Name</th>
-				<th>Equipment ID</th>
-				<th>Equipment</th>
-				<th>Date of Checkout</th>
-				<th style="text-align:center;">Returned?</th>
-			</tr>
+		<table class="table table-bordered table-striped" style="text-align:center;">
+			<thead style="font-size:16px">
+				<tr>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Employee</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Equipment</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Date</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Returned</th>
+				</tr>
+			</thead>
 	';
 	foreach($result as $row)
 	{
@@ -1019,14 +1092,14 @@ function get_checkouts_today($connect){
 		}
 
 		$output .= '
-		<tr>
-			<td style="text-align:center;"> '.$row["user_id"].'</td>
-			<td> '.$row["user_name"].'</td>
-			<td> '.$row["equip_id"].'</td>
-			<td> '.$row["equip_name"].'</td>
-			<td> '.$row["chk_date_time"].'</td>
-			<td style="text-align:center;"> '.$ret_val.'</td>
-		</tr>
+		<tbody style="font-size:12px">
+			<tr>
+				<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
+				<td> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
+				<td> '.$row["chk_date_time"].'</td>
+				<td> '.$ret_val.'</td>
+			</tr>
+		</tbody>
 		';
 	}
 	$output .= '

@@ -46,16 +46,16 @@ include('header.php');
            	</div>
            	<div class="panel-body">
            		<div class="row"><div class="col-sm-12 table-responsive">
-           			<table id="user_data" class="table table-bordered table-striped display" cellspacing="0" width="100%">
+           			<table id="user_data" class="table table-bordered table-striped display compact" cellspacing="0" width="100%">
            				<thead>
 							<tr>
 								<th>ID</th>
 								<th>Email</th>
 								<th>Name</th>
 								<th>Job Title</th>
-								<th>Status</th>
-								<th></th>
-								<th></th>
+								<th style="width:3%">Status</th>
+								<th style="width:3%"></th>
+								<th style="width:3%"></th>
 							</tr>
 						</thead>
            			</table>
@@ -78,7 +78,10 @@ include('header.php');
 			<div class="modal-body">
 
 				<div class="form-group">
-					<label for="user_name">Enter Employee Name</label>
+					<label for="user_name">
+						Enter Employee Name
+						<span style="color:red;font-size:1.5em"> *</span>
+					</label>
 					<input type="text" name="user_name" id="user_name" class="form-control" style="width:86%; display:inline;" required />
 					<button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter the employee's Full Name." data-placement="left">
 							<img src="images/info5_sm.png" alt="info">
@@ -86,8 +89,11 @@ include('header.php');
 				</div>
 
 				<div class="form-group">
-					<label for="user_job">Enter Employee Job Title</label>
-					<select class ="form-control" name="user_job" id="user_job" style="width:86%; display:inline;">
+					<label for="user_job">
+						Enter Employee Job Title
+						<span style="color:red;font-size:1.5em"> *</span>
+					</label>
+					<select class ="form-control" name="user_job" id="user_job" style="width:86%; display:inline;" required>
 						<option value="Project Manager">Project Manager</option>
                         <option value="Foreman">Foreman</option>
                         <option value="Skilled Laborer">Skilled Laborer</option>
@@ -100,7 +106,10 @@ include('header.php');
 				</div>
 
 				<div class="form-group">
-					<label for="user_email">Enter Employee Email</label>
+					<label for="user_email">
+						Enter Employee Email
+						<span style="color:red;font-size:1.5em"> *</span>
+					</label>
 					<div class="input-group">
 						<input type="email" name="user_email" id="user_email" class="form-control" required />
 						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
@@ -108,7 +117,10 @@ include('header.php');
 				</div>
 
 				<div class="form-group">
-					<label>Enter Employee Password</label>
+					<label>
+						Enter Employee Password
+						<span style="color:red;font-size:1.5em"> *</span>
+					</label>
 					<div class="input-group">
 						<input type="password" name="user_password" id="user_password" class="form-control" required />
 						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
@@ -224,6 +236,24 @@ $(document).ready(function(){
 			return false;
 		}
 	});
+
+	/* 
+        THIS IS HARDCODED JQUERY STYLING FOR THE TABLE PAGNATION
+        IF THEY OVERLAP ON MOBILE, DELETE THESE LINES AND IT WILL GO BACK TO NORMAL
+    */
+
+    //TOP (Show Entries and Search)
+    $( "#user_data_length" ).css( "float", "left" );
+    $( "#user_data_filter" ).css( "text-align", "right" );
+    $( "input" ).css( "padding-left", "0" );
+    $( "input" ).css( "padding-right", "0" );
+    //BOTTOM (Showing x to y of z entries & Previous/Next)
+    $( "#user_data_info" ).css( "float", "left" );
+    $( "#user_data_info" ).css( "padding-left", "0" );
+    $( "#user_data_info" ).css( "margin-left", "0" );
+    $( "#user_data_paginate" ).css( "float", "right" );
+    $( "#user_data_paginate" ).css( "padding-right", "0" );
+    $( "#user_data_paginate" ).css( "margin-right", "0" );
 
 });
 </script>

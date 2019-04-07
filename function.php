@@ -1000,13 +1000,12 @@ function get_checkouts($connect){
 	$result = $statement->fetchAll();
 	$output = '
 	<div class="table-responsive">
-		<table class="table table-bordered table-striped" style="text-align:center;">
+		<table class="table table-bordered table-striped" style="text-align:center;table-layout:fixed">
 			<thead style="font-size:16px">
 				<tr>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Employee</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Employee</th>
 					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Equipment</th>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Date</th>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Returned</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Date</th>
 				</tr>
 			</thead>
 	';
@@ -1022,9 +1021,8 @@ function get_checkouts($connect){
 		<tbody style="font-size:12px">
 			<tr>
 				<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
-				<td> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
+				<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
 				<td> '.$row["chk_date_time"].'</td>
-				<td> '.$ret_val.'</td>
 			</tr>
 		</tbody>
 		';
@@ -1073,13 +1071,12 @@ function get_checkouts_today($connect){
 	$result = $statement->fetchAll();
 	$output = '
 	<div class="table-responsive">
-		<table class="table table-bordered table-striped" style="text-align:center;">
+		<table class="table table-bordered table-striped" style="text-align:center;table-layout:fixed">
 			<thead style="font-size:16px">
 				<tr>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Employee</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Employee</th>
 					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Equipment</th>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Date</th>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Returned</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Returned</th>
 				</tr>
 			</thead>
 	';
@@ -1095,8 +1092,7 @@ function get_checkouts_today($connect){
 		<tbody style="font-size:12px">
 			<tr>
 				<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
-				<td> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
-				<td> '.$row["chk_date_time"].'</td>
+				<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
 				<td> '.$ret_val.'</td>
 			</tr>
 		</tbody>

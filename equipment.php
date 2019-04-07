@@ -63,13 +63,13 @@ include('header.php');
                         <div class="row"><div class="col-sm-12 table-responsive">
                             <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%">
                                 <thead><tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Available</th>
-                                    <th style="width:3%">Status</th>
-                                    <th style="width:3%"></th>
-                                    <th style="width:3%"></th>
-                                    <th style="width:3%"></th>
+                                    <th style="min-width: 30px;">ID</th>
+                                    <th style="min-width: 70px">Name</th>
+                                    <th style="min-width: 55px">Available</th>
+                                    <th style="min-width: 38px">Status</th>
+                                    <th style="min-width: 35px"></th>
+                                    <th style="min-width: 50px"></th>
+                                    <th style="min-width: 70px"></th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -324,6 +324,8 @@ $(document).ready(function(){
     $( ".dataTables_filter" ).css( "text-align", "right" );
     $( "input" ).css( "padding-left", "0" );
     $( "input" ).css( "padding-right", "0" );
+    //DATA ROWS
+    $( "#equipment_data" ).css( "table-layout", "fixed" );
     //BOTTOM (Showing x to y of z entries & Previous/Next)
     $( "#equipment_data_info" ).css( "float", "left" );
     $( "#equipment_data_info" ).css( "padding-left", "0" );

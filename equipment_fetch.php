@@ -60,10 +60,13 @@ foreach($result as $row)
 	}else{
 		$is_av = '<center><span class="text-danger glyphicon glyphicon-remove"></span></center>';
 	}
-
+	$name = $row['equip_name'];
+	// if(strlen($name) > 15){
+	// 	$name = substr($row['equip_name'],0,15).'...';
+	// }
 	$sub_array = array();
-	$sub_array[] = $row['equip_id'];
-	$sub_array[] = $row['equip_name'];
+	$sub_array[] = '<div style="max-width: 50px;">'.$row['equip_id'].'<div>';
+	$sub_array[] = '<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">'.$name.'</div>';
 	$sub_array[] = $is_av;
 	$sub_array[] = $status;
 	$sub_array[] = '

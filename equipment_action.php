@@ -129,6 +129,28 @@ if(isset($_POST['btn_action']))
 				<td>'.$status.'</td>
 			</tr>
 			';
+			if($row['is_available'] == 'available'){
+				$output .= '
+				<tr>
+					<td>Availability</td>
+					<td>
+						<span class="text-success glyphicon glyphicon-ok"></span>
+						Item Is Available for Checkout
+					</td>
+				</tr>
+				';
+			}else{
+				$output .= '
+				<tr>
+					<td>Availability</td>
+					<td>
+						<span class="text-danger glyphicon glyphicon-remove"></span>
+						Item Currently In Use
+					</td>
+				</tr>
+				';
+			}
+
 		}
 
 		$output .= '

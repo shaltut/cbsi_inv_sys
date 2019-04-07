@@ -53,12 +53,18 @@ foreach($result as $row)
 	{
 		$status = '<span class="label label-danger">Inactive</span>';
 	}
+
+	$is_av = '';
+	if($row['is_available'] == 'available'){
+		$is_av = '<span class="text-success glyphicon glyphicon-ok"></span>';
+	}else{
+		$is_av = '<span class="text-danger glyphicon glyphicon-remove"></span>';
+	}
+
 	$sub_array = array();
 	$sub_array[] = $row['equip_id'];
 	$sub_array[] = $row['equip_name'];
-	// $sub_array[] = $row['equip_desc'];
-	// $sub_array[] = $entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
-	$sub_array[] = $row['is_available'];
+	$sub_array[] = $is_av;
 	$sub_array[] = $status;
 	$sub_array[] = '
 		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>

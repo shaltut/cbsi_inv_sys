@@ -65,7 +65,7 @@ include('header.php');
                                 <thead><tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Availability</th>
+                                    <th>Available</th>
                                     <th style="width:3%">Status</th>
                                     <th style="width:3%"></th>
                                     <th style="width:3%"></th>

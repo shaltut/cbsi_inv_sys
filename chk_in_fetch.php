@@ -12,6 +12,7 @@ $query .= '
 	SELECT * FROM equipment_checkout 
 INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
 WHERE equipment_checkout.empl_id = "'.$_SESSION['user_id'].'" 
+AND equipment_checkout.returned = "false"
 ';
 
 if(isset($_POST["search"]["value"]))
@@ -66,6 +67,7 @@ function get_total_all_records($connect)
 		SELECT * FROM equipment_checkout 
 		INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
 		WHERE equipment_checkout.empl_id = "'.$_SESSION['user_id'].'" 
+		AND equipment_checkout.returned = "false"
 	');
 	$statement->execute();
 	return $statement->rowCount();

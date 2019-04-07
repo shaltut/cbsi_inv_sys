@@ -29,12 +29,9 @@ if(isset($_POST['btn_action']))
 		foreach($result as $row)
 		{
 			$status = '';
-			if($row['equip_status'] == 'active')
-			{
+			if($row['equip_status'] == 'active'){
 				$status = '<span class="label label-success">Active</span>';
-			}
-			else
-			{
+			}else{
 				$status = '<span class="label label-danger">Inactive</span>';
 			}
 			
@@ -46,16 +43,43 @@ if(isset($_POST['btn_action']))
 				<td>Equipment Name</td>
 				<td>'.$row["equip_name"].'</td>
 			</tr>
-			<tr>
-				<td>Equipment Description</td>
-				<td>'.$row["equip_desc"].'</td>
-			</tr>
 			';
+
+			if($row['equip_desc'] != ''){
+				$output .= '
+				<tr>
+					<td>Equipment Description</td>
+					<td>'.$row["equip_desc"].'</td>
+				</tr>
+				';
+			}else{
+				$output .= '
+				<tr>
+					<td>Equipment Description</td>
+					<td>(no description)</td>
+				</tr>
+				';
+			}
+
+			//COST only seen by master users
+			if($_SESSION['type'] == 'master'){
+				if($row['equip_cost'] > 0.00){
+					$output .= '
+					<tr>
+						<td>Base Price</td>
+						<td>$'.$row["equip_cost"].'</td>
+					</tr>
+					';
+				}else{
+					$output .= '
+					<tr>
+						<td>Base Price</td>
+						<td> (unknown) </td>
+					</tr>
+					';
+				}
+			}
 			$output .= '
-			<tr>
-				<td>Base Price</td>
-				<td>'.$row["equip_cost"].'</td>
-			</tr>
 			<tr>
 				<td>Entered Into System By</td>
 				<td>'.$entered_by_user.' on '.$row["date_added"].'</td>

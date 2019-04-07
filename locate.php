@@ -165,6 +165,7 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 $('#equipmentModal').modal('show');
+                $('#equipment_form')[0].reset();
                 $('#last_loc').val(data.last_loc);
                 $('#last_chk').val(data.last_chk);
                 $('#last_date').val(data.last_date);

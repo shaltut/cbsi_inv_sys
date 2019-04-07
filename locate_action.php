@@ -79,6 +79,7 @@ if(isset($_POST['btn_action']))
 					';
 				}
 			}
+
 			$output .= '
 			<tr>
 				<td>Entered Into System By</td>
@@ -117,11 +118,25 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
-			$output['last_loc'] = get_site_name_by_id($connect, $row['site_id']).' (ID: '.$row['site_id'].')';
-			$output['last_chk'] = get_empl_name_by_id($connect, $row['empl_id']).' (ID: '.$row['empl_id'].')';
+			$site = get_site_name_by_id($connect, $row['site_id']);
+			$usr = get_empl_name_by_id($connect, $row['empl_id']);
+			$output['last_loc'] = $site.' (ID: '.$row['site_id'].')';
+			$output['last_chk'] = $usr.' (ID: '.$row['empl_id'].')';
 			$output['last_date'] = $row['chk_date_time'];
 		}
 		echo json_encode($output);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
 ?>

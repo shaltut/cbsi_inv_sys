@@ -82,7 +82,7 @@ include('header.php');
 						Enter Employee Name
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
-					<input type="text" name="user_name" id="user_name" class="form-control" style="width:86%; display:inline;" required />
+					<input type="text" name="user_name" placeholder="Employee Name" id="user_name" class="form-control" style="width:86%; display:inline;" required />
 					<button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter the employee's Full Name." data-placement="left">
 							<img src="images/info5_sm.png" alt="info">
 					</button>
@@ -111,7 +111,7 @@ include('header.php');
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
 					<div class="input-group">
-						<input type="email" name="user_email" id="user_email" class="form-control" required />
+						<input type="email" name="user_email" placeholder="Employee Email" id="user_email" class="form-control" required />
 						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
 					</div>
 				</div>
@@ -122,7 +122,7 @@ include('header.php');
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
 					<div class="input-group">
-						<input type="password" name="user_password" id="user_password" class="form-control" required />
+						<input type="password" name="user_password" placeholder="Employee Password" id="user_password" class="form-control" required />
 						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 					</div>
 				</div>

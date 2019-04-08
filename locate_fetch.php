@@ -42,9 +42,17 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
+	$avail = '';
+	if($row['is_available'] == "available"){
+		$avail = '<span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span>';
+	}else{
+		$avail = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
+	}
+
 	$sub_array = array();
-	$sub_array[] = $row['equip_id'];
+	// $sub_array[] = $row['equip_id'];
 	$sub_array[] = $row['equip_name'];
+	$sub_array[] = $avail;
 	$sub_array[] = '
 		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 	';

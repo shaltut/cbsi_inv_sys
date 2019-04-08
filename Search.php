@@ -36,12 +36,12 @@ include('header.php');
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%">
+                            <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="text-align:center">
                                 <thead><tr>
-                                    <th style="width:5%;">ID</th>
-                                    <th>Product Name</th>
-                                    <th style="width:5%;">Status</th>
-                                    <th style="width:5%;">Details</th>
+                                    <th style="min-width:30px">ID</th>
+                                    <th style="text-align:center">Product Name</th>
+                                    <th style="min-width:30px">Status</th>
+                                    <th style="min-width:30px"></th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -82,6 +82,7 @@ $(document).ready(function(){
         },
         "columnDefs":[
             {
+            "targets": [2,3],
                 "orderable":false,
             },
         ],

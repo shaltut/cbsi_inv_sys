@@ -84,7 +84,31 @@ if(isset($_POST['btn_action']))
 			<tr>
 				<td>Entered Into System By</td>
 				<td>'.$entered_by_user.' on '.$row["date_added"].'</td>
-			</tr>
+			</tr>';
+
+			if($row['is_available'] == 'available'){
+				$output .= '
+				<tr>
+					<td>Availability</td>
+					<td>
+						<span class="text-success glyphicon glyphicon-ok"></span>
+						Item Is Available for Checkout
+					</td>
+				</tr>
+				';
+			}else{
+				$output .= '
+				<tr>
+					<td>Availability</td>
+					<td>
+						<span class="text-danger glyphicon glyphicon-remove"></span>
+						Item Currently In Use
+					</td>
+				</tr>
+				';
+			}
+
+			$output .='
 			<tr>
 				<td>Status</td>
 				<td>'.$status.'</td>

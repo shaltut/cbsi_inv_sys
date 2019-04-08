@@ -46,16 +46,16 @@ include('header.php');
            	</div>
            	<div class="panel-body">
            		<div class="row"><div class="col-sm-12 table-responsive">
-           			<table id="user_data" class="table table-bordered table-striped display compact" cellspacing="0" width="100%">
+           			<table id="user_data" class="table table-bordered table-striped display compact" cellspacing="0" width="100%" style="text-align:center">
            				<thead>
 							<tr>
-								<th>ID</th>
-								<th>Email</th>
-								<th>Name</th>
-								<th>Job Title</th>
-								<th style="width:3%">Status</th>
-								<th style="width:3%"></th>
-								<th style="width:3%"></th>
+								<th style="width:30px;">ID</th>
+								<th style="text-align:center">Email</th>
+								<th style="text-align:center">Name</th>
+								<th style="text-align:center">Job Title</th>
+								<th style="width:35px;">Status</th>
+								<th style="width:35px;"></th>
+								<th style="width:70px"></th>
 							</tr>
 						</thead>
            			</table>

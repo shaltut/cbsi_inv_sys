@@ -36,15 +36,15 @@ include('header.php');
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="equipment_data" class="table table-bordered table-striped">
+                            <table id="equipment_data" class="table table-bordered table-striped" cellspacing="0" width="100%" style="text-align:center">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Equipment Name</th>
+                                        <th style="min-width: 30px;">ID</th>
+                                        <th style="text-align:center">Equipment Name</th>
                                         <!--<th>Required Since</th> -->
-                                        <th>Last Maintenance Date</th>
-                                        <th>Details</th>
-                                        <th>Update</th>
+                                        <th style="min-width: 30px;">Maintained</th>
+                                        <th style="min-width: 35px;">Details</th>
+                                        <th style="min-width: 40px;">Update</th>
                                     </tr>
                                 </thead>
                             </table>

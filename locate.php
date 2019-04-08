@@ -32,12 +32,13 @@ include('header.php');
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="locate_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="overflow-y: hidden;">
+                            <table id="locate_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="text-align:center">
                                 <thead><tr>
-                                    <th style="width:3%">ID</th>
-                                    <th>Equipment Name</th>
-                                    <th style="width:3%">Details</th>
-                                    <th style="width:3%"></th>
+                                    <!-- <th style="min-width:35px;">ID</th> -->
+                                    <th style="text-align:center">Equipment Name</th>
+                                    <th style="min-width:5px"></th>
+                                    <th style="min-width:35px"></th>
+                                    <th style="min-width:20px"></th>
                                 </tr></thead>
                             </table>
                         </div></div>

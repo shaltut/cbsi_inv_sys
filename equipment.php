@@ -15,7 +15,7 @@ if($_SESSION['type'] != 'master')
 }
 
 include('header.php');
-echo check_equip_maintenance_month($connect, 202000);
+
 ?>
 
 <!-- Alerts the user to changes they have made, or errors -->
@@ -23,20 +23,24 @@ echo check_equip_maintenance_month($connect, 202000);
     <span id='alert_action'></span>
 
 	<?php
-	$count_equip_require_maintainance = check_equip_maintenance_num($connect);
-	if($count_equip_require_maintainance > 0){
+	$count_red = maintenance_red_num($connect);
+    $count_yellow = maintenance_warning_num($connect);
+	if($count_red > 0){
 	?>
 	    <!-- Alerts user if equipment needs to be maintained-->
-    <div class="row" style="align-content: center;">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    		<div class="alert alert-danger" role="alert" style="display:inline-block; width:100%;">
-    	  		   <a class="btn btn-warning" href="maintain.php" role="button" style="float: right;">View</a>
-                <span style="float:left; padding-top:5px;">
-                    <?php echo $count_equip_require_maintainance.' piece(s) of equipment require maintenance!'; ?>
-                </span>
-    		</div>
+        <div class="row" style="align-content: center;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        		<div class="alert alert-danger" role="alert" style="display:inline-block; width:100%;">
+        	  		   <a class="btn btn-warning" href="maintain.php" role="button" style="float: right;">View</a>
+                    <span style="float:left; padding-top:5px; font-size:16px">
+                        <?php echo 'MAINTENANCE REQUIRED!'; ?>
+                    </span>
+                    <span style="float:left; padding-top:5px; font-size:16px">
+                        <?php echo  ' ('.$count_red.' item(s) require maintenance)'; ?>
+                    </span>
+        		</div>
+            </div>
         </div>
-    </div>
 	<?php
 	}
 	?>

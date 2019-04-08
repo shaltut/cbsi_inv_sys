@@ -607,84 +607,108 @@ function checkouts_by_site($connect){
 	return $output;
 }
 
-/*Returns the number of pieces of equipment that currently require maintenance.
-USED IN: equipment.php, stats.php
+/*
+	Returns the number of items that are past their maintain by date
 */
-function check_equip_maintenance_num($connect){
-	$sysdate = date('Y-m-d');
+function maintenance_red_num($connect){
+	$count = 0;
 	$query = "
-	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' FROM equipment WHERE is_maintenance_required = 'yes' AND equip_status = 'active'
+	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' 
+	FROM equipment 
+	WHERE is_maintenance_required = 'yes' 
+	AND equip_status = 'active' 
 	";
+	
 	$statement = $connect->prepare($query);
 	$statement->execute();
-	$count = 0;
-	$test = ' ';
 	$result = $statement->fetchAll();
 	if(isset($result)){
 		foreach($result as $row)
 		{
+			$months = $row['me'];
+			$last = $row['lm'];
 			$today = $row['tday'];
-			$last_m = $row['lm'];
-			$m_every = $row['me'];
 
-			$ts1 = strtotime($last_m);
-			$ts2 = strtotime($today);
+			$maintain_by = date("Y-m-d", strtotime($months.' months', strtotime($last)));
+			$maintain_warn = date("Y-m-d", strtotime('-1 months', strtotime($maintain_by)));
 
-			$year1 = date('Y', $ts1);
-			$year2 = date('Y', $ts2);
-
-			$month1 = date('m', $ts1);
-			$month2 = date('m', $ts2);
-
-			$diff = (($year2 - $year1) * 12) + ($month2 - $month1);
-
-			if($diff > $row['me'] ){
+			if($today >= $maintain_by){
 				$count = $count + 1;
 			}
 		}
+		
 	}
-	// return $count;
 	return $count;
 }
 
-/*Returns the number of pieces of equipment that currently require maintenance.
-USED IN: equipment.php, stats.php
+/*
+	Returns the number of items that are past their maintain by date
 */
-function check_equip_maintenance_required($connect, $equip_id){
-	$ans = false;
-	$sysdate = date('Y-m-d');
+function maintenance_warning_num($connect){
+	$count = 0;
 	$query = "
-	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' FROM equipment WHERE is_maintenance_required = 'yes' AND equip_status = 'active' AND equip_id = '".$equip_id."'
+	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' 
+	FROM equipment 
+	WHERE is_maintenance_required = 'yes' 
+	AND equip_status = 'active' 
 	";
-
+	
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	$result = $statement->fetchAll();
 	if(isset($result)){
 		foreach($result as $row)
 		{
+			$months = $row['me'];
+			$last = $row['lm'];
 			$today = $row['tday'];
-			$last_m = $row['lm'];
-			$m_every = $row['me'];
 
-			$ts1 = strtotime($last_m);
-			$ts2 = strtotime($today);
+			$maintain_by = date("Y-m-d", strtotime($months.' months', strtotime($last)));
+			$maintain_warn = date("Y-m-d", strtotime('-1 months', strtotime($maintain_by)));
 
-			$year1 = date('Y', $ts1);
-			$year2 = date('Y', $ts2);
-
-			$month1 = date('m', $ts1);
-			$month2 = date('m', $ts2);
-
-			$diff = (($year2 - $year1) * 12) + ($month2 - $month1);
-
-			if($diff > $row['me'] ){
-				$ans = true;
+			if($today > $maintain_warn && $today < $maintain_by){
+				$count = $count + 1;
 			}
 		}
+		
 	}
-	// return $count;
-	return $ans;
+	return $count;
+}
+
+/*
+	Returns output for the maintenance required error warning
+*/
+function maintenance_warning($connect){
+	$output = 0;
+	$query = "
+	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' 
+	FROM equipment 
+	WHERE is_maintenance_required = 'yes' 
+	AND equip_status = 'active' 
+	";
+	
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$months = $row['me'];
+			$last = $row['lm'];
+			$today = $row['tday'];
+
+			$maintain_by = date("Y-m-d", strtotime($months.' months', strtotime($last)));
+			$maintain_warn = date("Y-m-d", strtotime('-1 months', strtotime($maintain_by)));
+
+			if($today >= $maintain_by){
+				$ans = 'red';
+			}else if($today > $maintain_warn && $today < $maintain_by){
+				$ans = 'yellow';
+			}
+		}
+		
+	}
+	return $output;
 }
 
 /*

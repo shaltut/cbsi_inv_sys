@@ -47,15 +47,13 @@ foreach($result as $row)
 
 	$sub_array = array();
 	if(check_equip_maintenance_month($connect, $row['equip_id']) == 'red'){
-		$sub_array[] =  '<div style="background-color:rgba(255, 0, 0, .5); border-radius: 15px;">'.$row['equip_id'].'</div>';
-		$sub_array[] = '<div style="background-color:rgba(255, 0, 0, .5); border-radius: 15px;">'.$row['equip_name'].'</div>';
+		$sub_array[] =  '<div style="color:rgba(255, 0, 0, 1); border-radius: 15px;">'.$row['equip_id'].'</div>';
 	}else if(check_equip_maintenance_month($connect, $row['equip_id']) == 'yellow'){
-		$sub_array[] =  '<div style="background-color:rgba(240, 255, 0, .5); border-radius: 15px;">'.$row['equip_id'].'</div>';
-		$sub_array[] = '<div style="background-color:rgba(240, 255, 0, .5); border-radius: 15px;">'.$row['equip_name'].'</div>';
+		$sub_array[] =  '<div style="color:rgba(248, 148, 6, 1); border-radius: 15px;">'.$row['equip_id'].'</div>';
 	}else{
     	$sub_array[] = $row['equip_id'];
-		$sub_array[] = $row['equip_name'];
 	}
+	$sub_array[] = $row['equip_name'];
 	$sub_array[] = '
 		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 		';

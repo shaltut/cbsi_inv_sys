@@ -165,7 +165,7 @@ include('header.php');
                         <thead><tr>
                             <th>Equipment Needing Maintenance</th>
                             <th><?php
-                                $mCount = check_equip_maintenance_num($connect); 
+                                $mCount = maintenance_red_num($connect); 
                                 echo $mCount;
                                 if($mCount > 0){
                                     echo "<a class=\"btn btn-xs btn-danger\" href=\"maintain.php\" role=\"button\" style=\"float:right; margin-right:10px;\">View</a>";

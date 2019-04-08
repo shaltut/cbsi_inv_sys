@@ -58,6 +58,7 @@ Errors Found That Need Fixin':
 	--- Search field not working in sites.php
 	--- 'Go Back' button on sites.php and user.php not working
 	--- Graphs shown on Monday not showing in stats anymore
+	--- Navbar gets cut off on the right in InternetExplorer browser≥.
 
 ========================================================================
 Hosting AWS VS GoDaddy

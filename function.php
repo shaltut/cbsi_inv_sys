@@ -807,7 +807,7 @@ function check_equip_id_exists($connect, $equip_id){
 	$query = "
 	SELECT equip_id, equip_status
 	FROM equipment 
-	WHERE equip_id = '".$equip_id."' AND equip_status = 'active'
+	WHERE equip_id = '".$equip_id."'
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -820,7 +820,7 @@ function check_equip_id_exists($connect, $equip_id){
 
 			if($row['equip_status'] == 'inactive'){
 
-				$data = 'This item is currently unavailable';
+				$data = 'This item is currently unavailable, or undergoing maintenance. Please try again later.';
 
 			}else{
 

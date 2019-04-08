@@ -56,9 +56,9 @@ foreach($result as $row)
 
 	$is_av = '';
 	if($row['is_available'] == 'available'){
-		$is_av = '<center><span class="text-success glyphicon glyphicon-ok"></span></center>';
+		$is_av = '<span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span>';
 	}else{
-		$is_av = '<center><span class="text-danger glyphicon glyphicon-remove"></span></center>';
+		$is_av = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
 	}
 	$name = $row['equip_name'];
 	// if(strlen($name) > 15){

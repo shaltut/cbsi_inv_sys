@@ -64,8 +64,8 @@ include('header.php');
                             <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="text-align:center">
                                 <thead><tr>
                                     <th style="min-width: 30px;">ID</th>
-                                    <th style="min-width: 70px; text-align:center">Name</th>
-                                    <th style="min-width: 55px">Available</th>
+                                    <th style="text-align:center">Name</th>
+                                    <th style="min-width: 20px"></th>
                                     <th style="min-width: 38px">Status</th>
                                     <th style="min-width: 35px"></th>
                                     <th style="min-width: 50px"></th>

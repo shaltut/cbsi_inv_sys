@@ -1071,7 +1071,7 @@ function get_checkouts_today($connect){
 	$result = $statement->fetchAll();
 	$output = '
 	<div class="table-responsive">
-		<table class="table table-bordered table-striped" style="text-align:center;table-layout:fixed">
+		<table class="table table-bordered table-striped" style="text-align:center; table-layout:fixed">
 			<thead style="font-size:16px">
 				<tr>
 					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Employee</th>

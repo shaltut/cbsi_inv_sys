@@ -32,7 +32,7 @@ include('header.php');
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="overflow-y: hidden;">
+                            <table id="locate_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="overflow-y: hidden;">
                                 <thead><tr>
                                     <th style="width:3%">ID</th>
                                     <th>Equipment Name</th>
@@ -120,7 +120,7 @@ include('header.php');
 $(document).ready(function(){
 
     //Used to control the DataTable (Table) on the page
-    var equipmentdataTable = $('#equipment_data').DataTable({
+    var equipmentdataTable = $('#locate_data').DataTable({
         "processing":true,
         "serverSide":true,
         "order":[],
@@ -188,17 +188,17 @@ $(document).ready(function(){
     */
 
     //TOP (Show Entries and Search)
-    $( "#equipment_data_length" ).css( "float", "left" );
-    $( "#equipment_data_filter" ).css( "text-align", "right" );
+    $( "#locate_data_length" ).css( "float", "left" );
+    $( "#locate_data_filter" ).css( "text-align", "right" );
     $( "input" ).css( "padding-left", "0" );
     $( "input" ).css( "padding-right", "0" );
     //BOTTOM (Showing x to y of z entries & Previous/Next)
-    $( "#equipment_data_info" ).css( "float", "left" );
-    $( "#equipment_data_info" ).css( "padding-left", "0" );
-    $( "#equipment_data_info" ).css( "margin-left", "0" );
-    $( "#equipment_data_paginate" ).css( "float", "right" );
-    $( "#equipment_data_paginate" ).css( "padding-right", "0" );
-    $( "#equipment_data_paginate" ).css( "margin-right", "0" );
+    $( "#locate_data_info" ).css( "float", "left" );
+    $( "#locate_data_info" ).css( "padding-left", "0" );
+    $( "#locate_data_info" ).css( "margin-left", "0" );
+    $( "#locate_data_paginate" ).css( "float", "right" );
+    $( "#locate_data_paginate" ).css( "padding-right", "0" );
+    $( "#locate_data_paginate" ).css( "margin-right", "0" );
 
 });
 </script>

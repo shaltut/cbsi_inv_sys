@@ -61,7 +61,7 @@ include('header.php');
                     </div>
                     <div class="panel-body">
                         <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%">
+                            <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="text-align:center">
                                 <thead><tr>
                                     <th style="min-width: 30px;">ID</th>
                                     <th style="min-width: 70px">Name</th>
@@ -199,9 +199,8 @@ $(document).ready(function(){
         },
         "columnDefs":[
             {
-
                 "targets":[4, 5, 6],
-                "orderable":false,
+                "orderable":false
             },
         ],
         "pageLength": 10
@@ -324,8 +323,6 @@ $(document).ready(function(){
     $( ".dataTables_filter" ).css( "text-align", "right" );
     $( "input" ).css( "padding-left", "0" );
     $( "input" ).css( "padding-right", "0" );
-    //DATA ROWS
-    $( "#equipment_data" ).css( "table-layout", "fixed" );
     //BOTTOM (Showing x to y of z entries & Previous/Next)
     $( "#equipment_data_info" ).css( "float", "left" );
     $( "#equipment_data_info" ).css( "padding-left", "0" );

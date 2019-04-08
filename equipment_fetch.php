@@ -44,31 +44,10 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
-	$status = '';
-	if($row['equip_status'] == 'active')
-	{
-		$status = '<span class="label label-success">Active</span>';
-	}
-	else
-	{
-		$status = '<span class="label label-danger">Inactive</span>';
-	}
 
-	$is_av = '';
-	if($row['is_available'] == 'available'){
-		$is_av = '<span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span>';
-	}else{
-		$is_av = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
-	}
-	$name = $row['equip_name'];
-	// if(strlen($name) > 15){
-	// 	$name = substr($row['equip_name'],0,15).'...';
-	// }
 	$sub_array = array();
-	$sub_array[] = '<div style="max-width: 50px;">'.$row['equip_id'].'<div>';
-	$sub_array[] = '<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">'.$name.'</div>';
-	$sub_array[] = $is_av;
-	$sub_array[] = $status;
+	$sub_array[] = $row['equip_id'];
+	$sub_array[] = $row['equip_name'];
 	$sub_array[] = '
 		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 		';
@@ -77,10 +56,10 @@ foreach($result as $row)
 	';
 	if($row['equip_status'] == 'active'){
 		$sub_array[] = '
-		<button type="button" name="delete" id="'.$row["equip_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["equip_status"].'">Deactivate</button>';
+		<button type="button" name="delete" id="'.$row["equip_id"].'" class="btn btn-xs delete" data-status="'.$row["equip_status"].'"><img src="images/active.png" alt="Deactivate"/></button>';
 	}else{
 		$sub_array[] = '
-		<button type="button" name="delete" id="'.$row["equip_id"].'" class="btn btn-success btn-xs delete" data-status="'.$row["equip_status"].'">Activate</button>';
+		<button type="button" name="delete" id="'.$row["equip_id"].'" class="btn btn-xs delete" data-status="'.$row["equip_status"].'"><img src="images/inactive.png" alt="Activate"/></button>';
 	}
 	$data[] = $sub_array;
 }

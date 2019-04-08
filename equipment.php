@@ -65,11 +65,9 @@ include('header.php');
                                 <thead><tr>
                                     <th style="min-width: 30px;">ID</th>
                                     <th style="text-align:center">Name</th>
-                                    <th style="min-width: 20px"></th>
-                                    <th style="min-width: 38px">Status</th>
                                     <th style="min-width: 35px"></th>
                                     <th style="min-width: 50px"></th>
-                                    <th style="min-width: 70px"></th>
+                                    <th style="min-width: 40px"></th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -199,7 +197,7 @@ $(document).ready(function(){
         },
         "columnDefs":[
             {
-                "targets":[4, 5, 6],
+                "targets":[2, 3, 4],
                 "orderable":false
             },
         ],

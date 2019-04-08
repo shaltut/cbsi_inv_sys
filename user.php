@@ -53,7 +53,6 @@ include('header.php');
 								<th style="text-align:center">Email</th>
 								<th style="text-align:center">Name</th>
 								<th style="text-align:center">Job Title</th>
-								<th style="width:35px;">Status</th>
 								<th style="width:35px;"></th>
 								<th style="width:70px"></th>
 							</tr>
@@ -160,7 +159,7 @@ $(document).ready(function(){
 		"columnDefs":[
             {
 
-                "targets":[5,6],
+                "targets":[4,5],
                 "orderable":false,
             },
 		],

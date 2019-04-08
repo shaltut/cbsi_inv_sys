@@ -55,31 +55,20 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
-	$status = '';
-
-	//Shows a different color status marker depending on each user's status.
-	if($row["user_status"] == 'Active')
-	{
-		$status = '<span class="label label-success">Active</span>';
-	}else{
-		$status = '<span class="label label-danger">Disabled</span>';
-	}
-
-	//Displays each column of info in a specifc way depending on that column's value.
 	$sub_array = array();
 	$sub_array[] = $row['user_id'];
 	$sub_array[] = $row['user_email'];
 	$sub_array[] = $row['user_name'];
 	$sub_array[] = $row['user_job'];
-	$sub_array[] = $status;
-	//Update button for each user
 	$sub_array[] = '<button type="button" name="update" id="'.$row["user_id"].'" class="btn btn-warning btn-xs update">Update</button>';
 
 	//Button used to change user status.
 	if($row['user_status'] == 'Active'){
-		$sub_array[] = '<button type="button" name="disable" id="'.$row["user_id"].'" class="btn btn-danger btn-xs disable" data-status="'.$row["user_status"].'">Deactivate</button>';
+		$sub_array[] = '
+		<button type="button" name="disable" id="'.$row["user_id"].'" class="btn btn-xs disable" data-status="'.$row["user_status"].'"><img src="images/active.png" alt="Deactivate"/></button>';
 	}else{
-		$sub_array[] = '<button type="button" name="disable" id="'.$row["user_id"].'" class="btn btn-success btn-xs disable" data-status="'.$row["user_status"].'">Activate</button>';
+		$sub_array[] = '
+		<button type="button" name="disable" id="'.$row["user_id"].'" class="btn btn-xs disable" data-status="'.$row["user_status"].'"><img src="images/inactive.png" alt="Activate"/></button>';
 	}
 
 	$data[] = $sub_array;

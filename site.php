@@ -45,10 +45,9 @@ include('header.php');
                             <table id="site_data" class="table table-bordered table-striped display compact" cellspacing="0" width="100%" style="text-align:center;">
                                 <thead><tr>
                                     <th style="text-align:center;">Site Name</th>
-                                    <th style="min-width: 35px">Status</th>
                                     <th style="min-width: 35px"></th>
                                     <th style="min-width: 50px"></th>
-                                    <th style="min-width: 70px"></th>
+                                    <th style="min-width: 40px"></th>
                                 </tr></thead>
                             </table>
                         </div></div>
@@ -155,7 +154,7 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-                "targets":[2, 3, 4],
+                "targets":[1, 2, 3],
                 "orderable":false,
             },
         ],
@@ -251,12 +250,6 @@ $(document).ready(function(){
             return false;
         }
     });
-
-
-    /* 
-        THIS IS HARDCODED JQUERY STYLING FOR THE TABLE PAGNATION
-        IF THEY OVERLAP ON MOBILE, DELETE THESE LINES AND IT WILL GO BACK TO NORMAL
-    */
 
     //TOP (Show Entries and Search)
     $( "#site_data_length" ).css( "float", "left" );

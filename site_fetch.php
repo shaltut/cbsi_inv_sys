@@ -40,20 +40,9 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
-	$status = '';
-	if($row['site_status'] == 'active')
-	{
-		$status = '<span class="label label-success">Active</span>';
-	}
-	else
-	{
-		$status = '<span class="label label-danger">Inactive</span>';
-	}
+	
 	$sub_array = array();
-	// $sub_array[] = $row['site_id'];
 	$sub_array[] = $row['site_name'];
-	// $sub_array[] = $row['site_address'];
-	$sub_array[] = $status;
 	$sub_array[] = '
 		<button type="button" name="view" id="'.$row["site_id"].'" class="btn btn-info btn-xs view">View</button>
 		';
@@ -63,10 +52,10 @@ foreach($result as $row)
 
 	if($row['site_status'] == 'active'){
 		$sub_array[] = '
-			<button type="button" name="delete" id="'.$row["site_id"].'" class="btn btn-danger btn-xs delete" data-status="'.$row["site_status"].'">Deactivate</button>';
+		<button type="button" name="delete" id="'.$row["site_id"].'" class="btn btn-xs delete" data-status="'.$row["site_status"].'"><img src="images/active.png" alt="Deactivate"/></button>';
 	}else{
 		$sub_array[] = '
-			<button type="button" name="delete" id="'.$row["site_id"].'" class="btn btn-success btn-xs delete" data-status="'.$row["site_status"].'">Activate</button>';
+		<button type="button" name="delete" id="'.$row["site_id"].'" class="btn btn-xs delete" data-status="'.$row["site_status"].'"><img src="images/inactive.png" alt="Activate"/></button>';
 	}
 	$data[] = $sub_array;
 }

@@ -73,7 +73,7 @@ include('header.php');
                                     Enter Site Name
                                     <span style="color:red;font-size:1.5em"> *</span>
                                 </label>
-                                <input type="text" name="site_name" id="site_name" class="form-control" style="width:85%; display:inline;" required />
+                                <input type="text" name="site_name" placeholder="Site Name" id="site_name" class="form-control" style="width:85%; display:inline;" required />
                                 <button type="button" class="btn btn-link" data-toggle="popover" title="Name" data-content="What the site is typically called, either by business name, location (city), etc." data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
@@ -83,7 +83,7 @@ include('header.php');
                                     Enter Site Address
                                     <span style="color:red;font-size:1.5em"> *</span>
                                 </label>
-                                <input type="text" name="site_address" id="site_address" class="form-control" style="width:85%; display:inline;" required />
+                                <input type="text" name="site_address" placeholder="Site Address" id="site_address" class="form-control" style="width:85%; display:inline;" required />
                                 <button type="button" class="btn btn-link" data-toggle="popover" title="Address" data-content="The site's physical address. If no address is available, list the closest address to the site's physical location" data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
@@ -93,7 +93,7 @@ include('header.php');
                                     Enter Job Description
                                     <span style="color:red;font-size:1.5em"> *</span>
                                 </label>
-                                <textarea name="job_desc" id="job_desc" class="form-control" rows="5" style="width:85%; display:inline;" required></textarea>
+                                <textarea name="job_desc" placeholder="Site Job Description" id="job_desc" class="form-control" rows="5" style="width:85%; display:inline;" required></textarea>
                                 <button type="button" class="btn btn-link" data-toggle="popover" title="Job Description" data-content="What work is being done at this site? What are we here to do?" data-placement="left">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>

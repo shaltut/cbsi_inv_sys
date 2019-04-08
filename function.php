@@ -610,7 +610,7 @@ function checkouts_by_site($connect){
 /*Returns the number of pieces of equipment that currently require maintenance.
 USED IN: equipment.php, stats.php
 */
-function check_equip_maintenance($connect){
+function check_equip_maintenance_num($connect){
 	$sysdate = date('Y-m-d');
 	$query = "
 	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' FROM equipment WHERE is_maintenance_required = 'yes' AND equip_status = 'active'
@@ -645,6 +645,46 @@ function check_equip_maintenance($connect){
 	}
 	// return $count;
 	return $count;
+}
+
+/*Returns the number of pieces of equipment that currently require maintenance.
+USED IN: equipment.php, stats.php
+*/
+function check_equip_maintenance($connect, $equip_id){
+	$ans = false;
+	$sysdate = date('Y-m-d');
+	$query = "
+	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' FROM equipment WHERE is_maintenance_required = 'yes' AND equip_status = 'active' AND equip_id = '".$equip_id."'
+	";
+
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$today = $row['tday'];
+			$last_m = $row['lm'];
+			$m_every = $row['me'];
+
+			$ts1 = strtotime($last_m);
+			$ts2 = strtotime($today);
+
+			$year1 = date('Y', $ts1);
+			$year2 = date('Y', $ts2);
+
+			$month1 = date('m', $ts1);
+			$month2 = date('m', $ts2);
+
+			$diff = (($year2 - $year1) * 12) + ($month2 - $month1);
+
+			if($diff > $row['me'] ){
+				$ans = true;
+			}
+		}
+	}
+	// return $count;
+	return $ans;
 }
 
 //Returns every site_id and site_name in the form of a option HTML tag to be used in HTML forms.

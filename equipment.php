@@ -17,12 +17,13 @@ if($_SESSION['type'] != 'master')
 include('header.php');
 
 ?>
+
 <!-- Alerts the user to changes they have made, or errors -->
 
     <span id='alert_action'></span>
 
 	<?php
-	$count_equip_require_maintainance = check_equip_maintenance($connect);
+	$count_equip_require_maintainance = check_equip_maintenance_num($connect);
 	if($count_equip_require_maintainance > 0){
 	?>
 	    <!-- Alerts user if equipment needs to be maintained-->

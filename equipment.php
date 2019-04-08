@@ -30,14 +30,19 @@ include('header.php');
 	    <!-- Alerts user if equipment needs to be maintained-->
         <div class="row" style="align-content: center;">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        		<div class="alert alert-danger" role="alert" style="display:inline-block; width:100%;">
-        	  		   <a class="btn btn-warning" href="maintain.php" role="button" style="float: right;">View</a>
-                    <span style="float:left; padding-top:5px; font-size:16px">
-                        <?php echo 'MAINTENANCE REQUIRED!'; ?>
-                    </span>
-                    <span style="float:left; padding-top:5px; font-size:16px">
-                        <?php echo  ' ('.$count_red.' item(s) require maintenance)'; ?>
-                    </span>
+        		<div class="alert alert-danger" role="alert" style="display:inline-block; width:100%; height:50px; padding:0 10px;">
+                    
+                    <div style="float:right;">
+                        <a class="btn btn-warning" href="maintain.php" role="button" style="position:absolute; top:5px; right:20px;">View</a>
+                    </div>
+                    
+                    <div style="padding-top:5px; font-size:16px; text-align:center">
+                        <?php echo 'MAINTENANCE REQUIRED! &nbsp'; ?>
+                    </div>
+                    
+                    <div style="font-size:13px; text-align:center">
+                        <?php echo  $count_red." item(s) require maintenance"; ?>
+                    </div>
         		</div>
             </div>
         </div>

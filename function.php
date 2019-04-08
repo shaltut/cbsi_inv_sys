@@ -650,7 +650,7 @@ function check_equip_maintenance_num($connect){
 /*Returns the number of pieces of equipment that currently require maintenance.
 USED IN: equipment.php, stats.php
 */
-function check_equip_maintenance($connect, $equip_id){
+function check_equip_maintenance_required($connect, $equip_id){
 	$ans = false;
 	$sysdate = date('Y-m-d');
 	$query = "
@@ -685,6 +685,40 @@ function check_equip_maintenance($connect, $equip_id){
 	}
 	// return $count;
 	return $ans;
+}
+
+/*
+
+STILL DEBUGGING
+
+*/
+function check_equip_maintenance_month($connect, $equip_id){
+	$ans = false;
+	$test = 'false';
+	$sysdate = date('Y-m-d');
+	$query = "
+	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' FROM equipment WHERE is_maintenance_required = 'yes' AND equip_status = 'active' AND equip_id = '".$equip_id."'
+	";
+	
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			// if(){
+
+			// }
+			$date_to_beat = date("Y-m-d", strtotime("- months", strtotime($row['tday'])));
+
+			if($date_to_beat < $row['lm']){
+				$ans = true;
+				$test = 'TRUE';
+			}
+		}
+		
+	}
+	return $test;
 }
 
 //Returns every site_id and site_name in the form of a option HTML tag to be used in HTML forms.

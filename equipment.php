@@ -15,7 +15,8 @@ if($_SESSION['type'] != 'master')
 }
 
 include('header.php');
-
+// echo check_equip_maintenance_month($connect, 202003);
+// echo "php working";
 ?>
 
 <!-- Alerts the user to changes they have made, or errors -->

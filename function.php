@@ -693,11 +693,13 @@ STILL DEBUGGING
 
 */
 function check_equip_maintenance_month($connect, $equip_id){
-	$ans = false;
-	$test = 'false';
-	$sysdate = date('Y-m-d');
+	$ans = 'good';
 	$query = "
-	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' FROM equipment WHERE is_maintenance_required = 'yes' AND equip_status = 'active' AND equip_id = '".$equip_id."'
+	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' 
+	FROM equipment 
+	WHERE is_maintenance_required = 'yes' 
+	AND equip_status = 'active' 
+	AND equip_id = '".$equip_id."'
 	";
 	
 	$statement = $connect->prepare($query);
@@ -706,19 +708,20 @@ function check_equip_maintenance_month($connect, $equip_id){
 	if(isset($result)){
 		foreach($result as $row)
 		{
-			// if(){
-
-			// }
-			$date_to_beat = date("Y-m-d", strtotime("- months", strtotime($row['tday'])));
-
-			if($date_to_beat < $row['lm']){
-				$ans = true;
-				$test = 'TRUE';
+			$months = $row['me'];
+			$last = $row['lm'];
+			$today = $row['tday'];
+			$maintain_by = date("Y-m-d", strtotime($months.' months', strtotime($last)));
+			$maintain_warn = date("Y-m-d", strtotime('-1 months', strtotime($maintain_by)));
+			if($today >= $maintain_by){
+				$ans = 'red';
+			}else if($today > $maintain_warn && $today < $maintain_by){
+				$ans = 'yellow';
 			}
 		}
 		
 	}
-	return $test;
+	return $ans;
 }
 
 //Returns every site_id and site_name in the form of a option HTML tag to be used in HTML forms.

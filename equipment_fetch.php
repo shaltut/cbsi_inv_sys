@@ -46,9 +46,12 @@ foreach($result as $row)
 {
 
 	$sub_array = array();
-	if(check_equip_maintenance_required($connect, $row['equip_id']) == true){
-    	$sub_array[] =  '<div style="background-color:rgba(255,0,0,.1); border-radius: 15px;">'.$row['equip_id'].'</div>';
-		$sub_array[] = '<div style="background-color:rgba(255,0,0,.1); border-radius: 15px;">'.$row['equip_name'].'</div>';
+	if(check_equip_maintenance_month($connect, $row['equip_id']) == 'red'){
+		$sub_array[] =  '<div style="background-color:rgba(255, 0, 0, .5); border-radius: 15px;">'.$row['equip_id'].'</div>';
+		$sub_array[] = '<div style="background-color:rgba(255, 0, 0, .5); border-radius: 15px;">'.$row['equip_name'].'</div>';
+	}else if(check_equip_maintenance_month($connect, $row['equip_id']) == 'yellow'){
+		$sub_array[] =  '<div style="background-color:rgba(240, 255, 0, .5); border-radius: 15px;">'.$row['equip_id'].'</div>';
+		$sub_array[] = '<div style="background-color:rgba(240, 255, 0, .5); border-radius: 15px;">'.$row['equip_name'].'</div>';
 	}else{
     	$sub_array[] = $row['equip_id'];
 		$sub_array[] = $row['equip_name'];

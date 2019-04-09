@@ -21,6 +21,13 @@ if(!isset($_SESSION["type"]))
 		<script type="text/javascript" src="js/Chart.min.js"></script>
 
 	</head>
+
+<style type="text/css">
+	body {
+		background-color: #acacac;
+	}
+</style>
+
 	<body>
 		<br />
 		<div class="container">

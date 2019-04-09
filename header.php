@@ -18,16 +18,16 @@ if(!isset($_SESSION["type"]))
 		<script src="js/dataTables.bootstrap.min.js"></script>		
 		<link rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
 		<script src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/Chart.min.js"></script>
+		<script src="js/Chart.min.js"></script>
 
 	</head>
 
 <style type="text/css">
 	html {
-		background-color: #cbcbcb;
+		background-color:gainsboro;
 	}
 	body {
-		background-color: #cbcbcb;
+		background-color:gainsboro;
 	}
 </style>
 

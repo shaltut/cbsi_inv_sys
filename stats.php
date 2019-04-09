@@ -15,12 +15,20 @@ if($_SESSION['type'] != 'master')
 }
 
 include('header.php');
-
-echo    checkouts_by_site_names($connect)." + ".
-        checkouts_by_site_num_checkouts_today($connect)." + ".
-        checkouts_by_site_num_checkouts_week($connect)." + ".
-        checkouts_by_site_num_checkouts_month($connect)." + ".
-        checkouts_by_site_num_checkouts($connect);
+/*
+    Testing for Windows 10...
+    Expected Output (just under nav bar):
+        'HILT..','WATE..','CATH..','METR..','TEXT..','MONU..',
+        1,0,0,0,0,0
+        2,6,5,6,2,1, 
+        5,7,6,6,2,1,
+        7,12,8,6,2,1, 
+*/
+echo    nl2br(checkouts_by_site_names($connect)."\n".
+        checkouts_by_site_num_checkouts_today($connect)."\n".
+        checkouts_by_site_num_checkouts_week($connect)." \n".
+        checkouts_by_site_num_checkouts_month($connect)."\n".
+        checkouts_by_site_num_checkouts($connect));
 
 
 ?>
@@ -82,7 +90,9 @@ echo    checkouts_by_site_names($connect)." + ".
 	                </table>
 	            </div></div>
                 <center>
-                    <canvas id="check_by_site" style="max-width:600px; max-height:400px;"></canvas>
+                    <div style="max-width:800px">
+                        <canvas id="check_by_site"></canvas>
+                    </div>
                 </center>
 	        </div>
 	    </div>
@@ -135,7 +145,9 @@ echo    checkouts_by_site_names($connect)." + ".
                     </form>
                 </div></div>
                 <center>
-                    <!-- <canvas id="empl_stat" style="max-width:600px; max-height:450px;"></canvas> -->
+                    <div style="max-width:800px">
+                        <canvas id="empl_stat"></canvas>
+                    </div>
                 </center>
             </div>
         </div>
@@ -193,10 +205,14 @@ echo    checkouts_by_site_names($connect)." + ".
                 <div class="card">
                     <div class="card-body" style="border:5px">
                         <center><br/>
+                            <div style="max-width:800px">
                             <!-- Pie Chart (Equipment Cost Visualized) -->
-                            <!-- <canvas id="equip_cost_pie" style="max-width:600px; max-height:450px;"></canvas><br/> -->
+                                <canvas id="equip_cost_pie"></canvas><br/>
+                            </div>
+                            <div style="max-width:800px">
                             <!-- Line Graph (Checkouts by month) -->
-                            <!-- <canvas id="equip_monthly_checkouts" width="800" height="450"></canvas><br/> -->
+                            <canvas id="equip_monthly_checkouts" width="800" height="450"></canvas><br/>
+                            </div>
                         </center>
                     </div>
                 </div>

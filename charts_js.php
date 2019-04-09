@@ -3,8 +3,7 @@
 ?>
 
 <script>
-var ctx = document.getElementById('check_by_site').getContext('2d');
-var check_by_site = new Chart(ctx, {
+new Chart(document.getElementById("check_by_site"), {
     type: 'bar',
     data: {
         labels: [<?php echo checkouts_by_site_names($connect); ?>],
@@ -126,7 +125,6 @@ var check_by_site = new Chart(ctx, {
                      if (Math.floor(label) === label) {
                          return label;
                      }
-
                  },
                 }
             }]
@@ -146,8 +144,9 @@ var check_by_site = new Chart(ctx, {
     }
 });
 
-var emp = document.getElementById('empl_stat').getContext('2d');
-var check_by_empl = new Chart(emp, {
+// var emp = document.getElementById('empl_stat').getContext('2d');
+// var check_by_empl = new Chart(emp, {
+new Chart(document.getElementById("empl_stat"), {
     type: 'bar',
     data: {
         labels: ['Checkouts', 'Returns'],

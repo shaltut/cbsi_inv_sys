@@ -1,6 +1,7 @@
 <?php
 //login.php
 
+
 include('database_connection.php');
 
 if(isset($_SESSION['type']))
@@ -69,6 +70,14 @@ if(isset($_POST["login"]))
 				display: block;
   				margin-right: auto;
   				margin-left: auto;
+			}
+
+			html {
+				background-color: #cbcbcb;
+			}
+
+			body {
+				background-color: #cbcbcb;
 			}
 
 		</style>

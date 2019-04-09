@@ -47,7 +47,7 @@ echo    checkouts_by_site_names($connect)." + ".
 	                <table id="site_stats_tbl" class="table table-bordered table-striped">
 	                    <thead><tr>
 	                        <th>Active Sites</th>
-	                        // <th><?php echo count_active_site($connect); ?></th>
+	                       <th><?php echo count_active_site($connect); ?></th>
 	                    </tr></thead>
 	                    <thead><tr>
 	                        <th>Inactive Sites</th>

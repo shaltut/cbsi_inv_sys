@@ -3,7 +3,9 @@
 ?>
 
 <script>
-new Chart(document.getElementById("check_by_site"), {
+var ctx = document.getElementById('check_by_site');
+var check_by_site = new Chart(ctx, {
+// new Chart(document.getElementById("check_by_site"), {
     type: 'bar',
     data: {
         // labels: [<?php //echo checkouts_by_site_names($connect); ?>],

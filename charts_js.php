@@ -2,39 +2,42 @@
 //charts_js.php
 ?>
 
-<script>
+<script type="text/javascript">
 var ctx = document.getElementById('check_by_site');
 var check_by_site = new Chart(ctx, {
 // new Chart(document.getElementById("check_by_site"), {
     type: 'bar',
     data: {
         // labels: [<?php //echo checkouts_by_site_names($connect); ?>],
-        labels: [ 'HILT','WATE','CATH','METR','TEXT','MONU', ],
-        datasets: [{
-            label: 'Today',
-            hidden: true,
-            // data: [<?php //echo checkouts_by_site_num_checkouts_today($connect); ?>],
-            data: [1,0,0,0,0,0],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        },{
+        labels: [ 'HILT','WATE','CATH','METR','TEXT','MONU'],
+        datasets: [
+        // {
+        //     label: 'Today',
+        //     hidden: true,
+        //     // data: [<?php //echo checkouts_by_site_num_checkouts_today($connect); ?>],
+        //     data: [1,0,0,0,0,0],
+        //     backgroundColor: [
+        //         'rgba(255, 99, 132, 0.2)',
+        //         'rgba(54, 162, 235, 0.2)',
+        //         'rgba(255, 206, 86, 0.2)',
+        //         'rgba(75, 192, 192, 0.2)',
+        //         'rgba(153, 102, 255, 0.2)',
+        //         'rgba(255, 159, 64, 0.2)'
+        //     ],
+        //     borderColor: [
+        //         'rgba(255, 99, 132, 1)',
+        //         'rgba(54, 162, 235, 1)',
+        //         'rgba(255, 206, 86, 1)',
+        //         'rgba(75, 192, 192, 1)',
+        //         'rgba(153, 102, 255, 1)',
+        //         'rgba(255, 159, 64, 1)'
+        //     ],
+        //     borderWidth: 1
+        // }
+        // ,
+        {
             label: 'This Week',
-            hidden: false,
+            // hidden: false,
             // data: [<?php //echo checkouts_by_site_num_checkouts_week($connect); ?>],
             data: [2,6,5,6,2,1],
             backgroundColor: [
@@ -54,100 +57,104 @@ var check_by_site = new Chart(ctx, {
                 'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 1
-        },{
-            label: 'This Month',
-            hidden: true,
-            // data: [<?php //echo checkouts_by_site_num_checkouts_month($connect); ?>],
-            data: [5,7,6,6,2,1],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        },{
-            label: 'End of Time',
-            hidden: true,
-            // data: [<?php //echo checkouts_by_site_num_checkouts($connect); ?>],
-            data: [7,12,8,6,2,1],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
         }]
-    },
-    options: {
-        title: {
-            display: true,
-            text: 'Checkouts By Site',
-            fontColor: 'black',
-            fontSize: 18
-        },
-        legend: {
-            position: 'bottom',
-            labels: {
-                fontColor: 'rgba(54, 162, 255, 1)',
-                boxWidth: 0,
-                fontStyle: 'bold',
-                padding: 3
-            }
-        },
-        scales: {
-            xAxes: [{
-                barPercentage: 1.25,
-                ticks:{
-                    fontSize: 10
-                }
-            }],
-            yAxes: [{
-                ticks: {
-                    fontSize: 8,
-                    beginAtZero: true,
-                     userCallback: function(label, index, labels) {
-                     // when the floored value is the same as the value we have a whole number
-                     if (Math.floor(label) === label) {
-                         return label;
-                     }
-                 },
-                }
-            }]
-        },
-        layout: {
-            padding: {
-                left: 0,
-                right: 0,
-                top: -13,
-                bottom: -12
-            }
-        },
-        animation: {
-            duration: 1500,
-            easing: 'easeOutElastic'
-        }
+        // ,
+        // {
+        //     label: 'This Month',
+        //     // hidden: true,
+        //     // data: [<?php //echo checkouts_by_site_num_checkouts_month($connect); ?>],
+        //     data: [5,7,6,6,2,1],
+        //     backgroundColor: [
+        //         'rgba(255, 99, 132, 0.2)',
+        //         'rgba(54, 162, 235, 0.2)',
+        //         'rgba(255, 206, 86, 0.2)',
+        //         'rgba(75, 192, 192, 0.2)',
+        //         'rgba(153, 102, 255, 0.2)',
+        //         'rgba(255, 159, 64, 0.2)'
+        //     ],
+        //     borderColor: [
+        //         'rgba(255, 99, 132, 1)',
+        //         'rgba(54, 162, 235, 1)',
+        //         'rgba(255, 206, 86, 1)',
+        //         'rgba(75, 192, 192, 1)',
+        //         'rgba(153, 102, 255, 1)',
+        //         'rgba(255, 159, 64, 1)'
+        //     ],
+        //     borderWidth: 1
+        // }
+        // ,
+        // {
+        //     label: 'End of Time',
+        //     hidden: true,
+        //     // data: [<?php //echo checkouts_by_site_num_checkouts($connect); ?>],
+        //     data: [7,12,8,6,2,1],
+        //     backgroundColor: [
+        //         'rgba(255, 99, 132, 0.2)',
+        //         'rgba(54, 162, 235, 0.2)',
+        //         'rgba(255, 206, 86, 0.2)',
+        //         'rgba(75, 192, 192, 0.2)',
+        //         'rgba(153, 102, 255, 0.2)',
+        //         'rgba(255, 159, 64, 0.2)'
+        //     ],
+        //     borderColor: [
+        //         'rgba(255, 99, 132, 1)',
+        //         'rgba(54, 162, 235, 1)',
+        //         'rgba(255, 206, 86, 1)',
+        //         'rgba(75, 192, 192, 1)',
+        //         'rgba(153, 102, 255, 1)',
+        //         'rgba(255, 159, 64, 1)'
+        //     ],
+        //     borderWidth: 1
+        // }]
+    // }/*,*/
+    // options: {
+    //     title: {
+    //         display: true,
+    //         text: 'Checkouts By Site',
+    //         fontColor: 'black',
+    //         fontSize: 18
+    //     },
+    //     legend: {
+    //         position: 'bottom',
+    //         labels: {
+    //             fontColor: 'rgba(54, 162, 255, 1)',
+    //             boxWidth: 0,
+    //             fontStyle: 'bold',
+    //             padding: 3
+    //         }
+    //     },
+    //     scales: {
+    //         xAxes: [{
+    //             barPercentage: 1.25,
+    //             ticks:{
+    //                 fontSize: 10
+    //             }
+    //         }],
+    //         yAxes: [{
+    //             ticks: {
+    //                 fontSize: 8,
+    //                 beginAtZero: true,
+    //                  userCallback: function(label, index, labels) {
+    //                  // when the floored value is the same as the value we have a whole number
+    //                  if (Math.floor(label) === label) {
+    //                      return label;
+    //                  }
+    //              },
+    //             }
+    //         }]
+    //     },
+    //     layout: {
+    //         padding: {
+    //             left: 0,
+    //             right: 0,
+    //             top: -13,
+    //             bottom: -12
+    //         }
+    //     },
+    //     animation: {
+    //         duration: 1500,
+    //         easing: 'easeOutElastic'
+    //     }
     }
 });
 

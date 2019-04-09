@@ -9,7 +9,7 @@ var check_by_site = new Chart(ctx, {
     type: 'bar',
     data: {
         // labels: [<?php //echo checkouts_by_site_names($connect); ?>],
-        labels: [ 'HILT..','WATE..','CATH..','METR..','TEXT..','MONU..', ],
+        labels: [ 'HILT','WATE','CATH','METR','TEXT','MONU', ],
         datasets: [{
             label: 'Today',
             hidden: true,

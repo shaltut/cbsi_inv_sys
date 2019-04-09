@@ -82,7 +82,7 @@ echo    checkouts_by_site_names($connect)." + ".
 	                </table>
 	            </div></div>
                 <center>
-                    <canvas id="check_by_site" style="max-width:600px;"></canvas>
+                    <canvas id="check_by_site" style="max-width:600px; max-height:400px;"></canvas>
                 </center>
 	        </div>
 	    </div>

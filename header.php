@@ -23,8 +23,11 @@ if(!isset($_SESSION["type"]))
 	</head>
 
 <style type="text/css">
+	html {
+		background-color: #cbcbcb;
+	}
 	body {
-		background-color: #acacac;
+		background-color: #cbcbcb;
 	}
 </style>
 

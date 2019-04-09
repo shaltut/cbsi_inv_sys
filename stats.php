@@ -16,6 +16,12 @@ if($_SESSION['type'] != 'master')
 
 include('header.php');
 
+echo    checkouts_by_site_names($connect)." + ".
+        checkouts_by_site_num_checkouts_today($connect)." + ".
+        checkouts_by_site_num_checkouts_week($connect)." + ".
+        checkouts_by_site_num_checkouts_month($connect)." + ".
+        checkouts_by_site_num_checkouts($connect);
+
 
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
@@ -41,7 +47,7 @@ include('header.php');
 	                <table id="site_stats_tbl" class="table table-bordered table-striped">
 	                    <thead><tr>
 	                        <th>Active Sites</th>
-	                        <th><?php echo count_active_site($connect); ?></th>
+	                        // <th><?php echo count_active_site($connect); ?></th>
 	                    </tr></thead>
 	                    <thead><tr>
 	                        <th>Inactive Sites</th>
@@ -129,7 +135,7 @@ include('header.php');
                     </form>
                 </div></div>
                 <center>
-                    <canvas id="empl_stat" style="max-width:600px; max-height:450px;"></canvas>
+                    <!-- <canvas id="empl_stat" style="max-width:600px; max-height:450px;"></canvas> -->
                 </center>
             </div>
         </div>
@@ -188,9 +194,9 @@ include('header.php');
                     <div class="card-body" style="border:5px">
                         <center><br/>
                             <!-- Pie Chart (Equipment Cost Visualized) -->
-                            <canvas id="equip_cost_pie" style="max-width:600px; max-height:450px;"></canvas><br/>
+                            <!-- <canvas id="equip_cost_pie" style="max-width:600px; max-height:450px;"></canvas><br/> -->
                             <!-- Line Graph (Checkouts by month) -->
-                            <canvas id="equip_monthly_checkouts" width="800" height="450"></canvas><br/>
+                            <!-- <canvas id="equip_monthly_checkouts" width="800" height="450"></canvas><br/> -->
                         </center>
                     </div>
                 </div>

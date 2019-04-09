@@ -499,6 +499,8 @@ function checkouts_by_site_num_checkouts($connect){
 */
 function checkouts_by_site_num_checkouts_today($connect){
 	$output = '';
+	$count = 0;
+	$siteNum = count_active_site($connect);
 	$query = "
 	SELECT sites.site_name as 'site', count(equipment_checkout.site_id) as 'checks'
 	FROM sites INNER JOIN equipment_checkout ON sites.site_id = equipment_checkout.site_id
@@ -507,8 +509,6 @@ function checkouts_by_site_num_checkouts_today($connect){
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
-	$count = 0;
-	$test = ' ';
 	$result = $statement->fetchAll();
 	if(isset($result)){
 		foreach($result as $row)
@@ -516,8 +516,16 @@ function checkouts_by_site_num_checkouts_today($connect){
 			$count = $count + 1;
 			$output .= $row['checks'].",";
 		}
+		$siteNum = $siteNum - $count;
+		$test = 0;
+		for($i = 0; $i < $siteNum; $i++){
+			if($i != 4){
+				$output .= '0,';
+			}else{
+				$output .= '0';
+			}
+		}
 	}
-	// return $count;
 	return $output;
 }
 

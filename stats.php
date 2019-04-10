@@ -199,10 +199,9 @@ include('header.php');
                         <thead><tr>
                             <th>Total Cost of All Equipment</th>
                             <th>
-                            <!-- <?php 
-                                //setlocale(LC_MONETARY, 'en_US');
-                                //echo money_format('%(#10n', total_equipment_cost($connect)); 
-                            ?> -->
+                            <?php 
+                                echo '$'.money_format("%(#10n", total_equipment_cost($connect)); 
+                            ?>
                             </th>
                         </tr></thead>
                     </table>

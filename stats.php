@@ -214,14 +214,14 @@ include('header.php');
     include('charts_js.php');
 ?>
 <script>
-// $(document).ready(function(){
+$(document).ready(function(){
 
-//     $('#user_stats_form').on('change', function() {
-//         var $form = $(this).closest('form');
-//         $form.find('input[type=submit]').click();
-//     });
+    $('#user_stats_form').on('change', function() {
+        var $form = $(this).closest('form');
+        $form.find('input[type=submit]').click();
+    });
 
-// });
+});
 </script>
 <script>
 function goBack() {

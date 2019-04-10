@@ -55,37 +55,37 @@ include('header.php');
 	                <table id="site_stats_tbl" class="table table-bordered table-striped">
 	                    <thead><tr>
 	                        <th>Active Sites</th>
-	                       <!-- <th><?php //echo count_active_site($connect); ?></th> -->
+	                       <th><?php echo count_active_site($connect); ?></th> 
 	                    </tr></thead>
 	                    <thead><tr>
 	                        <th>Inactive Sites</th>
-	                        <!-- <th><?php //echo count_inactive_site($connect); ?></th> -->
+	                        <th><?php echo count_inactive_site($connect); ?></th>
 	                    </tr></thead>
                         <?php
-                        // if(total_sites_VA($connect) > 0){
+                        if(total_sites_VA($connect) > 0){
                         ?>
-                            <!-- <thead><tr>
+                            <thead><tr>
                                 <th>Total Sites In Virginia</th>
-                                <th><?php //echo total_sites_VA($connect); ?></th>
-                            </tr></thead> -->
+                                <th><?php echo total_sites_VA($connect); ?></th>
+                            </tr></thead> 
                         <?php
-                        // }
-                        //if(total_sites_DC($connect) > 0){
+                        }
+                        if(total_sites_DC($connect) > 0){
                         ?>
-                        <!-- <thead><tr>
+                        <thead><tr>
                             <th>Total Sites In Washington DC</th>
-                            <th><?php //echo total_sites_DC($connect); ?></th>
-                        </tr></thead> -->
+                            <th><?php echo total_sites_DC($connect); ?></th>
+                        </tr></thead> 
                         <?php
-                        //}
-                        //if(total_sites_MD($connect) > 0){
+                        }
+                        if(total_sites_MD($connect) > 0){
                         ?>
-                        <!-- <thead><tr>
+                        <thead><tr>
                             <th>Total Sites In Maryland</th>
-                            <th><?php //echo total_sites_MD($connect); ?></th>
-                        </tr></thead> -->
+                            <th><?php echo total_sites_MD($connect); ?></th>
+                        </tr></thead>
                        <?php
-                        //}
+                        }
                         ?>
 	                </table>
 	            </div></div>

@@ -68,14 +68,14 @@ if(!isset($_SESSION["type"]))
 					<?php
 					}
 					?>
-						<li><a href="check.php">Checkout</a></li>
 						<li><a href="locate.php">Locate</a></li>
+						<li><a href="check.php">Checkout</a></li>
 					
 					<?php
 					if($_SESSION['type'] == 'user') // Only seen by USER
 					{
 					?>
-						<li><a href="Search.php">Search</a></li>
+						<!-- <li><a href="Search.php">Search</a></li> -->
 					<?php
 					}
 					?>

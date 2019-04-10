@@ -24,11 +24,12 @@ Tristan:
 (Post in chat when you start so we dont get conflicts)
 
 OTHER STUFF TO DO:
-	Physical changes:
+	Physical changes (do if possible):
 		--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.	
 		    -This will require a lot of sql, php, JavaScript, and API (if you decide to use one) knowlege
 		--- Password reset for users that forget their username/password
 			-	probs need to use an API
+
 	Asthethic changes:
 		--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
 			- Either a jquery/JS error, or a php/SQL error in the _fetch pages.
@@ -38,7 +39,7 @@ OTHER STUFF TO DO:
 		--- Go through the code and remove old commented out code that isnt used anymore. Also make the code look cleaner (add/remove tabs where needed)
 		--- Change the font on the site to a more attractive font if possible
 			-	Should just be a bootstrap thing
-		
+
 
 SHIT TO TEST:
 	--- 10+, 25+, 50+, and 100+ users. Add dummy test user accounts 10 at a time and test how the tables/database reacts to the influx of data.

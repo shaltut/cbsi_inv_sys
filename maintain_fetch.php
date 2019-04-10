@@ -11,23 +11,6 @@ $query = "
 	SELECT SYSDATE() as 'tday', last_maintained AS 'lm', equip_id as 'equip_id', equip_name as 'equip_name', maintain_every AS 'me' FROM equipment WHERE is_maintenance_required = 'yes' AND equip_status = 'active'
 	";
 
-// if(isset($_POST["search"]["value"]))
-// {
-// 	$query .= 'OR equip_id LIKE "%'.$_POST["search"]["value"].'%" ';
-// 	$query .= 'OR lm LIKE "%'.$_POST["search"]["value"].'%" ';
-// 	$query .= 'OR me LIKE "%'.$_POST["search"]["value"].'%" ';
-
-// }
-
-// if(isset($_POST['order']))
-// {
-// 	$query .= 'ORDER BY '.$_POST['order']['0']['column'].' '.$_POST['order']['0']['dir'].' ';
-// }
-// else
-// {
-// 	$query .= 'ORDER BY eid DESC ';
-// }
-
 if($_POST['length'] != -1)
 {
 	$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
@@ -60,7 +43,6 @@ foreach($result as $row){
 		$sub_array = array();
 		$sub_array[] = $row['equip_id'];
 		$sub_array[] = $row['equip_name'];
-		//$sub_array[] = $od_date.' days';
 		$sub_array[] = $row['lm'];
 		$sub_array[] = '
 			<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>

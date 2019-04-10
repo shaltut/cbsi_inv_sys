@@ -55,10 +55,10 @@ foreach($result as $row)
 	}
 	$sub_array[] = $row['equip_name'];
 	$sub_array[] = '
-		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-primary btn-xs view">View</button>
+		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 		';
 	$sub_array[] = '
-	<button type="button" name="update" id="'.$row["equip_id"].'" class="btn btn-success btn-xs update">Update</button>
+	<button type="button" name="update" id="'.$row["equip_id"].'" class="btn btn-warning btn-xs update">Update</button>
 	';
 
 	//Toggle for status

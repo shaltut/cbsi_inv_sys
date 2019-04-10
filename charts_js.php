@@ -127,18 +127,18 @@ new Chart(document.getElementById("check_by_site"), {
                     fontSize: 10
                 }
             }],
-            // yAxes: [{
-            //     ticks: {
-            //         fontSize: 8,
-            //         beginAtZero: true,
-            //         userCallback: function(label, index, labels) {
-            //             // when the floored value is the same as the value we have a whole number
-            //             if (Math.floor(label) === label) {
-            //                 return label;
-            //             }
-            //         }
-            //     }
-            // }]
+            yAxes: [{
+                ticks: {
+                    fontSize: 8,
+                    beginAtZero: true,
+                    userCallback: function(label, index, labels) {
+                        // when the floored value is the same as the value we have a whole number
+                        if (Math.floor(label) === label) {
+                            return label;
+                        }
+                    }
+                }
+            }]
         },
         layout: {
             padding: {

@@ -30,7 +30,7 @@ include('header.php');
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                                <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Sites List</h3>
+                                <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Sites</h3>
                             </div>
                         
                             <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
@@ -45,9 +45,9 @@ include('header.php');
                             <table id="site_data" class="table table-bordered table-striped display compact" cellspacing="0" width="100%" style="text-align:center;">
                                 <thead><tr>
                                     <th style="text-align:center;">Site Name</th>
-                                    <th style="min-width: 35px"></th>
-                                    <th style="min-width: 50px"></th>
-                                    <th style="min-width: 40px"></th>
+                                    <th style="min-width: 35px;text-align:center">Details</th>
+                                    <th style="min-width: 50px;text-align:center">Update</th>
+                                    <th style="min-width: 40px;text-align:center">Status</th>
                                 </tr></thead>
                             </table>
                         </div></div>

@@ -75,11 +75,11 @@ include('header.php');
                         <div class="row"><div class="col-sm-12 table-responsive">
                             <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="text-align:center">
                                 <thead><tr>
-                                    <th style="min-width: 30px;">ID</th>
+                                    <th style="min-width: 30px;text-align:center">ID</th>
                                     <th style="text-align:center">Name</th>
-                                    <th style="min-width: 35px"></th>
-                                    <th style="min-width: 50px"></th>
-                                    <th style="min-width: 40px"></th>
+                                    <th style="min-width: 35px;text-align:center">Details</th>
+                                    <th style="min-width: 50px;text-align:center">Update</th>
+                                    <th style="min-width: 40px;text-align:center">Status</th>
                                 </tr></thead>
                             </table>
                         </div></div>

@@ -26,7 +26,7 @@ include('header.php');
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                                <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Equipment</h3>
+                                <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Locate Equipment</h3>
                             </div>
                         </div>
                     </div>
@@ -36,9 +36,9 @@ include('header.php');
                                 <thead><tr>
                                     <!-- <th style="min-width:35px;">ID</th> -->
                                     <th style="text-align:center">Equipment Name</th>
-                                    <th style="min-width:5px"></th>
-                                    <th style="min-width:35px"></th>
-                                    <th style="min-width:20px"></th>
+                                    <th style="min-width:5px">Available</th>
+                                    <th style="min-width:35px">Details</th>
+                                    <th style="min-width:20px">Locate</th>
                                 </tr></thead>
                             </table>
                         </div></div>

@@ -49,12 +49,12 @@ include('header.php');
            			<table id="user_data" class="table table-bordered table-striped display compact" cellspacing="0" width="100%" style="text-align:center">
            				<thead>
 							<tr>
-								<th style="width:30px;">ID</th>
+								<th style="width:30px;text-align:center">ID</th>
 								<th style="text-align:center">Email</th>
 								<th style="text-align:center">Name</th>
 								<th style="text-align:center">Job Title</th>
-								<th style="width:35px;"></th>
-								<th style="width:70px"></th>
+								<th style="width:35px;text-align:center">Update</th>
+								<th style="width:70px;text-align:center">Status</th>
 							</tr>
 						</thead>
            			</table>

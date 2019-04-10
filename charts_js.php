@@ -6,14 +6,14 @@
 new Chart(document.getElementById("check_by_site"), {
     type: 'bar',
     data: {
-        // labels: [<?php //echo checkouts_by_site_names($connect); ?>],
-        labels: [ 'HILT','WATE','CATH','METR','TEXT','MONU'],
+        labels: [<?php echo checkouts_by_site_names($connect); ?>],
+        // labels: [ 'HILT','WATE','CATH','METR','TEXT','MONU'],
         datasets: [
         {
             label: 'Today',
             hidden: true,
-            // data: [<?php //echo checkouts_by_site_num_checkouts_today($connect); ?>],
-            data: [1,0,0,0,0,0],
+            data: [<?php echo checkouts_by_site_num_checkouts_today($connect); ?>],
+            // data: [1,0,0,0,0,0],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -35,7 +35,7 @@ new Chart(document.getElementById("check_by_site"), {
         ,{
             label: 'This Week',
             hidden: false,
-            // data: [<?php //echo checkouts_by_site_num_checkouts_week($connect); ?>],
+            data: [<?php echo checkouts_by_site_num_checkouts_week($connect); ?>],
             data: [2,6,5,6,2,1],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -58,8 +58,8 @@ new Chart(document.getElementById("check_by_site"), {
         {
             label: 'This Month',
             hidden: true,
-            // data: [<?php //echo checkouts_by_site_num_checkouts_month($connect); ?>],
-            data: [5,7,6,6,2,1],
+            data: [<?php echo checkouts_by_site_num_checkouts_month($connect); ?>],
+            // data: [5,7,6,6,2,1],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -82,8 +82,8 @@ new Chart(document.getElementById("check_by_site"), {
         {
             label: 'End of Time',
             hidden: true,
-            // data: [<?php //echo checkouts_by_site_num_checkouts($connect); ?>],
-            data: [7,12,8,6,2,1],
+            data: [<?php echo checkouts_by_site_num_checkouts($connect); ?>],
+            // data: [7,12,8,6,2,1],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

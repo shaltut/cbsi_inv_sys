@@ -186,6 +186,7 @@ include('header.php');
                             <th>
                             <?php 
                                 // echo '$'.money_format('%(#10', total_equipment_cost($connect)); 
+                            echo total_equipment_cost($connect);
                             ?>
                             </th>
                         </tr></thead>

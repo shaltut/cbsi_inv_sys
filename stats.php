@@ -174,11 +174,11 @@ include('header.php');
                     <table id="equip_stats_tbl" class="table table-bordered table-striped">
                         <thead><tr>
                             <th>Equipment Total</th>
-                            <th><?php echo count_equipment_total($connect); ?></th> -->
+                            <th><?php echo count_equipment_total($connect); ?></th>
                         </tr></thead>
                         <thead><tr>
                             <th>Equipment Checked Out</th>
-                            <th><?php echo count_check_out_total($connect); ?></th> -->
+                            <th><?php echo count_check_out_total($connect); ?></th>
                         </tr></thead>
                         <thead><tr>
                             <th>Equipment Needing Maintenance</th>

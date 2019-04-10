@@ -185,8 +185,7 @@ include('header.php');
                             <th>Total Cost of All Equipment</th>
                             <th>
                             <?php 
-                                // echo '$'.money_format('%(#10', total_equipment_cost($connect)); 
-                            echo total_equipment_cost($connect);
+                                echo printf("$%01.1f", total_equipment_cost($connect));
                             ?>
                             </th>
                         </tr></thead>

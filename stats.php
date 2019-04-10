@@ -15,27 +15,12 @@ if($_SESSION['type'] != 'master')
 }
 
 include('header.php');
-/*
-    Testing for Windows 10...
-    Expected Output (just under nav bar):
-        'HILT..','WATE..','CATH..','METR..','TEXT..','MONU..',
-        1,0,0,0,0,0
-        2,6,5,6,2,1, 
-        5,7,6,6,2,1,
-        7,12,8,6,2,1, 
-*/
-// echo    nl2br(checkouts_by_site_names($connect)."\n".
-//         checkouts_by_site_num_checkouts_today($connect)."\n".
-//         checkouts_by_site_num_checkouts_week($connect)." \n".
-//         checkouts_by_site_num_checkouts_month($connect)."\n".
-//         checkouts_by_site_num_checkouts($connect));
-
 
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
 <span id='alert_action'></span>
 
-<!-- <button class="btn btn-info" onclick="goBack()" style="float:right;">Go Back</button> -->
+<button class="btn btn-info" onclick="goBack()" style="float:right;">Go Back</button>
 
 <br/><br/><br/>
 
@@ -200,7 +185,7 @@ include('header.php');
                             <th>Total Cost of All Equipment</th>
                             <th>
                             <?php 
-                                echo '$'.money_format("%(#10n", total_equipment_cost($connect)); 
+                                // echo '$'.money_format('%(#10', total_equipment_cost($connect)); 
                             ?>
                             </th>
                         </tr></thead>
@@ -239,8 +224,8 @@ include('header.php');
 // });
 </script>
 <script>
-// function goBack() {
-//   window.history.back();
-// }
+function goBack() {
+  window.history.back();
+}
 </script>
            

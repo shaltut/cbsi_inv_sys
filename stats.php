@@ -174,11 +174,16 @@ include('header.php');
                     <table id="equip_stats_tbl" class="table table-bordered table-striped">
                         <thead><tr>
                             <th>Equipment Total</th>
-                            <th><?php echo count_equipment_total($connect); ?></th>
+                            <th>
+                                <?php echo count_equipment_total($connect); ?>
+                            </th>
                         </tr></thead>
                         <thead><tr>
                             <th>Equipment Checked Out</th>
-                            <th><?php echo count_check_out_total($connect); ?></th>
+                            <th>
+                                <?php echo count_check_out_total($connect); ?>
+                            
+                            </th>
                         </tr></thead>
                         <thead><tr>
                             <th>Equipment Needing Maintenance</th>
@@ -194,10 +199,10 @@ include('header.php');
                         <thead><tr>
                             <th>Total Cost of All Equipment</th>
                             <th>
-                            <?php 
-                                setlocale(LC_MONETARY, 'en_US');
-                                echo money_format('%(#10n', total_equipment_cost($connect)); 
-                            ?>
+                            <!-- <?php 
+                                //setlocale(LC_MONETARY, 'en_US');
+                                //echo money_format('%(#10n', total_equipment_cost($connect)); 
+                            ?> -->
                             </th>
                         </tr></thead>
                     </table>

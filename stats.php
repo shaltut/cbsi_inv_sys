@@ -119,15 +119,15 @@ include('header.php');
                     <table id="empl_stats_tbl" class="table table-bordered table-striped">
                         <thead><tr>
                             <th>Number of Employees Registered</th>
-                            <!-- <th><?php //echo count_employee_total($connect); ?></th> -->
+                            <th><?php echo count_employee_total($connect); ?></th>
                         </tr></thead>
                         <thead><tr>
                             <th>Number of Admin Accounts</th>
-                            <!-- <th><?php //echo count_master_active($connect); ?></th> -->
+                            <th><?php echo count_master_active($connect); ?></th>
                         </tr></thead>
                         <thead><tr>
                             <th>Total Users</th>
-                            <!-- <th><?php //echo count_total_user_active($connect); ?></th> -->
+                            <th><?php echo count_total_user_active($connect); ?></th>
                         </tr></thead>
                     </table>
                     <br/>
@@ -135,9 +135,9 @@ include('header.php');
                         <label for="empl_select" class="center">Select User to View Stats:</label>
                         <center>
                             <select class="form-control center" name="empl_id" id="empl_id" style="width:85%; display:inline">
-                                <!-- <?php
-                                    //echo users_options($connect);
-                                ?> -->
+                                <?php
+                                    echo users_options($connect);
+                                ?>
                             </select>
                             <input type="hidden" name="btn_action" id="btn_action"value="user_stat"/>
                             <input type="submit" name="emp_go" id="emp_go" class="btn btn-success" value="GO" onClick="submitEmplStats()"/>

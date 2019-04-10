@@ -76,6 +76,8 @@ include('header.php');
 			</div>
 			<div class="modal-body">
 
+				<div class="text-danger" id="ia_date" style="font-size:1.2em; text-align:center"></div>
+
 				<div class="form-group">
 					<label for="user_name">
 						Enter Employee Name
@@ -198,6 +200,11 @@ $(document).ready(function(){
 			success:function(data)
 			{
 				$('#userModal').modal('show');
+				$date = data.ia_date;
+				if($date != null){
+					$date = 'Account Deactivated on '+data.ia_date;
+				}
+				$('#ia_date').html($date);
 				$('#user_name').val(data.user_name);
 				$('#user_job').val(data.user_job);
 				$('#user_email').val(data.user_email);

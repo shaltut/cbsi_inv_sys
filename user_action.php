@@ -38,6 +38,7 @@ if(isset($_POST['btn_action']))
 			echo 'New User Added';
 		}
 	}
+
 	if($_POST['btn_action'] == 'fetch_single')
 	{
 		$query = "
@@ -57,6 +58,7 @@ if(isset($_POST['btn_action']))
 			$output['user_email'] = $row['user_email'];
 			$output['user_name'] = $row['user_name'];
 			$output['user_job'] = $row['user_job'];
+			$output['ia_date'] = $row['ia_date'];
 		}
 		echo json_encode($output);
 	}
@@ -108,8 +110,9 @@ if(isset($_POST['btn_action']))
 		$query = "
 		UPDATE user_details 
 		SET user_status = :user_status 
-		WHERE user_id = :user_id
+		WHERE user_id = :user_id;
 		";
+
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
@@ -125,6 +128,46 @@ if(isset($_POST['btn_action']))
 			echo 'User Status change to ' . $status;
 		}
 	}
+	//	**********	Deactivate button pressed (for any user) ********** 
+	if($_POST['btn_action'] == 'disable')
+	{
+		$status = $_POST['status'];
+		if($status == 'Inactive'){
+			$query = "
+				UPDATE user_details
+				SET ia_date = NULL
+				WHERE user_id = :user_id
+			";
+			$statement = $connect->prepare($query);
+			$statement->execute(
+				array(
+					':user_id'	=>	$_POST['user_id'],
+				)
+			);
+		}else{
+			$query = "
+				UPDATE user_details
+				SET ia_date = :ia_date
+				WHERE user_id = :user_id
+			";
+			$statement = $connect->prepare($query);
+			$statement->execute(
+				array(
+					':user_id'	=>	$_POST['user_id'],
+					':ia_date'	=>	date('Y-m-d')
+				)
+			);
+		}
+
+		$result = $statement->fetchAll();
+		if(isset($result)){
+			foreach($result as $row)
+			{
+				echo ' date changed. ';
+			}
+		}
+	}
+	
 }
 
 ?>

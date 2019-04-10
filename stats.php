@@ -104,7 +104,7 @@ include('header.php');
                     <table id="empl_stats_tbl" class="table table-bordered table-striped">
                         <thead><tr>
                             <th>Number of Employees Registered</th>
-                            <th><?php echo count_employee_total($connect); ?></th>
+                            <th><?php echo count_employee_active($connect); ?></th>
                         </tr></thead>
                         <thead><tr>
                             <th>Number of Admin Accounts</th>

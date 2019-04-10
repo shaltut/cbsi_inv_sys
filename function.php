@@ -288,8 +288,9 @@ function num_returned($connect){
 
 function users_options($connect){
 	$query = "
-		SELECT user_id, user_name
+		SELECT user_id, user_name, user_status
 		FROM user_details
+		ORDER BY user_status
 	";
 	$output = '<option>Select Employee:</option>';
 	$statement = $connect->prepare($query);
@@ -297,14 +298,32 @@ function users_options($connect){
 	$result = $statement->fetchAll();
 	if(!isset($result)){
 		$output = '
-			<option> No Sites Listed!</option>
+			<option> No Users Listed!</option>
 		';
 	}else{
 		foreach($result as $row)
 		{
-			$output .= '
-			<option value="'.$row['user_id'].'">'.$row['user_name'].' (ID: '.$row['user_id'].')</option>
-			';
+			if($row['user_id'] == $_SESSION['user_id']){
+				$output .= '
+				<option value="'.$row['user_id'].'">
+					My Account
+				</option>
+				';
+			}else{
+				if($row['user_status'] == 'Inactive'){
+					$output .= '
+					<option value="'.$row['user_id'].'">
+						(Inactive) '.$row['user_name'].'
+						(ID: '.$row['user_id'].') 
+					</option>';
+				}else{
+					$output .= '
+					<option value="'.$row['user_id'].'">
+						'.$row['user_name'].' 
+						(ID: '.$row['user_id'].') 
+					</option>';
+				}
+			}
 		}
 	}  
 	return $output;
@@ -1063,7 +1082,9 @@ function count_total_user_active($connect)
 function count_employee_total($connect)
 {
 	$query = "
-	SELECT * FROM user_details WHERE user_type = 'user'";
+	SELECT * 
+	FROM user_details 
+	WHERE user_type = 'user'";
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	return $statement->rowCount();
@@ -1075,7 +1096,10 @@ function count_employee_total($connect)
 function count_employee_active($connect)
 {
 	$query = "
-	SELECT * FROM user_details WHERE user_type = 'user' AND user_status = 'active'";
+	SELECT * 
+	FROM user_details 
+	WHERE user_type = 'user' 
+	AND user_status = 'active'";
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	return $statement->rowCount();

@@ -54,36 +54,40 @@ include('header.php');
 
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Equipment</h4>
+                            <h4 class="modal-title">
+                                <i class="fa fa-plus"></i> 
+                                Locate Equipment
+                            </h4>
                         </div>
 
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <label for="last_loc">Last Known Location</label>
-                                <input type="text" name="last_loc" id="last_loc" class="form-control" style="width:85%; display:inline;" readonly/>
                                 <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Known Location" data-content="The last location this piece of equipment was checked out from." data-placement="left">
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Known Location" data-content="The last location this piece of equipment was checked out from." data-placement="bottom" style="margin-top:-10px">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
+                                <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">Last Known Location: </div>
+                                <div id="last_loc" style="margin-left:10%"></div>
+                                
                             </div>
 
                             <div class="form-group">
-                                <label for="last_chk">Last Checked out by</label>
-                                <input type="text" name="last_chk" id="last_chk" class="form-control" style="width:85%; display:inline;" readonly/>
                                 <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Person to Check it Out" data-content="The last person who checked out this piece of equipment." data-placement="left">
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Person to Check it Out" data-content="The last person who checked out this piece of equipment." data-placement="bottom" style="margin-top:-10px">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
+                                <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">Last Checkedout By: </div>
+                                <div id="last_chk" style="margin-left:10%"></div>
                             </div>
 
                             <div class="form-group">
-                                <label for="last_date">Date of Last Checkout</label>
-                                <input type="text" name="last_date" id="last_date" class="form-control" style="width:85%; display:inline;" readonly/>
                                 <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout Date" data-content="The date that this piece of equipment was last checked out of the system." data-placement="left">
+                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout Date" data-content="The date that this piece of equipment was last checked out of the system." data-placement="bottom" style="margin-top:-10px">
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
+                                <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">On: </div>
+                                <div id="last_date" style="margin-left:10%"></div>
                             </div>
 
                         </div>
@@ -166,10 +170,13 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 $('#equipmentModal').modal('show');
-                $('#equipment_form')[0].reset();
-                $('#last_loc').val(data.last_loc);
-                $('#last_chk').val(data.last_chk);
-                $('#last_date').val(data.last_date);
+                // $('#equipment_form')[0].reset();
+                $('#last_loc').html('');
+                $('#last_chk').html('');
+                $('#last_date').html('');
+                $('#last_loc').html(data.last_loc);
+                $('#last_chk').html(data.last_chk);
+                $('#last_date').html(data.last_date);
                 $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Last Known Location");
                 $('#equip_id').val(equip_id);
                 $('#action').val("Edit");

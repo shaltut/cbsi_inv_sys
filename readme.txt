@@ -24,13 +24,21 @@ Tristan:
 (Post in chat when you start so we dont get conflicts)
 
 OTHER STUFF TO DO:
-	--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.
-		-This will require a lot of sql, php, JavaScript, and API (if you decide to use one) knowlege
-	--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
-		- Either a jquery/JS error, or a php/SQL error in the _fetch pages.
-	--- Make dates on tables extracted from the DB appear in a normal format. (right now they appear as '<YEAR> - <MONTH> - <DAY>' aka -> '2019-03-08' which is confusing because that could be read as "March 8th, 2019" OR as "August 3rd, 2019" which is BAD)
-		-   can be done using php function, or an sql query. Probs with javascript too, but just dont lol.
-
+	Physical changes:
+		--- Have the system email all 'master' user's email addresses when a piece of equipment is nearing it's maintenance date.	
+		    -This will require a lot of sql, php, JavaScript, and API (if you decide to use one) knowlege
+		--- Password reset for users that forget their username/password
+			-	probs need to use an API
+	Asthethic changes:
+		--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
+			- Either a jquery/JS error, or a php/SQL error in the _fetch pages.
+		--- Make dates on tables extracted from the DB appear in a normal format. (right now they appear as '<YEAR> - <MONTH> - <DAY>' aka -> '2019-03-08' which is confusing because that could be read as "March 8th, 2019" OR as "August 3rd, 2019" which is BAD)
+			-   can be done using php function, or an sql query. Probs with javascript too, but just dont lol.
+		--- With the new background color, some of the notifications are dificult to read/see. Add a thin black border to alerts (and maybe change their font color) to make them pop
+		--- Go through the code and remove old commented out code that isnt used anymore. Also make the code look cleaner (add/remove tabs where needed)
+		--- Change the font on the site to a more attractive font if possible
+			-	Should just be a bootstrap thing
+		
 
 SHIT TO TEST:
 	--- 10+, 25+, 50+, and 100+ users. Add dummy test user accounts 10 at a time and test how the tables/database reacts to the influx of data.
@@ -42,7 +50,7 @@ SHIT TO TEST:
 		- Google Chrome, Safari, Opera, IE, FireFox, etc.
 	--- Moblie compatibility. Download emulators (or just use XCode if you have that downloaded)
 	--- SYSTEM DATES: Almost the entire check system, as well as the maintenance system works based off of system dates... We should make sure the dates are correctly entered, and properly interpreted by the system. (more on this talk to me)
-
+	--- The new background color makes some parts of some pages/text hard to read. 
 
 
 Errors Found That Need Fixin':

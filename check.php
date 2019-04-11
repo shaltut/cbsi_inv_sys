@@ -9,16 +9,15 @@ include('database_connection.php');
 include('function.php');
 
 /*
-	This function sends the user to the login.php page if they arent logged in (or no session as been initiated)
+    This function sends the user to the login.php page if they arent logged in (or no session as been initiated)
 */
 if(!isset($_SESSION['type']))
 {
-	header('location:login.php');
+    header('location:login.php');
 }
 
 //Includes the code for the navbar 
 include('header.php');
-
 ?>
 <style>
     .center{
@@ -41,7 +40,7 @@ include('header.php');
     <!-- 
         Modal that asks the user to enter the unique id for the piece of equipment they wish to check out.
     -->
-	<div id="chkout_modal" class="modal fade" >
+    <div id="chkout_modal" class="modal fade" >
         <div class="modal-dialog">
             <form method="post" id="equip_id_form">
                 <div class="modal-content">
@@ -74,9 +73,9 @@ include('header.php');
                     </div>
 
                     <div class="modal-footer">
-                    	<!--
-                    		Here we need hidden fields to grab the data that the user wont have to enter manually...
-                    		(user_id, site_id, etc.)
+                        <!--
+                            Here we need hidden fields to grab the data that the user wont have to enter manually...
+                            (user_id, site_id, etc.)
                         -->
                         <input type="hidden" name="btn_action" id="btn_action" />
                         <input type="submit" name="action" id="action" class="btn btn-info" value="Check Out" />
@@ -110,14 +109,14 @@ include('header.php');
                         <div class="col-sm-12 table-responsive">
                             <table id="index_data" class="table table-striped display compact" style="width:100%">
                                 <thead>
-                                	<tr>
+                                    <tr>
                                         <th>Date of Checkout</th>
                                         <th>Equipment ID</th>
                                         <th>Equipment Name</th>
                                         <th>Site ID</th>
                                         <th style="width:3%"></th>
-                                	</tr>
-                            	</thead>
+                                    </tr>
+                                </thead>
                             </table>
                         </div>
                     </div>

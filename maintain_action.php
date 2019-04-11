@@ -97,7 +97,7 @@ if(isset($_POST['btn_action']))
 		foreach($result as $row)
 		{
 			$output['maintain_every'] = $row['maintain_every'];
-			$output['last_maintained'] = $row['last_maintained'];
+			$output['last_maintained'] = date('Y-m-d');
 		}
 		echo json_encode($output);
 	}
@@ -127,19 +127,17 @@ if(isset($_POST['btn_action']))
 		}
 	}
 
-	if($_POST['btn_action'] == 'Set')
+	if($_POST['btn_action'] == 'Today')
 	{
 		$query = "
 		UPDATE equipment 
 		set 
-		maintain_every = :maintain_every,
 		last_maintained = :last_maintained
 		WHERE equip_id = :equip_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':maintain_every'	=>	$_POST['maintain_every'],
 				':last_maintained'	=>	date('Y-m-d'),
 				':equip_id'			=>	$_POST['equip_id']
 			)
@@ -147,7 +145,8 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Equipment Details Edited';
+			$output = 'Last Maintained Date for item #'.$_POST['equip_id'].' set to TODAY';
+			echo 'Last Maintained Date for item #'+$output+' set to TODAY';
 		}
 	}
 }

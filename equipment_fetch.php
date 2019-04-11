@@ -3,7 +3,7 @@
 
 include('database_connection.php');
 include('function.php');
-
+$query = '';
 $query .= "
 	SELECT * FROM equipment 
 ";
@@ -73,8 +73,8 @@ function get_total_all_records($connect)
 
 $output = array(
 	"draw"    			=> 	intval($_POST["draw"]),
-	"recordsTotal"  	=>  $filtered_rows,
-	"recordsFiltered" 	=> 	get_total_all_records($connect),
+	"recordsTotal"  	=>  get_total_all_records($connect),
+	"recordsFiltered" 	=> 	$filtered_rows,
 	"data"    			=> 	$data
 );
 

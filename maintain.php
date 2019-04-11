@@ -19,41 +19,39 @@ include('header.php');
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
 
-    <span id='alert_action'></span>
-    <button class="btn btn-info" onclick="goBack()" style="float:right;">Go Back</button>
-    <br/>
-	
-    <br/><br/>
+<span id='alert_action'></span>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                                <h3 class="panel-title">Equipment Requiring Maintenance</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="equipment_data" class="table table-bordered table-striped" cellspacing="0" width="100%" style="text-align:center">
-                                <thead>
-                                    <tr>
-                                        <th style="min-width: 30px;">ID</th>
-                                        <th style="text-align:center">Equipment Name</th>
-                                        <!--<th>Required Since</th> -->
-                                        <th style="min-width: 30px;">Maintained</th>
-                                        <th style="min-width: 35px;">Details</th>
-                                        <th style="min-width: 40px;">Update</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div></div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+                        <h3 class="panel-title">Equipment Requiring Maintenance</h3>
                     </div>
                 </div>
             </div>
+            <div class="panel-body">
+                <div class="row"><div class="col-sm-12 table-responsive">
+                    <table id="equipment_data" class="table table-bordered table-striped" cellspacing="0" width="100%" style="text-align:center">
+                        <thead>
+                            <tr>
+                                <th style="min-width: 30px;">ID</th>
+                                <th style="text-align:center">Equipment Name</th>
+                                <th style="min-width: 30px;">Last Maintained</th>
+                                <th style="min-width: 35px;">Details</th>
+                                <th style="min-width: 80px;">Manual Reset</th>
+                                <th style="min-width: 80px;">Auto-Reset</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div></div>
+            </div>
         </div>
+    </div>
+</div>
+
+<button class="btn btn-info" onclick="goBack()" style="float:right;">Go Back</button>
 
         <div id="maintainModal" class="modal fade">
             <div class="modal-dialog">
@@ -66,21 +64,20 @@ include('header.php');
                         </div>
 
                         <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="maintain_every">Maintain Every</label>
-                                    <select class="form-control" name="maintain_every" id="maintain_every">
-                                        <option value="6">6 Months</option>
-                                        <option value="12">1 Year</option>
-                                        <option value="18">1 Year 6 Months</option>
-                                        <option value="24">2 years</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">  
-                                    <label for="last_maintained">Last Maintained</label>
-                                    <input type="date" class="form-control" name="last_maintained" id="last_maintained"/>
-                                </div>
-
-
+                                
+                            <div class="form-group" style="padding-top:10px">
+                                <label for="maintain_every">Maintain Every</label>
+                                <select class="form-control" name="maintain_every" id="maintain_every">
+                                    <option value="6">6 Months</option>
+                                    <option value="12">1 Year</option>
+                                    <option value="18">1 Year 6 Months</option>
+                                    <option value="24">2 years</option>
+                                </select>
+                            </div>
+                            <div class="form-group">  
+                                <label for="last_maintained">Last Maintained</label>
+                                <input type="date" class="form-control" name="last_maintained" id="last_maintained"/>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
@@ -128,7 +125,7 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-                "targets":[0,1,2,3,4],
+                "targets":[0,1,2,3,4,5],
                 "orderable":false,
             },
         ],
@@ -188,13 +185,47 @@ $(document).ready(function(){
         })
     });
 
+    //Controlls the action for the "Enter Maintenance Date Manually" button
+    $(document).on('click', '#showForm', function(){
+        $("#maintainForm").toggle();
+        var btnTxt = $("#showForm").text();
+        if(btnTxt == "Back"){
+            $("#showForm").html("Enter Maintenance Date Manually");
+        }else{
+            $("#showForm").html("Back");
+        }
+        $("#todayBtn").toggle();
+    });
+
+    $(document).on('click', '.today', function(){
+        var equip_id = $(this).attr("id");
+        var btn_action = 'Today';
+        $.ajax({
+            url:"maintain_action.php",
+            method:"POST",
+            data:{equip_id:equip_id, btn_action:btn_action},
+            dataType:"json",
+            success:function(data){
+                $('#alert_action').fadeIn().html('<div class="alert alert-success">Equipment Maintenance Date Set to the Current Date</div>');
+                maintainDataTable.ajax.reload();
+            }
+        })
+    });
 });
 </script>
 
 <script>
+    function moreOptions() {
+        if(document.getElementById("is_maintenance_required").checked === true){
+            document.getElementById("maintain_vis").style.visibility = "visible";
+        }
+        if(document.getElementById("is_maintenance_required").checked === false){
+            document.getElementById("maintain_vis").style.visibility = "hidden";
+        }
+    }
     function goBack() {
-  		window.history.back();
-	}
+        window.history.back();
+    }
 </script>
 
 

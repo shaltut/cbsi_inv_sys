@@ -30,7 +30,7 @@ if($count_red > 0){
     <!-- Alerts user if equipment needs to be maintained-->
     <div class="row" style="align-content:center;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    		<div class="alert alert-danger" role="alert" style="display:inline-block; width:100%; height:50px; padding:0 10px;border:2px solid rgba(255,0,0,.3);">
+            <div class="alert alert-danger" role="alert" style="display:inline-block; width:100%; height:50px; padding:0 10px;border:2px solid rgba(255,0,0,.3);">
                 
                 <div style="float:right;">
                     <a class="btn btn-warning" href="maintain.php" role="button" style="position:relative; top:5px; right:5pxpx;">View</a>
@@ -43,7 +43,7 @@ if($count_red > 0){
                 <div style="font-size:13px; text-align:center">
                     <?php echo  $count_red." item(s) require maintenance"; ?>
                 </div>
-    		</div>
+            </div>
         </div>
     </div>
 <?php
@@ -149,8 +149,8 @@ if($count_red > 0){
                             </select>
                             <!-- INFO BTN -->
                             <button type="button" class="btn btn-link" data-toggle="popover" data-content="How often does this piece of equipment require maintenance?" data-placement="left">
-                            <img src="images/info5_sm.png" alt="info">
-                        </button>
+                                <img src="images/info5_sm.png" alt="info">
+                            </button>
                         </div>
                         <div class="form-group">  
                             <label for="last_maintained">Last Maintenance Date</label>
@@ -323,7 +323,7 @@ $(document).ready(function(){
             return false;
         }
     });
-
+    
     /* 
         THIS IS HARDCODED JQUERY STYLING FOR THE TABLE PAGNATION
         IF THEY OVERLAP ON MOBILE, DELETE THESE LINES AND IT WILL GO BACK TO NORMAL

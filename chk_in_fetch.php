@@ -6,8 +6,8 @@ include('function.php');
 
 $query = '';
 
-$output = array();
-$uid = $_SESSION['user_id'];
+// $output = array();
+// $uid = $_SESSION['user_id'];
 $query .= '
 	SELECT * FROM equipment_checkout 
 INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id

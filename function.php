@@ -1120,7 +1120,7 @@ function count_master_active($connect)
 /*
 	Returns information on all items that are currently checked out
 */
-function get_checkouts($connect){
+function table_checkouts($connect){
 	$query = '
 	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
 	FROM user_details
@@ -1191,7 +1191,7 @@ function num_checkout_today($connect){
 /*
 	Returns information on checkouts that took place on the current system date
 */
-function get_checkouts_today($connect){
+function table_checkouts_today($connect){
 	$query = '
 	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
 	FROM user_details
@@ -1239,6 +1239,57 @@ function get_checkouts_today($connect){
 }
 
 
+/*
+	Returns information on all items that are currently checked out
+*/
+function table_checkouts_user_wise($connect){
+	$query = '
+	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
+	FROM user_details
+	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
+	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
+	WHERE equipment_checkout.returned = "false"
+	AND equipment_checkout.empl_id = "'.$_SESSION['user_id'].'"
+	';
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	$output = '
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped" style="text-align:center;table-layout:fixed">
+			<thead style="font-size:16px">
+				<tr>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">ID</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Name</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Date Checked Out</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Returned?</th>
+				</tr>
+			</thead>
+			<tbody style="font-size:1.4em">
+	';
+	foreach($result as $row)
+	{
+		if($row['returned'] == 'true'){
+			$ret_val = '<span class="label label-success"><span class="glyphicon glyphicon-ok" style="text-size:1em;"></span></span>';
+		}else{
+			$ret_val = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
+		}
+		$output .= '
+				<tr>
+					<td>'.$row["equip_id"].'</td>
+					<td style="font-size:.7em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"> '.$row["equip_name"].'</td>
+					<td> '.$row["chk_date_time"].'</td>
+					<td>'.$ret_val.'</td>
+				</tr>
+		';
+	}
+	$output .= '
+			</tbody>
+		</table>
+	</div>
+	';
+	return $output;
+}
 
 
 

@@ -29,7 +29,7 @@ OTHER STUFF TO DO:
 		    -This will require a lot of sql, php, JavaScript, and API (if you decide to use one) knowlege
 		--- Password reset for users that forget their username/password
 			-	probs need to use an API
-
+		--- When a user enters a piece of equipment into the database, a screen should pop up showing them the newly created ID associated with that piece of equipment so they can easily write it on the equipment.
 	Asthethic changes:
 		--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
 			- Either a jquery/JS error, or a php/SQL error in the _fetch pages.
@@ -39,7 +39,8 @@ OTHER STUFF TO DO:
 		--- Go through the code and remove old commented out code that isnt used anymore. Also make the code look cleaner (add/remove tabs where needed)
 		--- Change the font on the site to a more attractive font if possible
 			-	Should just be a bootstrap thing
-
+		--- Add comments to the functions.php page that state where the function is used (what page).
+			- Example: for count_user_active($connect) a comment would be like "Used in: index.php, stats.php"
 
 SHIT TO TEST:
 	--- 10+, 25+, 50+, and 100+ users. Add dummy test user accounts 10 at a time and test how the tables/database reacts to the influx of data.

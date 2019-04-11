@@ -58,6 +58,7 @@ include('header.php');
 		</div>
 	</div>
 
+	<!-- This block of code either outputs a table that shows currently checked out items, or a div that displays "All Equipment Accounted For" -->
 	<?php
 	if($_SESSION['type'] == 'master'){
 	   	if(count_check_out_total($connect) <= 0){
@@ -92,7 +93,7 @@ include('header.php');
 			            	<img src="images/info5_sm.png" alt="info">
 			           	</button>
 		            </div>
-		                <?php echo get_checkouts($connect); ?>
+		                <?php echo table_checkouts($connect); ?>
 		        </div>
 		    </div>
 
@@ -131,7 +132,7 @@ include('header.php');
 		                    </button>
 		            	</center>
 		            </div>
-		                <?php echo get_checkouts_today($connect); ?>
+		                <?php echo table_checkouts_today($connect); ?>
 		                <div style="float:right">
 		            		<span class="glyphicon glyphicon-ok" style="text-size:1em;"></span> = Returned,
 		            		<span class="glyphicon glyphicon-remove" style="text-size:1em;"></span> = Still In Use
@@ -142,6 +143,37 @@ include('header.php');
 	    }
 	}
 	?>
+
+	<!-- This block of code displays the user's currently checked out items-->
+	<?php
+	if($_SESSION['type'] == 'user'){
+	?>
+		 <!--
+				Shows the currently checked out items, and the users who checked them out
+
+				THIS IS A STATIC TABLE. IT JUST DISPLAYS ITEMS CHECKED OUT ON THE CURRENT SYS DATE. 
+			-->
+			<div class="col-md-12">
+		        <div class="panel panel-default">
+		            <div class="panel-heading" style="font-size:1.4em;">
+		            	<center>
+		            		<strong>Your Equipment</strong>
+		            		<button type="button" class="btn btn-link" data-toggle="popover" data-content="This table displays all the equipment you have checked out recently." data-placement="left" style="position: absolute; top:-5px; right:10px">
+		                     	<img src="images/info5_sm.png" alt="info">
+		                    </button>
+		            	</center>
+		            </div>
+		                <?php echo table_checkouts_user_wise($connect); ?>
+		                <div style="float:right">
+		            		<span class="glyphicon glyphicon-ok" style="text-size:1em;"></span> = Returned,
+		            		<span class="glyphicon glyphicon-remove" style="text-size:1em;"></span> = Still In Use
+		            	</div>
+		        </div>
+		    </div>
+	<?php
+	}
+	?>
+
     <?php
 	include("footer.php");
 	?>

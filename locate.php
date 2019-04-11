@@ -14,112 +14,107 @@ include('header.php');
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
 
-    <span id='alert_action'></span>
+<span id='alert_action'></span>
 
-
-
-    <br/>
-
-        <div class="row" style="margin-top:20px">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                                <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Locate Equipment</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row"><div class="col-sm-12 table-responsive">
-                            <table id="locate_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="text-align:center">
-                                <thead><tr>
-                                    <!-- <th style="min-width:35px;">ID</th> -->
-                                    <th style="text-align:center">Equipment Name</th>
-                                    <th style="min-width:5px">Available</th>
-                                    <th style="min-width:35px">Details</th>
-                                    <th style="min-width:20px">Locate</th>
-                                </tr></thead>
-                            </table>
-                        </div></div>
+<div class="row" style="margin-top:20px">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
+                        <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Locate Equipment</h3>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div id="equipmentModal" class="modal fade">
-            <div class="modal-dialog">
-                <form method="post" id="equipment_form">
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">
-                                <i class="fa fa-plus"></i> 
-                                Locate Equipment
-                            </h4>
-                        </div>
-
-                        <div class="modal-body">
-
-                            <div class="form-group">
-                                <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Known Location" data-content="The last location this piece of equipment was checked out from." data-placement="bottom" style="margin-top:-10px">
-                                    <img src="images/info5_sm.png" alt="info">
-                                </button>
-                                <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">Last Known Location: </div>
-                                <div id="last_loc" style="margin-left:10%"></div>
-                                
-                            </div>
-
-                            <div class="form-group">
-                                <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Person to Check it Out" data-content="The last person who checked out this piece of equipment." data-placement="bottom" style="margin-top:-10px">
-                                    <img src="images/info5_sm.png" alt="info">
-                                </button>
-                                <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">Last Checkedout By: </div>
-                                <div id="last_chk" style="margin-left:10%"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <!-- INFO BTN -->
-                                <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout Date" data-content="The date that this piece of equipment was last checked out of the system." data-placement="bottom" style="margin-top:-10px">
-                                    <img src="images/info5_sm.png" alt="info">
-                                </button>
-                                <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">On: </div>
-                                <div id="last_date" style="margin-left:10%"></div>
-                            </div>
-
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-
-                    </div>
-                </form>
+            <div class="panel-body">
+                <div class="row"><div class="col-sm-12 table-responsive">
+                    <table id="locate_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="text-align:center">
+                        <thead><tr>
+                            <th style="text-align:center">Equipment Name</th>
+                            <th style="min-width:5px">Available</th>
+                            <th style="min-width:35px">Details</th>
+                            <th style="min-width:20px">Locate</th>
+                        </tr></thead>
+                    </table>
+                </div></div>
             </div>
         </div>
+    </div>
+</div>
 
-        <div id="equipmentdetailsModal" class="modal fade">
-            <div class="modal-dialog">
-                <form method="post" id="equipment_form">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
-                        </div>
-                        <div class="modal-body">
-                            <Div id="equipment_details"></Div>
-                        </div>
-                        <div class="modal-footer">
-                            
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
+<div id="equipmentModal" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" id="equipment_form">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        <i class="fa fa-plus"></i> 
+                        Locate Equipment
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <!-- INFO BTN -->
+                        <button type="button" class="btn btn-link" data-toggle="popover" title="Last Known Location" data-content="The last location this piece of equipment was checked out from." data-placement="bottom" style="margin-top:-10px">
+                            <img src="images/info5_sm.png" alt="info">
+                        </button>
+                        <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">Last Known Location: </div>
+                        <div id="last_loc" style="margin-left:10%"></div>
+                        
                     </div>
-                </form>
+
+                    <div class="form-group">
+                        <!-- INFO BTN -->
+                        <button type="button" class="btn btn-link" data-toggle="popover" title="Last Person to Check it Out" data-content="The last person who checked out this piece of equipment." data-placement="bottom" style="margin-top:-10px">
+                            <img src="images/info5_sm.png" alt="info">
+                        </button>
+                        <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">Last Checkedout By: </div>
+                        <div id="last_chk" style="margin-left:10%"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- INFO BTN -->
+                        <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout Date" data-content="The date that this piece of equipment was last checked out of the system." data-placement="bottom" style="margin-top:-10px">
+                            <img src="images/info5_sm.png" alt="info">
+                        </button>
+                        <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">On: </div>
+                        <div id="last_date" style="margin-left:10%"></div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
             </div>
-        </div>
+        </form>
+    </div>
+</div>
+
+<div id="equipmentdetailsModal" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" id="equipment_form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
+                </div>
+                <div class="modal-body">
+                    <Div id="equipment_details"></Div>
+                </div>
+                <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <script>
 $(document).ready(function(){
@@ -170,7 +165,6 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 $('#equipmentModal').modal('show');
-                // $('#equipment_form')[0].reset();
                 $('#last_loc').html('');
                 $('#last_chk').html('');
                 $('#last_date').html('');

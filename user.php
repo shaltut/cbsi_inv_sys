@@ -18,12 +18,7 @@ include('header.php');
 
 
 ?>
-		<span id="alert_action"></span>
-
-<!-- Button navigates to stats page-->
-<a class="btn btn-link" href="stats.php#employees" role="button" style="float:right;">View Stats</a>
-
-<br/><br/>
+<span id="alert_action"></span>
 
      
 
@@ -63,6 +58,15 @@ include('header.php');
        	</div>
    	</div>
 </div>
+
+<!-- Display the View Stats button link to the stats.php page-->
+<div style="text-align:right">
+    <!-- Button navigates to stats page-->
+    <a class="btn btn-info" href="stats.php#employees" role="button" style="width:175px;">More Employee Info</a><br/>
+</div>
+
+
+
 
 <!-- 
 	Displays the modal that appears after the "New User" or "Update" buttons are pressed
@@ -139,6 +143,7 @@ include('header.php');
 
 	</div>
 </div>
+
 
 
 

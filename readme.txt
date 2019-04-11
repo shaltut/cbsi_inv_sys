@@ -29,7 +29,6 @@ OTHER STUFF TO DO:
 		    -This will require a lot of sql, php, JavaScript, and API (if you decide to use one) knowlege
 		--- Password reset for users that forget their username/password
 			-	probs need to use an API
-		--- When a user enters a piece of equipment into the database, a screen should pop up showing them the newly created ID associated with that piece of equipment so they can easily write it on the equipment.
 	Asthethic changes:
 		--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
 			- Either a jquery/JS error, or a php/SQL error in the _fetch pages.

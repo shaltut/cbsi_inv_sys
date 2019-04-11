@@ -19,6 +19,7 @@ if(isset($_POST['btn_action']))
         //Makes sure the equip_id that the user is trying to check-out exists in the database and is available... If true, should return "yes", if false, should return error string.
         $chk_equip_id = check_equip_id_exists($connect, $_POST['equip_id']);
         $chk_avail = check_equip_availability($connect, $_POST['equip_id']);
+        $tst = check_equip_maintenance_month($connect, $_POST['equip_id']);
         
         if($chk_equip_id == 'yes'){
         	if($_POST['site_id'] >= 303000){
@@ -48,7 +49,21 @@ if(isset($_POST['btn_action']))
 		            $result = $statement->fetchAll();
 		            if(isset($result))
 		            {
-		            	echo '<div class="alert alert-success">Successfully checked out an item!</div>';
+		            	if($tst == 'red'){
+		            		$out = '<div class="alert alert-success">
+		            				Successfully checked out an item!
+		            				<span class="text-danger" style="display:block;">(Maintenance Required for this item)</span>
+		            			</div>';
+		            	}else if($tst == 'yellow'){
+		            		$out = '<div class="alert alert-success">
+		            				Successfully checked out an item!
+		            				<span class="text-warning" style="display:block;">(Maintenance Required Soon)</span>
+		            			</div>';
+		            	}else{
+		            		$out = '<div class="alert alert-success">Successfully checked out an item!</div>';
+		            	}
+
+		            	echo $out;
 		            }else{
 		            	echo '<div class="alert alert-danger">Something went wrong!</div>';
 		            }

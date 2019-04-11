@@ -41,9 +41,9 @@ foreach($result as $row){
 
 	if($diff > $row['me']){
 		$sub_array = array();
-		$sub_array[] = $row['equip_id'];
+		$sub_array[] = '<div style="color:rgba(255, 0, 0, 1); border-radius: 15px;">'.$row['equip_id'].'</div>';
 		$sub_array[] = $row['equip_name'];
-		$sub_array[] = $row['lm'];
+		$sub_array[] = '<div style="color:rgba(255, 0, 0, 1);">'.$row['lm'].'</div>';
 		$sub_array[] = '
 			<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 			';

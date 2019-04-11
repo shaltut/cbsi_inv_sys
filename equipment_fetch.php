@@ -4,23 +4,14 @@
 include('database_connection.php');
 include('function.php');
 
-$query = '';
-
-$output = array();
 $query .= "
 	SELECT * FROM equipment 
-	INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
-	
 ";
 
 if(isset($_POST["search"]["value"]))
 {
-	$query .= 'WHERE equipment.equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR equipment.maintain_every LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR user_details.user_name LIKE "%'.$_POST["search"]["value"].'%" ';
-
-	//Heres the problem
-	$query .= 'OR equipment.equip_id LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'WHERE equip_id LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 
 if(isset($_POST['order']))
@@ -29,7 +20,7 @@ if(isset($_POST['order']))
 }
 else
 {
-	$query .= 'ORDER BY equip_id DESC ';
+	$query .= 'ORDER BY date_added DESC ';
 }
 
 if($_POST['length'] != -1)

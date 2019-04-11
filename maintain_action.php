@@ -96,10 +96,6 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
-			$output['equip_name'] = $row['equip_name'];
-			$output['equip_desc'] = $row['equip_desc'];
-			$output['equip_cost'] = $row['equip_cost'];
-			$output['is_maintenance_required'] = $row['is_maintenance_required'];
 			$output['maintain_every'] = $row['maintain_every'];
 			$output['last_maintained'] = $row['last_maintained'];
 		}
@@ -112,10 +108,6 @@ if(isset($_POST['btn_action']))
 		$query = "
 		UPDATE equipment 
 		set 
-		equip_name = :equip_name,
-		equip_desc = :equip_desc, 
-		equip_cost = :equip_cost,
-		is_maintenance_required = :is_maintenance_required,
 		maintain_every = :maintain_every,
 		last_maintained = :last_maintained
 		WHERE equip_id = :equip_id
@@ -123,13 +115,9 @@ if(isset($_POST['btn_action']))
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':equip_name'				=>	$_POST['equip_name'],
-				':equip_desc'				=>	$_POST['equip_desc'],
-				':equip_cost'				=>	$_POST['equip_cost'],
-				':is_maintenance_required'	=>	$_POST['is_maintenance_required'],
-				':maintain_every'			=>	$_POST['maintain_every'],
-				':last_maintained'			=>	$_POST['last_maintained'],
-				':equip_id'					=>	$_POST['equip_id']
+				':maintain_every'	=>	$_POST['maintain_every'],
+				':last_maintained'	=>	$_POST['last_maintained'],
+				':equip_id'			=>	$_POST['equip_id']
 			)
 		);
 		$result = $statement->fetchAll();
@@ -138,31 +126,28 @@ if(isset($_POST['btn_action']))
 			echo 'Equipment Details Edited';
 		}
 	}
- 
-	//********** DELETE BUTTON **********
-	if($_POST['btn_action'] == 'delete')
+
+	if($_POST['btn_action'] == 'Set')
 	{
-		$status = 'active';
-		if($_POST['status'] == 'active')
-		{
-			$status = 'inactive';
-		}
 		$query = "
 		UPDATE equipment 
-		SET equip_status = :equip_status 
+		set 
+		maintain_every = :maintain_every,
+		last_maintained = :last_maintained
 		WHERE equip_id = :equip_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
-				':equip_status'	=>	$status,
-				':equip_id'		=>	$_POST["equip_id"]
+				':maintain_every'	=>	$_POST['maintain_every'],
+				':last_maintained'	=>	date('Y-m-d'),
+				':equip_id'			=>	$_POST['equip_id']
 			)
 		);
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Equipment status change to ' . $status;
+			echo 'Equipment Details Edited';
 		}
 	}
 }

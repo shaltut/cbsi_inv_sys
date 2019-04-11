@@ -30,7 +30,7 @@ OTHER STUFF TO DO:
 		--- Password reset for users that forget their username/password
 			-	probs need to use an API
 	Asthethic changes:
-		--- Sorting by IDs doesnt work on any page, and sorting doesnt work at all on the table in check.php (return equipment)
+		--- Sorting by IDs doesnt work on any page
 			- Either a jquery/JS error, or a php/SQL error in the _fetch pages.
 		--- Make dates on tables extracted from the DB appear in a normal format. (right now they appear as '<YEAR> - <MONTH> - <DAY>' aka -> '2019-03-08' which is confusing because that could be read as "March 8th, 2019" OR as "August 3rd, 2019" which is BAD)
 			-   can be done using php function, or an sql query. Probs with javascript too, but just dont lol.

@@ -163,7 +163,7 @@ include('header.php');
 	    <div class="panel panel-default">
 	        <div class="panel-heading" style="font-size:1.4em;">
 	        	<center>
-	        		<strong>Your Equipment</strong>
+	        		<strong>Your Checkouts</strong>
 	        		<button type="button" class="btn btn-link" data-toggle="popover" data-content="This table displays all the equipment you have checked out recently." data-placement="left" style="position:absolute;top:-5px;right:10px">
 	                 	<img src="images/info5_sm.png" alt="info">
 	                </button>

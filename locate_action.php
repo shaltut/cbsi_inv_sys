@@ -28,6 +28,10 @@ if(isset($_POST['btn_action']))
 		';
 		foreach($result as $row)
 		{
+			//MySql Date conversion
+			$time = strtotime($row['date_added']);
+			$dateAdded = date("F jS, Y", $time);
+
 			$status = '';
 			if($row['equip_status'] == 'active'){
 				$status = '<span class="label label-success">Active</span>';
@@ -83,7 +87,7 @@ if(isset($_POST['btn_action']))
 			$output .= '
 			<tr>
 				<td>Entered Into System By</td>
-				<td>'.$entered_by_user.' on '.$row["date_added"].'</td>
+				<td>'.$entered_by_user.' on '.$dateAdded.'</td>
 			</tr>';
 
 			if($row['is_available'] == 'available'){

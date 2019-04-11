@@ -1162,6 +1162,10 @@ function table_checkouts($connect){
 	';
 	foreach($result as $row)
 	{
+		//MySql Date conversion
+		$time = strtotime($row['chk_date_time']);
+		$chkDateTime = date("F jS, Y", $time);
+
 		if($row['returned'] == 'true'){
 			$ret_val = '<span class="label label-success"><span class="glyphicon glyphicon-ok" style="text-size:1em;"></span></span>';
 		}else{
@@ -1173,7 +1177,7 @@ function table_checkouts($connect){
 			<tr>
 				<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
 				<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
-				<td> '.$row["chk_date_time"].'</td>
+				<td> '.$chkDateTime.'</td>
 			</tr>
 		</tbody>
 		';
@@ -1230,6 +1234,7 @@ function table_checkouts_today($connect){
 					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Returned</th>
 				</tr>
 			</thead>
+			<tbody style="font-size:12px">
 	';
 	foreach($result as $row)
 	{
@@ -1240,17 +1245,16 @@ function table_checkouts_today($connect){
 		}
 
 		$output .= '
-		<tbody style="font-size:12px">
-			<tr>
-				<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
-				<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
-				<td> '.$ret_val.'</td>
-			</tr>
-		</tbody>
-		';
+				<tr>
+					<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
+					<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
+					<td style="font-size:1.6em"> '.$ret_val.'</td>
+				</tr>
+			';
 	}
 	$output .= '
-	</table>
+			</tbody>
+		</table>
 	</div>
 	';
 	return $output;
@@ -1277,20 +1281,24 @@ function table_checkouts_user_wise($connect){
 	$output = '
 	<div class="table-responsive">
 		<table class="table table-bordered table-striped" style="text-align:center;table-layout:fixed">
-			<thead style="font-size:16px">
+			<thead>
 				<tr>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">ID</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:20%; min-width:80px">ID</th>
 					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Name</th>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Date Checked Out</th>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Returned?</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Date</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:78px;">Returned?</th>
 				</tr>
 			</thead>
 			<tbody style="font-size:1.4em">
 	';
 	foreach($result as $row)
 	{
+		//MySql Date conversion
+		$time = strtotime($row['chk_date_time']);
+		$chkDateTime = date("M-d-y", $time);
+
 		if($row['returned'] == 'true'){
-			$ret_val = '<span class="label label-success"><span class="glyphicon glyphicon-ok" style="text-size:1em;"></span></span>';
+			$ret_val = '<span class="label label-success"><span class="glyphicon glyphicon-ok"></span></span>';
 		}else{
 			$ret_val = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
 		}
@@ -1298,7 +1306,7 @@ function table_checkouts_user_wise($connect){
 				<tr>
 					<td>'.$row["equip_id"].'</td>
 					<td style="font-size:.7em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"> '.$row["equip_name"].'</td>
-					<td> '.$row["chk_date_time"].'</td>
+					<td> '.$chkDateTime.'</td>
 					<td>'.$ret_val.'</td>
 				</tr>
 		';

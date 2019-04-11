@@ -70,6 +70,13 @@ if(isset($_POST['btn_action']))
 			
 			$entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
 
+			//MySql Date conversion
+			$time = strtotime($row['last_maintained']);
+			$lastMaintained = date("F jS, Y", $time);
+
+			//MySql Date conversion
+			$time = strtotime($row['date_added']);
+			$dateAdded = date("F jS, Y", $time);
 
 			$output .= '
 			<tr>
@@ -101,7 +108,7 @@ if(isset($_POST['btn_action']))
 					</tr>
 					<tr>
 						<td>Last Maintained</td>
-						<td>'.$row["last_maintained"].'</td>
+						<td>'.$lastMaintained.'</td>
 					</tr>
 				';
 			}
@@ -120,8 +127,8 @@ if(isset($_POST['btn_action']))
 			}
 			$output .= '
 			<tr>
-				<td>Entered Into System By</td>
-				<td>'.$entered_by_user.' on '.$row["date_added"].'</td>
+				<td>Entered Into System</td>
+				<td>'.$entered_by_user.' on '.$dateAdded.'</td>
 			</tr>';
 			$output .= '
 			<tr>

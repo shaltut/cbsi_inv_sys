@@ -52,6 +52,10 @@ if(isset($_POST['btn_action']))
 		';
 		foreach($result as $row)
 		{
+			//MySql Date conversion
+			$time = strtotime($row['start_date']);
+			$startDate = date("F jS, Y", $time);
+
 			$status = '';
 			if($row['site_status'] == 'active')
 			{
@@ -77,7 +81,7 @@ if(isset($_POST['btn_action']))
 			</tr>
 			<tr>
 				<td>Start Date</td>
-				<td>'.$row["start_date"].'</td>
+				<td>'.$startDate.'</td>
 			</tr>
 			<tr>
 				<td>Status</td>

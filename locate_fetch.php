@@ -6,7 +6,7 @@ include('function.php');
 
 $query = '';
 
-$output = array();
+// $output = array();
 $query .= "
 	SELECT * FROM equipment 
 	INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by 

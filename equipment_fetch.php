@@ -6,6 +6,7 @@ include('function.php');
 $query = '';
 $query .= "
 	SELECT * FROM equipment 
+	
 ";
 
 if(isset($_POST["search"]["value"]))
@@ -74,7 +75,7 @@ function get_total_all_records($connect)
 $output = array(
 	"draw"    			=> 	intval($_POST["draw"]),
 	"recordsTotal"  	=>  get_total_all_records($connect),
-	"recordsFiltered" 	=> 	$filtered_rows,
+	"recordsFiltered" 	=> 	get_total_all_records($connect),
 	"data"    			=> 	$data
 );
 

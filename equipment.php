@@ -16,6 +16,7 @@ if($_SESSION['type'] != 'master')
 
 include('header.php');
 
+// echo 'Last id: '.last_equipment_added_id($connect);
 ?>
 
 <!-- Alerts the user to changes they have made, or errors -->
@@ -196,6 +197,28 @@ if($count_red > 0){
     </div>
 </div>
 
+<div id="addSuccess" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" id="equipment_form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-plus"></i> Successfully Added Equipment Item!</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <h2>New ID:<span id="eq_id"></span></h2>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <script>
 $(document).ready(function(){
 
@@ -240,7 +263,9 @@ $(document).ready(function(){
             {
                 $('#equipment_form')[0].reset();
                 $('#equipmentModal').modal('hide');
-                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>').delay(4000).fadeOut();
+                $('#addSuccess').modal('show');
+                $('#eq_id').html(data);
+                // $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>').delay(4000).fadeOut();
                 $('#action').attr('disabled', false);
                 equipmentdataTable.ajax.reload();
             }

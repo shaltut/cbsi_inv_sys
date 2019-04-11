@@ -33,8 +33,8 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Equipment Added';
-
+			
+			echo ''.last_equipment_added_id($connect);
 			
 		}
 	}

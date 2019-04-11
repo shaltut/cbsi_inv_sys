@@ -1,6 +1,24 @@
 <?php
 //function.php
 
+function last_equipment_added_id($connect){
+	$query = "
+	SELECT max(equip_id) as 'eid' FROM equipment 
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$output = '';
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$output = $row['eid'];
+		}
+	}
+	return $output;
+
+}
+
 //For ChartJS output label (line graph)
 function equip_monthly_checkouts_line_graph_labels($connect){
 	$currentMonth = ltrim(date("m"),'0');

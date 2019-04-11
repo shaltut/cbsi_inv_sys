@@ -206,8 +206,8 @@ if($count_red > 0){
                     <h4 class="modal-title"><i class="fa fa-plus"></i> Successfully Added Equipment Item!</h4>
                 </div>
                 <div class="modal-body">
-                    <div>
-                        <h2>New ID:<span id="eq_id"></span></h2>
+                    <div style="text-align:center">
+                        <h2>New ID: <span id="eq_id"></span></h2>
                     </div>
                 </div>
                 <div class="modal-footer">

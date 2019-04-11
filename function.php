@@ -1249,6 +1249,8 @@ function table_checkouts_user_wise($connect){
 	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
 	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
 	WHERE equipment_checkout.returned = "false"
+	AND equipment_checkout.empl_id = '.$_SESSION['user_id'].'
+	OR equipment_checkout.chk_date_time = "'.date('Y-m-d').'"
 	AND equipment_checkout.empl_id = "'.$_SESSION['user_id'].'"
 	';
 	$statement = $connect->prepare($query);

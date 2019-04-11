@@ -159,7 +159,7 @@ include('header.php');
 	<!--
 		Shows the currently checked out items for the currently logged in user
 	-->
-	<div class="col-md-12" style="">
+	<div class="col-md-12" style="margin:10px 0 250px 0;">
 	    <div class="panel panel-default">
 	        <div class="panel-heading" style="font-size:1.4em;">
 	        	<center>

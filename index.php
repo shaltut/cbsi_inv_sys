@@ -53,10 +53,10 @@ include('header.php');
 	<!-- 
 		This function shows the number of pieces of equipment checked out by the employee who is currently logged in.
 	-->
-	<div class="col-md-4">
+	<div class="col-sm-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<strong>Equipment Checked Out By You</strong>
+				<strong>Currently Checked Out By You</strong>
 			</div>
 			<div class="panel-body" align="center">
 				<h1><?php echo count_check_out_user($connect, $_SESSION['user_id']); ?></h1>

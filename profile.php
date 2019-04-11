@@ -8,6 +8,15 @@ if(!isset($_SESSION['type']))
 	header("location:login.php");
 }
 
+if($_SESSION['type'] != 'master')
+{
+    header('location:index.php');
+}
+
+include('header.php');
+?>
+
+<?php
 $query = "
 SELECT * FROM user_details 
 WHERE user_id = '".$_SESSION["user_id"]."'
@@ -24,7 +33,6 @@ foreach($result as $row)
 	$email = $row['user_email'];
 }
 
-include('header.php');
 
 ?>
 		<div class="panel panel-default">

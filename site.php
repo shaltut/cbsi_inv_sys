@@ -72,11 +72,11 @@ include('header.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="site_name">
-                            Enter Site Name
+                            Enter Job-site Name
                             <span style="color:red;font-size:1.5em"> *</span>
                         </label>
                         <input type="text" name="site_name" placeholder="Site Name" id="site_name" class="form-control" style="width:85%; display:inline;" required />
-                        <button type="button" class="btn btn-link" data-toggle="popover" title="Name" data-content="What the site is typically called, either by business name, location (city), etc." data-placement="left">
+                        <button type="button" class="btn btn-link" data-toggle="popover" title="Name" data-content="What the site is typically called. If there is only 1 job going on at this location, just enter the name of the business/location." data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>

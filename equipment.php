@@ -113,6 +113,14 @@ if($count_red > 0){
                         </button>
                     </div>
                     <div class="form-group">
+                        <label for="equip_serial">Serial Number</label>
+                        <input type="text" name="equip_serial" placeholder="Serial Number" id="equip_serial" class="form-control" style="width:85%; display:inline;"/>
+                        <!-- INFO BTN -->
+                        <button type="button" class="btn btn-link" data-toggle="popover" title="Serial Number" data-content="Enter the serial number, VIN number or other relevant identifier." data-placement="left">
+                            <img src="images/info5_sm.png" alt="info">
+                        </button>
+                    </div>
+                    <div class="form-group">
                         <label for="equip_desc">Description</label>
                         <textarea name="equip_desc" placeholder="Equipment Description" id="equip_desc" class="form-control" rows="5" style="width:100%; display:inline;"></textarea>
                         <!-- INFO BTN -->
@@ -143,6 +151,7 @@ if($count_red > 0){
                         <div class="form-group">
                             <label for="maintain_every">Requires Maintenance Every</label>
                             <select class="form-control" name="maintain_every" id="maintain_every" style="width:85%; display:inline;">
+                                <option value="3">3 Months</option>
                                 <option value="6">6 Months</option>
                                 <option value="12">1 Year</option>
                                 <option value="18">1 Year 6 Months</option>
@@ -300,6 +309,7 @@ $(document).ready(function(){
             success:function(data){
                 $('#equipmentModal').modal('show');
                 $('#equip_name').val(data.equip_name);
+                $('#equip_serial').val(data.equip_serial);
                 $('#equip_desc').val(data.equip_desc);
                 $('#equip_cost').val(data.equip_cost);
 

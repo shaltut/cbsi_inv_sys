@@ -12,18 +12,39 @@ if(isset($_POST['btn_action']))
 	//********** ADD BUTTON **********
 	if($_POST['btn_action'] == 'Add')
 	{
+		/*
+			Ensures that equipment that doesnt require maintenance gets null values in the database for the expected fields.
+		*/
+		if($_POST['is_maintenance_required'] == 'no'){
+			$lm_date = null;
+			$me_months = null;
+		}else{
+			$lm_date = date('Y-m-d',strtotime($_POST['last_maintained']));
+			$me_months = $_POST['maintain_every'];
+		}
+
+		/*
+			Ensures that if a serial number isnt assigned, it is entered into the DB as a NULL value.
+		*/
+		if($_POST['equip_serial'] == ''){
+			$serial = null;
+		}else{
+			$serial = $_POST['equip_serial'];
+		}
+
 		$query = "
-		INSERT INTO equipment (equip_name, equip_desc, is_maintenance_required, maintain_every, last_maintained, equip_cost, equip_entered_by, equip_status, date_added) 
-		VALUES (:equip_name, :equip_desc, :is_maintenance_required, :maintain_every, :last_maintained, :equip_cost, :equip_entered_by, :equip_status, :date_added)
+		INSERT INTO equipment (equip_name, equip_serial, equip_desc, is_maintenance_required, maintain_every, last_maintained, equip_cost, equip_entered_by, equip_status, date_added) 
+		VALUES (:equip_name, :equip_serial, :equip_desc, :is_maintenance_required, :maintain_every, :last_maintained, :equip_cost, :equip_entered_by, :equip_status, :date_added)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
 				':equip_name'				=>	$_POST['equip_name'],
+				':equip_serial'				=>	$serial,
 				':equip_desc'				=>	$_POST['equip_desc'],
 				':is_maintenance_required'	=>	$_POST['is_maintenance_required'],
-				':maintain_every'			=>	$_POST['maintain_every'],
-				':last_maintained'			=> 	date('Y-m-d',strtotime($_POST['last_maintained'])),
+				':maintain_every'			=>	$me_months,
+				':last_maintained'			=> 	$lm_date,
 				':equip_cost'				=>	$_POST['equip_cost'],
 				':equip_entered_by'			=>	$_SESSION["user_id"],
 				':equip_status'				=>	'active',
@@ -33,7 +54,6 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			
 			echo ''.last_equipment_added_id($connect);
 			
 		}
@@ -54,20 +74,10 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		$output = '
 		<div class="table-responsive">
-			<table class="table table-boredered">
+			<table class="table">
 		';
 		foreach($result as $row)
 		{
-			$status = '';
-			if($row['equip_status'] == 'active')
-			{
-				$status = '<span class="label label-success">Active</span>';
-			}
-			else
-			{
-				$status = '<span class="label label-danger">Inactive</span>';
-			}
-			
 			$entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
 
 			//MySql Date conversion
@@ -78,83 +88,97 @@ if(isset($_POST['btn_action']))
 			$time = strtotime($row['date_added']);
 			$dateAdded = date("F jS, Y", $time);
 
-			printf("$%01.1f", $row["equip_cost"]);
-
-			$output .= '
-			<tr>
-				<td>Equipment Name</td>
-				<td>'.$row["equip_name"].'</td>
-			</tr>';
-
-			if($row['equip_desc'] == ''){
-				$output .= '
-				<tr>
-					<td>Equipment Description</td>
-					<td>(no description)</td>
-				</tr>
-				';
+			$status = '';
+			if($row['equip_status'] == 'active')
+			{
+				$status = '<span class="label label-success">Active</span>';
 			}else{
+				$status = '<span class="label label-danger">Inactive</span>';
+			}
+
+
+			//Equipment Name Output
+			$output .= '
+			<thead>
+				<th style="width:190px;text-align:right">Name:</th>
+				<th style="font-weight:normal">'.$row["equip_name"].'</th>
+			</thead>';
+
+			//Serial Number Output
+			if($row['equip_serial'] != NULL){
 				$output .= '
 				<tr>
-					<td>Equipment Description</td>
+					<td style="text-align:right;font-weight:bold">Serial Number:</td>
+					<td>'.$row["equip_serial"].'</td>
+				</tr>';
+			}
+
+			//Cost Output
+			if($row['equip_cost'] != 0.00){
+				$output .= '
+				<tr>
+					<td style="text-align:right;font-weight:bold">Base Price:</td>
+					<td> $'.$row['equip_cost'].' </td>
+				</tr>';
+			}
+
+			//Description Output
+			if($row['equip_desc'] != ''){
+				$output .= '
+				<tr>
+					<td style="text-align:right;font-weight:bold">Equipment Description:</td>
 					<td>'.$row["equip_desc"].'</td>
 				</tr>
 				';
 			}
+
 			if($row['is_maintenance_required'] == 'yes'){
 				$output .= '
 					<tr>
-						<td>Maintain Every</td>
+						<td style="text-align:right;font-weight:bold">Maintain Every:</td>
 						<td>'.$row["maintain_every"].' Months</td>
 					
 					</tr>
 					<tr>
-						<td>Last Maintained</td>
+						<td style="text-align:right;font-weight:bold">Last Maintained:</td>
 						<td>'.$lastMaintained.'</td>
 					</tr>
 				';
 			}
-			if($row['equip_cost'] > 0.00){
-				$output .= '
-				<tr>
-					<td>Base Price</td>
-					<td>$'.$row["equip_cost"].'</td>
-				</tr>';
-			}else{
-				$output .= '
-				<tr>
-					<td>Base Price</td>
-					<td> (Price Unknown) </td>
-				</tr>';
-			}
+
+			// Entered-by Output
 			$output .= '
 			<tr>
-				<td>Entered Into System</td>
+				<td style="text-align:right;font-weight:bold">Entered Into System:</td>
 				<td>'.$entered_by_user.' on '.$dateAdded.'</td>
 			</tr>';
+
+			// Equipment Status Output
 			$output .= '
 			<tr>
-				<td>Status</td>
+				<td style="text-align:right;font-weight:bold">Status:</td>
 				<td>'.$status.'</td>
 			</tr>
 			';
+
+			//Availability Output
 			if($row['is_available'] == 'available'){
 				$output .= '
 				<tr>
-					<td>Availability</td>
+					<td style="text-align:right;font-weight:bold">Availability:</td>
 					<td>
 						<span class="text-success glyphicon glyphicon-ok"></span>
-						Item Is Available for Checkout
+						Available for Checkout
 					</td>
 				</tr>
 				';
 			}else{
 				$output .= '
 				<tr>
-					<td>Availability</td>
+					<td style="text-align:right;font-weight:bold">Availability:</td>
 					<td>
 						<span class="text-danger glyphicon glyphicon-remove"></span>
-						Item Currently In Use
+						In Use
 					</td>
 				</tr>
 				';
@@ -187,6 +211,7 @@ if(isset($_POST['btn_action']))
 		foreach($result as $row)
 		{
 			$output['equip_name'] = $row['equip_name'];
+			$output['equip_serial'] = $row['equip_serial'];
 			$output['equip_desc'] = $row['equip_desc'];
 			$output['equip_cost'] = $row['equip_cost'];
 			$output['is_maintenance_required'] = $row['is_maintenance_required'];
@@ -203,6 +228,7 @@ if(isset($_POST['btn_action']))
 		UPDATE equipment 
 		set 
 		equip_name = :equip_name,
+		equip_serial = :equip_serial,
 		equip_desc = :equip_desc, 
 		equip_cost = :equip_cost,
 		is_maintenance_required = :is_maintenance_required,

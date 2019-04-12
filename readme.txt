@@ -32,8 +32,6 @@ OTHER STUFF TO DO:
 	Asthethic changes:
 		--- Sorting by IDs doesnt work on any page
 			- Either a jquery/JS error, or a php/SQL error in the _fetch pages.
-		--- Make dates on tables extracted from the DB appear in a normal format. (right now they appear as '<YEAR> - <MONTH> - <DAY>' aka -> '2019-03-08' which is confusing because that could be read as "March 8th, 2019" OR as "August 3rd, 2019" which is BAD)
-			-   can be done using php function, or an sql query. Probs with javascript too, but just dont lol.
 		--- With the new background color, some of the notifications are dificult to read/see. Add a thin black border to alerts (and maybe change their font color) to make them pop
 		--- Go through the code and remove old commented out code that isnt used anymore. Also make the code look cleaner (add/remove tabs where needed)
 		--- Change the font on the site to a more attractive font if possible

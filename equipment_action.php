@@ -78,6 +78,8 @@ if(isset($_POST['btn_action']))
 			$time = strtotime($row['date_added']);
 			$dateAdded = date("F jS, Y", $time);
 
+			printf("$%01.1f", $row["equip_cost"]);
+
 			$output .= '
 			<tr>
 				<td>Equipment Name</td>
@@ -116,7 +118,7 @@ if(isset($_POST['btn_action']))
 				$output .= '
 				<tr>
 					<td>Base Price</td>
-					<td>'.$row["equip_cost"].'</td>
+					<td>$'.$row["equip_cost"].'</td>
 				</tr>';
 			}else{
 				$output .= '

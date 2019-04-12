@@ -1159,6 +1159,7 @@ function table_checkouts($connect){
 					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Date</th>
 				</tr>
 			</thead>
+			<tbody style="font-size:12px">
 	';
 	foreach($result as $row)
 	{
@@ -1173,17 +1174,16 @@ function table_checkouts($connect){
 		}
 
 		$output .= '
-		<tbody style="font-size:12px">
-			<tr>
-				<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
-				<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
-				<td> '.$chkDateTime.'</td>
-			</tr>
-		</tbody>
-		';
+				<tr>
+					<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
+					<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
+					<td> '.$chkDateTime.'</td>
+				</tr>
+			';
 	}
 	$output .= '
-	</table>
+			</tbody>
+		</table>
 	</div>
 	';
 	return $output;
@@ -1193,20 +1193,46 @@ function table_checkouts($connect){
 	Returns the number of checkouts that took place on the current system date
 */
 function num_checkout_today($connect){
-	$count = 0;
 	$query = '
-	SELECT count(chk_id) as "chks"
-	FROM equipment_checkout
-	WHERE chk_date_time = "'.date('Y-m-d').'"
+	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
+	FROM user_details
+	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
+	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
+	WHERE equipment_checkout.chk_date_time = "'.date('Y-m-d').'"
 	';
 	$statement = $connect->prepare($query);
 	$statement->execute();
-	$result = $statement->fetchAll();
-	foreach($result as $row)
-	{
-		$count = $row['chks'];
-	}
-	return $count;
+	return $statement->rowCount();
+
+}
+
+function num_checkout_today_returned($connect){
+	$query = '
+	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
+	FROM user_details
+	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
+	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
+	WHERE equipment_checkout.chk_date_time = "'.date('Y-m-d').'"
+	AND equipment_checkout.returned = "true"
+	';
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
+
+}
+
+function num_checkout_today_not_returned($connect){
+	$query = '
+	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
+	FROM user_details
+	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
+	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
+	WHERE equipment_checkout.chk_date_time = "'.date('Y-m-d').'"
+	AND equipment_checkout.returned = "false"
+	';
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	return $statement->rowCount();
 
 }
 

@@ -13,14 +13,12 @@ if($_SESSION["type"] != 'master')
 {
 	header("location:index.php");
 }
-
 include('header.php');
 
 
 ?>
 <span id="alert_action"></span>
 
-     
 
 <div class="row">
 	<div class="col-lg-12">
@@ -92,15 +90,29 @@ include('header.php');
 							<img src="images/info5_sm.png" alt="info">
 					</button>
 				</div>
+				<div class="form-group">
+					<label for="user_type">
+						Account Type
+						<span style="color:red;font-size:1.5em"> *</span>
+					</label>
+					<select class="form-control" name="user_type" id="user_type" style="width:86%; display:inline;" required>
+						<option value="user">Standard Access</option>
+                        <option value="master">Full Access (Administrative)</option>
+                    </select>
+                    <button type="button" class="btn btn-link" data-toggle="popover" title="Account Type" data-content="Standard accounts can only check in, check out, and locate equipment. Full Access users can do those things, as well as change other users passwords and add/remove equipment and sites from the system." data-placement="left">
+							<img src="images/info5_sm.png" alt="info">
+					</button>
+				</div>
 
 				<div class="form-group">
 					<label for="user_job">
 						Enter Employee Job Title
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
-					<select class ="form-control" name="user_job" id="user_job" style="width:86%; display:inline;" required>
+					<select class="form-control" name="user_job" id="user_job" style="width:86%; display:inline;" required>
 						<option value="Project Manager">Project Manager</option>
                         <option value="Foreman">Foreman</option>
+                        <option value="Laborer">Laborer</option>
                         <option value="Skilled Laborer">Skilled Laborer</option>
                         <option value="Supervisor">Supervisor</option>
                         <option value="Other">Other</option>
@@ -127,7 +139,7 @@ include('header.php');
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
 					<div class="input-group">
-						<input type="password" name="user_password" placeholder="Employee Password" id="user_password" class="form-control" required />
+						<input type="password" name="user_password" placeholder="Password" id="user_password" class="form-control" required />
 						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 					</div>
 				</div>
@@ -155,6 +167,7 @@ $(document).ready(function(){
 		$('.modal-title').html("<i class='fa fa-plus'></i> Add User");
 		$('#action').val("Add");
 		$('#btn_action').val("Add");
+		$('#user_password').attr('required', true);
 	});
 
 	var userdataTable = $('#user_data').DataTable({
@@ -213,6 +226,7 @@ $(document).ready(function(){
 				$('#user_name').val(data.user_name);
 				$('#user_job').val(data.user_job);
 				$('#user_email').val(data.user_email);
+				$('#user_type').val(data.user_type);
 				$('#user_status').val(data.status);
 				$('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit User");
 				$('#user_id').val(user_id);

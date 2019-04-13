@@ -14,6 +14,7 @@ if(isset($_POST['btn_action']))
 	//	**********	Add button pressed	********** 
 	if($_POST['btn_action'] == 'Add')
 	{
+
 		$query = "
 		INSERT INTO user_details (user_email, user_password, user_name, user_job, user_type, user_status) 
 		VALUES (:user_email, :user_password, :user_name, :user_job, :user_type, :user_status)
@@ -25,7 +26,7 @@ if(isset($_POST['btn_action']))
 				':user_password'	=>	password_hash($_POST["user_password"], PASSWORD_DEFAULT),
 				':user_name'		=>	$_POST["user_name"],
 				':user_job'			=>	$_POST["user_job"],
-				':user_type'		=>	'user',
+				':user_type'		=>	$_POST["user_type"],
 				':user_status'		=>	'active',
 				
 			)
@@ -55,8 +56,10 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
+
 			$output['user_email'] = $row['user_email'];
 			$output['user_name'] = $row['user_name'];
+			$output['user_type'] = $row['user_type'];
 			$output['user_job'] = $row['user_job'];
 			$output['ia_date'] = $row['ia_date'];
 		}
@@ -73,7 +76,8 @@ if(isset($_POST['btn_action']))
 				user_name = '".$_POST["user_name"]."', 
 				user_job = '".$_POST["user_job"]."',
 				user_email = '".$_POST["user_email"]."',
-				user_password = '".password_hash($_POST["user_password"], PASSWORD_DEFAULT)."' 
+				user_password = '".password_hash($_POST["user_password"], PASSWORD_DEFAULT)."', 
+				user_type = '".$_POST["user_type"]."'
 				WHERE user_id = '".$_POST["user_id"]."'
 			";
 		}
@@ -83,7 +87,8 @@ if(isset($_POST['btn_action']))
 			UPDATE user_details SET 
 				user_name = '".$_POST["user_name"]."',
 				user_job = '".$_POST["user_job"]."', 
-				user_email = '".$_POST["user_email"]."'
+				user_email = '".$_POST["user_email"]."',
+				user_type = '".$_POST["user_type"]."'
 				WHERE user_id = '".$_POST["user_id"]."'
 			";
 		}

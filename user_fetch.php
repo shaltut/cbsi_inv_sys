@@ -16,16 +16,15 @@ $output = array();
 */
 $query .= "
 SELECT * FROM user_details 
-WHERE user_type = 'user' AND
 ";
 
 
 // **********	Search bar 	**********
 if(isset($_POST["search"]["value"]))
 {
-	$query .= '(user_email LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'WHERE user_email LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR user_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR user_status LIKE "%'.$_POST["search"]["value"].'%") ';
+	$query .= 'OR user_status LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 
 // **********	Ordered Header 	**********

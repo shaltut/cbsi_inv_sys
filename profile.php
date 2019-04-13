@@ -8,10 +8,10 @@ if(!isset($_SESSION['type']))
 	header("location:login.php");
 }
 
-if($_SESSION['type'] != 'master')
-{
-    header('location:index.php');
-}
+// if($_SESSION['type'] != 'master')
+// {
+//     header('location:index.php');
+// }
 
 include('header.php');
 ?>
@@ -41,11 +41,23 @@ foreach($result as $row)
 			<span id="message"></span>
 			<div class="form-group">
 				<label>Name: </label>
-				<input type="text" name="user_name" id="user_name" class="form-control" value="<?php echo $name; ?>" required />
+				<input type="text" name="user_name" id="user_name" class="form-control" value="<?php echo $name; ?>" required 
+				<?php
+				if($_SESSION['type'] == 'user'){
+					echo 'readonly';
+				}
+				?>
+				/>
 			</div>
 			<div class="form-group">
 				<label>Email: </label>
-				<input type="email" name="user_email" id="user_email" class="form-control" required value="<?php echo $email; ?>" />
+				<input type="email" name="user_email" id="user_email" class="form-control" required value="<?php echo $email; ?>" 
+				<?php
+				if($_SESSION['type'] == 'user'){
+					echo 'readonly';
+				}
+				?>
+				/>
 			</div>
 			<hr />
 			<label>**Leave Password fields blank if you do not want to change it</label>

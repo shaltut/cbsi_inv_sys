@@ -9,16 +9,15 @@ $query = '';
 // $output = array();
 $query .= "
 	SELECT * FROM equipment 
-	INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
+	-- INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
 	
 ";
 
 if(isset($_POST["search"]["value"]))
 {
 	$query .= 'WHERE equipment.equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR equipment.maintain_every LIKE "%'.$_POST["search"]["value"].'%" ';
-	$query .= 'OR user_details.user_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR equipment.equip_id LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR equipment.is_available LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 
 if(isset($_POST['order']))
@@ -56,7 +55,6 @@ foreach($result as $row)
 	}
 
 	$sub_array = array();
-	// $sub_array[] = $row['equip_id'];
 	$sub_array[] = $row['equip_name'];
 	$sub_array[] = $avail;
 	$sub_array[] = '

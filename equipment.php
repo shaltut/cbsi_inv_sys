@@ -236,7 +236,7 @@ $(document).ready(function(){
     var equipmentdataTable = $('#equipment_data').DataTable({
         "processing":true,
         "serverSide":true,
-        "order":[],
+        "order": [[1,"asc"]],
         "ajax":{
             url:"equipment_fetch.php",
             type:"POST"
@@ -246,7 +246,9 @@ $(document).ready(function(){
                 "targets":[2, 3, 4],
                 "orderable":false
             },
+            { "orderData": [ 0, 1 ],    "targets": 0 },
         ],
+
         "pageLength": 10
     });
 

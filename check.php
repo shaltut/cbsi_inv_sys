@@ -204,7 +204,7 @@ $(document).ready(function(){
         "columnDefs":[
             {
 
-                "targets":[0,1,2,3,4],
+                "targets":[4],
                 "orderable":false,
             },
         ],

@@ -15,9 +15,16 @@ if(isset($_POST["search"]["value"]))
 	$query .= 'OR equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 
+
 if(isset($_POST['order']))
 {
-	$query .= 'ORDER BY '.$_POST['order']['0']['column'].' '.$_POST['order']['0']['dir'].' ';
+	if($_POST['order']['0']['column'] == 0){
+		$sortVal = 'equip_id';
+	}else if($_POST['order']['0']['column'] == 1){
+		$sortVal = 'equip_name';
+	}
+
+	$query .= 'ORDER BY '.$sortVal.' '.$_POST['order']['0']['dir'].' ';
 }
 else
 {

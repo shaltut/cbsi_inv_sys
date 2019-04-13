@@ -30,7 +30,16 @@ if(isset($_POST["search"]["value"]))
 // **********	Ordered Header 	**********
 if(isset($_POST["order"]))
 {
-	$query .= 'ORDER BY '.$_POST['order']['0']['column'].' '.$_POST['order']['0']['dir'].' ';
+	if($_POST['order']['0']['column'] == 0){
+		$sortVal = 'user_id';
+	}else if($_POST['order']['0']['column'] == 1){
+		$sortVal = 'user_email';
+	}else if($_POST['order']['0']['column'] == 2){
+		$sortVal = 'user_name';
+	}else if($_POST['order']['0']['column'] == 3){
+		$sortVal = 'user_job';
+	}
+	$query .= 'ORDER BY '.$sortVal.' '.$_POST['order']['0']['dir'].' ';
 }else{
 	$query .= 'ORDER BY user_id DESC ';
 }

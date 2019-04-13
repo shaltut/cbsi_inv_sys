@@ -1,19 +1,19 @@
-<!-- <?php
+<?php
 //charts_js.php
-?> -->
+?> 
 
 <script>
+
+// Bar chart showing the number of checkouts on a per-site basis
 new Chart(document.getElementById("check_by_site"), {
     type: 'bar',
     data: {
         labels: [<?php echo checkouts_by_site_names($connect); ?>],
-        // labels: [ 'HILT','WATE','CATH','METR','TEXT','MONU'],
         datasets: [
         {
             label: 'Today',
             hidden: true,
             data: [<?php echo checkouts_by_site_num_checkouts_today($connect); ?>],
-            // data: [1,0,0,0,0,0],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -59,7 +59,6 @@ new Chart(document.getElementById("check_by_site"), {
             label: 'This Month',
             hidden: true,
             data: [<?php echo checkouts_by_site_num_checkouts_month($connect); ?>],
-            // data: [5,7,6,6,2,1],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -83,7 +82,6 @@ new Chart(document.getElementById("check_by_site"), {
             label: 'End of Time',
             hidden: true,
             data: [<?php echo checkouts_by_site_num_checkouts($connect); ?>],
-            // data: [7,12,8,6,2,1],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -103,6 +101,7 @@ new Chart(document.getElementById("check_by_site"), {
             borderWidth: 1
         }]
     }
+    // Options
     ,options: {
         aspectRatio: 0,
         title: {
@@ -155,6 +154,7 @@ new Chart(document.getElementById("check_by_site"), {
     }
 });
 
+// Bar Chart that receives a user_id as input and returns the number of checkouts and returns for that user. Default user is the currently logged in user_id session variable
 new Chart(document.getElementById("empl_stat"), {
     type: 'bar',
     data: {
@@ -252,6 +252,7 @@ new Chart(document.getElementById("empl_stat"), {
     }
 });
 
+// Pie Chart showing the price of equipment in 5 different categories. 
 new Chart(document.getElementById("equip_cost_pie").getContext('2d'), {
     type: 'pie',
     data: {
@@ -317,7 +318,7 @@ new Chart(document.getElementById("equip_cost_pie").getContext('2d'), {
     }
 });
 
-//Checkouts By Month (Line Chart) for Equipment stats (stats.php#equipment)
+//Line Graph showing checkouts by month. Each month, a new bar will be added.
 new Chart(document.getElementById("equip_monthly_checkouts"), {
     type: 'line',
     data: {

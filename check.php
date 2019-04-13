@@ -37,59 +37,62 @@ include('header.php');
 
 <button type="button" name="check" id="chkout_button" class="btn btn-primary btn-lg btn-block">Check-Out Equipment</button>
 
-    <!-- 
-        Modal that asks the user to enter the unique id for the piece of equipment they wish to check out.
-    -->
-    <div id="chkout_modal" class="modal fade" >
-        <div class="modal-dialog">
-            <form method="post" id="equip_id_form">
-                <div class="modal-content">
+<!-- 
+    Modal that asks the user to enter the unique id for the piece of equipment they wish to check out.
+-->
+<div id="chkout_modal" class="modal fade" >
+    <div class="modal-dialog">
+        <form method="post" id="equip_id_form">
+            <div class="modal-content">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <!-- Equipment ID Field -->
-                            <label class="center" for="equip_id">
-                                Equipment ID
-                                <span style="color:red;font-size:1.5em"> *</span>
-                            </label>
-                            <input type="text" name="equip_id" id="equip_id" class="center"/>
-
-                            <label class="center" for="site_id">
-                                Location
-                                <span style="color:red;font-size:1.5em"> *</span>
-                            </label>
-                            <select class="form-control center" name="site_id" id="site_id">
-                                <?php
-                                    echo sites_options($connect);
-                                ?>
-                            </select>
-
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <!--
-                            Here we need hidden fields to grab the data that the user wont have to enter manually...
-                            (user_id, site_id, etc.)
-                        -->
-                        <input type="hidden" name="btn_action" id="btn_action" />
-                        <input type="submit" name="action" id="action" class="btn btn-info" value="Check Out" />
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
                 </div>
-            </form>
-        </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <!-- Equipment ID Field -->
+                        <label class="center" for="equip_id">
+                            Equipment ID
+                            <span style="color:red;font-size:1.5em"> *</span>
+                        </label>
+                        <input type="text" name="equip_id" id="equip_id" class="center"/>
+
+                        <label class="center" for="site_id">
+                            Location
+                            <span style="color:red;font-size:1.5em"> *</span>
+                        </label>
+                        <select class="form-control center" name="site_id" id="site_id">
+                            <?php
+                                echo sites_options($connect);
+                            ?>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <!--
+                        Here we need hidden fields to grab the data that the user wont have to enter manually...
+                        (user_id, site_id, etc.)
+                    -->
+                    <input type="hidden" name="btn_action" id="btn_action" />
+                    <input type="submit" name="action" id="action" class="btn btn-info" value="Check Out" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </form>
     </div>
-    <br/>
+</div>
+<br/>
 
 <button type="button" name="check" id="chkin_button" class="btn btn-primary btn-lg btn-block">Return Equipment</button>
-<!-- -->
+
+<!-- 
+    Check-in modal that displays the items tht the user is currently in posession of 
+-->
 <div id="ret_modal" class="modal fade" >
     <div class="modal-dialog">
         <div class="modal-content">
@@ -100,32 +103,30 @@ include('header.php');
             </div>
 
             <div class="modal-body">
-<!-- -->
-    <div class="row" id="chk_in_tbl">
-        <div class="col-lg-12">
-            <div class="panel">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-12 table-responsive">
-                            <table id="index_data" class="table table-striped display compact" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Date of Checkout</th>
-                                        <th>Equipment ID</th>
-                                        <th>Equipment Name</th>
-                                        <th>Site ID</th>
-                                        <th style="width:3%"></th>
-                                    </tr>
-                                </thead>
-                            </table>
+                <div class="row" id="chk_in_tbl">
+                    <div class="col-lg-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12 table-responsive">
+                                        <table id="index_data" class="table table-striped display compact" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date of Checkout</th>
+                                                    <th>Equipment ID</th>
+                                                    <th>Equipment Name</th>
+                                                    <th>Site ID</th>
+                                                    <th style="width:3%"></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-<!-- -->
             </div>
 
             <div class="modal-footer">
@@ -135,7 +136,8 @@ include('header.php');
          </div>
     </div>
 </div>
-<!-- -->
+
+<!-- Include for footer -->
 <?php
 include('footer.php');
 ?>

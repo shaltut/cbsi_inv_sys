@@ -2,13 +2,6 @@
  //chk_out_action.php
  
 include('function.php');
-
-/*
-        Users are sent here after clicking a button or doing some action (like
-    adding a user) on user.php. Below is the php, javascript, and SQL commands 
-    called whenever someone performs one of those actions.
-*/
-
 include('database_connection.php');
 
 if(isset($_POST['btn_action']))
@@ -22,7 +15,7 @@ if(isset($_POST['btn_action']))
         $tst = check_equip_maintenance_month($connect, $_POST['equip_id']);
         
         if($chk_equip_id == 'yes'){
-        	if($_POST['site_id'] >= 303000){
+        	if($_POST['site_id'] > 0){
 	        	if($chk_avail){
 
 		            $query = "

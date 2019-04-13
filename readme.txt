@@ -1,24 +1,3 @@
-TODO:
-
-************ WEEK 4 ************
-
-Garrett: 
-	- Display tables (DataTables) as 'cards' (or something similar) for mobile compatibility.
-
-Diana: 
-	- make the 'view' button on the maintain.php page for each item requireing maintenance display only info about maintenace, not the user who entered it in, etc.--REMOVED THE USER INFO ON THE VIEW AND THE BASE PRICE.
-
-
-Phillip:
-	- Make the site mobile friendly by adding responsive CSS (so that it looks the same on desktop as it does now, but all fits properly on mobile devices and is easier to use).
-
-Mariam:
-	- Find where the Search (and input for search), Show Entries (and the input for show entries), and the 'showing' txt is added to tables by default. Then figure out how to make that extra stuff optional.
-
-Tristan:
-	- fix the error in the check-out function (sites_options($connect)) where if you dont enter a 'site' option, it still lets you check out that piece of equipment, and returns 0 as the site_id.
-
-========================================================================
 
 ******** FEEL FREE TO WORK ON ANY OF THE FOLLOWING ********
 (Post in chat when you start so we dont get conflicts)

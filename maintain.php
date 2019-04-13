@@ -53,64 +53,64 @@ include('header.php');
 
 <button class="btn btn-info" onclick="goBack()" style="float:right;">Go Back</button>
 
-        <div id="maintainModal" class="modal fade">
-            <div class="modal-dialog">
-                <form method="post" id="equipment_form">
-                    <div class="modal-content">
+<div id="maintainModal" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" id="equipment_form">
+            <div class="modal-content">
 
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Add Item</h4>
-                        </div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-plus"></i> Add Item</h4>
+                </div>
 
-                        <div class="modal-body">
-                                
-                            <div class="form-group" style="padding-top:10px">
-                                <label for="maintain_every">Maintain Every</label>
-                                <select class="form-control" name="maintain_every" id="maintain_every">
-                                    <option value="6">6 Months</option>
-                                    <option value="12">1 Year</option>
-                                    <option value="18">1 Year 6 Months</option>
-                                    <option value="24">2 years</option>
-                                </select>
-                            </div>
-                            <div class="form-group">  
-                                <label for="last_maintained">Last Maintained</label>
-                                <input type="date" class="form-control" name="last_maintained" id="last_maintained"/>
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <input type="hidden" name="equip_id" id="equip_id" />
-                            <input type="hidden" name="btn_action" id="btn_action" />
-                            <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-
+                <div class="modal-body">
+                        
+                    <div class="form-group" style="padding-top:10px">
+                        <label for="maintain_every">Maintain Every</label>
+                        <select class="form-control" name="maintain_every" id="maintain_every">
+                            <option value="6">6 Months</option>
+                            <option value="12">1 Year</option>
+                            <option value="18">1 Year 6 Months</option>
+                            <option value="24">2 years</option>
+                        </select>
                     </div>
-                </form>
-            </div>
-        </div>
-
-        <div id="maintaindetailsModal" class="modal fade">
-            <div class="modal-dialog">
-                <form method="post" id="equipment_form">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
-                        </div>
-                        <div class="modal-body">
-                            <Div id="equipment_details"></Div>
-                        </div>
-                        <div class="modal-footer">
-                            
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
+                    <div class="form-group">  
+                        <label for="last_maintained">Last Maintained</label>
+                        <input type="date" class="form-control" name="last_maintained" id="last_maintained"/>
                     </div>
-                </form>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="hidden" name="equip_id" id="equip_id" />
+                    <input type="hidden" name="btn_action" id="btn_action" />
+                    <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
             </div>
-        </div>
+        </form>
+    </div>
+</div>
+
+<div id="maintaindetailsModal" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" id="equipment_form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
+                </div>
+                <div class="modal-body">
+                    <Div id="equipment_details"></Div>
+                </div>
+                <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 <script>
 $(document).ready(function(){

@@ -42,46 +42,47 @@ include('header.php');
     <!-- 
         Modal that asks the user to enter the unique id for the piece of equipment they wish to check out.
     -->
-	<div id="chkout_modal" class="modal fade" >
-        <div class="modal-dialog">
-            <form method="post" id="equip_id_form">
-                <div class="modal-content">
+<div id="chkout_modal" class="modal fade" >
+    <div class="modal-dialog">
+        <form method="post" id="equip_id_form">
+            <div class="modal-content">
 
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <!-- Equipment ID Field -->
-                            <label class="center">
-                            Equipment ID</label>
-                            <input type="text" name="equip_id" id="equip_id" class="center"/>
-
-                            <!-- Location ID field -->
-                            <label class="center">
-                            Location</label>
-                            <input type="text" name="site_id" id="site_id" class="center">
-
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                    	<!--
-                    		Here we need hidden fields to grab the data that the user wont have to enter manually...
-                    		(user_id, site_id, etc.)
-                        -->
-                        <input type="hidden" name="btn_action" id="btn_action" />
-                        <input type="submit" name="action" id="action" class="btn btn-info" value="Check Out" />
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
                 </div>
-            </form>
-        </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <!-- Equipment ID Field -->
+                        <label class="center">
+                        Equipment ID</label>
+                        <input type="text" name="equip_id" id="equip_id" class="center"/>
+
+                        <!-- Location ID field -->
+                        <label class="center">
+                        Location</label>
+                        <input type="text" name="site_id" id="site_id" class="center">
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                	<!--
+                		Here we need hidden fields to grab the data that the user wont have to enter manually...
+                		(user_id, site_id, etc.)
+                    -->
+                    <input type="hidden" name="btn_action" id="btn_action" />
+                    <input type="submit" name="action" id="action" class="btn btn-info" value="Check Out" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </form>
     </div>
-    <br/>
+</div>
+
+<br/>
 
 <button type="button" name="check" id="chkin_button" class="btn btn-primary btn-lg btn-block">Return Equipment</button>
 <!-- -->
@@ -95,32 +96,31 @@ include('header.php');
             </div>
 
             <div class="modal-body">
-<!-- -->
-    <div class="row" id="chk_in_tbl">
-        <div class="col-lg-12">
-            <div class="panel">
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-12 table-responsive">
-                            <table id="index_data" class="table  table-striped">
-                                <thead>
-                                	<tr>
-                                        <th>Date of Checkout</th>
-                                        <th>Equipment ID</th>
-                                        <th>Equipment Name</th>
-                                        <th>Site ID</th>
-                                        <th>Action</th>
-                                	</tr>
-                            	</thead>
-                            </table>
+
+                <div class="row" id="chk_in_tbl">
+                    <div class="col-lg-12">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12 table-responsive">
+                                        <table id="index_data" class="table  table-striped">
+                                            <thead>
+                                            	<tr>
+                                                    <th>Date of Checkout</th>
+                                                    <th>Equipment ID</th>
+                                                    <th>Equipment Name</th>
+                                                    <th>Site ID</th>
+                                                    <th>Action</th>
+                                            	</tr>
+                                        	</thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-<!-- -->
             </div>
 
             <div class="modal-footer">

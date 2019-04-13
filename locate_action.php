@@ -135,6 +135,7 @@ if(isset($_POST['btn_action']))
 		$query = "
 		SELECT * 
 		FROM equipment_checkout
+		JOIN user_details ON equipment_checkout.empl_id = user_details.user_id
 		WHERE chk_id = :chk_id
 		";
 		$statement = $connect->prepare($query);
@@ -149,7 +150,7 @@ if(isset($_POST['btn_action']))
 			$site = get_site_name_by_id($connect, $row['site_id']);
 			$usr = get_empl_name_by_id($connect, $row['empl_id']);
 			$output['last_loc'] = $site.' (ID: '.$row['site_id'].')';
-			$output['last_chk'] = $usr.' (ID: '.$row['empl_id'].')';
+			$output['last_chk'] = $usr.' ('.$row['user_email'].')';
 			$output['last_date'] = $row['chk_date_time'];
 		}
 		echo json_encode($output);

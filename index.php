@@ -218,9 +218,6 @@ include("footer.php");
 ?>
 
 
-
-
-
 <script>
 $(document).ready(function(){
     //Used to toggle off/on the INFO popovers on the forms
@@ -230,9 +227,3 @@ $(document).ready(function(){
 
 });
 </script>
-
-
-
-
-
-

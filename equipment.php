@@ -147,7 +147,8 @@ if($count_red > 0){
                         </button>
                     </div>
 
-                    <div class="invisible" id="maintain_vis">
+                    <!-- <div class="invisible" id="maintain_vis"> -->
+                    <div id="maintain_vis">
                         <div class="form-group">
                             <label for="maintain_every">Requires Maintenance Every</label>
                             <select class="form-control" name="maintain_every" id="maintain_every" style="width:85%; display:inline;">
@@ -274,7 +275,7 @@ $(document).ready(function(){
                 $('#equipmentModal').modal('hide');
                 $('#addSuccess').modal('show');
                 $('#eq_id').html(data);
-                // $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>').delay(4000).fadeOut();
+                $('#alert_action').fadeIn().html('<div class="alert alert-success">'+data+'</div>').delay(4000).fadeOut();
                 $('#action').attr('disabled', false);
                 equipmentdataTable.ajax.reload();
             }
@@ -388,10 +389,10 @@ $(document).ready(function(){
     //Used to toggle the extra maintenance options once checkbox is clicked on modal after the modal is already loaded
     function moreOptions() {
         if(document.getElementById("is_maintenance_required").checked === true){
-            document.getElementById("maintain_vis").style.visibility = "visible";
+            document.getElementById("maintain_vis").style.display = "block";
         }
         if(document.getElementById("is_maintenance_required").checked === false){
-            document.getElementById("maintain_vis").style.visibility = "hidden";
+            document.getElementById("maintain_vis").style.display = "none";
         }
     }
 </script>

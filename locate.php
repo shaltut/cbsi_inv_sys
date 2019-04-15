@@ -54,7 +54,7 @@ include('header.php');
                     </h4>
                 </div>
                 <div class="modal-body" id="loc_found">
-                    <div class="form-group" id="loc_err">
+                    <div class="form-group" id="loc_err" style="text-align:center">
                         <div class="text-danger" style="display:inline;font-size:1.8em;font-weight:bold;">This item has never been checked out. </div>
                     </div>
                     <div class="form-group">

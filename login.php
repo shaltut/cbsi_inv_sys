@@ -90,17 +90,29 @@ if(isset($_POST["login"]))
 			
 			</br></br>
 			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
+				<div class="panel-heading" style="font-size: 1.2em;font-weight:bold;">Login</div>
 				<div class="panel-body">
 					<form method="post">
 						<?php echo $message; ?>
 						<div class="form-group">
-							<label>Employee Email:</label>
-							<input type="text" name="user_email" placeholder="Enter Email" class="form-control" required />
+							<div>
+								<label>Email:</label>
+							</div>
+							<input type="text" name="user_email" placeholder="Enter Email" class="form-control" style="width:85%; display:inline;" required />
+							<!-- INFO BTN -->
+	                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter your CBSI email address. (ID login coming soon)" data-placement="left">
+	                            <img src="images/info5_sm.png" alt="info">
+	                        </button>
 						</div>
 						<div class="form-group">
-							<label>Password:</label>
-							<input type="password" name="user_password" placeholder="Enter Password" class="form-control" required />
+							<div>
+								<label>Password:</label>
+							</div>
+							<input type="password" name="user_password" placeholder="Enter Password" class="form-control" style="width:85%; display:inline;" required />
+							<!-- INFO BTN -->
+	                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="To change your password, please contact your supervisor." data-placement="left">
+	                            <img src="images/info5_sm.png" alt="info">
+	                        </button>
 						</div>
 						<div class="form-group">
 							<input type="submit" name="login" value="Login" class="btn btn-info" />
@@ -109,6 +121,14 @@ if(isset($_POST["login"]))
 				</div>
 			</div>
 		</div>
+
+<script>
+	//Used to toggle off/on the INFO popovers on the forms
+    $(function () {
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
+
 	</body>
 </html>
 

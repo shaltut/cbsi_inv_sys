@@ -16,7 +16,7 @@ include('header.php');
 
 <span id='alert_action'></span>
 
-<div class="row" style="margin-top:20px">
+<div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">

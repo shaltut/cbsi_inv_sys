@@ -32,8 +32,7 @@ if(!isset($_SESSION["type"]))
 </style>
 
 	<body>
-		<br />
-		<div class="container">
+			
 
 <!-- NAVBAR -------------------------------------------------------------------->
 
@@ -108,4 +107,5 @@ if(!isset($_SESSION["type"]))
 			</nav>
 
 <!-- END NAVBAR --------------------------------------------------------------------->
-			
+<br />
+		<div class="container">

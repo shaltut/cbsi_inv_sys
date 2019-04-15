@@ -27,7 +27,7 @@ include('header.php');
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                        <h3 class="panel-title">Equipment Requiring Maintenance</h3>
+                        <h3 class="panel-title">Maintenance List</h3>
                     </div>
                 </div>
             </div>

@@ -55,7 +55,7 @@ include('header.php');
                 </div>
                 <div class="modal-body" id="loc_found">
                     <div class="form-group" id="loc_err">
-                        <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">This item has never been checked out. </div>
+                        <div class="text-danger" style="display:inline;font-size:1.8em;font-weight:bold;">This item has never been checked out. </div>
                     </div>
                     <div class="form-group">
                         <!-- INFO BTN -->

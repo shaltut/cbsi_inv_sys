@@ -145,13 +145,20 @@ if(isset($_POST['btn_action']))
 			)
 		);
 		$result = $statement->fetchAll();
-		foreach($result as $row)
-		{
-			$site = get_site_name_by_id($connect, $row['site_id']);
-			$usr = get_empl_name_by_id($connect, $row['empl_id']);
-			$output['last_loc'] = $site.' (ID: '.$row['site_id'].')';
-			$output['last_chk'] = $usr.' ('.$row['user_email'].')';
-			$output['last_date'] = $row['chk_date_time'];
+		foreach($result as $row){
+			if($row['site_id'] == '' && $row['empl_id'] == ''){
+				$output['last_loc'] = '(Unknown)';
+				$output['last_chk'] = '(Unknown)';
+				$output['last_date'] = '(Unknown)';
+				$output['message'] = false;
+			}else{
+				$site = get_site_name_by_id($connect, $row['site_id']);
+				$usr = get_empl_name_by_id($connect, $row['empl_id']);
+				$output['last_loc'] = $site.' (ID: '.$row['site_id'].')';
+				$output['last_chk'] = $usr.' ('.$row['user_email'].')';
+				$output['last_date'] = $row['chk_date_time'];
+				$output['message'] = true;
+			}
 		}
 		echo json_encode($output);
 	}

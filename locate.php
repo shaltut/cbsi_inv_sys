@@ -46,17 +46,17 @@ include('header.php');
     <div class="modal-dialog">
         <form method="post" id="equipment_form">
             <div class="modal-content">
-
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">
                         <i class="fa fa-plus"></i> 
-                        Locate Equipment
+                        Last Known Location
                     </h4>
                 </div>
-
-                <div class="modal-body">
-
+                <div class="modal-body" id="loc_found">
+                    <div class="form-group" id="loc_err">
+                        <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">This item has never been checked out. </div>
+                    </div>
                     <div class="form-group">
                         <!-- INFO BTN -->
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Last Known Location" data-content="The last location this piece of equipment was checked out from." data-placement="bottom" style="margin-top:-10px">
@@ -164,16 +164,34 @@ $(document).ready(function(){
             data:{equip_id:equip_id, btn_action:btn_action},
             dataType:"json",
             success:function(data){
+                // Display Modal
                 $('#equipmentModal').modal('show');
+                // Set all values to defaults
                 $('#last_loc').html('');
                 $('#last_chk').html('');
                 $('#last_date').html('');
+                $('#loc_err').show();
+
+                /* 
+                    Check if a message was returned from locate_action.
+                    If so, display message to user. If not, hide message.
+                */
+                if(data.message == false){
+                    $('#loc_err').show();
+                }else{
+                    $('#loc_err').hide();
+                }
+
+                //Set fields to the values given in locate_action
                 $('#last_loc').html(data.last_loc);
                 $('#last_chk').html(data.last_chk);
                 $('#last_date').html(data.last_date);
-                $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Last Known Location");
                 $('#equip_id').val(equip_id);
+
+                //Set action button value
                 $('#action').val("Edit");
+
+                //Set btn_action value
                 $('#btn_action').val("Edit");
             }
         })

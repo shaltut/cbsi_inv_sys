@@ -347,6 +347,27 @@ function users_options($connect){
 	return $output;
 }
 
+//Returns equip_name given equip_id
+function get_equip_name_by_id($connect, $equip_id){
+	$output = '';
+	$query = "
+	SELECT equip_name
+	FROM equipment
+	WHERE equip_id= '".$equip_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$output = $row['equip_name'];
+		}
+	}
+	// return $count;
+	return $output;
+}
+
 //Returns empl_name given empl_id
 function get_empl_name_by_id($connect, $user_id){
 	$output = '';
@@ -780,8 +801,11 @@ function check_equip_maintenance_month($connect, $equip_id){
 			$months = $row['me'];
 			$last = $row['lm'];
 			$today = $row['tday'];
+
 			$maintain_by = date("Y-m-d", strtotime($months.' months', strtotime($last)));
+
 			$maintain_warn = date("Y-m-d", strtotime('-1 months', strtotime($maintain_by)));
+			
 			if($today >= $maintain_by){
 				$ans = 'red';
 			}else if($today > $maintain_warn && $today < $maintain_by){
@@ -824,9 +848,9 @@ function sites_options($connect)
 */
 function count_check_out_total($connect){
 	$query = "
-	SELECT * 
-	FROM equipment_checkout
-	WHERE returned = 'false'
+		SELECT * 
+		FROM equipment_checkout
+		WHERE returned = 'false'
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute();
@@ -1136,60 +1160,6 @@ function count_master_active($connect)
 }
 
 /*
-	Returns information on all items that are currently checked out
-*/
-function table_checkouts($connect){
-	$query = '
-	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
-	FROM user_details
-	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
-	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
-	WHERE equipment_checkout.returned = "false"
-	';
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
-	$output = '
-	<div class="table-responsive">
-		<table class="table table-bordered table-striped" style="text-align:center;table-layout:fixed">
-			<thead style="font-size:16px">
-				<tr>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Employee</th>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Equipment</th>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Date</th>
-				</tr>
-			</thead>
-			<tbody style="font-size:12px">
-	';
-	foreach($result as $row)
-	{
-		//MySql Date conversion
-		$time = strtotime($row['chk_date_time']);
-		$chkDateTime = date("F jS, Y", $time);
-
-		if($row['returned'] == 'true'){
-			$ret_val = '<span class="label label-success"><span class="glyphicon glyphicon-ok" style="text-size:1em;"></span></span>';
-		}else{
-			$ret_val = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
-		}
-
-		$output .= '
-				<tr>
-					<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
-					<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
-					<td> '.$chkDateTime.'</td>
-				</tr>
-			';
-	}
-	$output .= '
-			</tbody>
-		</table>
-	</div>
-	';
-	return $output;
-}
-
-/*
 	Returns the number of checkouts that took place on the current system date
 */
 function num_checkout_today($connect){
@@ -1239,31 +1209,84 @@ function num_checkout_today_not_returned($connect){
 /*
 	Returns information on checkouts that took place on the current system date
 */
-function table_checkouts_today($connect){
+// function table_checkouts_today($connect){
+// 	$count = 0;
+// 	$query = '
+// 	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
+// 	FROM user_details
+// 	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
+// 	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
+// 	WHERE equipment_checkout.chk_date_time = "'.date('Y-m-d').'"
+// 	';
+// 	$statement = $connect->prepare($query);
+// 	$statement->execute();
+// 	$result = $statement->fetchAll();
+// 	$output = '
+// 	<div class="table-responsive">
+// 		<table class="table table-bordered table-striped" style="text-align:center; table-layout:fixed">
+// 			<thead style="font-size:16px">
+// 				<tr>
+// 					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Employee</th>
+// 					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Equipment</th>
+// 					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Returned</th>
+// 				</tr>
+// 			</thead>
+// 			<tbody style="font-size:12px">
+// 	';
+// 	foreach($result as $row)
+// 	{
+// 		if($row['returned'] == 'true'){
+// 			$ret_val = '<span class="label label-success"><span class="glyphicon glyphicon-ok" style="text-size:1em;"></span></span>';
+// 		}else{
+// 			$ret_val = '<span class="label label-danger"><span class="glyphicon glyphicon-remove"></span></span>';
+// 		}
+
+// 		$output .= '
+// 				<tr>
+// 					<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
+// 					<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
+// 					<td style="font-size:1.6em"> '.$ret_val.'</td>
+// 				</tr>
+// 			';
+// 	}
+// 	$output .= '
+// 			</tbody>
+// 		</table>
+// 	</div>
+// 	';
+// 	return $output;
+// }
+
+/*
+	Returns information on all items that are currently checked out
+*/
+function table_checkouts($connect){
 	$query = '
-	SELECT user_details.user_id, user_details.user_name, equipment_checkout.equip_id, equipment.equip_name, equipment_checkout.chk_date_time, equipment_checkout.returned
-	FROM user_details
-	INNER JOIN equipment_checkout ON equipment_checkout.empl_id = user_details.user_id
-	INNER JOIN equipment ON equipment.equip_id = equipment_checkout.equip_id
-	WHERE equipment_checkout.chk_date_time = "'.date('Y-m-d').'"
+	SELECT *
+	FROM equipment_checkout
+	WHERE returned = "false"
 	';
 	$statement = $connect->prepare($query);
 	$statement->execute();
 	$result = $statement->fetchAll();
-	$output = '
+	$output .= '
 	<div class="table-responsive">
-		<table class="table table-bordered table-striped" style="text-align:center; table-layout:fixed">
+		<table class="table table-bordered table-striped" style="text-align:center;table-layout:fixed">
 			<thead style="font-size:16px">
 				<tr>
 					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Employee</th>
 					<th style="text-align:center; vertical-align:center; padding:10px 5px;">Equipment</th>
-					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Returned</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Date</th>
 				</tr>
 			</thead>
 			<tbody style="font-size:12px">
 	';
-	foreach($result as $row)
-	{
+	foreach($result as $row){
+
+		//MySql Date conversion
+		$time = strtotime($row['chk_date_time']);
+		$chkDateTime = date("F jS, Y", $time);
+
 		if($row['returned'] == 'true'){
 			$ret_val = '<span class="label label-success"><span class="glyphicon glyphicon-ok" style="text-size:1em;"></span></span>';
 		}else{
@@ -1272,9 +1295,9 @@ function table_checkouts_today($connect){
 
 		$output .= '
 				<tr>
-					<td>'.$row["user_name"].'</br>(ID: '.$row["user_id"].')</td>
-					<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.$row["equip_name"].'</br>(ID: '.$row["equip_id"].')</td>
-					<td style="font-size:1.6em"> '.$ret_val.'</td>
+					<td>'.get_empl_name_by_id($connect, $row["empl_id"]).'</br>(ID: '.$row["empl_id"].')</td>
+					<td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"> '.get_equip_name_by_id($connect, $row["equip_id"]).'</br>(ID: '.$row["equip_id"].')</td>
+					<td> '.$chkDateTime.'</td>
 				</tr>
 			';
 	}

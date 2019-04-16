@@ -16,10 +16,17 @@ if(isset($_POST['btn_action']))
 			Ensures that equipment that doesnt require maintenance gets null values in the database for the expected fields.
 		*/
 		if($_POST['is_maintenance_required'] == 'no'){
-			$lm_date = null;
-			$me_months = null;
+			$lm_date = Null;
+			$me_months = Null;
+			$maintain_desc = Null;
 		}else{
-			$lm_date = date('Y-m-d',strtotime($_POST['last_maintained']));
+			if($_POST['maintain_every'] == -100){
+				$lm_date = Null;
+				$maintain_desc = $_POST['maintain_desc'];
+			}else{
+				$lm_date = $_POST['last_maintained'];
+				$maintain_desc = Null;
+			}
 			$me_months = $_POST['maintain_every'];
 		}
 
@@ -33,8 +40,8 @@ if(isset($_POST['btn_action']))
 		}
 
 		$query = "
-		INSERT INTO equipment (equip_name, equip_serial, equip_desc, is_maintenance_required, maintain_every, last_maintained, equip_cost, equip_entered_by, equip_status, date_added) 
-		VALUES (:equip_name, :equip_serial, :equip_desc, :is_maintenance_required, :maintain_every, :last_maintained, :equip_cost, :equip_entered_by, :equip_status, :date_added)
+		INSERT INTO equipment (equip_name, equip_serial, equip_desc, is_maintenance_required, maintain_every, last_maintained, maintain_desc, equip_cost, equip_entered_by, equip_status, date_added) 
+		VALUES (:equip_name, :equip_serial, :equip_desc, :is_maintenance_required, :maintain_every, :last_maintained, :maintain_desc, :equip_cost, :equip_entered_by, :equip_status, :date_added)
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
@@ -45,6 +52,7 @@ if(isset($_POST['btn_action']))
 				':is_maintenance_required'	=>	$_POST['is_maintenance_required'],
 				':maintain_every'			=>	$me_months,
 				':last_maintained'			=> 	$lm_date,
+				':maintain_desc'			=> 	$maintain_desc,
 				':equip_cost'				=>	$_POST['equip_cost'],
 				':equip_entered_by'			=>	$_SESSION["user_id"],
 				':equip_status'				=>	'active',
@@ -210,13 +218,14 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
-			$output['equip_name'] = $row['equip_name'];
-			$output['equip_serial'] = $row['equip_serial'];
-			$output['equip_desc'] = $row['equip_desc'];
-			$output['equip_cost'] = $row['equip_cost'];
-			$output['is_maintenance_required'] = $row['is_maintenance_required'];
-			$output['maintain_every'] = $row['maintain_every'];
-			$output['last_maintained'] = $row['last_maintained'];
+				$output['equip_name'] = $row['equip_name'];
+				$output['equip_serial'] = $row['equip_serial'];
+				$output['equip_desc'] = $row['equip_desc'];
+				$output['equip_cost'] = $row['equip_cost'];
+				$output['is_maintenance_required'] = $row['is_maintenance_required'];
+				$output['maintain_every'] = $row['maintain_every'];
+				$output['last_maintained'] = $row['last_maintained'];
+				$output['maintain_desc'] = $row['maintain_desc'];
 		}
 		echo json_encode($output);
 	}
@@ -233,25 +242,55 @@ if(isset($_POST['btn_action']))
 		equip_cost = :equip_cost,
 		is_maintenance_required = :is_maintenance_required,
 		maintain_every = :maintain_every,
-		last_maintained = :last_maintained
+		last_maintained = :last_maintained,
+		maintain_desc = :maintain_desc
 		WHERE equip_id = :equip_id
 		";
+
+		// Ensures that if the user doesnt enter a serial number, the database inputs a null value
+		if($_POST['equip_serial'] != ''){
+			$serial = $_POST['equip_serial'];
+		}else{
+			$serial = Null;
+		}
+
+		/*
+			Ensures that equipment that doesnt require maintenance gets null values in the database for the expected fields.
+		*/
+		if($_POST['is_maintenance_required'] == 'no'){
+			$lm_date = Null;
+			$me_months = Null;
+			$maintain_desc = Null;
+		}else{
+			if($_POST['maintain_every'] == -100){
+				$lm_date = Null;
+				$maintain_desc = $_POST['maintain_desc'];
+			}else{
+				$lm_date = $_POST['last_maintained'];
+				$maintain_desc = Null;
+			}
+			$me_months = $_POST['maintain_every'];
+		}
+
+
 		$statement = $connect->prepare($query);
 		$statement->execute(
 			array(
 				':equip_name'				=>	$_POST['equip_name'],
+				':equip_serial'				=>	$serial,
 				':equip_desc'				=>	$_POST['equip_desc'],
 				':equip_cost'				=>	$_POST['equip_cost'],
 				':is_maintenance_required'	=>	$_POST['is_maintenance_required'],
-				':maintain_every'			=>	$_POST['maintain_every'],
-				':last_maintained'			=>	$_POST['last_maintained'],
+				':maintain_every'			=>	$me_months,
+				':last_maintained'			=>	$lm_date,
+				':maintain_desc'			=>	$maintain_desc,
 				':equip_id'					=>	$_POST['equip_id']
 			)
 		);
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo 'Equipment Details Edited';
+			echo 'Equipment has been edited';
 		}
 	}
  

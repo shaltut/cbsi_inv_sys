@@ -16,6 +16,7 @@ if($_SESSION['type'] != 'master')
 
 include('header.php');
 
+echo check_equip_maintenance_month($connect, 202039);
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
 
@@ -68,6 +69,7 @@ include('header.php');
                     <div class="form-group" style="padding-top:10px">
                         <label for="maintain_every">Maintain Every</label>
                         <select class="form-control" name="maintain_every" id="maintain_every">
+                            <option value="3">3 Months</option>
                             <option value="6">6 Months</option>
                             <option value="12">1 Year</option>
                             <option value="18">1 Year 6 Months</option>

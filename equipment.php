@@ -121,8 +121,8 @@ if($count_red > 0){
                         </button>
                     </div>
                     <div class="form-group">
-                        <label for="equip_desc">Equipment Details</label>
-                        <textarea name="equip_desc" placeholder="Equipment Description" id="equip_desc" class="form-control" rows="5" style="width:85%; display:inline;"></textarea>
+                        <label for="equip_desc">Description</label>
+                        <textarea name="equip_desc" placeholder="Equipment Description" id="equip_desc" class="form-control" rows="5" style="width:100%; display:inline;"></textarea>
                         <!-- INFO BTN -->
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Description" data-content="Describe any defining characteristics, such as color, VIN number, whether a permit is required to operate it or not, etc." data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
@@ -152,34 +152,24 @@ if($count_red > 0){
                         <div class="form-group">
                             <label for="maintain_every">Requires Maintenance Every</label>
                             <select class="form-control" name="maintain_every" id="maintain_every" style="width:85%; display:inline;">
-
                                 <option value="3">3 Months</option>
                                 <option value="6">6 Months</option>
                                 <option value="12">1 Year</option>
                                 <option value="18">1 Year 6 Months</option>
                                 <option value="24">2 years</option>
-                                <option value="-100">Now</option>
                             </select>
                             <!-- INFO BTN -->
                             <button type="button" class="btn btn-link" data-toggle="popover" data-content="How often does this piece of equipment require maintenance?" data-placement="left">
                                 <img src="images/info5_sm.png" alt="info">
                             </button>
                         </div>
-                        <div class="form-group" id="lm_grp">  
+                        <div class="form-group">  
                             <label for="last_maintained">Last Maintenance Date</label>
                             <input type="date" class="form-control" name="last_maintained" id="last_maintained" style="width:85%; display:inline;"/>
                             <!-- INFO BTN -->
                             <button type="button" class="btn btn-link" data-toggle="popover" data-content="When was the last time this piece of equipment was maintained?" data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
                         </button>
-                        </div>
-                        <div class="form-group" id="desc_grp">
-                            <label for="equip_desc">Describe the problem</label>
-                            <textarea name="maintain_desc" placeholder="Maintenance Description" id="maintain_desc" class="form-control" rows="3" style="width:80%; display:inline;"></textarea>
-                            <!-- INFO BTN -->
-                            <button type="button" class="btn btn-link" data-toggle="popover" title="Problem" data-content="Describe how the equipment broke, or what went wrong with it. What needs to be fixed?" data-placement="left">
-                                <img src="images/info5_sm.png" alt="info">
-                            </button>
                         </div>
                     </div>
 
@@ -310,17 +300,6 @@ $(document).ready(function(){
         })
     });
 
-    //Used to control the VIEW button action 
-    $(document).on('change', '#maintain_every', function(){
-        if($('#maintain_every').val() == '-100'){
-            $('#lm_grp').hide();
-            $('#desc_grp').show();
-        }else{
-            $('#lm_grp').show();
-            $('#desc_grp').hide();
-        }
-    });
-
     //Used to control the update button action
     $(document).on('click', '.update', function(){
         var equip_id = $(this).attr("id");
@@ -344,18 +323,9 @@ $(document).ready(function(){
                     $('#is_maintenance_required').prop('checked', false);
                     moreOptions();
                 }
-0
-                if(data.maintain_every == -100){
-                    $('#lm_grp').hide();
-                    $('#desc_grp').show();
-                }else{
-                    $('#lm_grp').show();
-                    $('#desc_grp').hide();
-                }
                 
                 $('#maintain_every').val(data.maintain_every);
                 $('#last_maintained').val(data.last_maintained);
-                $('#maintain_desc').val(data.maintain_desc);
                 $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Equipment");
                 $('#equip_id').val(equip_id);
                 $('#action').val("Edit");

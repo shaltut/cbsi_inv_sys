@@ -105,9 +105,9 @@ include('header.php');
 				            <div class="panel-heading" style="font-size:1.4em;">
 				            	<center>
 					            	<strong>All Checkouts</strong>
-						            <button type="button" class="btn btn-link" data-toggle="popover" data-content="This table displays equipment still in use (or that hasn't been returned). -- All Employees" data-placement="left" style="position: absolute;top:-5px; right:10px">
-						            	<img src="images/info5_sm.png" alt="info"/>
-						           	</button>
+					            <button type="button" class="btn btn-link" data-toggle="popover" data-content="This table displays equipment still in use (or that hasn't been returned). -- All Employees" data-placement="left" style="position: absolute;top:-5px; right:10px">
+					            	<img src="images/info5_sm.png" alt="info"/>
+					           	</button>
 					           </center>
 				            </div>
 				                <?php echo table_checkouts($connect); ?>

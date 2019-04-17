@@ -39,7 +39,6 @@ foreach($result as $row){
 		$data[] = $sub_array;
 		$count = $count+1;
 	}
-
 	if($row['is_broken'] == 'yes'){
 		$sub_array = array();
 		$sub_array[] = $row['equip_id'];
@@ -48,9 +47,7 @@ foreach($result as $row){
 		$sub_array[] = '
 			<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 			';
-		$sub_array[] = '
-		<button type="button" name="update" id="'.$row["equip_id"].'" class="btn btn-warning btn-xs update">Update</button>
-		';
+		$sub_array[] = '';
 		$sub_array[] = '<button type="button" name="today" id="'.$row["equip_id"].'" class="btn btn-danger btn-xs today">Reset</button>
 		';
 		$data[] = $sub_array;

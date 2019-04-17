@@ -8,13 +8,15 @@ $query = '';
 $count = 0;
 $output = array();
 $query = "
-	SELECT SYSDATE() as 'tday', last_maintained AS 'lm', equip_id as 'equip_id', equip_name as 'equip_name', maintain_every AS 'me' FROM equipment WHERE is_maintenance_required = 'yes' AND equip_status = 'active'
+	SELECT *
+	FROM equipment 
+	WHERE (is_maintenance_required = 'yes' AND equip_status = 'active') OR (is_broken = 'yes' AND equip_status = 'active')
 	";
 
-if($_POST['length'] != -1)
-{
-	$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
-}
+// if($_POST['length'] != -1)
+// {
+// 	$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+// }
 $statement = $connect->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();
@@ -25,7 +27,24 @@ foreach($result as $row){
 		$sub_array = array();
 		$sub_array[] = $row['equip_id'];
 		$sub_array[] = $row['equip_name'];
-		$sub_array[] = '<div style="color:rgba(255, 0, 0, 1);">'.$row['lm'].'</div>';
+		$sub_array[] = '<div style="color:rgba(255, 0, 0, 1);">'.$row['last_maintained'].'</div>';
+		$sub_array[] = '
+			<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
+			';
+		$sub_array[] = '
+		<button type="button" name="update" id="'.$row["equip_id"].'" class="btn btn-warning btn-xs update">Update</button>
+		';
+		$sub_array[] = '<button type="button" name="today" id="'.$row["equip_id"].'" class="btn btn-danger btn-xs today">Reset</button>
+		';
+		$data[] = $sub_array;
+		$count = $count+1;
+	}
+
+	if($row['is_broken'] == 'yes'){
+		$sub_array = array();
+		$sub_array[] = $row['equip_id'];
+		$sub_array[] = $row['equip_name'];
+		$sub_array[] = '<div style="color:rgba(255, 0, 0, 1);"> BROKEN </div>';
 		$sub_array[] = '
 			<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 			';

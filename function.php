@@ -689,6 +689,31 @@ function maintenance_red_num($connect){
 /*
 	Returns the number of items that are past their maintain by date
 */
+function broken_num($connect){
+	$count = 0;
+	$query = "
+	SELECT SYSDATE() as 'tday',last_maintained as 'lm', maintain_every as 'me' 
+	FROM equipment 
+	WHERE is_broken = 'yes' 
+	AND equip_status = 'active' 
+	";
+	
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+				$count = $count + 1;
+		}
+		
+	}
+	return $count;
+}
+
+/*
+	Returns the number of items that are past their maintain by date
+*/
 function maintenance_warning_num($connect){
 	$count = 0;
 	$query = "
@@ -786,6 +811,29 @@ function check_equip_maintenance_month($connect, $equip_id){
 				$ans = 'red';
 			}else if($today > $maintain_warn && $today < $maintain_by){
 				$ans = 'yellow';
+			}
+		}
+		
+	}
+	return $ans;
+}
+
+function check_equip_broken($connect, $equip_id){
+	$ans = 'good';
+	$query = "
+	SELECT is_broken 
+	FROM equipment 
+	WHERE equip_id = '".$equip_id."'
+	";
+	
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			if($row['is_broken'] == 'yes'){
+				$ans = 'red';
 			}
 		}
 		

@@ -26,7 +26,8 @@ include('header.php');
 <?php
 $count_red = maintenance_red_num($connect);
 $count_yellow = maintenance_warning_num($connect);
-if($count_red > 0){
+$broken = broken_num($connect);
+if($count_red > 0 || $broken > 0){
 ?>
     <!-- Alerts user if equipment needs to be maintained-->
     <div class="row" style="align-content:center;">
@@ -42,7 +43,7 @@ if($count_red > 0){
                 </div>
                 
                 <div style="font-size:13px; text-align:center">
-                    <?php echo  $count_red." item(s) require maintenance"; ?>
+                    <?php echo  $count_red." item(s) require maintenance and ".$broken." item(s) are broken"; ?>
                 </div>
             </div>
         </div>
@@ -138,7 +139,7 @@ if($count_red > 0){
                     </div>
 
                     <div class="form-group">
-                        <label for="is_maintenance_required">Maintenance Required </label>
+                        <label for="is_maintenance_required">Scheduled Maintenance Required </label>
                         <input type="hidden" value="no" name="is_maintenance_required"/>
                         <input type="checkbox" value="yes" name="is_maintenance_required" id="is_maintenance_required" class="form-check-input" onclick="moreOptions()" style="width:2%; display:inline;"/>
                         <!-- INFO BTN -->
@@ -146,39 +147,56 @@ if($count_red > 0){
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
-
-                    <!-- <div class="invisible" id="maintain_vis"> -->
-                    <div id="maintain_vis">
-                        <div class="form-group">
-                            <label for="maintain_every">Requires Maintenance Every</label>
-                            <select class="form-control" name="maintain_every" id="maintain_every" style="width:85%; display:inline;">
-                                <option value="3">3 Months</option>
-                                <option value="6">6 Months</option>
-                                <option value="12">1 Year</option>
-                                <option value="18">1 Year 6 Months</option>
-                                <option value="24">2 years</option>
-                            </select>
-                            <!-- INFO BTN -->
-                            <button type="button" class="btn btn-link" data-toggle="popover" data-content="How often does this piece of equipment require maintenance?" data-placement="left">
+                        <div id="maintain_vis">
+                            <div class="form-group">
+                                <label for="maintain_every">Requires Maintenance Every</label>
+                                <select class="form-control" name="maintain_every" id="maintain_every" style="width:85%; display:inline;">
+                                    <option value="3">3 Months</option>
+                                    <option value="6">6 Months</option>
+                                    <option value="12">1 Year</option>
+                                    <option value="18">1 Year 6 Months</option>
+                                    <option value="24">2 years</option>
+                                </select>
+                                <!-- INFO BTN -->
+                                <button type="button" class="btn btn-link" data-toggle="popover" data-content="How often does this piece of equipment require maintenance?" data-placement="left">
+                                    <img src="images/info5_sm.png" alt="info">
+                                </button>
+                            </div>
+                            <div class="form-group">  
+                                <label for="last_maintained">Last Maintenance Date</label>
+                                <input type="date" class="form-control" name="last_maintained" id="last_maintained" style="width:85%; display:inline;"/>
+                                <!-- INFO BTN -->
+                                <button type="button" class="btn btn-link" data-toggle="popover" data-content="When was the last time this piece of equipment was maintained?" data-placement="left">
                                 <img src="images/info5_sm.png" alt="info">
                             </button>
+                            </div>
                         </div>
-                        <div class="form-group">  
-                            <label for="last_maintained">Last Maintenance Date</label>
-                            <input type="date" class="form-control" name="last_maintained" id="last_maintained" style="width:85%; display:inline;"/>
-                            <!-- INFO BTN -->
-                            <button type="button" class="btn btn-link" data-toggle="popover" data-content="When was the last time this piece of equipment was maintained?" data-placement="left">
+                    <div class="form-group">
+                        <label for="is_broken"> Needs Maintenance Now </label>
+                        <input type="hidden" value="no" name="is_broken"/>
+                        <input type="checkbox" value="yes" name="is_broken" id="is_broken" class="form-check-input" onclick="moreOptionsBroken()" style="width:2%; display:inline;"/>
+                        <!-- INFO BTN -->
+                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="Check this box if the piece of equipment breaks" data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
                         </button>
-                        </div>
                     </div>
+                        <div id="broken_vis" style="display:none">
+                            <div class="form-group">  
+                                <label for="last_maintained">Describe the Problem</label>
+                                <textarea name="broken_desc" placeholder="Explain the problem" id="broken_desc" class="form-control" rows="5" style="width:85%; display:inline;"></textarea>
+                                <!-- INFO BTN -->
+                                <button type="button" class="btn btn-link" data-toggle="popover" data-content="What caused this piece of equipment to break?" data-placement="left">
+                                <img src="images/info5_sm.png" alt="info">
+                            </button>
+                            </div>
+                        </div>
 
                 </div>
 
                 <div class="modal-footer">
                     <input type="hidden" name="equip_id" id="equip_id" />
                     <input type="hidden" name="btn_action" id="btn_action" />
-                    <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
+                    <input type="submit" name="action" id="action" class="btn btn-info" value="Add" style="width:100px"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
 
@@ -318,14 +336,26 @@ $(document).ready(function(){
 
                 if(data.is_maintenance_required == 'yes'){
                     $('#is_maintenance_required').prop('checked', true);
-                    moreOptions();
+                    // moreOptions();
+                    $('#maintain_vis').show();
                 }else{
                     $('#is_maintenance_required').prop('checked', false);
-                    moreOptions();
+                    // moreOptions();
+                    $('#maintain_vis').hide();
                 }
-                
                 $('#maintain_every').val(data.maintain_every);
                 $('#last_maintained').val(data.last_maintained);
+
+                //Displays the desc box for broken equipment
+                if(data.is_broken == 'yes'){
+                    $('#is_broken').prop('checked', true);
+                    $('#broken_vis').show();
+                }else{
+                    $('#is_broken').prop('checked', false);
+                    $('#broken_vis').hide();
+                }
+                $('#broken_desc').val(data.broken_desc);
+                
                 $('.modal-title').html("<i class='fa fa-pencil-square-o'></i> Edit Equipment");
                 $('#equip_id').val(equip_id);
                 $('#action').val("Edit");
@@ -361,6 +391,11 @@ $(document).ready(function(){
             return false;
         }
     });
+
+    //Controls the delete button inside the dataTable
+    $(document).on('click', '#broken_btn', function(){
+        $('#broken_vis').toggle();
+    });
     
     /* 
         THIS IS HARDCODED JQUERY STYLING FOR THE TABLE PAGNATION
@@ -395,6 +430,16 @@ $(document).ready(function(){
         }
         if(document.getElementById("is_maintenance_required").checked === false){
             document.getElementById("maintain_vis").style.display = "none";
+        }
+    }
+
+    //Used to toggle the extra maintenance options once checkbox is clicked on modal after the modal is already loaded
+    function moreOptionsBroken() {
+        if(document.getElementById("is_broken").checked === true){
+            document.getElementById("broken_vis").style.display = "block";
+        }
+        if(document.getElementById("is_broken").checked === false){
+            document.getElementById("broken_vis").style.display = "none";
         }
     }
 </script>

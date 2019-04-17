@@ -6,7 +6,6 @@ include('function.php');
 $query = '';
 $query .= "
 	SELECT * FROM equipment 
-	
 ";
 
 if(isset($_POST["search"]["value"]))
@@ -43,11 +42,15 @@ $filtered_rows = $statement->rowCount();
 
 foreach($result as $row)
 {
+	
+	$check_broken = check_equip_broken($connect, $row['equip_id']);
+
+	$check_main = check_equip_maintenance_month($connect, $row['equip_id']);
 
 	$sub_array = array();
-	if(check_equip_maintenance_month($connect, $row['equip_id']) == 'red'){
+	if($check_main == 'red' ||  $check_broken == 'red'){
 		$sub_array[] =  '<div style="color:rgba(255, 0, 0, 1); border-radius: 15px;">'.$row['equip_id'].'</div>';
-	}else if(check_equip_maintenance_month($connect, $row['equip_id']) == 'yellow'){
+	}else if($check_main == 'yellow'){
 		$sub_array[] =  '<div style="color:rgba(248, 148, 6, 1); border-radius: 15px;">'.$row['equip_id'].'</div>';
 	}else{
     	$sub_array[] = $row['equip_id'];

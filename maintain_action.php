@@ -63,6 +63,14 @@ if(isset($_POST['btn_action']))
 					</tr>
 				';
 			}
+			if($row['is_broken'] == 'yes'){
+				$output .= '
+					<tr>
+						<td>Description of Problem</td>
+						<td>'.$row["broken_desc"].'</td>
+					</tr>
+				';
+			}
 			$output .= '
 
 			<tr>

@@ -40,17 +40,17 @@ if(isset($_POST['btn_action']))
 			$entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
 
 
-			$output .= '
-			<tr>
-				<td>Equipment Name</td>
-				<td>'.$row["equip_name"].'</td>
-			</tr>
-			<tr>
-				<td>Equipment Description</td>
-				<td>'.$row["equip_desc"].'</td>
-			</tr>
-			';
-			if($row['is_maintenance_required'] == 'yes'){
+			// $output .= '
+			// <tr>
+			// 	<td>Equipment Name</td>
+			// 	<td>'.$row["equip_name"].'</td>
+			// </tr>
+			// <tr>
+			// 	<td>Equipment Description</td>
+			// 	<td>'.$row["equip_desc"].'</td>
+			// </tr>
+			// ';
+			if(check_equip_maintenance_month($connect, $row['equip_id']) == 'red'){
 				$output .= '
 					<tr>
 						<td>Maintain Every</td>
@@ -71,13 +71,13 @@ if(isset($_POST['btn_action']))
 					</tr>
 				';
 			}
-			$output .= '
+			// $output .= '
 
-			<tr>
-				<td>Status</td>
-				<td>'.$status.'</td>
-			</tr>
-			';
+			// <tr>
+			// 	<td>Status</td>
+			// 	<td>'.$status.'</td>
+			// </tr>
+			// ';
 		}
 
 		$output .= '
@@ -137,24 +137,52 @@ if(isset($_POST['btn_action']))
 
 	if($_POST['btn_action'] == 'Today')
 	{
-		$query = "
-		UPDATE equipment 
-		set 
-		last_maintained = :last_maintained
-		WHERE equip_id = :equip_id
-		";
-		$statement = $connect->prepare($query);
-		$statement->execute(
-			array(
-				':last_maintained'	=>	date('Y-m-d'),
-				':equip_id'			=>	$_POST['equip_id']
-			)
-		);
-		$result = $statement->fetchAll();
-		if(isset($result))
-		{
-			$output = 'Last Maintained Date for item #'.$_POST['equip_id'].' set to TODAY';
-			echo 'Last Maintained Date for item #'+$output+' set to TODAY';
+		$color = check_equip_maintenance_month($connect, $_POST['equip_id']);
+		if($color == 'red'){
+
+			$query = "
+			UPDATE equipment 
+			SET
+			last_maintained = :last_maintained
+			WHERE equip_id = :equip_id
+			";
+
+			$statement = $connect->prepare($query);
+			$statement->execute(
+				array(
+					':last_maintained'	=>	date('Y-m-d'),
+					':equip_id'			=>	$_POST['equip_id']
+				)
+			);
+			$result = $statement->fetchAll();
+			if(isset($result))
+			{
+				echo 'Item #'+$_POST['equip_id']+' was fixed';
+			}
+		}else{
+
+			$query = "
+			UPDATE equipment 
+			SET
+			is_broken = :is_broken,
+			broken_desc = :broken_desc
+			WHERE equip_id = :equip_id
+			";
+			$statement = $connect->prepare($query);
+			$statement->execute(
+				array(
+					':is_broken'	=>	'no',
+					':broken_desc'	=>	 Null,
+					':equip_id'		=>	$_POST['equip_id']
+				)
+			);
+			$result = $statement->fetchAll();
+			if(isset($result))
+			{
+
+				echo 'Item #'+$_POST['equip_id']+' was fixed';
+			}
+
 		}
 	}
 }

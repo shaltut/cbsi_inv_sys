@@ -65,7 +65,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		if(isset($result))
 		{
-			echo ''.last_equipment_added_id($connect);
+			echo last_equipment_added_id($connect);
 			
 		}
 	}
@@ -289,7 +289,7 @@ if(isset($_POST['btn_action']))
 		if(isset($result))
 		{
 			// echo 'Equipment Details Edited';
-			echo $_POST['is_broken'].', DESC: '.$broken_desc;
+			echo 'Equipment successfully updated';
 		}
 	}
  

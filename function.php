@@ -1,6 +1,12 @@
 <?php
 //function.php
 
+
+/*
+	Returns the ID of the last piece of equipment added to the database
+	Used In:
+		- equipment_action.php
+*/
 function last_equipment_added_id($connect){
 	$query = "
 	SELECT max(equip_id) as 'eid' FROM equipment 

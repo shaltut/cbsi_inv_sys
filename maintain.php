@@ -206,7 +206,8 @@ $(document).ready(function(){
             data:{equip_id:equip_id, btn_action:btn_action},
             dataType:"json",
             success:function(data){
-                $('#alert_action').fadeIn().html('<div class="alert alert-success">Equipment Maintenance Date Set to the Current Date</div>');
+
+                $('#alert_action').fadeIn().html('<div class="alert alert-success">Equipment fixed or maintained, and removed from maintenance page</div>');
                 maintainDataTable.ajax.reload();
             }
         })

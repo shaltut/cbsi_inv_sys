@@ -1,10 +1,17 @@
 <?php
-//locate_action.php
-
+/*  PAGE:   locate_action.php
+*   INFO:   This page is used to complete an action after the user submits 
+*           a form, clicks a button, or performs some other action. 
+*   ACTIONS:
+*      	equipment_details:	Triggered when the 'View' button is clicked (table button). It displaysa all the info about the given
+*							piece of equipment.
+*                    
+*         	 fetch_single:	Triggered when the 'Update' button is clicked. It takes the values that the user entered into the form 
+*							and sets those values to match in the database.
+*                   
+*/
 include('database_connection.php');
-
 include('function.php');
-
 
 if(isset($_POST['btn_action']))
 {
@@ -163,16 +170,4 @@ if(isset($_POST['btn_action']))
 		echo json_encode($output);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

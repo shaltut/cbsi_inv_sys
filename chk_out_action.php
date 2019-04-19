@@ -1,5 +1,12 @@
- <?php
- //chk_out_action.php
+<?php
+/*  PAGE:   chk_out_action.php
+*   INFO:   This page is used to complete an action after the user submits 
+*           a form, clicks a button, or performs some other action. 
+*   ACTIONS:
+*       Check Out: 	Triggered when the check-out form is submitted. It takes the given equip_id
+*                   and site, and creates a row in the equipment_checkout table.
+*                   
+*/
  
 include('function.php');
 include('database_connection.php');
@@ -74,5 +81,4 @@ if(isset($_POST['btn_action']))
         }
     }
 }
-
 ?>

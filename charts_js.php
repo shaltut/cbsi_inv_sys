@@ -1,19 +1,35 @@
 <?php
-//charts_js.php
-?> 
+/*
+    charts_js.php
 
+    Implementation of the chartsJS API
+*/
+?> 
 <script>
 
-// Bar chart showing the number of checkouts on a per-site basis
+/* Bar chart showing the number of checkouts on a per-site basis
+*   
+*
+*/
 new Chart(document.getElementById("check_by_site"), {
     type: 'bar',
     data: {
-        labels: [<?php echo checkouts_by_site_names($connect); ?>],
+        labels: [
+            <?php 
+                //Returns a CSV string of all active site's names
+                echo checkouts_by_site_names($connect); 
+            ?>
+        ],
         datasets: [
         {
             label: 'Today',
             hidden: true,
-            data: [<?php echo checkouts_by_site_num_checkouts_today($connect); ?>],
+            data: [
+                <?php 
+                    //Returns CSV string of all checkouts for each site that took place on the current system date
+                    echo checkouts_by_site_num_checkouts_today($connect); 
+                ?>
+            ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -35,7 +51,12 @@ new Chart(document.getElementById("check_by_site"), {
         ,{
             label: 'This Week',
             hidden: false,
-            data: [<?php echo checkouts_by_site_num_checkouts_week($connect); ?>],
+            data: [
+                <?php 
+                    //Returns CSV string of all checkouts for each site that took place in the last week
+                    echo checkouts_by_site_num_checkouts_week($connect); 
+                ?>
+            ],
             data: [2,6,5,6,2,1],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -58,7 +79,12 @@ new Chart(document.getElementById("check_by_site"), {
         {
             label: 'This Month',
             hidden: true,
-            data: [<?php echo checkouts_by_site_num_checkouts_month($connect); ?>],
+            data: [
+                <?php 
+                    //Returns CSV string of all checkouts for each site that took place in the last month
+                    echo checkouts_by_site_num_checkouts_month($connect); 
+                ?>
+            ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -81,7 +107,12 @@ new Chart(document.getElementById("check_by_site"), {
         {
             label: 'End of Time',
             hidden: true,
-            data: [<?php echo checkouts_by_site_num_checkouts($connect); ?>],
+            data: [
+                <?php 
+                    //Returns CSV string of all checkouts for each site (end of time)
+                    echo checkouts_by_site_num_checkouts($connect); 
+                ?>
+            ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -101,15 +132,15 @@ new Chart(document.getElementById("check_by_site"), {
             borderWidth: 1
         }]
     }
-    // Options
     ,options: {
-        aspectRatio: 0,
+        //Options for the title
         title: {
             display: true,
             text: 'Checkouts By Site',
             fontColor: 'black',
             fontSize: 18
         },
+        //Options for the legend
         legend: {
             position: 'bottom',
             labels: {
@@ -119,6 +150,7 @@ new Chart(document.getElementById("check_by_site"), {
                 padding: 3
             }
         },
+        // Options for the numbers on the left side of the bar chart
         scales: {
             xAxes: [{
                 barPercentage: 1.25,
@@ -139,6 +171,7 @@ new Chart(document.getElementById("check_by_site"), {
                 }
             }]
         },
+        // Positioning opitons
         layout: {
             padding: {
                 left: 0,
@@ -147,6 +180,7 @@ new Chart(document.getElementById("check_by_site"), {
                 bottom: -12
             }
         },
+        //  Display animations (on page load)
         animation: {
             duration: 1500,
             easing: 'easeOutElastic'
@@ -154,26 +188,34 @@ new Chart(document.getElementById("check_by_site"), {
     }
 });
 
-// Bar Chart that receives a user_id as input and returns the number of checkouts and returns for that user. Default user is the currently logged in user_id session variable
+/*  Bar Chart that receives a user_id as input and returns the number of checkouts and returns for that user. Default user is the currently logged in user_id session variable
+*
+*
+*/
 new Chart(document.getElementById("empl_stat"), {
     type: 'bar',
     data: {
         labels: ['Checkouts', 'Returns'],
         datasets: [{
-            label: <?php 
-                if(isset($_POST['btn_action']) AND isset($_POST['empl_id'])){
-                    echo '\'Selected Employee\'';
-                }else{
-                   echo '\'You\'';
-                }
+            label: 
+                <?php 
+                    //Changes the title of the graph depending on the input
+                    if(isset($_POST['btn_action']) AND isset($_POST['empl_id'])){
+                        echo '\'Selected Employee\'';
+                    }else{
+                       echo '\'You\'';
+                    }
                 ?>,
-            data: [<?php 
-                if(isset($_POST['btn_action']) AND isset($_POST['empl_id'])){
-                    echo user_wise_num_checkouts($connect, $_POST['empl_id']).','.user_wise_num_checkins($connect, $_POST['empl_id']);
-                }else{
-                   echo user_wise_num_checkouts($connect, $_SESSION['user_id']).','.user_wise_num_checkins($connect, $_SESSION['user_id']);
-            }?>],
-                
+            data: [
+                <?php 
+                    //Changes the chart data depending on the inputs
+                    if(isset($_POST['btn_action']) AND isset($_POST['empl_id'])){
+                        echo user_wise_num_checkouts($connect, $_POST['empl_id']).','.user_wise_num_checkins($connect, $_POST['empl_id']);
+                    }else{
+                       echo user_wise_num_checkouts($connect, $_SESSION['user_id']).','.user_wise_num_checkins($connect, $_SESSION['user_id']);
+                    }
+                ?>
+            ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 99, 132, 0.2)',
@@ -185,9 +227,11 @@ new Chart(document.getElementById("empl_stat"), {
             borderWidth: 1
         },{
             label: 'All Employees',
-            data: [<?php 
-                   echo num_checkouts($connect).','.num_returned($connect);
-                ?>],
+            data: [
+                <?php 
+                    echo num_checkouts($connect).','.num_returned($connect);
+                ?>
+            ],
             backgroundColor: [
                 'rgba(153, 102, 255, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
@@ -226,7 +270,9 @@ new Chart(document.getElementById("empl_stat"), {
         scales: {
             yAxes: [{
                 ticks: {
+                    // Makes sure the ticks start at 0
                     beginAtZero: true,
+                    //Function makes sure that only whole numbers are used for ticks
                     userCallback: function(label, index, labels) {
                      // when the floored value is the same as the value we have a whole number. This gets rid of decimals. (Users cant check out .5 of an item, so this is required)
                      if (Math.floor(label) === label) {
@@ -237,6 +283,7 @@ new Chart(document.getElementById("empl_stat"), {
                 }
             }]
         },
+        //Layout options
         layout: {
             padding: {
                 left: -2,
@@ -252,7 +299,10 @@ new Chart(document.getElementById("empl_stat"), {
     }
 });
 
-// Pie Chart showing the price of equipment in 5 different categories. 
+/*  Pie Chart showing the price of equipment in 5 different categories. 
+*
+*
+*/
 new Chart(document.getElementById("equip_cost_pie").getContext('2d'), {
     type: 'pie',
     data: {
@@ -318,7 +368,10 @@ new Chart(document.getElementById("equip_cost_pie").getContext('2d'), {
     }
 });
 
-//Line Graph showing checkouts by month. Each month, a new bar will be added.
+/*  Line Graph showing checkouts by month. Each month, a new bar will be added.
+*
+*
+*/
 new Chart(document.getElementById("equip_monthly_checkouts"), {
     type: 'line',
     data: {
@@ -374,19 +427,3 @@ new Chart(document.getElementById("equip_monthly_checkouts"), {
     }
 });
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

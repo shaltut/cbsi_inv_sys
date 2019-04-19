@@ -15,8 +15,6 @@ if($_SESSION['type'] != 'master')
 }
 
 include('header.php');
-
-// echo 'Last id: '.last_equipment_added_id($connect);
 ?>
 
 <!-- Alerts the user to changes they have made, or errors -->

@@ -1,8 +1,7 @@
 <?php
 //site.php
-
 include('database_connection.php');
-include('function.php');
+// include('function.php');
 
 if(!isset($_SESSION["type"]))
 {
@@ -15,7 +14,6 @@ if($_SESSION['type'] != 'master')
 }
 
 include('header.php');
-
 ?>
 
 <!-- Alerts the user to changes they have made, or errors -->

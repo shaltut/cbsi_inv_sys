@@ -1,7 +1,6 @@
 <?php
 //check.php
 
-
 //Includes connection to the database
 include('database_connection.php');
 
@@ -112,6 +111,7 @@ include('header.php');
                                         <table id="index_data" class="table table-striped display compact" style="width:100%">
                                             <thead>
                                                 <tr>
+                                                    <!-- Inputs for serverside datatables-->
                                                     <th>Date of Checkout</th>
                                                     <th>Equipment ID</th>
                                                     <th>Equipment Name</th>
@@ -240,10 +240,3 @@ $(document).ready(function(){
     });
 });
 </script>
-
-
-
-
-
-
-

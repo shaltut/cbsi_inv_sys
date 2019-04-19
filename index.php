@@ -1,17 +1,13 @@
 <?php
 //index.php
-
 include('database_connection.php');
 include('function.php');
-
 if(!isset($_SESSION["type"]))
 {
 	header("location:login.php");
 }
-
 include('header.php');
 ?>
-
 <div class="row">
 	<?php
 	if(count_check_out_user($connect, $_SESSION['user_id']) > 0){
@@ -32,7 +28,6 @@ include('header.php');
 	<?php
 	}
 	?>
-
 </div> 	<!-- End First Row -->
 <div class="row">
 	<?php
@@ -54,10 +49,8 @@ include('header.php');
 		        <?php echo table_checkouts_user_wise($connect); ?>
 		        <div style="float:right">
 		        	<span class="glyphicon glyphicon-ok">
-		        		
 		        	</span> = Returned,
 		        	<span class="glyphicon glyphicon-remove">
-		        		
 		        	</span> = Still In Use
 		        </div>
 		    </div>
@@ -84,8 +77,6 @@ include('header.php');
 	?>
 </div> 	<!-- End Second Row -->
 <hr/>
-
-
 	<!-- This block of code either outputs a table that shows currently checked out items, or a div that displays "All Equipment Accounted For" -->
 	<?php
 	if($_SESSION['type'] == 'master'){
@@ -108,7 +99,6 @@ include('header.php');
 	<?php
 	   	}else{
 	?>
-
 			<!-- 
 				This function shows the TOTAL number of pieces of equipment checked out by ALL employees (only seen by admin).
 			-->
@@ -124,7 +114,6 @@ include('header.php');
 					</div>
 				</div>
 			</div>
-
 				<!--
 					Shows the currently checked out items, and the users who checked them out
 				-->
@@ -147,20 +136,15 @@ include('header.php');
 		}
 	}
 	?>
-
-
 <!-- Importing the footer code -->    
 <?php
 include("footer.php");
 ?>
-
-
 <script>
 $(document).ready(function(){
     //Used to toggle off/on the INFO popovers on the forms
     $(function () {
         $('[data-toggle="popover"]').popover();
     });
-
 });
 </script>

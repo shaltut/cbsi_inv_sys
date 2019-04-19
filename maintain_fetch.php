@@ -1,6 +1,7 @@
 <?php
-//maintain_fetch.php
-
+/*	PAGE: 	maintain_fetch.php
+*	INFO:	Fetch page used to populate the table data from the database.
+*/
 include('database_connection.php');
 include('function.php');
 
@@ -64,5 +65,4 @@ $output = array(
 );
 
 echo json_encode($output);
-
 ?>

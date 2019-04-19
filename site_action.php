@@ -1,10 +1,25 @@
 <?php
-//site_action.php
-
+/*  PAGE:   site_action.php
+*   INFO:   This page is used to complete an action after the user submits 
+*           a form, clicks a button, or performs some other action. 
+*   ACTIONS:
+*       	 Add:	Triggered when the add site form is submitted. It inserts a new row in the sites table
+*              					containing the form field data submitted by the user. (adds the site data as a row in the sites table)
+*
+*	site_details:	Triggered when "View" button is clicked (table button). It returns the table with all the info about 
+*      							the selected job-site inside the view modal.      
+*     
+*	fetch_single:	Triggered when the user selects an "Update" button (table button). It returns the data to pre-populate the site
+*							form so the user can see the current database fields while updating them.
+*
+*			Edit:	Triggered when the user submits the update form. It takes all the current form field values and updates the database
+*							values to match.
+*                   
+*  		  delete:	Triggered when the user clicks the toggle button (table button). It toggles the given site's site_status
+*							value in the database. (If site_status = 'active' then changes status to 'inactive' and vica versa)	
+*/
 include('database_connection.php');
-
-include('function.php');
-
+// include('function.php');
 
 if(isset($_POST['btn_action']))
 {
@@ -176,6 +191,4 @@ if(isset($_POST['btn_action']))
 		}
 	}
 }
-
-
 ?>

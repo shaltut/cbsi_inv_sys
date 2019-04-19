@@ -1,8 +1,7 @@
 <?php
 //stats.php
-
 include('database_connection.php');
-include('function.php');
+include('chartjs_functions.php');
 
 if(!isset($_SESSION["type"]))
 {
@@ -228,4 +227,3 @@ function goBack() {
   window.history.back();
 }
 </script>
-           

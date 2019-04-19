@@ -1,16 +1,12 @@
 <?php
 //locate.php
-
 include('database_connection.php');
-include('function.php');
-
+// include('function.php');
 if(!isset($_SESSION["type"]))
 {
     header('location:login.php');
 }
-
 include('header.php');
-
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
 
@@ -222,7 +218,3 @@ $(document).ready(function(){
 
 });
 </script>
-
-
-
-

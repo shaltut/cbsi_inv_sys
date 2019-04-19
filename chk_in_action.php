@@ -1,14 +1,20 @@
- <?php
- //chk_in_action.php
- 
-include('function.php');
-
-/*
-        Users are sent here after clicking a button or doing some action (like
-    adding a user) on user.php. Below is the php, javascript, and SQL commands 
-    called whenever someone performs one of those actions.
+<?php
+/*  PAGE:   chk_in_action.php
+*   INFO:   This page is used to complete an action after the user submits 
+*           a form, clicks a button, or performs some other action. In this
+*           case, there is only 1 possible action (clicking the check-in button)
+*   ACTIONS:
+*       chk_in_btn: Triggered when the check-in button is clicked on the table 
+*                   in check.php. The chk_id of the checkout selected is sent 
+*                   as well, and is used to tell this action which checkout
+*                   to return.
+*
+*                   The action then takes the chk_id and sets the 'returned' 
+*                   value in the database to 'true'.
+*                   
 */
 
+//Includes connection to the database
 include('database_connection.php');
 
 if(isset($_POST['btn_action']))
@@ -38,5 +44,4 @@ if(isset($_POST['btn_action']))
             }
     }
 }
-
 ?>

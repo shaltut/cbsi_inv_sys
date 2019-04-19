@@ -8,15 +8,8 @@ if(!isset($_SESSION['type']))
 	header("location:login.php");
 }
 
-// if($_SESSION['type'] != 'master')
-// {
-//     header('location:index.php');
-// }
-
 include('header.php');
-?>
 
-<?php
 $query = "
 SELECT * FROM user_details 
 WHERE user_id = '".$_SESSION["user_id"]."'
@@ -32,7 +25,6 @@ foreach($result as $row)
 	$name = $row['user_name'];
 	$email = $row['user_email'];
 }
-
 ?>
 <div class="panel panel-default">
 	<div class="panel-heading">Edit Profile</div>
@@ -111,6 +103,3 @@ $(document).ready(function(){
 	});
 });
 </script>
-
-
-			

@@ -1,8 +1,7 @@
 <?php
 //user.php
-
 include('database_connection.php');
-include('function.php');
+// include('function.php');
 
 if(!isset($_SESSION["type"]))
 {
@@ -284,7 +283,6 @@ $(document).ready(function(){
 
 });
 </script>
-
 <?php
 include('footer.php');
 ?>

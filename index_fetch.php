@@ -1,8 +1,10 @@
 <?php
-//index_fetch.php
+/*	PAGE: 	index_fetch.php
+*	INFO:	Fetch page used to populate the table data from the database.
+*/
 
 include('database_connection.php');
-include('function.php');
+// include('function.php');
 
 $query = '';
 
@@ -75,5 +77,4 @@ $output = array(
 );
 
 echo json_encode($output);
-
 ?>

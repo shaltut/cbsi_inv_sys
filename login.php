@@ -1,18 +1,11 @@
 <?php
-//login.php
-
-
 include('database_connection.php');
-
-if(isset($_SESSION['type']))
-{
-	header("location:index.php");
+if(isset($_SESSION['type'])){
+    header("Location:index.php");
+    echo "<script> window.location.assign('index.php'); </script>";
 }
-
 $message = '';
-
-if(isset($_POST["login"]))
-{
+if(isset($_POST["login"])){
 	$query = "
 	SELECT * FROM user_details 
 		WHERE user_email = :user_email
@@ -20,44 +13,32 @@ if(isset($_POST["login"]))
 	$statement = $connect->prepare($query);
 	$statement->execute(
 		array(
-				'user_email'	=>	$_POST["user_email"]
+				'user_email' =>	$_POST["user_email"]
 			)
 	);
 	$count = $statement->rowCount();
-	if($count > 0)
-	{
+	if($count > 0){
 		$result = $statement->fetchAll();
-		foreach($result as $row)
-		{
-			if($row['user_status'] == 'Active')
-			{
-				if(password_verify($_POST["user_password"], $row["user_password"]))
-				{
-				
+		foreach($result as $row){
+			if($row['user_status'] == 'Active'){
+				if(password_verify($_POST["user_password"], $row["user_password"])){
 					$_SESSION['type'] = $row['user_type'];
 					$_SESSION['user_id'] = $row['user_id'];
 					$_SESSION['user_name'] = $row['user_name'];
-					header("location:index.php");
-				}
-				else
-				{
+					header("Location: index.php");
+					echo "<script> window.location.assign('index.php'); </script>";
+				}else{
 					$message = "<label>Wrong Password</label>";
 				}
-			}
-			else
-			{
+			}else{
 				$message = "<label>Your account is disabled, Contact Master</label>";
 			}
 		}
-	}
-	else
-	{
+	}else{
 		$message = "<label>Account does not exist!</label>";
 	}
 }
-
 ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -124,12 +105,10 @@ if(isset($_POST["login"]))
 
 <script>
 	//Used to toggle off/on the INFO popovers on the forms
-    $(function () {
-        $('[data-toggle="popover"]').popover();
-    });
+    // $(function () {
+    //     $('[data-toggle="popover"]').popover();
+    // });
 </script>
 
 	</body>
 </html>
-
-

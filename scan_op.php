@@ -1,12 +1,9 @@
 <?php
 //scan_op.php
-
 //Includes connection to the database
 include('database_connection.php');
-
 //Includes all the functions in the functions.php page
-include('function.php');
-
+// include('function.php');
 /*
 	This function sends the user to the login.php page if they arent logged in (or no session as been initiated)
 */
@@ -17,7 +14,6 @@ if(!isset($_SESSION['type']))
 
 //Includes the code for the navbar 
 include('header.php');
-
 ?>
 <style>
     .center{
@@ -230,10 +226,3 @@ $(document).ready(function(){
     });
 });
 </script>
-
-
-
-
-
-
-

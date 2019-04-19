@@ -1,10 +1,24 @@
 <?php
-//maintain_action.php
-
+/*  PAGE:   maintain_action.php
+*   INFO:   This page is used to complete an action after the user submits 
+*           a form, clicks a button, or performs some other action. 
+*   ACTIONS:
+*       equipment_details:	Triggered when the 'View' button is clicked (table button). It displaysa all the info about the given
+*							piece of equipment. 
+*       					
+*            fetch_single: 	Triggered when the 'Update' button is clicked. It takes the values that the user entered into the form 
+*							and sets those values to match in the database.  
+*                   		
+*					 Edit:	Triggered when the user submits the update form. It takes all the current form field values and updates the database
+*							values to match.
+*                   
+*                   Today:	Triggered when the user clicks the 'Auto-Reset' button (table button). It automatically resets the equipment's is_broken,
+*							or is_maintenance_required values to their standard values ('no'). If the equipment is past its maintenance date, it sets 
+*							the last_maintained date to the current system date. If is_broken is true, then it sets broken_desc to NULL.
+*                   
+*/
 include('database_connection.php');
-
 include('function.php');
-
 
 if(isset($_POST['btn_action']))
 {
@@ -39,17 +53,6 @@ if(isset($_POST['btn_action']))
 			
 			$entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
 
-
-			// $output .= '
-			// <tr>
-			// 	<td>Equipment Name</td>
-			// 	<td>'.$row["equip_name"].'</td>
-			// </tr>
-			// <tr>
-			// 	<td>Equipment Description</td>
-			// 	<td>'.$row["equip_desc"].'</td>
-			// </tr>
-			// ';
 			if(check_equip_maintenance_month($connect, $row['equip_id']) == 'red'){
 				$output .= '
 					<tr>
@@ -71,13 +74,6 @@ if(isset($_POST['btn_action']))
 					</tr>
 				';
 			}
-			// $output .= '
-
-			// <tr>
-			// 	<td>Status</td>
-			// 	<td>'.$status.'</td>
-			// </tr>
-			// ';
 		}
 
 		$output .= '

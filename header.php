@@ -1,10 +1,5 @@
-<?php
-//header.php
-
-error_reporting(0);
-
-if(!isset($_SESSION["type"]))
-{
+<?php //header.php
+if(!isset($_SESSION["type"])){
     header('location:login.php');
 }
 ?>
@@ -19,9 +14,7 @@ if(!isset($_SESSION["type"]))
 		<link rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/Chart.min.js"></script>
-
 	</head>
-
 <style type="text/css">
 	html {
 		background-color:gainsboro;
@@ -30,17 +23,11 @@ if(!isset($_SESSION["type"]))
 		background-color:gainsboro;
 	}
 </style>
-
 	<body>
-			
-
-<!-- NAVBAR -------------------------------------------------------------------->
-
-
+<!-- NAVBAR ------------------------------------------------------------------->
 			<nav class="navbar navbar-inverse">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						
 						<!-- mobile navbar -->
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
 							<span class="sr-only" >Toggle Navigation</span>
@@ -48,15 +35,10 @@ if(!isset($_SESSION["type"]))
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-
-
 						<a href="index.php" class="navbar-brand">CBSI</a>
 					</div> <!-- navbar-header -->
-
 					<div id="menu" class="collapse navbar-collapse">
-
 					<ul class="nav navbar-nav">
-					
 					<?php
 					if($_SESSION['type'] == 'master') //Only seen by MASTER
 					{
@@ -69,7 +51,6 @@ if(!isset($_SESSION["type"]))
 					?>
 						<li><a href="locate.php">Locate</a></li>
 						<li><a href="check.php">Checkout</a></li>
-					
 					<?php
 					if($_SESSION['type'] == 'user') // Only seen by USER
 					{
@@ -78,10 +59,7 @@ if(!isset($_SESSION["type"]))
 					<?php
 					}
 					?>
-
 					</ul> <!-- left list -->
-
-
 					<!-- 
 						This is the far right of the nav bar that displays the users Username. It includes a dropdown with 2 options:
 							- profile -> profile.php
@@ -100,12 +78,9 @@ if(!isset($_SESSION["type"]))
 							</ul>
 						</li>
 					</ul> <!-- right list dropdown -->
-
-				</div> <!-- collapse -->
-
+				</div> <!-- collapse --
 				</div> <!-- container-fluid -->
 			</nav>
-
-<!-- END NAVBAR --------------------------------------------------------------------->
+<!-- END NAVBAR --------------------------------------------------------------->
 <br />
 		<div class="container">

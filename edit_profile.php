@@ -32,5 +32,4 @@ if(isset($_POST['user_name']))
 		echo '<div class="alert alert-success">Profile Edited</div>';
 	}
 }
-
 ?>

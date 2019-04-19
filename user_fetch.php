@@ -1,14 +1,11 @@
 <?php
-//user_fetch.php
-
-
-
+/*	PAGE: 	user_fetch.php
+*	INFO:	Fetch page used to populate the table data from the database.
+*/
 include('database_connection.php');
 
 $query = '';
-
 $output = array();
-
 /*
 	This is the beginning of the query used to select all the users for display.
 
@@ -97,5 +94,4 @@ function get_total_all_records($connect)
 	$statement->execute();
 	return $statement->rowCount();
 }
-
 ?>

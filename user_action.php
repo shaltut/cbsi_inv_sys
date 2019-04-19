@@ -1,14 +1,25 @@
 <?php
-//user_action.php
-
-/*
-		Users are sent here after clicking a button or doing some action (like
-	adding a user) on user.php. Below is the php, javascript, and SQL commands 
- 	called whenever someone performs one of those actions.
+/*  PAGE:   user_action.php
+*   INFO:   This page is used to complete an action after the user submits 
+*           a form, clicks a button, or performs some other action. 
+*
+*   ACTIONS:
+*       	Add:	Triggered when the add user form is submitted. It inserts a new row in the user_details table
+*              					containing the form field data submitted by the user. (adds the user data as a row in the user_details table)
+*          
+*	fetch_single:	Triggered when the user selects an "Update" button (table button). It returns the data to pre-populate the user 
+*							form so the user can see the current database fields while updating them.
+*
+*			Edit:	Triggered when the user submits the update form. It takes all the current form field values and updates the database
+*							values to match.
+*                   
+*    	 disable:	Triggered when the user clicks the toggle button (table button). It toggles the given user's user_status
+*							value in the database. (If user_status = 'active' then changes status to 'inactive' and vica versa)   
+*					Also triggers another block which is used to set and reset the date that a given user was set to inactive. 
+*					This date field is used for tracking the date that a user's account was deactivated   
+*                   
 */
-
 include('database_connection.php');
-
 if(isset($_POST['btn_action']))
 {
 	//	**********	Add button pressed	********** 
@@ -174,5 +185,4 @@ if(isset($_POST['btn_action']))
 	}
 	
 }
-
 ?>

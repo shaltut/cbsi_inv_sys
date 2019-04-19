@@ -1,6 +1,23 @@
 <?php
-
-//equipment_action.php
+/*  PAGE:   equipment_action.php
+*   INFO:   This page is used to complete an action after the user submits 
+*           a form, clicks a button, or performs some other action. 
+*   ACTIONS:
+*   				  Add:	Triggered when the add equipment form is submitted. It inserts a new row in the equipment table
+*              					containing the form field data submitted by the user. (adds the equipment data as a row in the equipment table)
+*
+*     	equipment_details:	Triggered when "View" button is clicked (table button). It returns the table with all the info about 
+*      							the selected piece of equipment inside the view modal.           
+*			 fetch_single:	Triggered when the user selects an "Update" button (table button). It returns the data to pre-populate the equipment
+*							form so the user can see the current database fields while updating them.
+*
+*					 Edit:	Triggered when the user submits the update form. It takes all the current form field values and updates the database
+*							values to match.
+*                   
+*                  delete:	Triggered when the user clicks the toggle button (table button). It toggles the given piece of equipment's equip_stats
+*							value in the database. (If equip_status = 'active' then changes status to 'inactive' and vica versa)
+*                   
+*/
 
 include('database_connection.php');
 

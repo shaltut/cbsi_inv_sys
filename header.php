@@ -26,8 +26,8 @@ if(!isset($_SESSION["type"])){
 	<body>
 <!-- NAVBAR ------------------------------------------------------------------->
 			<nav class="navbar navbar-inverse">
-				<div class="container-fluid">
-					<div class="navbar-header">
+				<div class="container-fluid" style="background-color: #222;">
+					<div class="navbar-header" style="background-color: #222;">
 						<!-- mobile navbar -->
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
 							<span class="sr-only" >Toggle Navigation</span>

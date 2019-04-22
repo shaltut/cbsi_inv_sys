@@ -56,6 +56,7 @@ include('header.php');
     <!-- Button navigates to stats page-->
     <a class="btn btn-info" href="stats.php#sites" role="button" style="width:150px">More Sites Info</a><br/>
 </div>
+</br></br>
 
 <div id="siteModal" class="modal fade">
     <div class="modal-dialog">

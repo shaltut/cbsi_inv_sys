@@ -88,6 +88,7 @@ if($count_red > 0 || $broken > 0){
     <!-- Button navigates to stats page-->
     <a class="btn btn-info" href="stats.php#equipment" role="button" style="width:200px">More Equipment Info</a><br/>
 </div>
+</br></br>
 
 <div id="equipmentModal" class="modal fade">
     <div class="modal-dialog">

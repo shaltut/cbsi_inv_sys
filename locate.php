@@ -24,12 +24,12 @@ include('header.php');
             </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
-                    <table id="locate_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="text-align:center">
+                    <table id="locate_data" class="table table-striped" cellspacing="0" width="100%" style="text-align:center">
                         <thead><tr>
-                            <th style="text-align:center">Equipment Name</th>
-                            <th style="min-width:5px">Available</th>
-                            <th style="min-width:35px">Details</th>
-                            <th style="min-width:20px">Locate</th>
+                        	<th class="dt_hr_sm">Avail</th>
+                            <th class="dt_hr" style="padding-right:5px">Equipment Name</th>
+                            <th class="dt_hr_sm">Details</th>
+                            <th class="dt_hr_sm">Locate</th>
                         </tr></thead>
                     </table>
                 </div></div>

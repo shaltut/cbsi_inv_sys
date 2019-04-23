@@ -38,15 +38,15 @@ include('header.php');
            	</div>
            	<div class="panel-body">
            		<div class="row"><div class="col-sm-12 table-responsive">
-           			<table id="user_data" class="table table-bordered table-striped display compact" cellspacing="0" width="100%" style="text-align:center">
+           			<table id="user_data" class="table table-striped display compact" cellspacing="0" width="100%" style="text-align:center">
            				<thead>
 							<tr>
-								<th style="width:30px;text-align:center">ID</th>
-								<th style="text-align:center">Email</th>
-								<th style="text-align:center">Name</th>
-								<th style="text-align:center">Job Title</th>
-								<th style="width:35px;text-align:center">Update</th>
-								<th style="width:70px;text-align:center">Status</th>
+								<th class="dt_hr_sm">ID</th>
+								<th class="dt_hr" style="padding-right:5px">Email</th>
+								<th class="dt_hr" style="padding-right:5px">Name</th>
+								<th class="dt_hr" style="padding-right:5px">Job Title</th>
+								<th class="dt_hr_sm">Update</th>
+								<th class="dt_hr_sm">Status</th>
 							</tr>
 						</thead>
            			</table>
@@ -80,21 +80,21 @@ include('header.php');
 				<div class="text-danger" id="ia_date" style="font-size:1.2em; text-align:center"></div>
 
 				<div class="form-group">
-					<label for="user_name">
+					<label for="user_name" class="form-lbl-lvl1">
 						Enter Employee Name
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
-					<input type="text" name="user_name" placeholder="Employee Name" id="user_name" class="form-control" style="width:86%; display:inline;" required />
+					<input type="text" name="user_name" placeholder="Employee Name" id="user_name" class="form-control form-in-lvl1" required />
 					<button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter the employee's Full Name." data-placement="left">
 							<img src="images/info5_sm.png" alt="info">
 					</button>
 				</div>
 				<div class="form-group">
-					<label for="user_type">
+					<label for="user_type" class="form-lbl-lvl1">
 						Account Type
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
-					<select class="form-control" name="user_type" id="user_type" style="width:86%; display:inline;" required>
+					<select class="form-control form-in-lvl1" name="user_type" id="user_type" required>
 						<option value="user">Standard Access</option>
                         <option value="master">Full Access (Administrative)</option>
                     </select>
@@ -104,11 +104,11 @@ include('header.php');
 				</div>
 
 				<div class="form-group">
-					<label for="user_job">
+					<label for="user_job" class="form-lbl-lvl1">
 						Enter Employee Job Title
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
-					<select class="form-control" name="user_job" id="user_job" style="width:86%; display:inline;" required>
+					<select class="form-control form-in-lvl1" name="user_job" id="user_job" required>
 						<option value="Project Manager">Project Manager</option>
                         <option value="Foreman">Foreman</option>
                         <option value="Laborer">Laborer</option>
@@ -122,23 +122,23 @@ include('header.php');
 				</div>
 
 				<div class="form-group">
-					<label for="user_email">
+					<label for="user_email" class="form-lbl-lvl1">
 						Enter Employee Email
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
 					<div class="input-group">
-						<input type="email" name="user_email" placeholder="Employee Email" id="user_email" class="form-control" required />
+						<input type="email" name="user_email" placeholder="Employee Email" id="user_email" class="form-control form-in-lvl1" required />
 						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label>
+					<label for="user_password" class="form-lbl-lvl1">
 						Enter Employee Password
 						<span style="color:red;font-size:1.5em"> *</span>
 					</label>
 					<div class="input-group">
-						<input type="password" name="user_password" placeholder="Password" id="user_password" class="form-control" required />
+						<input type="password" name="user_password" placeholder="Password" id="user_password" class="form-control form-in-lvl1" required />
 						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 					</div>
 				</div>

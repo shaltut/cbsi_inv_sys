@@ -68,13 +68,13 @@ if($count_red > 0 || $broken > 0){
             </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
-                    <table id="equipment_data" class="table table-bordered table-striped display" cellspacing="0" width="100%" style="text-align:center">
+                    <table id="equipment_data" class="table table-striped" cellspacing="0" width="100%" style="text-align:center">
                         <thead><tr>
-                            <th style="min-width: 30px;text-align:center">ID</th>
-                            <th style="text-align:center">Name</th>
-                            <th style="min-width: 35px;text-align:center">Details</th>
-                            <th style="min-width: 50px;text-align:center">Update</th>
-                            <th style="min-width: 40px;text-align:center">Status</th>
+                            <th class="dt_hr_sm" style="padding-right:5px">ID</th>
+                            <th class="dt_hr" style="padding-right:5px">Name</th>
+                            <th class="dt_hr_sm">Details</th>
+                            <th class="dt_hr_sm">Update</th>
+                            <th class="dt_hr_sm">Status</th>
                         </tr></thead>
                     </table>
                 </div></div>
@@ -102,35 +102,35 @@ if($count_red > 0 || $broken > 0){
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="equip_name">
+                        <label for="equip_name" class="form-lbl-lvl1">
                             Equipment Name
                                 <span style="color:red;font-size:1.5em"> *</span>
                         </label>
-                        <input type="text" name="equip_name" placeholder="Equipment Name" id="equip_name" class="form-control" style="width:85%; display:inline;" required />
+                        <input type="text" name="equip_name" placeholder="Equipment Name" id="equip_name" class="form-control form-in-lvl1" maxlength="50" required />
                         <!-- INFO BTN -->
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Name/Title" data-content="Enter what the equipment is commonly called." data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
                     <div class="form-group">
-                        <label for="equip_serial">Serial Number</label>
-                        <input type="text" name="equip_serial" placeholder="Serial Number" id="equip_serial" class="form-control" style="width:85%; display:inline;"/>
+                        <label for="equip_serial" class="form-lbl-lvl1">Serial Number</label>
+                        <input type="text" name="equip_serial" placeholder="Serial Number" id="equip_serial" class="form-control form-in-lvl1" maxlength="50"/>
                         <!-- INFO BTN -->
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Serial Number" data-content="Enter the serial number, VIN number or other relevant identifier." data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
                     <div class="form-group">
-                        <label for="equip_desc">Description</label>
-                        <textarea name="equip_desc" placeholder="Equipment Description" id="equip_desc" class="form-control" rows="5" style="width:100%; display:inline;"></textarea>
+                        <label for="equip_desc" class="form-lbl-lvl1">Description</label>
+                        <textarea name="equip_desc" placeholder="Equipment Description" id="equip_desc" class="form-control form-in-lvl1" rows="5" maxlength="250"></textarea>
                         <!-- INFO BTN -->
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Description" data-content="Describe any defining characteristics, such as color, VIN number, whether a permit is required to operate it or not, etc." data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
                     <div class="form-group">
-                        <label for="equip_cost" style="width:200px">Equipment Cost</label>
-                        <input type="text" name="equip_cost" placeholder="Cost of Equipment" id="equip_cost" class="form-control" pattern="[+-]?([0-9]*[.])?[0-9]+" style="width:85%; display:inline;"/>
+                        <label for="equip_cost" class="form-lbl-lvl1">Equipment Cost</label>
+                        <input type="text" name="equip_cost" placeholder="Cost of Equipment" id="equip_cost" class="form-control form-in-lvl1" pattern="[+-]?([0-9]*[.])?[0-9]+" maxlength="10"/>
                         <!-- INFO BTN -->
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Cost" data-content="If the price paid for this piece of equipment is unknown, enter the estimated current value." data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
@@ -138,9 +138,9 @@ if($count_red > 0 || $broken > 0){
                     </div>
 
                     <div class="form-group">
-                        <label for="is_maintenance_required">Scheduled Maintenance Required </label>
+                        <label for="is_maintenance_required" class="form-lbl-lvl1">Scheduled Maintenance Required </label>
                         <input type="hidden" value="no" name="is_maintenance_required"/>
-                        <input type="checkbox" value="yes" name="is_maintenance_required" id="is_maintenance_required" class="form-check-input" onclick="moreOptions()" style="width:2%; display:inline;"/>
+                        <input type="checkbox" value="yes" name="is_maintenance_required" id="is_maintenance_required" class="form-check-input form-ck" onclick="moreOptions()"/>
                         <!-- INFO BTN -->
                         <button type="button" class="btn btn-link" data-toggle="popover" data-content="Check this box is this piece of equipment requires/has a maintenance schedule." data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
@@ -149,7 +149,7 @@ if($count_red > 0 || $broken > 0){
                         <div id="maintain_vis">
                             <div class="form-group">
                                 <label for="maintain_every">Requires Maintenance Every</label>
-                                <select class="form-control" name="maintain_every" id="maintain_every" style="width:85%; display:inline;">
+                                <select class="form-control form-in-lvl1" name="maintain_every" id="maintain_every" style="width:85%; display:inline;">
                                     <option value="3">3 Months</option>
                                     <option value="6">6 Months</option>
                                     <option value="12">1 Year</option>
@@ -163,7 +163,7 @@ if($count_red > 0 || $broken > 0){
                             </div>
                             <div class="form-group">  
                                 <label for="last_maintained">Last Maintenance Date</label>
-                                <input type="date" class="form-control" name="last_maintained" id="last_maintained" style="width:85%; display:inline;"/>
+                                <input type="date" class="form-control form-in-lvl1" name="last_maintained" id="last_maintained" />
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" data-content="When was the last time this piece of equipment was maintained?" data-placement="left">
                                 <img src="images/info5_sm.png" alt="info">
@@ -171,9 +171,9 @@ if($count_red > 0 || $broken > 0){
                             </div>
                         </div>
                     <div class="form-group">
-                        <label for="is_broken"> Needs Maintenance Now </label>
+                        <label for="is_broken" class="form-lbl-lvl1"> Needs Maintenance Now </label>
                         <input type="hidden" value="no" name="is_broken"/>
-                        <input type="checkbox" value="yes" name="is_broken" id="is_broken" class="form-check-input" onclick="moreOptionsBroken()" style="width:2%; display:inline;"/>
+                        <input type="checkbox" value="yes" name="is_broken" id="is_broken" class="form-check-input form-ck" onclick="moreOptionsBroken()"/>
                         <!-- INFO BTN -->
                         <button type="button" class="btn btn-link" data-toggle="popover" data-content="Check this box if the piece of equipment breaks" data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
@@ -182,7 +182,7 @@ if($count_red > 0 || $broken > 0){
                         <div id="broken_vis" style="display:none">
                             <div class="form-group">  
                                 <label for="last_maintained">Describe the Problem</label>
-                                <textarea name="broken_desc" placeholder="Explain the problem" id="broken_desc" class="form-control" rows="5" style="width:85%; display:inline;"></textarea>
+                                <textarea name="broken_desc" placeholder="Explain the problem" id="broken_desc" class="form-control form-in-lvl1" rows="5" maxlength="250"></textarea>
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" data-content="What caused this piece of equipment to break?" data-placement="left">
                                 <img src="images/info5_sm.png" alt="info">

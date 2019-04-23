@@ -39,7 +39,41 @@ if(!isset($_SESSION["type"])){
 	nav .container-fluid{
 		background-color:rgba(0,24,48,1);
 	}
-	
+	.dt_hr{
+		text-align: center;
+	}
+	.dt_hr_sm{
+		width: 30px;
+		text-align: center;
+	}
+	.form-lbl-lvl1{
+		color: background-color:rgba(0,24,48,1);
+		font-weight: bold;
+		font-size: 1.3em;
+		margin: 10px 10px 0 0;
+	}
+	.form-in-lvl1{
+		border: 1px solid rgba(3,54,78,.9);
+		background-color: rgba(3,54,78,.1);
+		border-radius: 4px;
+		width:87%; 
+		display:inline;
+	}
+	input[type=text]:focus{
+		width: 100%;
+  		padding: 12px 20px;
+		box-sizing: border-box;
+		border: 3px solid #ccc;
+		-webkit-transition: 0.5s;
+		transition: 0.5s;
+		outline: none;
+	}
+	input[type=checkbox]{
+		background-color: rgba(3,54,78,1) !important;
+		height: 15px;
+  		width: 15px;
+	}
+
 
 </style>
 	<body>

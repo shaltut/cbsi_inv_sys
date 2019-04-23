@@ -38,15 +38,15 @@ include('header.php');
             </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
-                    <table id="site_data" class="table table-bordered table-striped display compact" cellspacing="0" width="100%" style="text-align:center;">
+                    <table id="site_data" class="table table-striped" cellspacing="0" width="100%" style="text-align:center;">
                     	<!-- 
                     		This is where the JQuery data is sent to populate the DataTables table. Data is sent from site_fetch.php
                     	-->
                         <thead><tr>
-                            <th style="text-align:center;">Site Name</th>
-                            <th style="min-width: 35px;text-align:center">Details</th>
-                            <th style="min-width: 50px;text-align:center">Update</th>
-                            <th style="min-width: 40px;text-align:center">Status</th>
+                            <th class="dt_hr" style="padding-right:5px">Site Name</th>
+                            <th class="dt_hr_sm">Details</th>
+                            <th class="dt_hr_sm">Update</th>
+                            <th class="dt_hr_sm">Status</th>
                         </tr></thead>
                     </table>
                 </div></div>
@@ -76,44 +76,44 @@ include('header.php');
                 <!-- Input Field for Job-Site Name -->
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="site_name">
+                        <label for="site_name" class="form-lbl-lvl1">
                             Enter Job-site Name
                             <span style="color:red;font-size:1.5em"> *</span>
                         </label>
-                        <input type="text" name="site_name" placeholder="Site Name" id="site_name" class="form-control" style="width:85%; display:inline;" required />
+                        <input type="text" name="site_name" placeholder="Site Name" id="site_name" class="form-control form-in-lvl1" required />
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Name" data-content="What the site is typically called. If there is only 1 job going on at this location, just enter the name of the business/location." data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
                     <!-- Input Field for Address -->
                     <div class="form-group">
-                        <label for="site_address">
+                        <label for="site_address" class="form-lbl-lvl1">
                             Enter Site Address
                             <span style="color:red;font-size:1.5em"> *</span>
                         </label>
-                        <input type="text" name="site_address" placeholder="Site Address" id="site_address" class="form-control" style="width:85%; display:inline;" required />
+                        <input type="text" name="site_address" placeholder="Site Address" id="site_address" class="form-control form-in-lvl1" required />
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Address" data-content="The site's physical address. If no address is available, list the closest address to the site's physical location" data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
                     <!-- Input Field for 'Job Description' -->
                     <div class="form-group">
-                        <label for="job_desc">
+                        <label for="job_desc" class="form-lbl-lvl1">
                             Enter Job Description
                             <span style="color:red;font-size:1.5em"> *</span>
                         </label>
-                        <textarea name="job_desc" placeholder="Site Job Description" id="job_desc" class="form-control" rows="5" style="width:85%; display:inline;" required></textarea>
+                        <textarea name="job_desc" placeholder="Site Job Description" id="job_desc" class="form-control form-in-lvl1" rows="5" required></textarea>
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Job Description" data-content="What work is being done at this site? What are we here to do?" data-placement="left">
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
                     <!-- Input Field for 'Start Date' -->
                     <div class="form-group">  
-                        <label for="start_date" style="width:100px;">
+                        <label for="start_date" class="form-lbl-lvl1">
                             Start Date
                             <span style="color:red;font-size:1.5em"> *</span>
                         </label>
-                        <input type="date" class="form-control" name="start_date" id="start_date" style="width:85%; display:inline;"/>
+                        <input type="date" class="form-control form-in-lvl1" name="start_date" id="start_date"/>
                         <!-- Info PopOver Button -->
                         <button type="button" class="btn btn-link" data-toggle="popover" title="Start Date" data-content="Select the date that work began at this site. If that date is unknown, leave this line blank." data-placement="left">
                         	<!-- Info image -->

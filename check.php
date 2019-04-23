@@ -52,17 +52,17 @@ include('header.php');
                 <div class="modal-body">
                     <div class="form-group">
                         <!-- Equipment ID Field -->
-                        <label class="center" for="equip_id">
+                        <label class="center form-lbl-lvl1" for="equip_id">
                             Equipment ID
                             <span style="color:red;font-size:1.5em"> *</span>
                         </label>
-                        <input type="text" name="equip_id" id="equip_id" class="center"/>
+                        <input type="text" placeholder=" Equip ID" name="equip_id" id="equip_id" class="center form-in-lvl1" style="height: 35px"/>
 
-                        <label class="center" for="site_id">
+                        <label class="center form-lbl-lvl1" for="site_id">
                             Location
                             <span style="color:red;font-size:1.5em"> *</span>
                         </label>
-                        <select class="form-control center" name="site_id" id="site_id">
+                        <select class="form-control center form-in-lvl1" name="site_id" id="site_id">
                             <?php
                                 echo sites_options($connect);
                             ?>

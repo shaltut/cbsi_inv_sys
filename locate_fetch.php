@@ -57,8 +57,8 @@ foreach($result as $row)
 	}
 
 	$sub_array = array();
-	$sub_array[] = $row['equip_name'];
 	$sub_array[] = $avail;
+	$sub_array[] = $row['equip_name'];
 	$sub_array[] = '
 		<button type="button" name="view" id="'.$row["equip_id"].'" class="btn btn-info btn-xs view">View</button>
 	';

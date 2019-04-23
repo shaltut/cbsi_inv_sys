@@ -34,7 +34,7 @@ include('header.php');
 
 <br/>
 
-<button type="button" name="check" id="chkout_button" class="btn btn-lg btn-block" style="background-color:rgba(110,103,103,.8);color:white;border:3px solid white;">Check-Out Equipment</button>
+<button type="button" name="check" id="chkout_button" class="btn btn-lg btn-block" style="background-color:rgba(3,54,78,1);color:white;border:3px solid white;">Check-Out Equipment</button>
 
 <!-- 
     Modal that asks the user to enter the unique id for the piece of equipment they wish to check out.
@@ -87,7 +87,7 @@ include('header.php');
 </div>
 <br/>
 
-<button type="button" name="check" id="chkin_button" class="btn btn-lg btn-block" style="background-color:rgba(110,103,103,.8);color:white;border:3px solid white;">Return Equipment</button>
+<button type="button" name="check" id="chkin_button" class="btn btn-lg btn-block" style="background-color:rgba(3,54,78,1);color:white;border:3px solid white;">Return Equipment</button>
 
 <!-- 
     Check-in modal that displays the items tht the user is currently in posession of 

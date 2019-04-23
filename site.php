@@ -22,7 +22,7 @@ include('header.php');
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+            <div class="panel-heading" id="panel-head">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
                         <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Sites</h3>
@@ -30,7 +30,7 @@ include('header.php');
                 
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
                         <button type="button" name="add" id="add_button" class="btn btn-link btn-md">
-                            <span class="glyphicon glyphicon-plus text-success" style="font-size:1.5em;"></span>
+                            <span class="glyphicon glyphicon-plus text-success" style="font-size:1.5em;color:lightgreen"></span>
                         </button>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ include('header.php');
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-plus"></i> Add Site</h4>
+                    <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Add Site</h4>
                 </div>
 
                 <div class="modal-body">
@@ -129,7 +129,7 @@ include('header.php');
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-plus"></i> Site Details</h4>
+                    <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Site Details</h4>
                 </div>
                 <div class="modal-body">
                     <Div id="site_details"></Div>

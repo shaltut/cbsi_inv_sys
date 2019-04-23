@@ -22,14 +22,14 @@ include('header.php');
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-            <div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+            <div class="panel-heading" id="panel-head">
             	<div class="row">
                 	<div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
                     	<h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Employees</h3>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align="right">
                     	<button type="button" name="add" id="add_button" data-toggle="modal" data-target="#userModal" class="btn btn-link btn-md">
-                    			<span class="glyphicon glyphicon-plus text-success" style="font-size:1.5em;"></span>
+                    			<span class="glyphicon glyphicon-plus text-success" style="font-size:1.5em;color:lightgreen"></span>
 						</button>
                 	</div>
                 </div>
@@ -71,9 +71,9 @@ include('header.php');
 <div id="userModal" class="modal fade">
 	<div class="modal-dialog">
 		<form method="post" id="user_form">	<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header" style="color:white">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title"><i class="fa fa-plus"></i> Add Employee </h4>
+				<h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Add Employee </h4>
 			</div>
 			<div class="modal-body">
 
@@ -147,7 +147,7 @@ include('header.php');
 			<div class="modal-footer">
 				<input type="hidden" name="user_id" id="user_id" />
 				<input type="hidden" name="btn_action" id="btn_action" />
-				<input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
+				<input type="submit" name="action" id="action" class="btn btn-info" value="Add" style="width:100px"/>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div></form>

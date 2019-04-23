@@ -15,7 +15,7 @@ include('header.php');
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+            <div class="panel-heading" id="panel-head">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
                         <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Locate Equipment</h3>
@@ -42,7 +42,7 @@ include('header.php');
     <div class="modal-dialog">
         <form method="post" id="equipment_form">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="color:white">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">
                         <i class="fa fa-plus"></i> 
@@ -96,7 +96,7 @@ include('header.php');
     <div class="modal-dialog">
         <form method="post" id="equipment_form">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="color:white">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
                 </div>

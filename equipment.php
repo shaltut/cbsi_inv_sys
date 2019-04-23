@@ -30,7 +30,7 @@ if($count_red > 0 || $broken > 0){
     <!-- Alerts user if equipment needs to be maintained-->
     <div class="row" style="align-content:center;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="alert alert-danger" role="alert" style="display:inline-block; width:100%; height:80px; padding:0 10px;border:2px solid rgba(255,0,0,.3);">
+            <div class="alert alert-danger" role="alert" style="display:inline-block; width:100%; height:80px; padding:0 10px;border:1px solid rgba(255,0,0,.3);">
                 
                 <div style="float:right;">
                     <a class="btn btn-warning" href="maintain.php" role="button" style="position:relative; top:20px; right:5pxpx;">View</a>
@@ -53,7 +53,7 @@ if($count_red > 0 || $broken > 0){
 <div class="row" style="">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+            <div class="panel-heading" id="panel-head">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
                         <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Equipment</h3>
@@ -61,7 +61,7 @@ if($count_red > 0 || $broken > 0){
                 
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
                         <button type="button" name="add" id="add_button" class="btn btn-link btn-md">
-                            <span class="glyphicon glyphicon-plus text-success" style="font-size:1.5em;"></span>
+                            <span class="glyphicon glyphicon-plus" style="font-size:1.5em;color:lightgreen"></span>
                         </button>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ if($count_red > 0 || $broken > 0){
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-plus"></i> Add Equipment</h4>
+                    <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Add Equipment</h4>
                 </div>
 
                 <div class="modal-body">
@@ -210,7 +210,7 @@ if($count_red > 0 || $broken > 0){
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
+                    <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Equipment Details</h4>
                 </div>
                 <div class="modal-body">
                     <Div id="equipment_details"></Div>
@@ -229,7 +229,7 @@ if($count_red > 0 || $broken > 0){
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-plus"></i> Successfully Added Equipment Item!</h4>
+                    <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Successfully Added Equipment Item!</h4>
                 </div>
                 <div class="modal-body">
                     <div style="text-align:center">

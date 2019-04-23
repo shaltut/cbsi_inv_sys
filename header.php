@@ -17,17 +17,36 @@ if(!isset($_SESSION["type"])){
 	</head>
 <style type="text/css">
 	html {
-		background-color:gainsboro;
+		background-color:rgba(237, 237,237,1);
 	}
 	body {
-		background-color:gainsboro;
+		background-color:rgba(237, 237,237,1);
 	}
+	.modal-header{
+		font-size: 1.2em;
+		font-weight:bold;
+		text-align:left;
+		background-color:rgba(3,54,78,.9);
+		color:white;
+	}
+	#panel-head{
+		font-size: 1.2em;
+		font-weight:bold;
+		text-align:left;
+		background-color:rgba(3,54,78,.9);
+		color:white;
+	}
+	nav .container-fluid{
+		background-color:rgba(3,54,78,1);
+	}
+	
+
 </style>
 	<body>
 <!-- NAVBAR --------------------------------------------------------------->
 		<nav class="navbar navbar-inverse">
-			<div class="container-fluid" style="background-color: #222;">
-				<div class="navbar-header" style="background-color: #222;">
+			<div class="container-fluid">
+				<div class="navbar-header">
 					<!-- mobile navbar -->
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
 						<span class="sr-only" >Toggle Navigation</span>

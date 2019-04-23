@@ -43,7 +43,7 @@ if(!isset($_SESSION["type"])){
 
 </style>
 	<body>
-<!-- NAVBAR --------------------------------------------------------------->
+<!-- NAVBAR ------------------------------------------------------------->
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">

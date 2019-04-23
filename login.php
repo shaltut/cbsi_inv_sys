@@ -70,44 +70,48 @@ if(isset($_POST["login"])){
 			<img class="logoimg" src="images/logo.png" alt="CBSI logo" width="300" height="171">	
 			
 			</br></br>
-			<div class="panel panel-default">
-				<div class="panel-heading" style="font-size: 1.2em;font-weight:bold;">Login</div>
-				<div class="panel-body">
-					<form method="post">
-						<?php echo $message; ?>
-						<div class="form-group">
-							<div>
-								<label>Email:</label>
+			<center>
+				<div class="panel panel-default" style="max-width:450px;">
+					<div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+						Login
+					</div>
+					<div class="panel-body">
+						<form method="post">
+							<?php echo $message; ?>
+							<div class="form-group">
+								<div style="text-align:left">
+									<label style="font-size:1.2em">Email:</label>
+								</div>
+								<input type="text" name="user_email" placeholder="Enter Email" class="form-control" style="width:85%; display:inline;" required />
+								<!-- INFO BTN -->
+		                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter your CBSI email address. (ID login coming soon)" data-placement="left">
+		                            <img src="images/info5_sm.png" alt="info">
+		                        </button>
 							</div>
-							<input type="text" name="user_email" placeholder="Enter Email" class="form-control" style="width:85%; display:inline;" required />
-							<!-- INFO BTN -->
-	                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter your CBSI email address. (ID login coming soon)" data-placement="left">
-	                            <img src="images/info5_sm.png" alt="info">
-	                        </button>
-						</div>
-						<div class="form-group">
-							<div>
-								<label>Password:</label>
+							<div class="form-group">
+								<div style="text-align:left">
+									<label style="font-size:1.2em">Password:</label>
+								</div>
+								<input type="password" name="user_password" placeholder="Enter Password" class="form-control" style="width:85%; display:inline;" required />
+								<!-- INFO BTN -->
+		                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="To change your password, please contact your supervisor." data-placement="left">
+		                            <img src="images/info5_sm.png" alt="info">
+		                        </button>
 							</div>
-							<input type="password" name="user_password" placeholder="Enter Password" class="form-control" style="width:85%; display:inline;" required />
-							<!-- INFO BTN -->
-	                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="To change your password, please contact your supervisor." data-placement="left">
-	                            <img src="images/info5_sm.png" alt="info">
-	                        </button>
-						</div>
-						<div class="form-group">
-							<input type="submit" name="login" value="Login" class="btn btn-info" />
-						</div>
-					</form>
+							<div class="form-group">
+								<input type="submit" name="login" value="Login" class="btn btn-success" style="width:200px;font-size:1.4em;"/>
+							</div>
+						</form>
+					</div>
 				</div>
-			</div>
+			</center>
 		</div>
 
 <script>
-	//Used to toggle off/on the INFO popovers on the forms
-    // $(function () {
-    //     $('[data-toggle="popover"]').popover();
-    // });
+	// Used to toggle off/on the INFO popovers on the forms
+    $(function () {
+        $('[data-toggle="popover"]').popover();
+    });
 </script>
 
 	</body>

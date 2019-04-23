@@ -24,33 +24,45 @@ if(!isset($_SESSION["type"])){
 	}
 </style>
 	<body>
-<!-- NAVBAR ------------------------------------------------------------------->
-			<nav class="navbar navbar-inverse">
-				<div class="container-fluid" style="background-color: #222;">
-					<div class="navbar-header" style="background-color: #222;">
-						<!-- mobile navbar -->
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-							<span class="sr-only" >Toggle Navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a href="index.php" class="navbar-brand">CBSI</a>
-					</div> <!-- navbar-header -->
-					<div id="menu" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
+<!-- NAVBAR --------------------------------------------------------------->
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid" style="background-color: #222;">
+				<div class="navbar-header" style="background-color: #222;">
+					<!-- mobile navbar -->
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+						<span class="sr-only" >Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="index.php" class="navbar-brand">
+						<img src="images/homelogo.png" alt="Home" style="height:175%;position:relative;top:-8px"/>
+					</a>
+				</div> <!-- navbar-header -->
+				<div id="menu" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav" style="padding-left:20px">
 					<?php
 					if($_SESSION['type'] == 'master') //Only seen by MASTER
 					{
 					?>
-						<li><a href="equipment.php">Equipment</a></li>
-						<li><a href="site.php">Sites</a></li>
-						<li><a href="user.php">Employees</a></li>
+						<li>
+							<a href="equipment.php" style="color:lightgray;font-weight:bold">EQUIPMENT</a>
+						</li>
+						<li>
+							<a href="site.php" style="color:lightgray;font-weight:bold">SITES</a>
+						</li>
+						<li>
+							<a href="user.php" style="color:lightgray;font-weight:bold">EMPLOYEES</a>
+						</li>
 					<?php
 					}
 					?>
-						<li><a href="locate.php">Locate</a></li>
-						<li><a href="check.php">Checkout</a></li>
+						<li>
+							<a href="locate.php" style="color:lightgray;font-weight:bold">LOCATE</a>
+						</li>
+						<li>
+							<a href="check.php" style="color:lightgray;font-weight:bold">CHECKOUT</a>
+						</li>
 					<?php
 					if($_SESSION['type'] == 'user') // Only seen by USER
 					{
@@ -67,20 +79,24 @@ if(!isset($_SESSION["type"])){
 					-->
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"  style="color:lightgray;">
 								<span class="label label-pill label-danger count"></span> 
 									<?php echo ucfirst($_SESSION["user_name"]); ?>
 									<span class="glyphicon glyphicon-user"></span>
 							</a>
-							<ul class="dropdown-menu">
-								<li><a href="profile.php">Profile</a></li>
-								<li><a href="logout.php">Logout</a></li>
+							<ul class="dropdown-menu" style="background-color:lightgray;">
+								<li>
+									<a href="profile.php" style="font-weight:bold;">Profile</a>
+								</li>
+								<li>
+									<a href="logout.php" style="font-weight:bold;">Logout</a>
+								</li>
 							</ul>
 						</li>
 					</ul> <!-- right list dropdown -->
-				</div> <!-- collapse --
-				</div> <!-- container-fluid -->
-			</nav>
-<!-- END NAVBAR --------------------------------------------------------------->
+				</div> <!-- collapse -->
+			</div> <!-- container-fluid -->
+		</nav>
+<!-- END NAVBAR --------------------------------------------------------->
 <br />
 		<div class="container">

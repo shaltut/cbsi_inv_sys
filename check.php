@@ -34,7 +34,7 @@ include('header.php');
 
 <br/>
 
-<button type="button" name="check" id="chkout_button" class="btn btn-primary btn-lg btn-block">Check-Out Equipment</button>
+<button type="button" name="check" id="chkout_button" class="btn btn-lg btn-block" style="background-color:rgba(110,103,103,.8);color:white;border:3px solid white;">Check-Out Equipment</button>
 
 <!-- 
     Modal that asks the user to enter the unique id for the piece of equipment they wish to check out.
@@ -44,9 +44,9 @@ include('header.php');
         <form method="post" id="equip_id_form">
             <div class="modal-content">
 
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
+                <div class="modal-header" style="background-color:rgba(66,61,61,1);">
+                    <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
+                    <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> </h4>
                 </div>
 
                 <div class="modal-body">
@@ -87,7 +87,7 @@ include('header.php');
 </div>
 <br/>
 
-<button type="button" name="check" id="chkin_button" class="btn btn-primary btn-lg btn-block">Return Equipment</button>
+<button type="button" name="check" id="chkin_button" class="btn btn-lg btn-block" style="background-color:rgba(110,103,103,.8);color:white;border:3px solid white;">Return Equipment</button>
 
 <!-- 
     Check-in modal that displays the items tht the user is currently in posession of 
@@ -96,9 +96,9 @@ include('header.php');
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><i class="fa fa-plus"></i> </h4>
+            <div class="modal-header" style="background-color:rgba(66,61,61,1);">
+                <button type="button" class="close" data-dismiss="modal" style="color:white">&times;</button>
+                <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> </h4>
             </div>
 
             <div class="modal-body">
@@ -151,7 +151,7 @@ $(document).ready(function(){
     $('#chkout_button').click(function(){
         $('#chkout_modal').modal('show');
         $('#equip_id_form')[0].reset();
-        $('.modal-title').html("<i class='fa fa-plus'></i> Check Out");
+        $('.modal-title').html("<i class='fa fa-plus'></i> Check-Out Equipment");
         $('#action').val("Check Out");
         $('#btn_action').val("Check Out");
     });

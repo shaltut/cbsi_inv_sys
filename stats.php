@@ -26,55 +26,70 @@ include('header.php');
 <!-- SITE STATS CARD-->
 <div class="row" id="sites" style="padding-top: 10px">
 	<div class="col-lg-12">
-	    <div class="panel panel-default">
-	        <div class="panel-heading">
-	            <div class="row">
-	                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-	                    <h3 class="panel-title">Site Stats</h3>
-	                </div>
-	            </div>
+	    <div class="panel panel-default" style="padding:0 0 40px 0;">
+	        <div class="panel-heading" style="font-size: 1.4em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">Site Stats
 	        </div>
 	        <div class="panel-body">
 	            <div class="row"><div class="col-sm-12 table-responsive">
-	                <table id="site_stats_tbl" class="table table-bordered table-striped">
-	                    <thead><tr>
-	                        <th>Active Sites</th>
-	                       <th><?php echo count_active_site($connect); ?></th> 
-	                    </tr></thead>
-	                    <thead><tr>
-	                        <th>Inactive Sites</th>
-	                        <th><?php echo count_inactive_site($connect); ?></th>
-	                    </tr></thead>
+	                <table id="site_stats_tbl" class="table table-bordered table-striped" style="border-color: red">
+	                    <tr>
+	                        <td style="font-weight:bold;font-size:1.2em">
+	                        	Active Sites
+	                        </td>
+	                       	<td style="font-weight:bold;font-size:1.2em">
+	                       		<?php echo count_active_site($connect); ?>
+	                       	</td> 
+	                    </tr>
+	                    <tr>
+	                        <td style="font-weight:bold;font-size:1.2em">
+	                        	Inactive Sites
+	                       	</td>
+	                        <td style="font-weight:bold;font-size:1.2em">
+	                        	<?php echo count_inactive_site($connect); ?>
+	                      	</td>
+	                    </tr>
                         <?php
                         if(total_sites_VA($connect) > 0){
                         ?>
-                            <thead><tr>
-                                <th>Total Sites In Virginia</th>
-                                <th><?php echo total_sites_VA($connect); ?></th>
-                            </tr></thead> 
+                            <tr>
+                                <td style="font-weight:bold;font-size:1.2em">
+                                	Total Sites In Virginia
+                                </td>
+                                <td style="font-weight:bold;font-size:1.2em">
+                                	<?php echo total_sites_VA($connect); ?>
+                                </td>
+                            </tr>
                         <?php
                         }
                         if(total_sites_DC($connect) > 0){
                         ?>
-                        <thead><tr>
-                            <th>Total Sites In Washington DC</th>
-                            <th><?php echo total_sites_DC($connect); ?></th>
-                        </tr></thead> 
+                        <tr>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	Total Sites In Washington DC
+                            </td>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	<?php echo total_sites_DC($connect); ?>
+                            </td>
+                        </tr> 
                         <?php
                         }
                         if(total_sites_MD($connect) > 0){
                         ?>
-                        <thead><tr>
-                            <th>Total Sites In Maryland</th>
-                            <th><?php echo total_sites_MD($connect); ?></th>
-                        </tr></thead>
+                        <tr>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	Total Sites In Maryland
+                        	</td>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	<?php echo total_sites_MD($connect); ?>
+                            </td>
+                        </tr>
                        <?php
                         }
                         ?>
 	                </table>
 	            </div></div>
                 <center>
-                    <div style="max-width:800px">
+                    <div style="max-width:800px;padding:30px 0 0 0;">
                         <canvas id="check_by_site"></canvas>
                     </div>
                 </center>
@@ -86,33 +101,36 @@ include('header.php');
 <!-- EMPLOYEE STATS CARD-->
 <div class="row" id="employees" style="padding-top: 10px">
     <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                        <h3 class="panel-title">Employee Stats</h3>
-                    </div>
-                
-                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
-                        
-                    </div>
-                </div>
-            </div>
+        <div class="panel panel-default" style="padding:0 0 40px 0;">
+           <div class="panel-heading" style="font-size: 1.4em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">Employee Stats
+	        </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
                     <table id="empl_stats_tbl" class="table table-bordered table-striped">
-                        <thead><tr>
-                            <th>Number of Employees Registered</th>
-                            <th><?php echo count_employee_active($connect); ?></th>
-                        </tr></thead>
-                        <thead><tr>
-                            <th>Number of Admin Accounts</th>
-                            <th><?php echo count_master_active($connect); ?></th>
-                        </tr></thead>
-                        <thead><tr>
-                            <th>Total Users</th>
-                            <th><?php echo count_total_user_active($connect); ?></th>
-                        </tr></thead>
+                        <tr>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	Number of Employees Registered
+                            </td>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	<?php echo count_employee_active($connect); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	Number of Admin Accounts
+                            </td>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	<?php echo count_master_active($connect); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	Total Users
+                            </td>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	<?php echo count_total_user_active($connect); ?>
+                            </td>
+                        </tr>
                     </table>
                     <br/>
                     <form action="#employees" method="post" id="user_stats_form">
@@ -129,7 +147,7 @@ include('header.php');
                     </form>
                 </div></div>
                 <center>
-                    <div style="max-width:800px">
+                    <div style="max-width:800px;padding:20px 0 0 0;">
                         <canvas id="empl_stat"></canvas>
                     </div>
                 </center>
@@ -141,63 +159,62 @@ include('header.php');
 <!-- EQUIPMENT STATS CARD-->
 <div class="row" id="equipment" style="padding-top: 10px">
     <div class="col-lg-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
-                        <h3 class="panel-title">Equipment Stats</h3>
-                    </div>
-                
-                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" align='right'>
-                        
-                    </div>
-                </div>
-            </div>
+        <div class="panel panel-default"  style="padding:0 0 40px 0;">
+            <div class="panel-heading" style="font-size: 1.4em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">Equipment Stats
+	        </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
                     <table id="equip_stats_tbl" class="table table-bordered table-striped">
-                        <thead><tr>
-                            <th>Equipment Total</th>
-                            <th>
+                        <tr>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	Equipment Total
+                            </td>
+                            <td style="font-weight:bold;font-size:1.2em">
                                 <?php echo count_equipment_total($connect); ?>
-                            </th>
-                        </tr></thead>
-                        <thead><tr>
-                            <th>Equipment Checked Out</th>
-                            <th>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	Equipment Checked Out
+                            </td>
+                            <td style="font-weight:bold;font-size:1.2em">
                                 <?php echo count_check_out_total($connect); ?>
-                            
-                            </th>
-                        </tr></thead>
-                        <thead><tr>
-                            <th>Equipment Needing Maintenance</th>
-                            <th><?php
-                                $mCount = maintenance_red_num($connect); 
-                                echo $mCount;
-                                if($mCount > 0){
-                                     echo "<a class=\"btn btn-xs btn-danger\" href=\"maintain.php\" role=\"button\" style=\"float:right; margin-right:10px;\">View</a>";
-                                }
-                            ?>    
-                            </th>
-                        </tr></thead>
-                        <thead><tr>
-                            <th>Total Cost of All Equipment</th>
-                            <th>
-                            <?php 
-                                echo printf("$%01.1f", total_equipment_cost($connect));
-                            ?>
-                            </th>
-                        </tr></thead>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	Equipment Needing Maintenance
+                            </td>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	<?php
+	                                $mCount = maintenance_red_num($connect); 
+	                                echo $mCount;
+	                                if($mCount > 0){
+	                                     echo "<a class=\"btn btn-xs btn-danger\" href=\"maintain.php\" role=\"button\" style=\"float:right; margin-right:10px;\">View</a>";
+	                                }
+                            	?>    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold;font-size:1.2em">
+                            	Total Cost of All Equipment
+                            </td>
+                            <td style="font-weight:bold;font-size:1.2em">
+	                            <?php 
+	                                echo printf("$%01.1f", total_equipment_cost($connect));
+	                            ?>
+                            </td>
+                        </tr>
                     </table>
                 </div></div>
                 <div class="card">
                     <div class="card-body" style="border:5px">
                         <center><br/>
-                            <div style="max-width:800px">
+                            <div style="max-width:800px;padding:10px 0 0 0;">
                             <!-- Pie Chart (Equipment Cost Visualized) -->
                                 <canvas id="equip_cost_pie"></canvas><br/>
                             </div>
-                            <div style="max-width:800px">
+                            <div style="max-width:800px;padding:40px 0 0 0;">
                             <!-- Line Graph (Checkouts by month) -->
                             <canvas id="equip_monthly_checkouts" width="800" height="450"></canvas><br/>
                             </div>

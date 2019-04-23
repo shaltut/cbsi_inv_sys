@@ -22,7 +22,7 @@ include('header.php');
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
             	<div class="row">
                 	<div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
                     	<h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Employees</h3>

@@ -30,17 +30,17 @@ if($count_red > 0 || $broken > 0){
     <!-- Alerts user if equipment needs to be maintained-->
     <div class="row" style="align-content:center;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="alert alert-danger" role="alert" style="display:inline-block; width:100%; height:50px; padding:0 10px;border:2px solid rgba(255,0,0,.3);">
+            <div class="alert alert-danger" role="alert" style="display:inline-block; width:100%; height:80px; padding:0 10px;border:2px solid rgba(255,0,0,.3);">
                 
                 <div style="float:right;">
-                    <a class="btn btn-warning" href="maintain.php" role="button" style="position:relative; top:5px; right:5pxpx;">View</a>
+                    <a class="btn btn-warning" href="maintain.php" role="button" style="position:relative; top:20px; right:5pxpx;">View</a>
                 </div>
                 
-                <div style="padding-top:5px; font-size:16px; text-align:center">
+                <div style="padding-top:15px;font-size:1.1em;font-weight:bold;text-align:center">
                     <?php echo 'MAINTENANCE REQUIRED! &nbsp'; ?>
                 </div>
                 
-                <div style="font-size:13px; text-align:center">
+                <div style="font-size:1.1em; text-align:center">
                     <?php echo  $count_red." item(s) require maintenance and ".$broken." item(s) are broken"; ?>
                 </div>
             </div>
@@ -53,7 +53,7 @@ if($count_red > 0 || $broken > 0){
 <div class="row" style="">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
                         <h3 class="panel-title" style="margin-top:10px; font-size:1.4em">Equipment</h3>
@@ -216,7 +216,6 @@ if($count_red > 0 || $broken > 0){
                     <Div id="equipment_details"></Div>
                 </div>
                 <div class="modal-footer">
-                    
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

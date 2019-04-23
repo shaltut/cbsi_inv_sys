@@ -166,8 +166,8 @@ if($count_red > 0 || $broken > 0){
                                 <input type="date" class="form-control form-in-lvl1" name="last_maintained" id="last_maintained" />
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" data-content="When was the last time this piece of equipment was maintained?" data-placement="left">
-                                <img src="images/info5_sm.png" alt="info">
-                            </button>
+                                	<img src="images/info5_sm.png" alt="info">
+                            	</button>
                             </div>
                         </div>
                     <div class="form-group">

@@ -64,17 +64,25 @@ include('header.php');
                 <div class="modal-body">
                         
                     <div class="form-group" style="padding-top:10px">
-                        <label for="maintain_every" class="form-lbl-lvl1">Maintain Every</label>
+                        <label for="maintain_every" class="form-lbl-lvl1">Requires Maintenance Every</label>
                         <select class="form-control form-in-lvl1" name="maintain_every" id="maintain_every">
                             <option value="6">6 Months</option>
                             <option value="12">1 Year</option>
                             <option value="18">1 Year 6 Months</option>
                             <option value="24">2 years</option>
                         </select>
+                        <!-- INFO BTN -->
+                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="How often does this piece of equipment require maintenance?" data-placement="left">
+                                    <img src="images/info5_sm.png" alt="info">
+                                </button>
                     </div>
                     <div class="form-group">  
                         <label for="last_maintained" class="form-lbl-lvl1">Last Maintained</label>
                         <input type="date" class="form-control form-in-lvl1" name="last_maintained" id="last_maintained"/>
+                        <!-- INFO BTN -->
+                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="When was the last time this piece of equipment was maintained?" data-placement="left">
+                           	<img src="images/info5_sm.png" alt="info">
+                        </button>
                     </div>
                 </div>
 
@@ -209,6 +217,11 @@ $(document).ready(function(){
                 maintainDataTable.ajax.reload();
             }
         })
+    });
+
+    //Used to toggle off/on the INFO popovers on the forms
+    $(function () {
+        $('[data-toggle="popover"]').popover();
     });
 
     //TOP (Show Entries and Search)

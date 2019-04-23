@@ -17,7 +17,7 @@ include('header.php');
 		-->
 		<div class="col-sm-12">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+				<div class="panel-heading"id="panel-head">
 					Your Checkouts Total
 				</div>
 				<div class="panel-body" align="center">
@@ -39,7 +39,7 @@ include('header.php');
 			<div class="row">
 		   		<div class="col-sm-12">
 			        <div class="panel panel-default">
-			            <div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+			            <div class="panel-heading"id="panel-head">
 			            	<center>
 			            		All Equipment Accounted For
 			            		<button type="button" class="btn btn-link" data-toggle="popover" data-content="There are no items currently checked out, and all previously checked out items have been returned." data-placement="left" style="position: absolute; top:-5px; right:10px">
@@ -59,7 +59,7 @@ include('header.php');
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="panel panel-default">
-						<div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+						<div class="panel-heading" id="panel-head">
 							<strong>Total Equipment Checked Out</strong>
 						</div>
 						<div class="panel-body" align="center">
@@ -74,7 +74,7 @@ include('header.php');
 				<div class="row">
 					<div class="col-sm-12">
 				        <div class="panel panel-default">
-				            <div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+				            <div class="panel-heading" id="panel-head">
 				            	<center>
 					            	All Checkouts
 					            <button type="button" class="btn btn-link" data-toggle="popover" data-content="This table displays equipment still in use (or that hasn't been returned). -- All Employees" data-placement="left" style="position: absolute;top:-5px; right:10px">

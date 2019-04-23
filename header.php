@@ -17,7 +17,7 @@ if(!isset($_SESSION["type"])){
 	</head>
 <style type="text/css">
 	html {
-		background-color:rgba(237, 237,237,1);
+		background-color:rgba(237, 237, 237,1);
 	}
 	body {
 		background-color:rgba(237, 237,237,1);
@@ -37,7 +37,7 @@ if(!isset($_SESSION["type"])){
 		color:white;
 	}
 	nav .container-fluid{
-		background-color:rgba(3,54,78,1);
+		background-color:rgba(0,24,48,1);
 	}
 	
 
@@ -49,10 +49,10 @@ if(!isset($_SESSION["type"])){
 				<div class="navbar-header">
 					<!-- mobile navbar -->
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-						<span class="sr-only" >Toggle Navigation</span>
+						<!-- <span class="sr-only" >Toggle Navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+						<span class="icon-bar"></span> -->
 					</button>
 					<a href="index.php" class="navbar-brand">
 						<img src="images/homelogo.png" alt="Home" style="height:175%;position:relative;top:-8px"/>

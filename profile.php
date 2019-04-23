@@ -27,7 +27,7 @@ foreach($result as $row)
 }
 ?>
 <div class="panel panel-default">
-	<div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">Edit Profile</div>
+	<div class="panel-heading" id="panel-head">Edit Profile</div>
 	<div class="panel-body">
 		<form method="post" id="edit_profile_form">
 			<span id="message"></span>

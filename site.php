@@ -114,7 +114,7 @@ include('header.php');
                 <div class="modal-footer">
                     <input type="hidden" name="site_id" id="site_id" />
                     <input type="hidden" name="btn_action" id="btn_action" />
-                    <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
+                    <input type="submit" name="action" id="action" class="btn btn-info" value="Add" style="width:100px"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
 

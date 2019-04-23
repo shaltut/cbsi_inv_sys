@@ -37,7 +37,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		$output = '
 		<div class="table-responsive">
-			<table class="table table-boredered">
+			<table class="table">
 		';
 		foreach($result as $row)
 		{

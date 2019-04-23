@@ -31,15 +31,15 @@ include('header.php');
             </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
-                    <table id="equipment_data" class="table table-bordered table-striped" cellspacing="0" width="100%" style="text-align:center">
+                    <table id="equipment_data" class="table table-striped" cellspacing="0" width="100%" style="text-align:center">
                         <thead>
                             <tr>
-                                <th style="min-width: 30px;">ID</th>
-                                <th style="text-align:center">Equipment Name</th>
-                                <th style="min-width: 30px;">Last Maintained</th>
-                                <th style="min-width: 35px;">Details</th>
-                                <th style="min-width: 80px;">Manual Reset</th>
-                                <th style="min-width: 80px;">Auto-Reset</th>
+                                <th class="dt_hr_sm">ID</th>
+                                <th class="dt_hr"style="text-align:center">Equipment Name</th>
+                                <th class="dt_hr_sm">Last Maintained</th>
+                                <th class="dt_hr_sm">Details</th>
+                                <th class="dt_hr_sm">Manual Reset</th>
+                                <th class="dt_hr_sm">Auto-Reset</th>
                             </tr>
                         </thead>
                     </table>
@@ -64,8 +64,8 @@ include('header.php');
                 <div class="modal-body">
                         
                     <div class="form-group" style="padding-top:10px">
-                        <label for="maintain_every">Maintain Every</label>
-                        <select class="form-control" name="maintain_every" id="maintain_every">
+                        <label for="maintain_every" class="form-lbl-lvl1">Maintain Every</label>
+                        <select class="form-control form-in-lvl1" name="maintain_every" id="maintain_every">
                             <option value="6">6 Months</option>
                             <option value="12">1 Year</option>
                             <option value="18">1 Year 6 Months</option>
@@ -73,15 +73,15 @@ include('header.php');
                         </select>
                     </div>
                     <div class="form-group">  
-                        <label for="last_maintained">Last Maintained</label>
-                        <input type="date" class="form-control" name="last_maintained" id="last_maintained"/>
+                        <label for="last_maintained" class="form-lbl-lvl1">Last Maintained</label>
+                        <input type="date" class="form-control form-in-lvl1" name="last_maintained" id="last_maintained"/>
                     </div>
                 </div>
 
                 <div class="modal-footer">
                     <input type="hidden" name="equip_id" id="equip_id" />
                     <input type="hidden" name="btn_action" id="btn_action" />
-                    <input type="submit" name="action" id="action" class="btn btn-info" value="Add" />
+                    <input type="submit" name="action" id="action" class="btn btn-info" value="Add" style="width:100px;"/>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
 
@@ -210,6 +210,20 @@ $(document).ready(function(){
             }
         })
     });
+
+    //TOP (Show Entries and Search)
+    $( "#equipment_data_length" ).css( "float", "left" );
+    $( ".dataTables_filter" ).css( "text-align", "right" );
+    $( "input" ).css( "padding-left", "0" );
+    $( "input" ).css( "padding-right", "0" );
+    //BOTTOM (Showing x to y of z entries & Previous/Next)
+    $( "#equipment_data_info" ).css( "float", "left" );
+    $( "#equipment_data_info" ).css( "padding-left", "0" );
+    $( "#equipment_data_info" ).css( "margin-left", "0" );
+    $( "#equipment_data_paginate" ).css( "float", "right" );
+    $( "#equipment_data_paginate" ).css( "padding-right", "0" );
+    $( "#equipment_data_paginate" ).css( "margin-right", "0" );
+
 });
 </script>
 

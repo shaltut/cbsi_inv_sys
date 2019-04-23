@@ -47,7 +47,7 @@ if(!isset($_SESSION["type"])){
 		text-align: center;
 	}
 	.form-lbl-lvl1{
-		color: background-color:rgba(0,24,48,1);
+		color: rgba(3,54,78,1);
 		font-weight: bold;
 		font-size: 1.3em;
 		margin: 10px 10px 0 0;

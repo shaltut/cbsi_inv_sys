@@ -27,7 +27,7 @@ if(!isset($_SESSION["type"])){
 		font-weight:bold;
 		text-align:left;
 		background-color:rgba(3,54,78,.9);
-		color:white;
+		color:white !important;
 	}
 	#panel-head{
 		font-size: 1.2em;
@@ -73,7 +73,13 @@ if(!isset($_SESSION["type"])){
 		height: 15px;
   		width: 15px;
 	}
-
+	.main-err {
+		display:inline-block; 
+		width:100%; 
+		height:80px; 
+		padding:0 10px;
+		border:1px solid rgba(255,0,0,.3);
+	}
 
 </style>
 	<body>

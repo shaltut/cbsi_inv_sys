@@ -30,7 +30,7 @@ if($count_red > 0 || $broken > 0){
     <!-- Alerts user if equipment needs to be maintained-->
     <div class="row" style="align-content:center;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="alert alert-danger" role="alert" style="display:inline-block; width:100%; height:80px; padding:0 10px;border:1px solid rgba(255,0,0,.3);">
+            <div class="alert alert-danger main-err" role="alert" >
                 
                 <div style="float:right;">
                     <a class="btn btn-warning" href="maintain.php" role="button" style="position:relative; top:20px; right:5pxpx;">View</a>

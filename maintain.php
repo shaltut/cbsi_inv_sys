@@ -22,7 +22,7 @@ include('header.php');
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading" id="panel-head">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-8 col-xs-6">
                         <h3 class="panel-title">Maintenance List</h3>
@@ -58,7 +58,7 @@ include('header.php');
 
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-plus"></i> Add Item</h4>
+                    <h4 class="modal-title" style="color:white;"><i class="fa fa-plus"></i> Add Item</h4>
                 </div>
 
                 <div class="modal-body">
@@ -96,7 +96,7 @@ include('header.php');
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"><i class="fa fa-plus"></i> Equipment Details</h4>
+                    <h4 class="modal-title" style="color:white;"><i class="fa fa-plus"></i> Equipment Details</h4>
                 </div>
                 <div class="modal-body">
                     <Div id="equipment_details"></Div>

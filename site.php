@@ -19,6 +19,7 @@ include('header.php');
 <!-- Alerts the user to changes they have made, or errors -->
 <span id='alert_action'></span>
 
+<!-- This card/panel displays the Site dataTable on page load via JQuery (serverside DataTables) -->
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -38,6 +39,9 @@ include('header.php');
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
                     <table id="site_data" class="table table-bordered table-striped display compact" cellspacing="0" width="100%" style="text-align:center;">
+                    	<!-- 
+                    		This is where the JQuery data is sent to populate the DataTables table. Data is sent from site_fetch.php
+                    	-->
                         <thead><tr>
                             <th style="text-align:center;">Site Name</th>
                             <th style="min-width: 35px;text-align:center">Details</th>
@@ -58,16 +62,18 @@ include('header.php');
 </div>
 </br></br>
 
+<!-- "Add/Update" Site Form Modal-->
 <div id="siteModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="site_form">
             <div class="modal-content">
-
                 <div class="modal-header">
+                	<!-- 'Close' button (top) for Site Modal -->
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- Modal Header Text (also modified in JQuery at the bottom of this page) -->
                     <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Add Site</h4>
                 </div>
-
+                <!-- Input Field for Job-Site Name -->
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="site_name">
@@ -79,6 +85,7 @@ include('header.php');
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
+                    <!-- Input Field for Address -->
                     <div class="form-group">
                         <label for="site_address">
                             Enter Site Address
@@ -89,6 +96,7 @@ include('header.php');
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
+                    <!-- Input Field for 'Job Description' -->
                     <div class="form-group">
                         <label for="job_desc">
                             Enter Job Description
@@ -99,22 +107,28 @@ include('header.php');
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
+                    <!-- Input Field for 'Start Date' -->
                     <div class="form-group">  
-                            <label for="start_date" style="width:100px;">
-                                Start Date
-                                <span style="color:red;font-size:1.5em"> *</span>
-                            </label>
-                            <input type="date" class="form-control" name="start_date" id="start_date" style="width:85%; display:inline;"/>
-                            <button type="button" class="btn btn-link" data-toggle="popover" title="Start Date" data-content="Select the date that work began at this site. If that date is unknown, leave this line blank." data-placement="left">
-                            <img src="images/info5_sm.png" alt="info">
-                        </button>
+                        <label for="start_date" style="width:100px;">
+                            Start Date
+                            <span style="color:red;font-size:1.5em"> *</span>
+                        </label>
+                        <input type="date" class="form-control" name="start_date" id="start_date" style="width:85%; display:inline;"/>
+                        <!-- Info PopOver Button -->
+                        <button type="button" class="btn btn-link" data-toggle="popover" title="Start Date" data-content="Select the date that work began at this site. If that date is unknown, leave this line blank." data-placement="left">
+                        	<!-- Info image -->
+                        	<img src="images/info5_sm.png" alt="info">
+                   	 	</button>
                     </div>
                 </div>
 
                 <div class="modal-footer">
+                	<!-- These 2 hidden inputs send data that the action page requires when submitting the form -->
                     <input type="hidden" name="site_id" id="site_id" />
                     <input type="hidden" name="btn_action" id="btn_action" />
+                    <!-- Submit Button for the Site Form -->
                     <input type="submit" name="action" id="action" class="btn btn-info" value="Add" style="width:100px"/>
+                    <!-- Close Button (bottom) for the Site Form -->
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
 
@@ -123,19 +137,23 @@ include('header.php');
     </div>
 </div>
 
+<!-- "View" Site Information (or "Site Details") Modal-->
 <div id="sitedetailsModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="site_form">
             <div class="modal-content">
                 <div class="modal-header">
+					<!-- Button (top) to close the modal -->
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- Modal header text -->
                     <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Site Details</h4>
                 </div>
                 <div class="modal-body">
+                	<!-- This is where JQuery sends the html to display the site information -->
                     <Div id="site_details"></Div>
                 </div>
                 <div class="modal-footer">
-                    
+ 					<!-- Button (bottom) to close the modal -->
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -145,6 +163,11 @@ include('header.php');
 
 <script>
 $(document).ready(function(){
+	/*
+		DataTables API client side control variable.
+
+		This variable initiates the dataTables API. Processing is serverside, and is done via site_fetch.php page.
+	*/
     var sitedataTable = $('#site_data').DataTable({
         "processing":true,
         "serverSide":true,
@@ -163,6 +186,7 @@ $(document).ready(function(){
         "pageLength": 6
     });
 
+    //	Action Processing for the '+' button to add a new site.
     $('#add_button').click(function(){
         $('#siteModal').modal('show');
         $('#site_form')[0].reset();
@@ -171,6 +195,7 @@ $(document).ready(function(){
         $('#btn_action').val("Add");
     });
 
+    //	Action Processing for the form submit button (new site)
     $(document).on('submit', '#site_form', function(event){
         event.preventDefault();
         $('#action').attr('disabled', 'disabled');
@@ -190,6 +215,7 @@ $(document).ready(function(){
         })
     });
 
+    //	Action Processing for the 'view' button (table)
     $(document).on('click', '.view', function(){
         var site_id = $(this).attr("id");
         var btn_action = 'site_details';
@@ -205,6 +231,7 @@ $(document).ready(function(){
         })
     });
 
+    //	Action Processing for the 'Update' button (table)
     $(document).on('click', '.update', function(){
         var site_id = $(this).attr("id");
         var btn_action = 'fetch_single';
@@ -227,10 +254,12 @@ $(document).ready(function(){
         })
     });
 
+    //	Action Processing for the information popovers
     $(function () {
         $('[data-toggle="popover"]').popover()
     })
 
+    //	Action Processing for the disable/enable toggle button
     $(document).on('click', '.delete', function(){
         var site_id = $(this).attr("id");
         var status = $(this).data("status");
@@ -253,6 +282,11 @@ $(document).ready(function(){
         }
     });
 
+    /*
+		These are used to hardcode the CSS for various objects.
+
+		They basically just auto-style the objects on page load suplimenting the bootstrap css.
+    */
     //TOP (Show Entries and Search)
     $( "#site_data_length" ).css( "float", "left" );
     $( "#site_data_filter" ).css( "text-align", "right" );
@@ -271,7 +305,7 @@ $(document).ready(function(){
 
 <script>
 
-    //Used to toggle the 'view stats' button 
+    //	Action Processing for the 'Site Stats' button 
     function buttontext() {
         if(document.getElementById("site_stat_btn").value === "Show Site Stats")
             document.getElementById("site_stat_btn").value = "Hide Site Stats";

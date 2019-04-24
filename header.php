@@ -80,7 +80,11 @@ if(!isset($_SESSION["type"])){
 		padding:0 10px;
 		border:1px solid rgba(255,0,0,.3);
 	}
-
+	.btn-stat{
+		width:200px;
+		background-color:rgba(3,54,78,.7);
+		color:white;
+	}
 </style>
 	<body>
 <!-- NAVBAR ------------------------------------------------------------->
@@ -89,10 +93,10 @@ if(!isset($_SESSION["type"])){
 				<div class="navbar-header">
 					<!-- mobile navbar -->
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
-						<!-- <span class="sr-only" >Toggle Navigation</span>
+						<span class="sr-only" >Toggle Navigation</span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-						<span class="icon-bar"></span> -->
+						<span class="icon-bar"></span>
 					</button>
 					<a href="index.php" class="navbar-brand">
 						<img src="images/homelogo.png" alt="Home" style="height:175%;position:relative;top:-8px"/>

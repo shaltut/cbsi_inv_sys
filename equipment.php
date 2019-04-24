@@ -86,7 +86,10 @@ if($count_red > 0 || $broken > 0){
 <!-- Display the View Stats button link to the stats.php page-->
 <div style="text-align:right">
     <!-- Button navigates to stats page-->
-    <a class="btn btn-info" href="stats.php#equipment" role="button" style="width:200px">More Equipment Info</a><br/>
+    <a class="btn btn-stat" href="stats.php#equipment" role="button">
+    	More Equipment Info
+    </a>
+    <br/>
 </div>
 </br></br>
 

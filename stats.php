@@ -19,7 +19,7 @@ include('header.php');
 <!-- Alerts the user to changes they have made, or errors -->
 <span id='alert_action'></span>
 
-<button class="btn btn-info" onclick="goBack()" style="float:right;">Go Back</button>
+<button class="btn" onclick="goBack()" style="float:right;background-color:rgba(3,54,78,.7);color:white">Go Back</button>
 
 <br/><br/><br/>
 
@@ -27,7 +27,7 @@ include('header.php');
 <div class="row" id="sites" style="padding-top: 10px">
 	<div class="col-lg-12">
 	    <div class="panel panel-default" style="padding:0 0 40px 0;">
-	        <div class="panel-heading" style="font-size: 1.4em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">Site Stats
+	        <div class="panel-heading " id="panel-head">Site Stats
 	        </div>
 	        <div class="panel-body">
 	            <div class="row"><div class="col-sm-12 table-responsive">
@@ -102,7 +102,7 @@ include('header.php');
 <div class="row" id="employees" style="padding-top: 10px">
     <div class="col-lg-12">
         <div class="panel panel-default" style="padding:0 0 40px 0;">
-           <div class="panel-heading" style="font-size: 1.4em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">Employee Stats
+           <div class="panel-heading" id="panel-head">Employee Stats
 	        </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">
@@ -160,7 +160,7 @@ include('header.php');
 <div class="row" id="equipment" style="padding-top: 10px">
     <div class="col-lg-12">
         <div class="panel panel-default"  style="padding:0 0 40px 0;">
-            <div class="panel-heading" style="font-size: 1.4em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">Equipment Stats
+            <div class="panel-heading" id="panel-head">Equipment Stats
 	        </div>
             <div class="panel-body">
                 <div class="row"><div class="col-sm-12 table-responsive">

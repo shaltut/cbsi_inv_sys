@@ -59,7 +59,7 @@ include('header.php');
 <!-- Display the View Stats button link to the stats.php page-->
 <div style="text-align:right">
     <!-- Button navigates to stats page-->
-    <a class="btn btn-info" href="stats.php#employees" role="button" style="width:175px;">More Employee Info</a><br/>
+    <a class="btn btn-stat" href="stats.php#employees" role="button">More Employee Info</a><br/>
 </div>
 </br></br>
 

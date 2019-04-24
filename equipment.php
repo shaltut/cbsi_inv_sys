@@ -141,7 +141,7 @@ if($count_red > 0 || $broken > 0){
                     </div>
 
                     <div class="form-group">
-                        <label for="is_maintenance_required" class="form-lbl-lvl1">Scheduled Maintenance Required </label>
+                        <label for="is_maintenance_required" style="font-size:1.3em;padding:20px 0 10px 0;color:rgba(3,54,78,1)">Scheduled Maintenance?</label>
                         <input type="hidden" value="no" name="is_maintenance_required"/>
                         <input type="checkbox" value="yes" name="is_maintenance_required" id="is_maintenance_required" class="form-check-input form-ck" onclick="moreOptions()"/>
                         <!-- INFO BTN -->
@@ -151,8 +151,8 @@ if($count_red > 0 || $broken > 0){
                     </div>
                         <div id="maintain_vis">
                             <div class="form-group">
-                                <label for="maintain_every">Requires Maintenance Every</label>
-                                <select class="form-control form-in-lvl1" name="maintain_every" id="maintain_every" style="width:85%; display:inline;">
+                                <label for="maintain_every" class="form-lbl-sub">Requires Maintenance Every</label>
+                                <select class="form-control form-in-lvl1" name="maintain_every" id="maintain_every">
                                     <option value="3">3 Months</option>
                                     <option value="6">6 Months</option>
                                     <option value="12">1 Year</option>
@@ -165,7 +165,7 @@ if($count_red > 0 || $broken > 0){
                                 </button>
                             </div>
                             <div class="form-group">  
-                                <label for="last_maintained">Last Maintenance Date</label>
+                                <label for="last_maintained" class="form-lbl-sub">Last Maintenance Date</label>
                                 <input type="date" class="form-control form-in-lvl1" name="last_maintained" id="last_maintained" />
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" data-content="When was the last time this piece of equipment was maintained?" data-placement="left">
@@ -174,7 +174,7 @@ if($count_red > 0 || $broken > 0){
                             </div>
                         </div>
                     <div class="form-group">
-                        <label for="is_broken" class="form-lbl-lvl1"> Needs Maintenance Now </label>
+                        <label for="is_broken" style="font-size:1.3em;color:rgba(3,54,78,1)"> Needs Maintenance Now </label>
                         <input type="hidden" value="no" name="is_broken"/>
                         <input type="checkbox" value="yes" name="is_broken" id="is_broken" class="form-check-input form-ck" onclick="moreOptionsBroken()"/>
                         <!-- INFO BTN -->
@@ -184,7 +184,7 @@ if($count_red > 0 || $broken > 0){
                     </div>
                         <div id="broken_vis" style="display:none">
                             <div class="form-group">  
-                                <label for="last_maintained">Describe the Problem</label>
+                                <label for="last_maintained" class="form-lbl-sub">Describe the Problem</label>
                                 <textarea name="broken_desc" placeholder="Explain the problem" id="broken_desc" class="form-control form-in-lvl1" rows="5" maxlength="250"></textarea>
                                 <!-- INFO BTN -->
                                 <button type="button" class="btn btn-link" data-toggle="popover" data-content="What caused this piece of equipment to break?" data-placement="left">

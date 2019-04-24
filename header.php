@@ -14,6 +14,8 @@ if(!isset($_SESSION["type"])){
 		<link rel="stylesheet" href="css/dataTables.bootstrap.min.css" />
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/Chart.min.js"></script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 <style type="text/css">
 	html {
@@ -85,6 +87,24 @@ if(!isset($_SESSION["type"])){
 		background-color:rgba(3,54,78,.7);
 		color:white;
 	}
+	.form-lbl-sub{
+		color: rgba(3,54,78,.8);
+	}
+
+	@media only screen and (max-width: 600px) {
+		.form-lbl-lvl1{
+			font-size: 1.5em;
+			width:500px;
+		}
+		.form-in-lvl1{
+			width: 80%;
+		}
+		.form-lbl-sub{
+			width:500px;
+			font-size:1.1em;
+			color: rgba(3,54,78,.8);
+		}
+	} 
 </style>
 	<body>
 <!-- NAVBAR ------------------------------------------------------------->

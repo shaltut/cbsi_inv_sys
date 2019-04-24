@@ -46,6 +46,8 @@ if(isset($_POST["login"])){
 		<script src="js/jquery-1.10.2.min.js"></script>
 		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<script src="js/bootstrap.min.js"></script>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
 			.logoimg {
 				display: block;
@@ -61,6 +63,26 @@ if(isset($_POST["login"])){
 				background-color: #cbcbcb;
 			}
 
+			.form-in-log{
+					width: 85%;
+					display: inline;
+			}	
+
+			@media only screen and (max-width: 600px) {
+				.form-in-log{
+					width: 80%;
+					display: inline;
+					float:left;
+				}
+			} 
+			#panel-head{
+				font-size: 1.2em;
+				font-weight:bold;
+				text-align:left;
+				background-color:rgba(3,54,78,.9);
+				color:white;
+			}
+
 		</style>
 	</head>
 	<body>
@@ -72,7 +94,7 @@ if(isset($_POST["login"])){
 			</br></br>
 			<center>
 				<div class="panel panel-default" style="max-width:450px;">
-					<div class="panel-heading" style="font-size: 1.2em;font-weight:bold;text-align:left;background-color:rgba(66,61,61,1);color:white">
+					<div class="panel-heading" id="panel-head">
 						Login
 					</div>
 					<div class="panel-body">
@@ -82,7 +104,7 @@ if(isset($_POST["login"])){
 								<div style="text-align:left">
 									<label style="font-size:1.2em">Email:</label>
 								</div>
-								<input type="text" name="user_email" placeholder="Enter Email" class="form-control" style="width:85%; display:inline;" required />
+								<input type="text" name="user_email" placeholder="Enter Email" class="form-control form-in-log" required />
 								<!-- INFO BTN -->
 		                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter your CBSI email address. (ID login coming soon)" data-placement="left">
 		                            <img src="images/info5_sm.png" alt="info">
@@ -92,7 +114,7 @@ if(isset($_POST["login"])){
 								<div style="text-align:left">
 									<label style="font-size:1.2em">Password:</label>
 								</div>
-								<input type="password" name="user_password" placeholder="Enter Password" class="form-control" style="width:85%; display:inline;" required />
+								<input type="password" name="user_password" placeholder="Enter Password" class="form-control form-in-log" required />
 								<!-- INFO BTN -->
 		                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="To change your password, please contact your supervisor." data-placement="left">
 		                            <img src="images/info5_sm.png" alt="info">

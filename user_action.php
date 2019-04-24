@@ -1,4 +1,7 @@
 <?php
+//Includes all the functions in the functions.php page
+include('function.php');
+
 /*  PAGE:   user_action.php
 *   INFO:   This page is used to complete an action after the user submits 
 *           a form, clicks a button, or performs some other action. 
@@ -151,12 +154,18 @@ if(isset($_POST['btn_action']))
 					<td style="text-align:right;font-weight:bold">AMS Account Type:</td>
 					<td>'.$type.'</td>
 				</tr>';
-
 			//END TABLE
 			$output .= '
 					</table>
 				</div>';
+			//Grabs a table of all equipment the user has checked out
+			if( num_checkouts_by_id($connect, $id) == 0){
+				$output .= '<div class="text-success" style="text-align:center;font-weight:bold;font-size:1.3em;">No Currently Checked Out Items!</div>';
+			}else{
+				$output .= table_checkouts_by_id($connect, $id);
+			}
 		}
+
 
 		
 		echo $output;

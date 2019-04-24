@@ -69,6 +69,30 @@ function get_site_name_by_id($connect, $site_id){
 	// return $count;
 	return $output;
 }
+
+/*	Returns site_name given site_id
+*	Used In:
+*		- locate_action.php
+*/
+function get_equip_name_by_id($connect, $equip_id){
+	$query = "
+	SELECT equip_name
+	FROM equipment
+	WHERE equip_id = '".$equip_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$output = $row['equip_name'];
+		}
+	}
+	// return $count;
+	return $output;
+}
+
 /*	Returns the last checkout id for any given piece of equipment
 *	Used In:
 *		- locate_action.php
@@ -94,6 +118,31 @@ function get_last_checkout_id($connect, $equip_id){
 	}
 	// return $count;
 	return $output;
+}
+
+/*	Returns site_name given site_id
+*	Used In:
+*		- locate_action.php
+*/
+function num_checkouts_by_id($connect, $user_id){
+	$query = "
+	SELECT chk_id
+	FROM equipment_checkout
+	WHERE empl_id = '".$user_id."'
+	AND returned = 'false'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	$count = 0;
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$count = $count + 1;
+		}
+	}
+	// return $count;
+	return $count;
 }
 
 /*	Returns the number of items that are past their maintain by date
@@ -512,4 +561,51 @@ function table_checkouts_user_wise($connect){
 	';
 	return $output;
 }
+
+function table_checkouts_by_id($connect, $user_id){
+	$query = "
+	SELECT *
+	FROM equipment_checkout
+	WHERE empl_id = '".$user_id."'
+	AND returned = 'false'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	$output = '
+	<div class="text-warning" style="text-align:center;font-weight:bold;font-size:1.3em;">'.num_checkouts_by_id($connect, $user_id).' Item(s) Currently Checked Out</div>
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped" style="text-align:center;table-layout:fixed">
+			<thead style="font-size:16px">
+				<tr>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Equipment</th>
+					<th style="text-align:center; vertical-align:center; padding:10px 5px; width:25%">Date</th>
+				</tr>
+			</thead>
+			<tbody style="font-size:12px">
+	';
+	foreach($result as $row)
+	{
+		//MySql Date conversion
+		$time = strtotime($row['chk_date_time']);
+		$date = date("F jS, Y", $time);
+
+		$output .= '
+				<tr>
+					<td>
+						'.get_equip_name_by_id($connect, $row['equip_id']).'</br>(ID: '.$row["equip_id"].')
+					</td>
+					<td> '.$date.'</td>
+				</tr>
+			';
+	}
+	$output .= '
+			</tbody>
+		</table>
+	</div>
+	';
+	return $output;
+}
+
+
 ?>

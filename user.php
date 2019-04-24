@@ -42,9 +42,9 @@ include('header.php');
            				<thead>
 							<tr>
 								<th class="dt_hr_sm">ID</th>
-								<th class="dt_hr" style="padding-right:5px">Email</th>
 								<th class="dt_hr" style="padding-right:5px">Name</th>
-								<th class="dt_hr" style="padding-right:5px">Job Title</th>
+								<th class="dt_hr_sm" style="padding-right:5px">Title</th>
+								<th class="dt_hr_sm">View</th>
 								<th class="dt_hr_sm">Update</th>
 								<th class="dt_hr_sm">Status</th>
 							</tr>
@@ -88,6 +88,22 @@ include('header.php');
 					</label>
 					<input type="text" name="user_name" placeholder="Employee Name" id="user_name" class="form-control form-in-lvl1" required />
 					<button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter the employee's Full Name." data-placement="left">
+							<img src="images/info5_sm.png" alt="info">
+					</button>
+				</div>
+				<div class="form-group">
+
+					<!-- Label for Cell-Phone Input-->
+					<label for="user_cell" class="form-lbl-lvl1">
+						Enter Cell-Phone Number
+						<span style="color:red;font-size:1.5em"> *</span>
+					</label>
+
+					<!-- Input for Cell-Phone -->
+					<input type="tel" name="user_cell" id="user_cell" class="form-control form-in-lvl1" maxlength="16" placeholder="888-888-8888" onKeyup='addDashes(this)'/>
+
+					<!-- Popover for Cell-Phone Input -->
+					<button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter the cellphone number that you have access to on site." data-placement="left">
 							<img src="images/info5_sm.png" alt="info">
 					</button>
 				</div>
@@ -157,19 +173,30 @@ include('header.php');
 	</div>
 </div>
 
-
+<div id="userdetailsModal" class="modal fade">
+    <div class="modal-dialog">
+        <form method="post" id="user_form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                    	<span class="glyphicon glyphicon-remove" style="color:white"></span>
+                    </button>
+                    <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> User Details</h4>
+                </div>
+                <div class="modal-body">
+                    <Div id="user_details"></Div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
 
 <script>
 $(document).ready(function(){
-
-	$('#add_button').click(function(){
-		$('#user_form')[0].reset();
-		$('.modal-title').html("<i class='fa fa-plus'></i> Add User");
-		$('#action').val("Add");
-		$('#btn_action').val("Add");
-		$('#user_password').attr('required', true);
-	});
 
 	var userdataTable = $('#user_data').DataTable({
 		"processing": true,
@@ -187,6 +214,14 @@ $(document).ready(function(){
             },
 		],
 		"pageLength": 10
+	});
+
+	$('#add_button').click(function(){
+		$('#user_form')[0].reset();
+		$('.modal-title').html("<i class='fa fa-plus'></i> Add User");
+		$('#action').val("Add");
+		$('#btn_action').val("Add");
+		$('#user_password').attr('required', true);
 	});
 
 	$(document).on('submit', '#user_form', function(event){
@@ -208,6 +243,22 @@ $(document).ready(function(){
 		})
 	});
 
+	//Used to control the VIEW button action 
+    $(document).on('click', '.view', function(){
+        var user_id = $(this).attr("id");
+        var btn_action = 'user_details';
+        $.ajax({
+            url:"user_action.php",
+            method:"POST",
+            data:{user_id:user_id, btn_action:btn_action},
+            success:function(data){
+                $('#userdetailsModal').modal('show');
+                $('.modal-title').html("<i class='fa fa-plus'></i>User Details");
+                $('#user_details').html(data);
+            }
+        })
+    });
+
 	$(document).on('click', '.update', function(){
 		var user_id = $(this).attr("id");
 		var btn_action = 'fetch_single';
@@ -225,6 +276,7 @@ $(document).ready(function(){
 				}
 				$('#ia_date').html($date);
 				$('#user_name').val(data.user_name);
+				$('#user_cell').val(data.user_cell);
 				$('#user_job').val(data.user_job);
 				$('#user_email').val(data.user_email);
 				$('#user_type').val(data.user_type);
@@ -285,6 +337,51 @@ $(document).ready(function(){
 
 });
 </script>
+
+<script>
+//Helps to format Cell-Phone input field
+const isModifierKey = (event) => {
+    const key = event.keyCode;
+    return (event.shiftKey === true || key === 35 || key === 36) || // Allow Shift, Home, End
+        (key === 8 || key === 9 || key === 13 || key === 46) || // Allow Backspace, Tab, Enter, Delete
+        (key > 36 && key < 41) || // Allow left, up, right, down
+        (
+            // Allow Ctrl/Command + A,C,V,X,Z
+            (event.ctrlKey === true || event.metaKey === true) &&
+            (key === 65 || key === 67 || key === 86 || key === 88 || key === 90)
+        )
+};
+
+//Helps to format Cell-Phone input field
+const enforceFormat = (event) => {
+    // Input must be of a valid number format or a modifier key, and not longer than ten digits
+    if(!isNumericInput(event) && !isModifierKey(event)){
+        event.preventDefault();
+    }
+};
+
+//Helps to format Cell-Phone input field
+const formatToPhone = (event) => {
+    if(isModifierKey(event)) {return;}
+
+    // I am lazy and don't like to type things more than once
+    const target = event.target;
+    const input = target.value.replace(/\D/g,'').substring(0,10); // First ten digits of input only
+    const zip = input.substring(0,3);
+    const middle = input.substring(3,6);
+    const last = input.substring(6,10);
+
+    if(input.length > 6){target.value = `(${zip}) ${middle} - ${last}`;}
+    else if(input.length > 3){target.value = `(${zip}) ${middle}`;}
+    else if(input.length > 0){target.value = `(${zip}`;}
+};
+
+//Helps to format Cell-Phone input field
+const inputElement = document.getElementById('user_cell');
+inputElement.addEventListener('keydown',enforceFormat);
+inputElement.addEventListener('keyup',formatToPhone);
+</script>
+
 <?php
 include('footer.php');
 ?>

@@ -25,10 +25,9 @@ if(isset($_POST['btn_action']))
 	//	**********	Add button pressed	********** 
 	if($_POST['btn_action'] == 'Add')
 	{
-
 		$query = "
-		INSERT INTO user_details (user_email, user_password, user_name, user_job, user_type, user_status) 
-		VALUES (:user_email, :user_password, :user_name, :user_job, :user_type, :user_status)
+			INSERT INTO user_details (user_email, user_password, user_name, user_cell, user_job, user_type, user_status) 
+			VALUES (:user_email, :user_password, :user_name, :user_cell, :user_job, :user_type, :user_status)
 		";	
 		$statement = $connect->prepare($query);
 		$statement->execute(
@@ -36,9 +35,10 @@ if(isset($_POST['btn_action']))
 				':user_email'		=>	$_POST["user_email"],
 				':user_password'	=>	password_hash($_POST["user_password"], PASSWORD_DEFAULT),
 				':user_name'		=>	$_POST["user_name"],
+				':user_cell'		=>	$_POST["user_cell"],
 				':user_job'			=>	$_POST["user_job"],
 				':user_type'		=>	$_POST["user_type"],
-				':user_status'		=>	'active',
+				':user_status'		=>	'active'
 				
 			)
 		);
@@ -54,7 +54,7 @@ if(isset($_POST['btn_action']))
 	if($_POST['btn_action'] == 'fetch_single')
 	{
 		$query = "
-		SELECT * FROM user_details WHERE user_id = :user_id
+			SELECT * FROM user_details WHERE user_id = :user_id
 		";
 		$statement = $connect->prepare($query);
 		$statement->execute(
@@ -63,18 +63,103 @@ if(isset($_POST['btn_action']))
 			)
 		);
 
-		//Verifying that the database was updated successfully
+		//	Grabbing relevent data from the selected row to send via JSON back to the user.php page
 		$result = $statement->fetchAll();
 		foreach($result as $row)
 		{
 
 			$output['user_email'] = $row['user_email'];
 			$output['user_name'] = $row['user_name'];
+			$output['user_cell'] = $row['user_cell'];
 			$output['user_type'] = $row['user_type'];
 			$output['user_job'] = $row['user_job'];
 			$output['ia_date'] = $row['ia_date'];
 		}
 		echo json_encode($output);
+	}
+
+	//********** VIEW BUTTON (Details Column)**********
+	if($_POST['btn_action'] == 'user_details')
+	{
+		$query = "
+		SELECT * FROM user_details
+		WHERE user_id = '".$_POST["user_id"]."'
+		";
+
+		$statement = $connect->prepare($query);
+		$statement->execute();
+		$result = $statement->fetchAll();
+		foreach($result as $row)
+		{
+			$id = $row["user_id"];
+			$email = $row["user_email"];
+			$name = $row["user_name"];
+			$cell = $row["user_cell"];
+			$job = $row["user_job"];
+			$type = $row["user_type"];
+			$status = $row["user_status"];
+			$date = $row["ia_date"];
+
+			if($date != null){
+				//MySql Date conversion
+				$time = strtotime($date);
+				$date = date("F jS, Y", $time);
+				$date = '<span class="label label-danger">Deactivated On '.$date.'</span>';
+			}
+
+			if($type == 'master'){
+				$type = 'Full Access';
+			}else{
+				$type = 'Limited Access';
+			}
+
+			//BEGIN TABLE
+			$output = '
+				<div class="table-responsive">
+					<table class="table">';
+
+			//User Name Output
+			$output .= '
+				<thead>
+					<th style="width:150px;text-align:right">Full Name:</th>
+					<th style="font-weight:normal">'.$name.'</th>
+				</thead>';
+
+			//Contact Info Output
+			$output .= '
+				<div>
+				<tr>
+					<td style="text-align:right;font-weight:bold">Cellphone Number:</td>
+					<td>'.$cell.'</td>
+				</tr>
+				<tr>
+					<td style="text-align:right;font-weight:bold">Email Address:</td>
+					<td>'.$email.'</td>
+				</tr>
+				</div>';
+
+			//Job Title Output
+			$output .= '
+				<tr>
+					<td style="text-align:right;font-weight:bold">Job Title:</td>
+					<td>'.$job.'</td>
+				</tr>';
+
+			//Account Type Output
+			$output .= '
+				<tr>
+					<td style="text-align:right;font-weight:bold">AMS Account Type:</td>
+					<td>'.$type.'</td>
+				</tr>';
+
+			//END TABLE
+			$output .= '
+					</table>
+				</div>';
+		}
+
+		
+		echo $output;
 	}
 
 	//	**********	Update button pressed (for any user ac)	********** 
@@ -84,23 +169,23 @@ if(isset($_POST['btn_action']))
 		{
 			$query = "
 			UPDATE user_details SET 
-				user_name = '".$_POST["user_name"]."', 
-				user_job = '".$_POST["user_job"]."',
 				user_email = '".$_POST["user_email"]."',
 				user_password = '".password_hash($_POST["user_password"], PASSWORD_DEFAULT)."', 
+				user_name = '".$_POST["user_name"]."',
+				user_cell = '".$_POST["user_cell"]."', 
+				user_job = '".$_POST["user_job"]."',
 				user_type = '".$_POST["user_type"]."'
-				WHERE user_id = '".$_POST["user_id"]."'
+			WHERE user_id = '".$_POST["user_id"]."'
 			";
-		}
-		else
-		{
+		}else{
 			$query = "
 			UPDATE user_details SET 
-				user_name = '".$_POST["user_name"]."',
-				user_job = '".$_POST["user_job"]."', 
 				user_email = '".$_POST["user_email"]."',
+				user_name = '".$_POST["user_name"]."',
+				user_cell = '".$_POST["user_cell"]."', 
+				user_job = '".$_POST["user_job"]."',
 				user_type = '".$_POST["user_type"]."'
-				WHERE user_id = '".$_POST["user_id"]."'
+			WHERE user_id = '".$_POST["user_id"]."'
 			";
 		}
 		$statement = $connect->prepare($query);
@@ -114,7 +199,7 @@ if(isset($_POST['btn_action']))
 		}
 	}
 
-	//	**********	Delete button pressed (for any user ac) ********** 
+	//	**********	Deactivate button pressed (for any user) ********** 
 	if($_POST['btn_action'] == 'disable')
 	{
 
@@ -124,9 +209,9 @@ if(isset($_POST['btn_action']))
 			$status = 'Inactive';
 		}
 		$query = "
-		UPDATE user_details 
-		SET user_status = :user_status 
-		WHERE user_id = :user_id;
+			UPDATE user_details 
+			SET user_status = :user_status 
+			WHERE user_id = :user_id;
 		";
 
 		$statement = $connect->prepare($query);
@@ -144,7 +229,7 @@ if(isset($_POST['btn_action']))
 			echo 'User Status change to ' . $status;
 		}
 	}
-	//	**********	Deactivate button pressed (for any user) ********** 
+	//********* Also sets the ia_date to null if made active ********* 
 	if($_POST['btn_action'] == 'disable')
 	{
 		$status = $_POST['status'];

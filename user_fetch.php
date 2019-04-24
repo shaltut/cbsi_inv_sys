@@ -62,12 +62,16 @@ foreach($result as $row)
 {
 	$sub_array = array();
 	$sub_array[] = $row['user_id'];
-	$sub_array[] = $row['user_email'];
 	$sub_array[] = $row['user_name'];
 	$sub_array[] = $row['user_job'];
+	//'View' Button
+	$sub_array[] = '
+		<button type="button" name="view" id="'.$row["user_id"].'" class="btn btn-info btn-xs view">View</button>
+		';
+	//'Update' Button
 	$sub_array[] = '<button type="button" name="update" id="'.$row["user_id"].'" class="btn btn-warning btn-xs update">Update</button>';
 
-	//Button used to change user status.
+	//'Status' Button
 	if($row['user_status'] == 'Active'){
 		$sub_array[] = '
 		<button type="button" name="disable" id="'.$row["user_id"].'" class="btn btn-xs disable" data-status="'.$row["user_status"].'"><img src="images/active.png" alt="Deactivate"/></button>';

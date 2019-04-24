@@ -52,7 +52,6 @@ if(isset($_POST['btn_action']))
 	//********** VIEW BUTTON (Details Column)**********
 	if($_POST['btn_action'] == 'site_details')
 	{
-
 		$query = "
 		SELECT * FROM sites 
 		WHERE site_id = '".$_POST["site_id"]."'
@@ -63,7 +62,7 @@ if(isset($_POST['btn_action']))
 		$result = $statement->fetchAll();
 		$output = '
 		<div class="table-responsive">
-			<table class="table table-boredered">
+			<table class="table">
 		';
 		foreach($result as $row)
 		{

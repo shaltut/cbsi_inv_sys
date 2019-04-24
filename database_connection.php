@@ -17,7 +17,7 @@ error_reporting(0);
 ini_set('display_errors', '0');
 
 
-$connect = new PDO('mysql:host=localhost;dbname=cbsi_db', 'root', '');
+$connect = new PDO('mysql:host=localhost;dbname=cbsico_ams', 'root', '');
 session_start();
 
 ?>

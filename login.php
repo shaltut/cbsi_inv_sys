@@ -9,11 +9,12 @@ if(isset($_POST["login"])){
 	$query = "
 	SELECT * FROM user_details 
 		WHERE user_email = :user_email
+		OR user_id = :user_email
 	";
 	$statement = $connect->prepare($query);
 	$statement->execute(
 		array(
-				'user_email' =>	$_POST["user_email"]
+				'user_email' 	=>	$_POST["user_email"]
 			)
 	);
 	$count = $statement->rowCount();
@@ -106,7 +107,7 @@ if(isset($_POST["login"])){
 								</div>
 								<input type="text" name="user_email" placeholder="Enter Email" class="form-control form-in-log" required />
 								<!-- INFO BTN -->
-		                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter your CBSI email address. (ID login coming soon)" data-placement="left">
+		                        <button type="button" class="btn btn-link" data-toggle="popover" data-content="Enter your user ID or CBSI email address." data-placement="left">
 		                            <img src="images/info5_sm.png" alt="info">
 		                        </button>
 							</div>

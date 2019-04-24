@@ -69,7 +69,9 @@ include('header.php');
             <div class="modal-content">
                 <div class="modal-header">
                 	<!-- 'Close' button (top) for Site Modal -->
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal">
+                    	<span class="glyphicon glyphicon-remove" style="color:white"></span>
+                    </button>
                     <!-- Modal Header Text (also modified in JQuery at the bottom of this page) -->
                     <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Add Site</h4>
                 </div>
@@ -144,7 +146,9 @@ include('header.php');
             <div class="modal-content">
                 <div class="modal-header">
 					<!-- Button (top) to close the modal -->
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal">
+                    	<span class="glyphicon glyphicon-remove" style="color:white"></span>
+                    </button>
                     <!-- Modal header text -->
                     <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Site Details</h4>
                 </div>

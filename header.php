@@ -62,7 +62,6 @@ if(!isset($_SESSION["type"])){
 		display:inline;
 	}
 	input[type=text]:focus{
-		width: 100%;
   		padding: 12px 20px;
 		box-sizing: border-box;
 		border: 3px solid #ccc;

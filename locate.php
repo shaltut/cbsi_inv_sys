@@ -56,32 +56,18 @@ include('header.php');
                         <div class="text-danger" style="display:inline;font-size:1.8em;font-weight:bold;">This item has never been checked out. </div>
                     </div>
                     <div class="form-group">
-                        <!-- INFO BTN -->
-                        <button type="button" class="btn btn-link" data-toggle="popover" title="Last Known Location" data-content="The last location this piece of equipment was checked out from." data-placement="bottom" style="margin-top:-10px">
-                            <img src="images/info5_sm.png" alt="info">
-                        </button>
-                        <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">Last Known Location: </div>
-                        <div id="last_loc" style="margin-left:10%"></div>
+                        <div id="last_loc" style="display:inline;"></div>
                         
                     </div>
 
                     <div class="form-group">
-                        <!-- INFO BTN -->
-                        <button type="button" class="btn btn-link" data-toggle="popover" title="Last Person to Check it Out" data-content="The last person who checked out this piece of equipment." data-placement="bottom" style="margin-top:-10px">
-                            <img src="images/info5_sm.png" alt="info">
-                        </button>
-                        <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">Last Checkedout By: </div>
-                        <div id="last_chk" style="margin-left:10%"></div>
+                        <div id="last_chk" style="display:inline;"></div>
+                        <!-- <div id="last_chk" style="margin-left:10%"></div> -->
                     </div>
 
-                    <div class="form-group">
-                        <!-- INFO BTN -->
-                        <button type="button" class="btn btn-link" data-toggle="popover" title="Last Checkout Date" data-content="The date that this piece of equipment was last checked out of the system." data-placement="bottom" style="margin-top:-10px">
-                            <img src="images/info5_sm.png" alt="info">
-                        </button>
-                        <div class="text-info" style="display:inline;font-size:1.5em;font-weight:bold">On: </div>
-                        <div id="last_date" style="margin-left:10%"></div>
-                    </div>
+                    <!-- <div class="form-group">
+                        <div id="last_date" style="display:inline;"></div>
+                    </div> -->
 
                 </div>
 

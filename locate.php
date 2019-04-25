@@ -26,7 +26,7 @@ include('header.php');
                 <div class="row"><div class="col-sm-12 table-responsive">
                     <table id="locate_data" class="table table-striped" cellspacing="0" width="100%" style="text-align:center">
                         <thead><tr>
-                        	<th class="dt_hr_sm">Avail</th>
+                        	<th class="dt_hr_sm">Availability</th>
                             <th class="dt_hr" style="padding-right:5px">Equipment Name</th>
                             <th class="dt_hr_sm">Details</th>
                             <th class="dt_hr_sm">Locate</th>

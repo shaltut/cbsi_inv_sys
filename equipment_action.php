@@ -100,124 +100,248 @@ if(isset($_POST['btn_action']))
 		$statement = $connect->prepare($query);
 		$statement->execute();
 		$result = $statement->fetchAll();
-		$output = '
-		<div class="table-responsive">
-			<table class="table">
-		';
 		foreach($result as $row)
 		{
-			$entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
-
+			$id = $row['equip_id'];
+			$name = $row['equip_name'];
+			$serial = $row['equip_serial'];
+			$desc = $row['equip_desc'];
+			$imr = $row['is_maintenance_required'];
+			$maintainevery = $row['maintain_every'];
 			//MySql Date conversion
-			$time = strtotime($row['last_maintained']);
-			$lastMaintained = date("F jS, Y", $time);
-
+			$time = strtotime($row['last_maintained']); $lastmaintained = date("F jS, Y", $time);
+			$isbroken = $row['is_broken'];
+			$brokendesc = $row['broken_desc'];
+			$cost = $row['equip_cost'];
+			$enteredby = ucfirst(get_user_name($connect, $row['equip_entered_by']));
 			//MySql Date conversion
-			$time = strtotime($row['date_added']);
-			$dateAdded = date("F jS, Y", $time);
+			$time2 = strtotime($row['date_added']); $dateadded = date("F jS, Y", $time2);
+			$status = $row['equip_status'];
+			//MySql Date conversion
+			$time = strtotime($row['date_added']); $date= date("F jS, Y", $time);
+			$isavailable = $row['is_available'];
 
-			$status = '';
-			if($row['equip_status'] == 'active')
+			if($status == 'active')
 			{
 				$status = '<span class="label label-success">Active</span>';
 			}else{
 				$status = '<span class="label label-danger">Inactive</span>';
 			}
 
-
-			//Equipment Name Output
+			//	Heading
+			if(check_equip_maintenance_month($connect, $row['equip_id']) == 'red' || $isbroken == 'yes'){
+				$output .= '
+					<div class="alert alert-danger" style="
+						text-align:center;
+						font-weight:bold;
+						font-size:1.2em;
+					">
+						This Item Requires Maintenance!
+					</div>';
+			}else if(check_equip_maintenance_month($connect, $row['equip_id']) == 'yellow'){
+				$output .= '
+					<div class="alert alert-warning" style="
+						text-align:center;
+						font-weight:bold;
+						font-size:1.2em;
+					">
+						Maintenance Required Soon
+					</div>';
+			}
 			$output .= '
-			<thead>
-				<th style="width:190px;text-align:right">Name:</th>
-				<th style="font-weight:normal">'.$row["equip_name"].'</th>
-			</thead>';
+				<div style="
+					text-align:center;
+					font-weight:bold;
+					font-size:1.4em;
+					border:1px solid black;
+				">
+					'.$name.'
+				</div>';
 
 			//Serial Number Output
-			if($row['equip_serial'] != NULL){
+			if($serial != NULL){
 				$output .= '
-				<tr>
-					<td style="text-align:right;font-weight:bold">Serial Number:</td>
-					<td>'.$row["equip_serial"].'</td>
-				</tr>';
+				<div style="
+					float:left;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+				">
+					Serial #:
+					'.$serial.'
+				</div>';
+			}else{
+				$output .= '
+				<div style="
+					float:left;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+				">
+					Serial #: --
+				</div>';
 			}
 
 			//Cost Output
-			if($row['equip_cost'] != 0.00){
+			if($cost != NULL){
 				$output .= '
-				<tr>
-					<td style="text-align:right;font-weight:bold">Base Price:</td>
-					<td> $'.$row['equip_cost'].' </td>
-				</tr>';
+				<div style="
+					float:right;
+					text-align:right;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+					display:block;
+				">
+					Cost:
+					<span class="text-success">$'.$cost.'</span>
+				</div>';
+			}
+			$output .= '<hr/>';
+
+			//Maintenance Information Output
+			if($row['is_maintenance_required'] == 'yes'){
+				$output .= '
+				<div class="table-responsive" style="margin-top:20px">
+					<table class="table table-bordered" style="text-align:center">
+					<tr>
+						<th colspan="2"  style="
+							text-align:center;
+							font-weight:bold;
+							font-size:1.3em;
+							margin-top:10px;
+						">
+							Maintenance Information
+						</th>
+					</tr>
+					<tr>
+						<th style="width:220px;text-align:center">Requires Maintenance Every</th>
+						<th style="width:220px;text-align:center">Last Maintained On</th>
+					</tr>
+					<tr>
+						<td>'.$maintainevery.' Months</td>
+						<td>'.$lastmaintained.'</td>
+					</tr>
+					</table>
+				</div>
+				';
 			}
 
 			//Description Output
-			if($row['equip_desc'] != ''){
+			if($desc != '' && $desc != Null){
 				$output .= '
-				<tr>
-					<td style="text-align:right;font-weight:bold">Equipment Description:</td>
-					<td>'.$row["equip_desc"].'</td>
-				</tr>
+				<div style="
+					text-align:center;
+					font-weight:bold;
+					font-size:1.3em;
+				">
+					Equipment Description
+				</div>
+				<div style="
+					padding-left:30px;
+					padding-right:30px;
+					text-align:center;
+				">
+					'.$desc.'
+				</div>
 				';
 			}
 
-			if($row['is_maintenance_required'] == 'yes'){
-				$output .= '
-					<tr>
-						<td style="text-align:right;font-weight:bold">Maintain Every:</td>
-						<td>'.$row["maintain_every"].' Months</td>
-					
-					</tr>
-					<tr>
-						<td style="text-align:right;font-weight:bold">Last Maintained:</td>
-						<td>'.$lastMaintained.'</td>
-					</tr>
-				';
-			}
-
-			// Entered-by Output
 			$output .= '
-			<tr>
-				<td style="text-align:right;font-weight:bold">Entered Into System:</td>
-				<td>'.$entered_by_user.' on '.$dateAdded.'</td>
-			</tr>';
+			<div>
+				<br/>
+			</div>
+			';
 
-			// Equipment Status Output
+			//Status Output
 			$output .= '
-			<tr>
-				<td style="text-align:right;font-weight:bold">Status:</td>
-				<td>'.$status.'</td>
-			</tr>
+			<div style="
+				float:left;
+				font-weight:bold;
+				font-size:1.3em;
+				padding-top: 5px;
+				width:50%;
+			">
+				Status:
+			'.$status.'
+			</div>
 			';
 
 			//Availability Output
 			if($row['is_available'] == 'available'){
 				$output .= '
-				<tr>
-					<td style="text-align:right;font-weight:bold">Availability:</td>
-					<td>
-						<span class="text-success glyphicon glyphicon-ok"></span>
-						Available for Checkout
-					</td>
-				</tr>
-				';
+				<div style="
+					float:right;
+					text-align:right;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+					display:block;
+				">
+					<span class="text-success glyphicon glyphicon-ok"></span>
+				 	Available for Checkout
+				</div>';
 			}else{
 				$output .= '
-				<tr>
-					<td style="text-align:right;font-weight:bold">Availability:</td>
-					<td>
-						<span class="text-danger glyphicon glyphicon-remove"></span>
-						In Use
-					</td>
-				</tr>
-				';
+				<div style="
+					float:right;
+					text-align:right;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+					display:block;
+				">
+					<span class="text-danger glyphicon glyphicon-remove"></span>
+					In Use
+				</div>';
 			}
+
+			$output .= '
+				<hr/>
+			';
+
+			// 	Entered-by Output
+			$output .= '
+				<div style="
+					width:100%;
+					text-align:right;
+					font-weight:bold;
+					margin-top:50px;
+				">
+					Entered Into System by <span class="text-info">'.$enteredby.'</span> on <span class="text-info">'.$dateadded.'</span>
+				</div>';
 
 		}
 
-		$output .= '
-			</table>
-		</div>
-		';
+			// //Availability Output
+			// if($row['is_available'] == 'available'){
+			// 	$output .= '
+			// 	<tr>
+			// 		<td style="text-align:right;font-weight:bold">Availability:</td>
+			// 		<td>
+			// 			<span class="text-success glyphicon glyphicon-ok"></span>
+			// 			Available for Checkout
+			// 		</td>
+			// 	</tr>
+			// 	';
+			// }else{
+			// 	$output .= '
+			// 	<tr>
+			// 		<td style="text-align:right;font-weight:bold">Availability:</td>
+			// 		<td>
+			// 			<span class="text-danger glyphicon glyphicon-remove"></span>
+			// 			In Use
+			// 		</td>
+			// 	</tr>
+			// 	';
+			// }
+
+		// }
 		echo $output;
 	}
 

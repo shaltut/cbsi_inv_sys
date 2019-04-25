@@ -319,7 +319,7 @@ $(document).ready(function(){
             data:{equip_id:equip_id, btn_action:btn_action},
             success:function(data){
                 $('#equipmentdetailsModal').modal('show');
-                $('.modal-title').html("<i class='fa fa-plus'></i>Equipment Details");
+                $('.modal-title').html("Equipment Details for ID: "+equip_id);
                 $('#equipment_details').html(data);
             }
         })

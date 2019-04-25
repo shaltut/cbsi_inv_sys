@@ -28,62 +28,54 @@ if(isset($_POST['btn_action']))
 
 		$query = "
 		SELECT * FROM equipment 
-		INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
 		WHERE equipment.equip_id = '".$_POST["equip_id"]."'
 		";
 
 		$statement = $connect->prepare($query);
 		$statement->execute();
 		$result = $statement->fetchAll();
-		$output = '
-		<div class="table-responsive">
-			<table class="table">
-		';
 		foreach($result as $row)
 		{
-			$status = '';
-			if($row['equip_status'] == 'active')
-			{
-				$status = '<span class="label label-success">Active</span>';
-			}
-			else
-			{
-				$status = '<span class="label label-danger">Inactive</span>';
-			}
-			
-			$entered_by_user = ucfirst(get_user_name($connect, $row['user_id']));
+			//MySql Date conversion
+			$time = strtotime($row['last_maintained']);
+			$date = date("F jS, Y", $time);
 
+			//Triggered if the equipment just needs maintenance
 			if(check_equip_maintenance_month($connect, $row['equip_id']) == 'red'){
-				$output .= '
+				$output = '
+				<div style="text-align:center;font-weight:bold;font-size:1.3em;">Equipment Maintenance Info</div>
+				<div class="table-responsive">
+					<table class="table table-bordered" style="text-align:center">
 					<tr>
-						<td>Maintain Every</td>
-						<td>'.$row["maintain_every"].' Months</td>
-					
+						<th style="width:220px;text-align:center">Requires Maintenance Every</th>
+						<th style="width:220px;text-align:center">Last Maintained On</th>
 					</tr>
 					<tr>
-						<td>Last Maintained</td>
-						<td>'.$row["last_maintained"].'</td>
+						<td>'.$row['maintain_every'].' Months</td>
+						<td>'.$date.'</td>
 					</tr>
+					</table>
+				</div>
 				';
 			}
+			//Triggered if the equipment is actually broken
 			if($row['is_broken'] == 'yes'){
-				$output .= '
-					<tr>
-						<td>Description of Problem</td>
-						<td>'.$row["broken_desc"].'</td>
-					</tr>
-				';
+				if($row['broken_desc'] != ''){
+					$output = '
+					<div style="text-align:center;font-weight:bold;font-size:1.3em;">Problem Description:</div>
+					<div style="text-align:center;width:100%;padding-top:10px">'.$row['broken_desc'].'</div>
+					';
+				}else{
+					$output = '
+					<div style="text-align:center;">No description was given for the problem...</div>
+					';
+				}
 			}
 		}
-
-		$output .= '
-			</table>
-		</div>
-		';
 		echo $output;
 	}
 
-
+	//When the 'Update' button is pressed, this function sends data to the modal to display whatever current data is saved for each option
 	if($_POST['btn_action'] == 'fetch_single')
 	{
 		$query = "

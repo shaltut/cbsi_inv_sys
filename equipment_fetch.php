@@ -75,7 +75,6 @@ foreach($result as $row)
 	}
 	$data[] = $sub_array;
 }
-
 //	This function returns the total number of all rows returned by $query
 function get_total_all_records($connect)
 {
@@ -83,13 +82,11 @@ function get_total_all_records($connect)
 	$statement->execute();
 	return $statement->rowCount();
 }
-
 $output = array(
 	"draw"    			=> 	intval($_POST["draw"]),
 	"recordsTotal"  	=>  get_total_all_records($connect),
 	"recordsFiltered" 	=> 	get_total_all_records($connect),
 	"data"    			=> 	$data
 );
-
 echo json_encode($output);
 ?>

@@ -82,20 +82,18 @@ foreach($result as $row)
 
 	$data[] = $sub_array;
 }
-
+//	This function returns the total number of all rows returned by $query
+function get_total_all_records($connect)
+{
+	$statement = $connect->prepare('SELECT * FROM user_details');
+	$statement->execute();
+	return $statement->rowCount();
+}
 $output = array(
 	"draw"				=>	intval($_POST["draw"]),
-	"recordsTotal"  	=>  $filtered_rows,
+	"recordsTotal"  	=>  get_total_all_records($connect),
 	"recordsFiltered" 	=> 	get_total_all_records($connect),
 	"data"    			=> 	$data
 );
 echo json_encode($output);
-
-//Returns the number of rows returned from an SQL query
-function get_total_all_records($connect)
-{
-	$statement = $connect->prepare("SELECT * FROM user_details WHERE user_type='user'");
-	$statement->execute();
-	return $statement->rowCount();
-}
 ?>

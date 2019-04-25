@@ -53,7 +53,8 @@ if(isset($_POST['btn_action']))
 			echo 'New User Added';
 		}
 	}
-
+	
+	//When the 'Update' button is pressed, this function sends data to the modal to display whatever current data is saved for each option
 	if($_POST['btn_action'] == 'fetch_single')
 	{
 		$query = "

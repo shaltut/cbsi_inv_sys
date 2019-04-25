@@ -10,9 +10,7 @@ $query = '';
 
 // $output = array();
 $query .= "
-	SELECT * FROM equipment 
-	-- INNER JOIN user_details ON user_details.user_id = equipment.equip_entered_by 
-	
+	SELECT * FROM equipment 	
 ";
 
 if(isset($_POST["search"]["value"]))
@@ -78,7 +76,7 @@ function get_total_all_records($connect)
 
 $output = array(
 	"draw"    			=> 	intval($_POST["draw"]),
-	"recordsTotal"  	=>  $filtered_rows,
+	"recordsTotal"  	=>  get_total_all_records($connect),
 	"recordsFiltered" 	=> 	get_total_all_records($connect),
 	"data"    			=> 	$data
 );

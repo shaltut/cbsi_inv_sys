@@ -169,7 +169,7 @@ if(isset($_POST['btn_action']))
 					width:50%;
 				">
 					Serial #:
-					'.$serial.'
+					<span class="text-info">'.$serial.'</span>
 				</div>';
 			}else{
 				$output .= '
@@ -184,29 +184,27 @@ if(isset($_POST['btn_action']))
 				</div>';
 			}
 
-			//Cost Output
-			if($cost != NULL){
-				$output .= '
-				<div style="
-					float:right;
-					text-align:right;
-					font-weight:bold;
-					font-size:1.3em;
-					padding-top: 5px;
-					width:50%;
-					display:block;
-				">
-					Cost:
-					<span class="text-success">$'.$cost.'</span>
-				</div>';
-			}
+			//Status Output
+			$output .= '
+			<div style="
+				float:right;
+				text-align:right;
+				font-weight:bold;
+				font-size:1.3em;
+				padding-top: 5px;
+				width:50%;
+			">
+			'.$status.'
+			</div>
+			';
+
 			$output .= '<hr/>';
 
 			//Maintenance Information Output
 			if($row['is_maintenance_required'] == 'yes'){
 				$output .= '
 				<div class="table-responsive" style="margin-top:20px">
-					<table class="table table-bordered" style="text-align:center">
+					<table class="table table-bordered" style="text-align:center;">
 					<tr>
 						<th colspan="2"  style="
 							text-align:center;
@@ -256,26 +254,28 @@ if(isset($_POST['btn_action']))
 			</div>
 			';
 
-			//Status Output
-			$output .= '
-			<div style="
-				float:left;
-				font-weight:bold;
-				font-size:1.3em;
-				padding-top: 5px;
-				width:50%;
-			">
-				Status:
-			'.$status.'
-			</div>
-			';
+			//Cost Output
+			if($cost != NULL){
+				$output .= '
+				<div style="
+					float:right;
+					text-align:right;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+					display:block;
+				">
+					Cost:
+					<span class="text-success">$'.$cost.'</span>
+				</div>';
+			}
 
 			//Availability Output
 			if($row['is_available'] == 'available'){
 				$output .= '
 				<div style="
-					float:right;
-					text-align:right;
+					float:left;
 					font-weight:bold;
 					font-size:1.3em;
 					padding-top: 5px;
@@ -288,8 +288,7 @@ if(isset($_POST['btn_action']))
 			}else{
 				$output .= '
 				<div style="
-					float:right;
-					text-align:right;
+					float:left;
 					font-weight:bold;
 					font-size:1.3em;
 					padding-top: 5px;
@@ -317,31 +316,6 @@ if(isset($_POST['btn_action']))
 				</div>';
 
 		}
-
-			// //Availability Output
-			// if($row['is_available'] == 'available'){
-			// 	$output .= '
-			// 	<tr>
-			// 		<td style="text-align:right;font-weight:bold">Availability:</td>
-			// 		<td>
-			// 			<span class="text-success glyphicon glyphicon-ok"></span>
-			// 			Available for Checkout
-			// 		</td>
-			// 	</tr>
-			// 	';
-			// }else{
-			// 	$output .= '
-			// 	<tr>
-			// 		<td style="text-align:right;font-weight:bold">Availability:</td>
-			// 		<td>
-			// 			<span class="text-danger glyphicon glyphicon-remove"></span>
-			// 			In Use
-			// 		</td>
-			// 	</tr>
-			// 	';
-			// }
-
-		// }
 		echo $output;
 	}
 

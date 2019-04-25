@@ -253,7 +253,7 @@ $(document).ready(function(){
             data:{user_id:user_id, btn_action:btn_action},
             success:function(data){
                 $('#userdetailsModal').modal('show');
-                $('.modal-title').html("<i class='fa fa-plus'></i>User Details");
+                $('.modal-title').html("Employee Details for ID: "+user_id);
                 $('#user_details').html(data);
             }
         })

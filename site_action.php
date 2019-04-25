@@ -60,54 +60,83 @@ if(isset($_POST['btn_action']))
 		$statement = $connect->prepare($query);
 		$statement->execute();
 		$result = $statement->fetchAll();
-		$output = '
-		<div class="table-responsive">
-			<table class="table">
-		';
 		foreach($result as $row)
 		{
+			$name = $row['site_name'];
+			$address = $row['site_address'];
+			$job = $row['job_desc'];
 			//MySql Date conversion
-			$time = strtotime($row['start_date']);
-			$startDate = date("F jS, Y", $time);
+			$time = strtotime($row['start_date']); $startdate = date("F jS, Y", $time);
+			$status = $row['site_status'];
 
-			$status = '';
-			if($row['site_status'] == 'active')
+			if($status == 'active')
 			{
 				$status = '<span class="label label-success">Active</span>';
-			}
-			else
-			{
+			}else{
 				$status = '<span class="label label-danger">Inactive</span>';
 			}
 
+			//Heading and Site Name Output
 			$output .= '
-			<tr>
-				<td>Site Name</td>
-				<td>'.$row["site_name"].'</td>
-			</tr>
-			<tr>
-				<td>Address</td>
-				<td>'.$row["site_address"].'</td>
-			</tr>
-			<tr>
-				<td>Job Description</td>
-				<td>'.$row["job_desc"].'</td>
-			</tr>
-			<tr>
-				<td>Start Date</td>
-				<td>'.$startDate.'</td>
-			</tr>
-			<tr>
-				<td>Status</td>
-				<td>'.$status.'</td>
-			</tr>
-			';
-		}
+				<div style="
+					text-align:center;
+					font-weight:bold;
+					border:1px solid black;
+				">
+					<div style="font-size:1.4em">'.$name.'</div>
+					<div style="font-size:1em;">'.$address.'</div>
+				</div>';
 
-		$output .= '
-			</table>
-		</div>
-		';
+			//Start Date Output
+			$output .= '
+				<div style="
+					float:left;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+				">
+					Start Date:
+					<span class="text-info">'.$startdate.'</span>
+				</div>';
+
+			//Status Output
+			$output .= '
+				<div style="
+					float:right;
+					text-align:right;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+					display:block;
+				">
+					<span class="text-success" style="margin-right:10px;">'.$status.'</span>
+				</div>';
+
+			$output .= '<hr/>';
+			//Description Output
+			if($job != '' && $job != Null){
+				$output .= '
+				<br/>
+				<div style="
+					text-align:center;
+					font-weight:bold;
+					font-size:1.3em;
+				">
+					Job Description
+				</div>
+				<div style="
+					padding-left:30px;
+					padding-right:30px;
+					text-align:center;
+				">
+					'.$job.'
+				</div>
+				';
+			}
+			
+		}
 		echo $output;
 	}
 

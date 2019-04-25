@@ -53,7 +53,7 @@ if(isset($_POST['btn_action']))
 			echo 'New User Added';
 		}
 	}
-	
+
 	//When the 'Update' button is pressed, this function sends data to the modal to display whatever current data is saved for each option
 	if($_POST['btn_action'] == 'fetch_single')
 	{
@@ -104,65 +104,106 @@ if(isset($_POST['btn_action']))
 			$status = $row["user_status"];
 			$date = $row["ia_date"];
 
-			if($date != null){
-				//MySql Date conversion
-				$time = strtotime($date);
-				$date = date("F jS, Y", $time);
-				$date = '<span class="label label-danger">Deactivated On '.$date.'</span>';
-			}
-
 			if($type == 'master'){
 				$type = 'Full Access';
 			}else{
 				$type = 'Limited Access';
 			}
 
-			//BEGIN TABLE
-			$output = '
-				<div class="table-responsive">
-					<table class="table">';
+			if($status == 'Active')
+			{
+				$status = '<span class="label label-success">Active</span>';
+			}else{
+				$status = '<span class="label label-danger">Inactive</span>';
+			}
 
-			//User Name Output
-			$output .= '
-				<thead>
-					<th style="width:150px;text-align:right">Full Name:</th>
-					<th style="font-weight:normal">'.$name.'</th>
-				</thead>';
+			if($date != null){
+				//MySql Date conversion
+				$time = strtotime($date);
+				$date = date("F jS, Y", $time);
 
-			//Contact Info Output
+				$output .= '
+					<div class="alert alert-danger" style="
+						text-align:center;
+						font-weight:bold;
+						font-size:1.2em;
+					">
+						Account Deactivated On '.$date.'
+					</div>';
+			}
+
+			//	Title which includes name and job-title
 			$output .= '
-				<div>
+				<div style="
+					text-align:center;
+					font-weight:bold;
+					border:1px solid black;
+				">
+					<div style="font-size:1.5em">'.$name.'</div>
+					<div style="font-size:1em;">'.$job.'</div>
+				</div>';
+
+			//	CBSI AMS Account Type Output
+			$output .= '
+				<div style="
+					float:left;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+				">
+					Account Type:
+					<span class="text-info">'.$type.'</span>
+				</div>';
+
+			//Status Output
+			$output .= '
+			<div style="
+				float:right;
+				text-align:right;
+				font-weight:bold;
+				font-size:1.3em;
+				padding-top: 5px;
+				width:50%;
+			">
+			'.$status.'
+			</div>
+			';
+
+			$output .= '<hr/>';
+
+			//	Employee Contact Information Output
+			$output .= '
+			<div class="table-responsive" style="margin-top:20px">
+				<table class="table table-bordered" style="text-align:center;">
 				<tr>
-					<td style="text-align:right;font-weight:bold">Cellphone Number:</td>
-					<td>'.$cell.'</td>
+					<th colspan="2"  style="
+						text-align:center;
+						font-weight:bold;
+						font-size:1.3em;
+						margin-top:10px;
+					">
+						Contact Information
+					</th>
 				</tr>
 				<tr>
-					<td style="text-align:right;font-weight:bold">Email Address:</td>
+					<th style="width:220px;text-align:center">Phone Number</th>
+					<th style="width:220px;text-align:center">Email Address</th>
+				</tr>
+				<tr>
+					<td>'.$cell.'</td>
 					<td>'.$email.'</td>
 				</tr>
-				</div>';
+				</table>
+			</div>
+			';
 
-			//Job Title Output
-			$output .= '
-				<tr>
-					<td style="text-align:right;font-weight:bold">Job Title:</td>
-					<td>'.$job.'</td>
-				</tr>';
-
-			//Account Type Output
-			$output .= '
-				<tr>
-					<td style="text-align:right;font-weight:bold">AMS Account Type:</td>
-					<td>'.$type.'</td>
-				</tr>';
-			//END TABLE
-			$output .= '
-					</table>
-				</div>';
+			
 			//Grabs a table of all equipment the user has checked out
 			if( num_checkouts_by_id($connect, $id) == 0){
-				$output .= '<div class="text-success" style="text-align:center;font-weight:bold;font-size:1.3em;">No Currently Checked Out Items!</div>';
+				$output .= '<div class="text-success" style="text-align:center;font-weight:bold;font-size:1.3em;">No Items Currently Checked Out!</div>';
 			}else{
+				$output .= "<br/>";
 				$output .= table_checkouts_by_id($connect, $id);
 			}
 		}

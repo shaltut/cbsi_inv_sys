@@ -9,25 +9,19 @@ if(!isset($_SESSION["type"]))
 include('header.php');
 ?>
 <div class="row">
-	<?php
-	if(count_check_out_user($connect, $_SESSION['user_id']) > 0){
-	?>
-		<!-- 
-			This function shows the number of pieces of equipment checked out by the employee who is currently logged in.
-		-->
-		<div class="col-sm-12">
-			<div class="panel panel-default">
-				<div class="panel-heading"id="panel-head">
-					Your Checkouts Total
-				</div>
-				<div class="panel-body" align="center">
-					<h1><?php echo count_check_out_user($connect, $_SESSION['user_id']); ?></h1>
-				</div>
+	<!-- 
+		This function shows the number of pieces of equipment checked out by the employee who is currently logged in.
+	-->
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-heading"id="panel-head">
+				Your Checkouts Total
+			</div>
+			<div class="panel-body" align="center">
+				<h1><?php echo count_check_out_user($connect, $_SESSION['user_id']); ?></h1>
 			</div>
 		</div>
-	<?php
-	}
-	?>
+	</div>
 </div> 	<!-- End First Row -->
 
 <hr/>

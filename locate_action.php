@@ -181,24 +181,41 @@ $query = "
 				<br/>
 			</div>
 			';
-
-			//Cost Output
-			if($cost != NULL){
-				$output .= '
-				<div style="
-					float:right;
-					text-align:right;
-					font-weight:bold;
-					font-size:1.3em;
-					padding-top: 5px;
-					width:50%;
-					display:block;
-				">
-					Cost:
-					<span class="text-success">$'.$cost.'</span>
-				</div>';
+			if($_SESSION['type'] == 'master'){
+				//Cost Output
+				if($cost != NULL){
+					$output .= '
+					<div style="
+						float:right;
+						text-align:right;
+						font-weight:bold;
+						font-size:1.3em;
+						padding-top: 5px;
+						width:50%;
+						display:block;
+					">
+						Cost:
+						<span class="text-success">$'.$cost.'</span>
+					</div>';
+				}
+			}else{
+				//Cost Output
+				if($cost != NULL){
+					$output .= '
+					<div style="
+						float:right;
+						text-align:right;
+						font-weight:bold;
+						font-size:1.3em;
+						padding-top: 5px;
+						width:50%;
+						display:block;
+					">
+						Cost:
+						<span class="text-danger"> (Restricted) </span>
+					</div>';
+				}
 			}
-
 			//Availability Output
 			if($row['is_available'] == 'available'){
 				$output .= '
@@ -339,39 +356,10 @@ $query = "
 			</div>
 			';
 
-			// $on = '
-			// 	<div style="font-size:1.2em;font-weight:bold;">
-			// 		<span class="text-info" style="
-			// 			font-size:1.3em;
-			// 		">
-			// 			On: 
-			// 		</span>
-			// 	'.$date.'
-			// </div>';
-
 			$output['last_loc'] = $siteinfo;
 			$output['last_chk'] = $contact;
 			// $output['last_date'] = $on;
 			$output['message'] = true;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 		}
 		echo json_encode($output);

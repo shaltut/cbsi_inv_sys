@@ -16,9 +16,9 @@ if($_SESSION['type'] != 'master')
 include('header.php');
 ?>
 <!-- Alerts the user to changes they have made, or errors -->
-
 <span id='alert_action'></span>
 
+<!-- Main Page Pannel that displays maintenance data for equipment that requires maintenance -->
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -48,9 +48,10 @@ include('header.php');
         </div>
     </div>
 </div>
-
+<!-- Back button -->
 <button class="btn btn-info" onclick="goBack()" style="float:right;">Go Back</button>
 
+<!-- Maintain Form Modal -->
 <div id="maintainModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="equipment_form">
@@ -100,6 +101,7 @@ include('header.php');
     </div>
 </div>
 
+<!-- Equipment Details Modal-->
 <div id="maintaindetailsModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="equipment_form">
@@ -123,6 +125,7 @@ include('header.php');
 
 <script>
 $(document).ready(function(){
+    //Grabs data from the server to display the dataTable when the page loads
     var maintainDataTable = $('#equipment_data').DataTable({
         "processing":true,
         "serverSide":true,
@@ -141,6 +144,7 @@ $(document).ready(function(){
         "pageLength": 10
     });
 
+    //  Action for submit form button
     $(document).on('submit', '#equipment_form', function(event){
         event.preventDefault();
         $('#action').attr('disabled', 'disabled');
@@ -160,6 +164,8 @@ $(document).ready(function(){
         })
     });
 
+
+    //  Action for view button
     $(document).on('click', '.view', function(){
         var equip_id = $(this).attr("id");
         var btn_action = 'equipment_details';
@@ -174,6 +180,7 @@ $(document).ready(function(){
         })
     });
 
+    //  Action for update button
     $(document).on('click', '.update', function(){
         var equip_id = $(this).attr("id");
         var btn_action = 'fetch_single';
@@ -206,6 +213,7 @@ $(document).ready(function(){
         $("#todayBtn").toggle();
     });
 
+    //  Action for auto-reset button
     $(document).on('click', '.today', function(){
         var equip_id = $(this).attr("id");
         var btn_action = 'Today';

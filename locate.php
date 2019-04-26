@@ -8,10 +8,11 @@ if(!isset($_SESSION["type"]))
 }
 include('header.php');
 ?>
-<!-- Alerts the user to changes they have made, or errors -->
 
+<!-- Alerts the user to changes they have made, or errors -->
 <span id='alert_action'></span>
 
+<!-- Modal that displays equipment data using dataTables API -->
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -38,6 +39,7 @@ include('header.php');
     </div>
 </div>
 
+<!-- Locate Modal (Last known location modal) -->
 <div id="equipmentModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="equipment_form">
@@ -62,12 +64,7 @@ include('header.php');
 
                     <div class="form-group">
                         <div id="last_chk" style="display:inline;"></div>
-                        <!-- <div id="last_chk" style="margin-left:10%"></div> -->
                     </div>
-
-                    <!-- <div class="form-group">
-                        <div id="last_date" style="display:inline;"></div>
-                    </div> -->
 
                 </div>
 
@@ -80,6 +77,7 @@ include('header.php');
     </div>
 </div>
 
+<!-- Equipment details modal -->
 <div id="equipmentdetailsModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="equipment_form">

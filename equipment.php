@@ -1,8 +1,9 @@
 <?php
 //equipment.php
 
-include('database_connection.php');
-include('function.php');
+//Includes
+include('database_connection.php'); //Database Connection
+include('function.php');    //Functions
 
 if(!isset($_SESSION["type"]))
 {
@@ -17,14 +18,16 @@ if($_SESSION['type'] != 'master')
 include('header.php');
 ?>
 
-<!-- Alerts the user to changes they have made, or errors -->
-
+<!-- Alerts -->
 <span id='alert_action'></span>
 
 <?php
 $count_red = maintenance_red_num($connect);
 $count_yellow = maintenance_warning_num($connect);
 $broken = broken_num($connect);
+
+
+//This alert displays when equipment is broken or requires maintenance
 if($count_red > 0 || $broken > 0){
 ?>
     <!-- Alerts user if equipment needs to be maintained-->
@@ -49,7 +52,10 @@ if($count_red > 0 || $broken > 0){
 <?php
 }
 ?>
-
+<!-- 
+    This is the main pannel on the page. Displays automatically and holds all
+    the equipment data displayed to the user
+-->
 <div class="row" style="">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -91,21 +97,24 @@ if($count_red > 0 || $broken > 0){
     </a>
     <br/>
 </div>
+
 </br></br>
 
+<!-- Equipment Form Modal -->
 <div id="equipmentModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="equipment_form">
             <div class="modal-content">
-
                 <div class="modal-header">
+                    <!-- Modal close button -->
                     <button type="button" class="close" data-dismiss="modal">
                     	<span class="glyphicon glyphicon-remove" style="color:white"></span>
                     </button>
                     <h4 class="modal-title" style="color:white"><i class="fa fa-plus"></i> Add Equipment</h4>
                 </div>
-
                 <div class="modal-body">
+
+                    <!-- Equipment Name Input -->
                     <div class="form-group">
                         <label for="equip_name" class="form-lbl-lvl1">
                             Equipment Name
@@ -117,6 +126,8 @@ if($count_red > 0 || $broken > 0){
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
+
+                    <!-- Equipment Serial Number Input -->
                     <div class="form-group">
                         <label for="equip_serial" class="form-lbl-lvl1">Serial Number</label>
                         <input type="text" name="equip_serial" placeholder="Serial Number" id="equip_serial" class="form-control form-in-lvl1" maxlength="50"/>
@@ -125,6 +136,8 @@ if($count_red > 0 || $broken > 0){
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
+
+                    <!-- Equipment Description Input -->
                     <div class="form-group">
                         <label for="equip_desc" class="form-lbl-lvl1">Description</label>
                         <textarea name="equip_desc" placeholder="Equipment Description" id="equip_desc" class="form-control form-in-lvl1" rows="5" maxlength="250"></textarea>
@@ -133,6 +146,8 @@ if($count_red > 0 || $broken > 0){
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
+
+                    <!-- Equipment Cost Input -->
                     <div class="form-group">
                         <label for="equip_cost" class="form-lbl-lvl1">Equipment Cost</label>
                         <input type="text" name="equip_cost" placeholder="Cost of Equipment" id="equip_cost" class="form-control form-in-lvl1" pattern="[+-]?([0-9]*[.])?[0-9]+" maxlength="10"/>
@@ -142,6 +157,7 @@ if($count_red > 0 || $broken > 0){
                         </button>
                     </div>
 
+                    <!-- Maintenance Required Input checkbox -->
                     <div class="form-group">
                         <label for="is_maintenance_required" style="font-size:1.3em;padding:20px 0 10px 0;color:rgba(3,54,78,1)">Scheduled Maintenance?</label>
                         <input type="hidden" value="no" name="is_maintenance_required"/>
@@ -152,6 +168,8 @@ if($count_red > 0 || $broken > 0){
                         </button>
                     </div>
                         <div id="maintain_vis">
+
+                            <!-- Maintain_every Input -->
                             <div class="form-group">
                                 <label for="maintain_every" class="form-lbl-sub">Requires Maintenance Every</label>
                                 <select class="form-control form-in-lvl1" name="maintain_every" id="maintain_every">
@@ -166,6 +184,8 @@ if($count_red > 0 || $broken > 0){
                                     <img src="images/info5_sm.png" alt="info">
                                 </button>
                             </div>
+
+                            <!-- Last Maintained Input (Calendar)-->
                             <div class="form-group">  
                                 <label for="last_maintained" class="form-lbl-sub">Last Maintenance Date</label>
                                 <input type="date" class="form-control form-in-lvl1" name="last_maintained" id="last_maintained" />
@@ -175,6 +195,7 @@ if($count_red > 0 || $broken > 0){
                             	</button>
                             </div>
                         </div>
+                    <!-- Maintenance Now Input Checkbox -->
                     <div class="form-group">
                         <label for="is_broken" style="font-size:1.3em;color:rgba(3,54,78,1)"> Needs Maintenance Now </label>
                         <input type="hidden" value="no" name="is_broken"/>
@@ -184,6 +205,7 @@ if($count_red > 0 || $broken > 0){
                             <img src="images/info5_sm.png" alt="info">
                         </button>
                     </div>
+                        <!-- Problem Description Input textarea -->
                         <div id="broken_vis" style="display:none">
                             <div class="form-group">  
                                 <label for="last_maintained" class="form-lbl-sub">Describe the Problem</label>
@@ -200,7 +222,9 @@ if($count_red > 0 || $broken > 0){
                 <div class="modal-footer">
                     <input type="hidden" name="equip_id" id="equip_id" />
                     <input type="hidden" name="btn_action" id="btn_action" />
+                    <!-- Submit button -->
                     <input type="submit" name="action" id="action" class="btn btn-info" value="Add" style="width:100px"/>
+                    <!-- Modal close button -->
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
 
@@ -209,6 +233,7 @@ if($count_red > 0 || $broken > 0){
     </div>
 </div>
 
+<!-- Equipment Details Modal -->
 <div id="equipmentdetailsModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="equipment_form">
@@ -230,6 +255,7 @@ if($count_red > 0 || $broken > 0){
     </div>
 </div>
 
+<!-- ID output modal -->
 <div id="addSuccess" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="equipment_form">

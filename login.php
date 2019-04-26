@@ -43,12 +43,18 @@ if(isset($_POST["login"])){
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>CBSI Inventory System | Log in</title>		
+		<!-- CBSI Favicon -->
+	    <link rel="icon" type="image/png" href="images/cbsifav.png">
+	    <!-- Tab Title -->
+		<title>CBSI Inventory System | Log in</title>	
+		<!-- Scripts found in the JS folder -->
 		<script src="js/jquery-1.10.2.min.js"></script>
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
 		<script src="js/bootstrap.min.js"></script>
-
+		<!-- stylesheet found in the CSS foldewr -->
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<!-- Makes the system scale for mobile devices -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Styles -->
 		<style>
 			.logoimg {
 				display: block;
@@ -89,9 +95,8 @@ if(isset($_POST["login"])){
 	<body>
 		<br />
 		<div class="container">
-
+			<!-- CBSI LOGO -->
 			<img class="logoimg" src="images/logo.png" alt="CBSI logo" width="300" height="171">	
-			
 			</br></br>
 			<center>
 				<div class="panel panel-default" style="max-width:450px;">
@@ -101,9 +106,11 @@ if(isset($_POST["login"])){
 					<div class="panel-body">
 						<form method="post">
 							<?php echo $message; ?>
+
+							<!-- Email Input -->
 							<div class="form-group">
 								<div style="text-align:left">
-									<label style="font-size:1.2em">Email:</label>
+									<label style="font-size:1.2em">Username:</label>
 								</div>
 								<input type="text" name="user_email" placeholder="Enter Email" class="form-control form-in-log" required />
 								<!-- INFO BTN -->
@@ -111,6 +118,8 @@ if(isset($_POST["login"])){
 		                            <img src="images/info5_sm.png" alt="info">
 		                        </button>
 							</div>
+
+							<!-- Password Input -->
 							<div class="form-group">
 								<div style="text-align:left">
 									<label style="font-size:1.2em">Password:</label>

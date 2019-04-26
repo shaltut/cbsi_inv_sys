@@ -1,7 +1,7 @@
 <?php
 //user.php
+
 include('database_connection.php');
-// include('function.php');
 
 if(!isset($_SESSION["type"]))
 {
@@ -16,9 +16,11 @@ include('header.php');
 
 
 ?>
+
+<!-- Alerts -->
 <span id="alert_action"></span>
 
-
+<!-- Main Pannel that displays the table of site data -->
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
@@ -63,8 +65,6 @@ include('header.php');
 </div>
 </br></br>
 
-
-
 <!-- 
 	Displays the modal that appears after the "New User" or "Update" buttons are pressed
 -->
@@ -72,6 +72,7 @@ include('header.php');
 	<div class="modal-dialog">
 		<form method="post" id="user_form">	<div class="modal-content">
 			<div class="modal-header" style="color:white">
+				<!-- Modal close button -->
 				<button type="button" class="close" data-dismiss="modal">
                     	<span class="glyphicon glyphicon-remove" style="color:white"></span>
                     </button>
@@ -166,6 +167,7 @@ include('header.php');
 				<input type="hidden" name="user_id" id="user_id" />
 				<input type="hidden" name="btn_action" id="btn_action" />
 				<input type="submit" name="action" id="action" class="btn btn-info" value="Add" style="width:100px"/>
+				<!-- Modal close button -->
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div></form>
@@ -173,6 +175,7 @@ include('header.php');
 	</div>
 </div>
 
+<!-- User Details Modal -->
 <div id="userdetailsModal" class="modal fade">
     <div class="modal-dialog">
         <form method="post" id="user_form">
@@ -187,6 +190,7 @@ include('header.php');
                     <Div id="user_details"></Div>
                 </div>
                 <div class="modal-footer">
+                	<!-- Modal close button -->
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>

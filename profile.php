@@ -24,6 +24,7 @@ foreach($result as $row)
 {
 	$name = $row['user_name'];
 	$email = $row['user_email'];
+	$cell = $row['user_cell'];
 }
 ?>
 <div class="panel panel-default">
@@ -33,27 +34,26 @@ foreach($result as $row)
 			<span id="message"></span>
 
 			<!-- Name Input -->
-			<div class="form-group" style="width:46%;float:left">
+			<div class="form-group" style="width:46%;float:left;">
 				<label style="font-size:1.2em">Name: </label>
-				<input type="text" name="user_name" id="user_name" class="form-control" value="<?php echo $name; ?>" required 
-				<?php
-				if($_SESSION['type'] == 'user'){
-					echo 'readonly';
-				}
-				?>
-				/>
+				<input type="text" name="user_name" id="user_name" class="form-control form-in-lvl1" value="<?php echo $name; ?>" required >
+				
 			</div>
 
 			<!-- Email Input -->
-			<div class="form-group" style="width:46%;float:right;padding:0 0 30px 0;">
+			<div class="form-group" style="width:46%;float:right;">
 				<label style="font-size:1.2em">Email: </label>
-				<input type="email" name="user_email" id="user_email" class="form-control" required value="<?php echo $email; ?>" 
-				<?php
-				if($_SESSION['type'] == 'user'){
-					echo 'readonly';
-				}
-				?>
-				/>
+				<input type="email" name="user_email" id="user_email" class="form-control form-in-lvl1" value="<?php echo $email; ?>" required>
+				
+			</div>
+
+			<br/>
+
+			<!-- Cellphone Input -->
+			<div class="form-group" style="width:46%;float:right;padding-right:20px">
+				<label style="font-size:1.2em">Cell: </label>
+					<input type="tel" name="user_cell" id="user_cell" class="form-control form-in-lvl1" maxlength="16" placeholder="888-888-8888" onKeyup='addDashes(this)'value="<?php echo $cell; ?>"/>
+				
 			</div>
 
 			<hr />
@@ -74,7 +74,7 @@ foreach($result as $row)
 
 			<!-- Edit button -->
 			<div class="form-group">
-				<input type="submit" name="edit_prfile" id="edit_prfile" value="Edit" class="btn btn-info" style="width:100px; float:right" />
+				<input type="submit" name="edit_prfile" id="edit_prfile" value="Submit Changes" class="btn btn-success" style="width:200px;float:right;font-weight:bold;" />
 			</div>
 		</form>
 	</div>
@@ -96,9 +96,13 @@ $(document).ready(function(){
 				$('#error_password').html('');
 			}
 		}
+
 		$('#edit_prfile').attr('disabled', 'disabled');
+
 		var form_data = $(this).serialize();
+
 		$('#user_re_enter_password').attr('required',false);
+
 		$.ajax({
 			url:"edit_profile.php",
 			method:"POST",
@@ -113,4 +117,47 @@ $(document).ready(function(){
 		})
 	});
 });
+</script>
+<script>
+//Helps to format Cell-Phone input field
+const isModifierKey = (event) => {
+    const key = event.keyCode;
+    return (event.shiftKey === true || key === 35 || key === 36) || // Allow Shift, Home, End
+        (key === 8 || key === 9 || key === 13 || key === 46) || // Allow Backspace, Tab, Enter, Delete
+        (key > 36 && key < 41) || // Allow left, up, right, down
+        (
+            // Allow Ctrl/Command + A,C,V,X,Z
+            (event.ctrlKey === true || event.metaKey === true) &&
+            (key === 65 || key === 67 || key === 86 || key === 88 || key === 90)
+        )
+};
+
+//Helps to format Cell-Phone input field
+const enforceFormat = (event) => {
+    // Input must be of a valid number format or a modifier key, and not longer than ten digits
+    if(!isNumericInput(event) && !isModifierKey(event)){
+        event.preventDefault();
+    }
+};
+
+//Helps to format Cell-Phone input field
+const formatToPhone = (event) => {
+    if(isModifierKey(event)) {return;}
+
+    // I am lazy and don't like to type things more than once
+    const target = event.target;
+    const input = target.value.replace(/\D/g,'').substring(0,10); // First ten digits of input only
+    const zip = input.substring(0,3);
+    const middle = input.substring(3,6);
+    const last = input.substring(6,10);
+
+    if(input.length > 6){target.value = `(${zip}) ${middle} - ${last}`;}
+    else if(input.length > 3){target.value = `(${zip}) ${middle}`;}
+    else if(input.length > 0){target.value = `(${zip}`;}
+};
+
+//Helps to format Cell-Phone input field
+const inputElement = document.getElementById('user_cell');
+inputElement.addEventListener('keydown',enforceFormat);
+inputElement.addEventListener('keyup',formatToPhone);
 </script>

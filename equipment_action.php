@@ -128,6 +128,8 @@ if(isset($_POST['btn_action']))
 				$status = '<span class="label label-danger">Inactive</span>';
 			}
 
+
+
 			//	Heading
 			if(check_equip_maintenance_month($connect, $row['equip_id']) == 'red' || $isbroken == 'yes'){
 				$output .= '
@@ -180,7 +182,7 @@ if(isset($_POST['btn_action']))
 					padding-top: 5px;
 					width:50%;
 				">
-					Serial #: --
+					Serial #: <span class="text-danger">--</span>
 				</div>';
 			}
 
@@ -255,7 +257,7 @@ if(isset($_POST['btn_action']))
 			';
 
 			//Cost Output
-			if($cost != NULL){
+			if($cost > 0){
 				$output .= '
 				<div style="
 					float:right;
@@ -268,6 +270,20 @@ if(isset($_POST['btn_action']))
 				">
 					Cost:
 					<span class="text-success">$'.$cost.'</span>
+				</div>';
+			}else{
+				$output .= '
+				<div style="
+					float:right;
+					text-align:right;
+					font-weight:bold;
+					font-size:1.3em;
+					padding-top: 5px;
+					width:50%;
+					display:block;
+				">
+					Cost:
+					<span class="text-danger">--</span>
 				</div>';
 			}
 

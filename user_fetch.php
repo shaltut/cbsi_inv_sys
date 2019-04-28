@@ -6,15 +6,15 @@ include('database_connection.php');
 
 $query = '';
 $output = array();
+
 /*
 	This is the beginning of the query used to select all the users for display.
 
 	Depending on the user's use of the buttons and actions available on the page, this query changes. Look for the '$query' variable throughout this page inside of decision structures that modify the original below.
 */
 $query .= "
-SELECT * FROM user_details 
+	SELECT * FROM user_details 
 ";
-
 
 // **********	Search bar 	**********
 if(isset($_POST["search"]["value"]))
@@ -22,6 +22,8 @@ if(isset($_POST["search"]["value"]))
 	$query .= 'WHERE user_email LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR user_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR user_status LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR user_id LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'OR user_job LIKE "%'.$_POST["search"]["value"].'%" ';
 }
 
 // **********	Ordered Header 	**********

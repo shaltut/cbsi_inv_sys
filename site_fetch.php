@@ -9,12 +9,11 @@ $query = '';
 $output = array();
 $query .= "
 	SELECT * FROM sites 
-	GROUP BY site_id, site_name
 ";
 
 if(isset($_POST["search"]["value"]))
 {
-	$query .= 'OR site_name LIKE "%'.$_POST["search"]["value"].'%" ';
+	$query .= 'WHERE site_name LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR site_address LIKE "%'.$_POST["search"]["value"].'%" ';
 	$query .= 'OR site_id LIKE "%'.$_POST["search"]["value"].'%" ';
 }

@@ -199,7 +199,6 @@ $(document).ready(function(){
         "processing":true,
         "serverSide":true,
         "searching": false, 
-        "paging": true,
         "bLengthChange": false,
         "bInfo" : false,
         "order":[],
@@ -214,7 +213,7 @@ $(document).ready(function(){
                 "orderable":false,
             },
         ],
-        "pageLength": 10
+        "pageLength": 5
     });
 
     /*

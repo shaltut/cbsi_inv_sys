@@ -24,7 +24,9 @@ foreach($result as $row)
 {
 	$name = $row['user_name'];
 	$email = $row['user_email'];
+	$_SESSION['user_email'] = $row['user_email'];
 	$cell = $row['user_cell'];
+	$_SESSION['user_cell'] = $row['user_cell'];
 }
 ?>
 <div class="panel panel-default">
@@ -34,29 +36,28 @@ foreach($result as $row)
 			<span id="message"></span>
 
 			<!-- Name Input -->
-			<div class="form-group" style="width:46%;float:left;">
-				<label style="font-size:1.2em">Name: </label>
-				<input type="text" name="user_name" id="user_name" class="form-control form-in-lvl1" value="<?php echo $name; ?>" required >
+			<div class="form-group" style="width:100%;float:left;padding-bottom:20px">
+				<label style="font-size:1.2em;width:100%">Name: </label>
+				<input type="text" name="user_name" id="user_name" class="form-control form-in-lvl1" value="<?php echo $name; ?>" style="width:40%"required >
 				
 			</div>
 
 			<!-- Email Input -->
-			<div class="form-group" style="width:46%;float:right;">
-				<label style="font-size:1.2em">Email: </label>
+			<div class="form-group" style="width:46%;float:left;">
+				<label style="font-size:1.2em;width:100%;">Email: </label>
 				<input type="email" name="user_email" id="user_email" class="form-control form-in-lvl1" value="<?php echo $email; ?>" required>
 				
 			</div>
 
-			<br/>
-
 			<!-- Cellphone Input -->
-			<div class="form-group" style="width:46%;float:right;padding-right:20px">
-				<label style="font-size:1.2em">Cell: </label>
-					<input type="tel" name="user_cell" id="user_cell" class="form-control form-in-lvl1" maxlength="16" placeholder="888-888-8888" onKeyup='addDashes(this)'value="<?php echo $cell; ?>"/>
+			<div class="form-group" style="width:46%;float:right;margin-bottom:50px">
+				<label style="font-size:1.2em;width:100%">Cell: </label>
+					<input type="tel" name="user_cell" id="user_cell" class="form-control form-in-lvl1" maxlength="16" placeholder="888-888-8888" onKeyup='addDashes(this)'value="<?php echo $cell; ?>" required/>
 				
 			</div>
 
 			<hr />
+
 			<label style="color:rgba(200,0,0,.7)">**Leave Password fields blank if you do not want to change it</label>
 
 			<!-- New Password Input -->

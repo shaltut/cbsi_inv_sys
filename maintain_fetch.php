@@ -14,10 +14,31 @@ $query = "
 	WHERE (is_maintenance_required = 'yes' AND equip_status = 'active') OR (is_broken = 'yes' AND equip_status = 'active')
 	";
 
-// if($_POST['length'] != -1)
+// if(isset($_POST["search"]["value"]))
 // {
-// 	$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+// 	$query .= 'OR equip_id LIKE "%'.$_POST["search"]["value"].'%" ';
+// 	$query .= 'OR equip_name LIKE "%'.$_POST["search"]["value"].'%" ';
 // }
+
+// if(isset($_POST['order']))
+// {
+// 	if($_POST['order']['0']['column'] == 0){
+// 		$sortVal = 'equip_id';
+// 	}else if($_POST['order']['0']['column'] == 1){
+// 		$sortVal = 'equip_name';
+// 	}
+
+// 	$query .= 'ORDER BY '.$sortVal.' '.$_POST['order']['0']['dir'].' ';
+// }
+// else
+// {
+// 	$query .= 'ORDER BY date_added DESC ';
+// }
+
+if($_POST['length'] != -1)
+{
+	$query .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
+}
 $statement = $connect->prepare($query);
 $statement->execute();
 $result = $statement->fetchAll();

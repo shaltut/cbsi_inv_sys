@@ -129,6 +129,7 @@ $(document).ready(function(){
     var maintainDataTable = $('#equipment_data').DataTable({
         "processing":true,
         "serverSide":true,
+        "searching": false, 
         "order":[],
         "ajax":{
             url:"maintain_fetch.php",

@@ -12,6 +12,17 @@ include('header.php');	//Imports the header (Nav bar)
 	#panel-head{
 		text-align:center ;
 	}
+	.lbl{
+		font-weight:bold;
+		font-size:1em;
+		padding:3px;
+		text-align:right;
+	}
+	.data{
+		font-size:1.1em;
+		padding:3px;
+		text-align:left;
+	}
 
 	@media (min-width: 768px) {
 	  	#panel-head{
@@ -33,49 +44,53 @@ include('header.php');	//Imports the header (Nav bar)
 			float:right;
 			padding:0 15px;
 		}
+		.lbl{
+			font-size:1.05em;
+		}
+		.data{
+			font-size:1.1em;
+		}
 	}
 
 	@media (min-width: 992px) {
-	  	/*#panel-head{
-			text-align:left;
-		}*/
 		.row-small{
 			width:20%;
-			/*float:left;*/
 			margin-left: 10%;
 		}
 		.table-small{
 			width:60%;
 			margin-right: 10%;
-			/*float:right;*/
 		}
 		#info-div{
 			width:60%;
 			margin-right: 10%;
-			float:right;
-			/*padding:0 15px;*/
+		}
+		.lbl{
+			font-size:1.1em;
+		}
+		.data{
+			font-size:1.2em;
 		}
 	}
 
 	@media (min-width: 1200px) {
-	  	/*#panel-head{
-			text-align:left;
-		}*/
 		.row-small{
 			width:15%;
-			/*float:left;*/
 			margin-left: 10%;
 		}
 		.table-small{
 			width:63%;
 			margin-right: 12%;
-			/*float:right;*/
 		}
 		#info-div{
 			width:63%;
 			margin-right: 12%;
-			/*float:right;*/
-			/*padding:0 15px;*/
+		}
+		.lbl{
+			font-size:1.3em;
+		}
+		.data{
+			font-size:1.4em;
 		}
 	}
 </style>
@@ -89,13 +104,13 @@ include('header.php');	//Imports the header (Nav bar)
 			<div class="panel-body" align="left">
 				<table style="width:50%;float:left">
 					<tr style="border-bottom:1px solid black;">
-						<td style="font-weight:bold;font-size:1.3em;padding:3px;text-align:right;"> Name:</td>
-						<td style="font-size:1.2em;padding:3px;text-align:left;"><?php echo '  &nbsp; '.$_SESSION['user_name']; ?></td>
+						<td class="lbl"> Name:</td>
+						<td class="data"><?php echo '  &nbsp; '.$_SESSION['user_name']; ?></td>
 					</tr>
 
 					<tr>
-						<td style="font-weight:bold;font-size:1.3em;padding:3px;text-align:right;">Acct Type:</td>
-						<td style="font-size:1.2em;padding:3px"><?php 
+						<td class="lbl">Acct Type:</td>
+						<td class="data"><?php 
 							if($_SESSION['type'] == 'user'){
 								echo '  &nbsp; <span style="color:blue;">Standard</span>';
 							}else{
@@ -106,8 +121,8 @@ include('header.php');	//Imports the header (Nav bar)
 				</table>
 				<table style="width:50%;float:left">
 					<tr style="border-bottom:1px solid black;">
-						<td style="font-weight:bold;font-size:1.3em;padding:3px;text-align:right;"> User ID:</td>
-						<td style="font-size:1.2em;padding:3px;text-align:left;">
+						<td class="lbl"> User ID:</td>
+						<td class="data">
 							<?php 
 								echo ' &nbsp; '.$_SESSION['user_id'];
 							?>
@@ -115,8 +130,8 @@ include('header.php');	//Imports the header (Nav bar)
 					</tr>
 
 					<tr style="">
-						<td style="font-weight:bold;font-size:1.3em;padding:3px;text-align:right;">Last Login:</td>
-						<td style="font-size:1.07em;padding:3px"><?php 
+						<td class="lbl">Last Login:</td>
+						<td class="data"><?php 
 
 							$date = get_empl_last_log_by_id($connect, $_SESSION['user_id']);
 

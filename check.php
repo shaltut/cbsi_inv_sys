@@ -28,7 +28,8 @@ include('header.php');
         width:50%;
      }
 </style>
-
+<div class="container">
+    
 <!-- Alerts the user to changes they have made, or errors -->
 <span id='alert_action'></span>
 
@@ -141,6 +142,7 @@ include('header.php');
     </div>
 </div>
 
+</div> <!-- Container -->
 <!-- Include for footer -->
 <?php
 include('footer.php');

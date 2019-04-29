@@ -29,6 +29,8 @@ foreach($result as $row)
 	$_SESSION['user_cell'] = $row['user_cell'];
 }
 ?>
+<div class="container">
+
 <div class="panel panel-default">
 	<div class="panel-heading" id="panel-head">Edit Profile</div>
 	<div class="panel-body">
@@ -80,7 +82,7 @@ foreach($result as $row)
 		</form>
 	</div>
 </div>
-
+</div><!-- Container -->
 <script>
 $(document).ready(function(){
 	$('#edit_profile_form').on('submit', function(event){

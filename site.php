@@ -15,6 +15,7 @@ if($_SESSION['type'] != 'master')
 
 include('header.php');
 ?>
+<div class="container">
 
 <!-- Alerts the user to changes they have made, or errors -->
 <span id='alert_action'></span>
@@ -165,6 +166,7 @@ include('header.php');
     </div>
 </div>
 
+</div><!-- Container -->
 <script>
 $(document).ready(function(){
 	/*

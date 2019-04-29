@@ -189,4 +189,4 @@ if(!isset($_SESSION["type"])){
 		</nav>
 <!-- END NAVBAR --------------------------------------------------------->
 <br />
-		<div class="container">
+		<!-- <div class="container"> -->

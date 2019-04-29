@@ -47,6 +47,32 @@ function get_empl_name_by_id($connect, $user_id){
 	return $output;
 }
 
+/*	Returns empl_name given empl_id
+*	Used In:
+*		- locate_action.php
+*/
+function get_empl_last_log_by_id($connect, $user_id){
+	$output = '';
+	$query = "
+	SELECT user_last_log
+	FROM user_details
+	WHERE user_id = '".$user_id."'
+	";
+	$statement = $connect->prepare($query);
+	$statement->execute();
+	$result = $statement->fetchAll();
+	if(isset($result)){
+		foreach($result as $row)
+		{
+			$time = strtotime($row['user_last_log']);
+			$output = date("F jS, Y", $time);
+		}
+	}
+
+	// return $count;
+	return $output;
+}
+
 /*	Returns site_name given site_id
 *	Used In:
 *		- locate_action.php

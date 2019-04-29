@@ -16,6 +16,7 @@ include('header.php');
 
 
 ?>
+<div class="container">
 
 <!-- Alerts -->
 <span id="alert_action"></span>
@@ -198,7 +199,7 @@ include('header.php');
     </div>
 </div>
 
-
+</div><!-- Container -->
 <script>
 $(document).ready(function(){
 

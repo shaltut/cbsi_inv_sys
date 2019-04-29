@@ -17,7 +17,7 @@ if($_SESSION['type'] != 'master')
 
 include('header.php');
 ?>
-
+<div class="container">
 <!-- Alerts -->
 <span id='alert_action'></span>
 
@@ -280,6 +280,7 @@ if($count_red > 0 || $broken > 0){
     </div>
 </div>
 
+</div><!-- Container -->
 <script>
 $(document).ready(function(){
 

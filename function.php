@@ -64,8 +64,7 @@ function get_empl_last_log_by_id($connect, $user_id){
 	if(isset($result)){
 		foreach($result as $row)
 		{
-			$time = strtotime($row['user_last_log']);
-			$output = date("F jS, Y", $time);
+			$output = $row['user_last_log'];
 		}
 	}
 

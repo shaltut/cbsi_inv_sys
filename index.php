@@ -79,8 +79,20 @@ include('header.php');
 					<tr style="">
 						<td style="font-weight:bold;font-size:1.3em;padding:3px;text-align:right;">Last Login:</td>
 						<td style="font-size:1.07em;padding:3px"><?php 
-							echo ' &nbsp; '.get_empl_last_log_by_id($connect, $_SESSION['user_id'])
 
+							$date = get_empl_last_log_by_id($connect, $_SESSION['user_id']);
+
+							$time = strtotime($date);
+
+							$test_date = date("Y-m-d", $time);
+
+							if($test_date == date("Y-m-d")){
+								$out = 'Today at '.date("g:ia", $time);
+							}else{
+								$out = date("F jS, Y", $time);
+							}
+
+							echo ' &nbsp; '.$out;
 							?></td>
 					</tr>
 				</table>

@@ -12,7 +12,7 @@ $query = "
 	$statement = $connect->prepare($query);
 	$statement->execute(
 		array(
-			':user_last_log'	=>	date("Y-m-d"),
+			':user_last_log'	=>	date("Y-m-d H:i:s"),
 			':user_id'		=>	$_SESSION["user_id"]
 		)
 	);

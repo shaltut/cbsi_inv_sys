@@ -1,12 +1,12 @@
 <?php
 //index.php
-include('database_connection.php');
-include('function.php');
+include('database_connection.php');	//Imports the connection to the database
+include('function.php');	//Imports the function.php page
 if(!isset($_SESSION["type"]))
 {
 	header("location:login.php");
 }
-include('header.php');
+include('header.php');	//Imports the header (Nav bar)
 ?>
 <style>
 	#panel-head{
@@ -36,16 +36,54 @@ include('header.php');
 	}
 
 	@media (min-width: 992px) {
-	  	
+	  	/*#panel-head{
+			text-align:left;
+		}*/
+		.row-small{
+			width:20%;
+			/*float:left;*/
+			margin-left: 10%;
+		}
+		.table-small{
+			width:60%;
+			margin-right: 10%;
+			/*float:right;*/
+		}
+		#info-div{
+			width:60%;
+			margin-right: 10%;
+			float:right;
+			/*padding:0 15px;*/
+		}
 	}
 
 	@media (min-width: 1200px) {
-	  	
+	  	/*#panel-head{
+			text-align:left;
+		}*/
+		.row-small{
+			width:15%;
+			/*float:left;*/
+			margin-left: 10%;
+		}
+		.table-small{
+			width:63%;
+			margin-right: 12%;
+			/*float:right;*/
+		}
+		#info-div{
+			width:63%;
+			margin-right: 12%;
+			/*float:right;*/
+			/*padding:0 15px;*/
+		}
 	}
 </style>
+
+	<!-- Account Information Pannel -->
 	<div id="info-div">
 		<div class="panel panel-default">
-			<div class="panel-heading" id="panel-head">
+			<div class="panel-heading" id="panel-head" style="background-color:rgba(0,24,48,.9);">
 				Account Information
 			</div>
 			<div class="panel-body" align="left">
@@ -56,19 +94,19 @@ include('header.php');
 					</tr>
 
 					<tr>
-						<td style="font-weight:bold;font-size:1.3em;padding:3px;text-align:right;">User ID:</td>
+						<td style="font-weight:bold;font-size:1.3em;padding:3px;text-align:right;">Acct Type:</td>
 						<td style="font-size:1.2em;padding:3px"><?php 
-							if($_POST['type'] == 'user'){
-								echo '  &nbsp; Full Access';
+							if($_SESSION['type'] == 'user'){
+								echo '  &nbsp; <span style="color:blue;">Standard</span>';
 							}else{
-								echo '  &nbsp; Standard';
+								echo '  &nbsp; <span style="color:red;">Full Access</style>';
 							} ?>
 						</td>
 					</tr>
 				</table>
 				<table style="width:50%;float:left">
 					<tr style="border-bottom:1px solid black;">
-						<td style="font-weight:bold;font-size:1.3em;padding:3px;text-align:right;"> Acct Type:</td>
+						<td style="font-weight:bold;font-size:1.3em;padding:3px;text-align:right;"> User ID:</td>
 						<td style="font-size:1.2em;padding:3px;text-align:left;">
 							<?php 
 								echo ' &nbsp; '.$_SESSION['user_id'];
@@ -105,7 +143,7 @@ include('header.php');
 	-->
 	<div class="row-small">
 		<div class="panel panel-default">
-			<div class="panel-heading" id="panel-head">
+			<div class="panel-heading" id="panel-head" style="background-color:rgba(0,24,48,.9);">
 				Your Checkouts
 			</div>
 			<div class="panel-body" align="center">
@@ -120,12 +158,9 @@ include('header.php');
 	   	if(count_check_out_total($connect) <= 0){
 	?>
 	        <div class="panel panel-default">
-	            <div class="panel-heading"id="panel-head">
+	            <div class="panel-heading" id="panel-head" style="background-color:darkgreen;">
 	            	<center>
 	            		All Equipment Accounted For
-	            		<button type="button" class="btn btn-link" data-toggle="popover" data-content="There are no items currently checked out, and all previously checked out items have been returned." data-placement="left" style="position: absolute; top:-5px; right:10px">
-	                     	<img src="images/info5_sm.png" alt="info"/>
-	                    </button>
 	            	</center>
 	            </div>
 	        </div>
@@ -138,7 +173,7 @@ include('header.php');
 				This function shows the TOTAL number of pieces of equipment checked out by ALL employees (only seen by admin).
 			-->
 					<div class="panel panel-default">
-						<div class="panel-heading" id="panel-head">
+						<div class="panel-heading" id="panel-head" style="background-color:rgba(57,116,116,.9);">
 							<strong>System Checkouts</strong>
 						</div>
 						<div class="panel-body" align="center">
@@ -153,13 +188,8 @@ include('header.php');
 				<div class="table-small">
 					<div class="col-sm-12">
 				        <div class="panel panel-default">
-				            <div class="panel-heading" id="panel-head">
-				            	<center>
+				            <div class="panel-heading" id="panel-head"  style="background-color:rgba(57,116,116,.9);">
 					            	All Checkouts
-					            <button type="button" class="btn btn-link" data-toggle="popover" data-content="This table displays equipment still in use (or that hasn't been returned). -- All Employees" data-placement="left" style="position: absolute;top:-5px; right:10px">
-					            	<img src="images/info5_sm.png" alt="info"/>
-					           	</button>
-					           </center>
 				            </div>
 				                <?php echo table_checkouts($connect); ?>
 				        </div>
@@ -170,10 +200,7 @@ include('header.php');
 		}
 	}
 	?>
-<!-- Importing the footer code -->    
-<?php
-include("footer.php");
-?>
+
 <script>
 $(document).ready(function(){
     //Used to toggle off/on the INFO popovers on the forms
@@ -182,3 +209,8 @@ $(document).ready(function(){
     });
 });
 </script>
+
+<!-- Importing the footer code -->    
+<?php
+include("footer.php");
+?>

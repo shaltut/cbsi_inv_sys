@@ -94,6 +94,7 @@ if(isset($_POST["login"])){
 	</head>
 	<body>
 		<br />
+		<!-- Bootstrap Container (margins etc.)-->
 		<div class="container">
 			<!-- CBSI LOGO -->
 			<img class="logoimg" src="images/logo.png" alt="CBSI logo" width="300" height="171">	

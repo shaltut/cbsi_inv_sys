@@ -17,6 +17,7 @@ if($_SESSION['type'] != 'master')
 
 include('header.php');
 ?>
+<!-- Bootstrap Container (margins etc.)-->
 <div class="container">
 <!-- Alerts -->
 <span id='alert_action'></span>
